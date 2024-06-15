@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7l0wikko0kl5"]
+
+[ext_resource type="Script" path="res://navdi4/editortools/scripts/ExtractIcon.gd" id="1_6eike"]
+
+[node name="ExtractIcon" type="Node"]
+script = ExtResource("1_6eike")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbsax28fj1ul1"]
+
+[ext_resource type="Script" path="res://players/grave_player.gd" id="1_eq5kn"]
+[ext_resource type="Texture2D" uid="uid://cc5jluap3cmyc" path="res://media/oub.png" id="2_ph3pf"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_abpct"]
+[ext_resource type="Resource" uid="uid://4vcrgr8nn3cm" path="res://media/oub_sheet.tres" id="4_hdh4w"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_fdlg1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nm083"]
+size = Vector2(4, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4xqg"]
+
+[node name="grave_player" type="Node2D"]
+script = ExtResource("1_eq5kn")
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ph3pf")
+hframes = 10
+vframes = 10
+frame = 3
+script = ExtResource("3_abpct")
+sheet = ExtResource("4_hdh4w")
+frames = PackedInt32Array(3)
+
+[node name="mover" type="Node2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("5_fdlg1")
+
+[node name="solidcast" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_nm083")
+target_position = Vector2(0, 0)
+
+[node name="triggerer" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggerer"]
+shape = SubResource("RectangleShape2D_d4xqg")
