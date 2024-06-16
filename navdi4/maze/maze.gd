@@ -7,6 +7,7 @@ const SOLE_COLLISION_LAYER = 0
 const SOLE_NAVIGATION_LAYER = 0
 
 var tidkey_initialized : bool = false
+var dict_tids_physlayer0 : Dictionary
 var dict_tids_navigable : Dictionary
 var tile_src : TileSetAtlasSource = null
 var tile_src_w : int = 0
@@ -20,12 +21,16 @@ func _require_tidkey():
 		tile_src = tile_set.get_source(SOLE_SOURCE_ID) as TileSetAtlasSource
 		if tile_src==null:push_error("maze's tileset has no src");return false;
 		tile_src_w = tile_src.get_atlas_grid_size().x
+		dict_tids_physlayer0.clear()
 		dict_tids_navigable.clear()
 		var has_nav_layers : bool = tile_set.get_navigation_layers_count() > 0
-		if has_nav_layers: for tid in range(tile_src.get_tiles_count()):
+		for tid in range(tile_src.get_tiles_count()):
 			var tile_data : TileData = tile_src.get_tile_data(tid2coord(tid), 0)
-			if tile_data and tile_data.get_navigation_polygon(SOLE_NAVIGATION_LAYER):
-				dict_tids_navigable[tid] = true
+			if tile_data:
+				if tile_data.get_collision_polygons_count(0) > 0:
+					dict_tids_physlayer0[tid] = true
+				if has_nav_layers and tile_data.get_navigation_polygon(SOLE_NAVIGATION_LAYER):
+					dict_tids_navigable[tid] = true
 		tidkey_initialized = true # done!
 		return true
 
@@ -46,11 +51,16 @@ func coord2tid(atlas_coord:Vector2i)->int:
 func set_cell_tid(maze_coords:Vector2i, tid:int):
 	_require_tidkey()
 	set_cell(maze_coords, SOLE_SOURCE_ID, tid2coord(tid))
+	changed.emit()
 
 func get_cell_tid(maze_coords:Vector2i) -> int:
 	_require_tidkey()
 	return coord2tid(get_cell_atlas_coords(maze_coords))
 
+func is_cell_solid(maze_coords:Vector2i) -> bool:
+	_require_tidkey()
+	return dict_tids_physlayer0.has(get_cell_tid(maze_coords))
+	
 func is_cell_navigable(maze_coords:Vector2i) -> bool:
 	_require_tidkey()
 	return dict_tids_navigable.has(get_cell_tid(maze_coords))

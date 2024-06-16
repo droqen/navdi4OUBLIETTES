@@ -6,10 +6,7 @@ const SOLE_PLAYER_GROUP_NAME = '__nsp'
 @export var player_parent_group : String = "PlayerParent"
 
 static func GetPlayer(node_in_tree : Node) -> NavdiSolePlayer:
-	for player in node_in_tree.get_tree().get_nodes_in_group(SOLE_PLAYER_GROUP_NAME):
-		if is_instance_valid(player):
-			return player
-	return null
+	return node_in_tree.get_tree().get_first_node_in_group(SOLE_PLAYER_GROUP_NAME)
 
 func _ready():
 	if GetPlayer(self) == null:
