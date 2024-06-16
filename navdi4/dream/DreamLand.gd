@@ -8,6 +8,8 @@ var autolinking_buf : int = 0
 var autosnapping_buf : int = 0
 @export var labelsettings : LabelSettings
 
+var room_inst_dict : Dictionary
+
 func _ready():
 	if not Engine.is_editor_hint():
 		autolinking = false
@@ -96,20 +98,34 @@ func draw_connected_rooms(room1:DreamRoom, dir:Vector2i, room2:DreamRoom, _onewa
 		if dir.y: uv1.y = 0.5 + 0.5 * dir.y; uv2.y = 1-uv1.y
 		draw_arrow(roomuvpos(room1, uv1), roomuvpos(room2, uv2), Color.WHITE, 2.0, 10.0)
 
-func try_get_room(roomname:String) -> DreamRoom:
-	var room = get_node_or_null(roomname) as DreamRoom
-	if room == null:
-		return null
+func try_get_room_inst(roomname:String) -> DreamRoom:
+	prints("try_get_room_inst", roomname)
+	if room_inst_dict.has(roomname):
+		prints("it's in the dict",room_inst_dict.keys())
+		return room_inst_dict[roomname]
 	else:
-		return room
+		prints("it's not in the dict...")
+		var room = get_node_or_null(roomname) as DreamRoom
+		if room == null:
+			return null
+		else:
+			var newroom = room.duplicate()
+			prints("ok, duplicated")
+			
+			# this doesn't copy right for some reason
+			newroom.room_links = room.room_links
+			
+			room_inst_dict[roomname] = newroom
+			prints("hopefully returning the duplicate:",newroom,"not",room)
+			return newroom
 
-func get_travel_dirid_room(roomname:String, dirid:int) -> DreamRoom:
+func get_travel_dirid_room_inst(roomname:String, dirid:int) -> DreamRoom:
 	var room = get_node_or_null(roomname) as DreamRoom
 	if room == null:
 		push_error("(get_travel_dirid_room) DreamLand %s does not contain room of name %s" % [name, roomname])
 		return null
 	else:
-		var room2 = get_node_or_null(room.room_links[dirid])
+		var room2 = try_get_room_inst(room.room_links[dirid])
 		return room2
 
 func try_autosnap(room:DreamRoom, dirid:int) -> void:
