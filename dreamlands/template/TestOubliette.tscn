@@ -215,6 +215,9 @@ theme_override_font_sizes/normal_font_size = 8
 text = "through the tunnel"
 script = ExtResource("5_72mik")
 
+[node name="grave_player" parent="rm9" instance=ExtResource("4_q7nkv")]
+position = Vector2(32, 54)
+
 [node name="rmEnding" type="Node2D" parent="."]
 texture_filter = 1
 position = Vector2(362, -213)
