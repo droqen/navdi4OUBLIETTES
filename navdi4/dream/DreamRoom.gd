@@ -24,3 +24,16 @@ func _draw() -> void:
 	if Engine.is_editor_hint():
 		texture_filter = TEXTURE_FILTER_NEAREST
 		draw_rect(Rect2(Vector2i.ZERO, room_size), dbg_outline_col, false)
+
+var maze : Maze :
+	get() : return get_maze()
+
+var _maze : Maze
+
+func get_maze() -> Maze:
+	if _maze: return _maze
+	for child in get_children():
+		if child is Maze:
+			_maze = child as Maze
+			return _maze
+	return null # ???
