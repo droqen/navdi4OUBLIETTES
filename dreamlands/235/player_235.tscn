@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://c21aiw80mhc30"]
+
+[ext_resource type="Script" path="res://dreamlands/235/player_235.gd" id="1_isoqx"]
+[ext_resource type="Texture2D" uid="uid://cg7xhrsco17fc" path="res://media/235.png" id="2_f2k8v"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_ek0g7"]
+[ext_resource type="Resource" uid="uid://byc7s0iakii50" path="res://media/235_sheet.tres" id="4_sdy6t"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_ytkoi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_midb8"]
+size = Vector2(7, 9.5)
+
+[node name="Player235" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_isoqx")
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_f2k8v")
+hframes = 10
+vframes = 10
+frame = 4
+script = ExtResource("3_ek0g7")
+sheet = ExtResource("4_sdy6t")
+frames = PackedInt32Array(3, 4)
+ani_index = 1
+
+[node name="mover" type="Node2D" parent="."]
+position = Vector2(0, 0.25)
+script = ExtResource("5_ytkoi")
+
+[node name="solidcast" type="ShapeCast2D" parent="mover"]
+visible = false
+shape = SubResource("RectangleShape2D_midb8")
+target_position = Vector2(0, 0)
