@@ -2,6 +2,8 @@ extends Node2D
 
 class_name LiveDream
 
+const SOLE_ROOM_GROUP_NAME : String = "-dCRGN"
+
 signal player_escaped
 
 @export var camera : Camera2D
@@ -58,13 +60,21 @@ func _physics_process(_delta: float) -> void:
 				3: player.position.y = dreamroom.edge_margin;
 
 func set_dreamroom(newroom : DreamRoom):
+	if dreamroom == newroom:
+		push_error("set_dreamroom to same room. dont do that")
+		return
+	
 	for child in get_children():
 		if child is DreamRoom:
 			remove_child(child)
 			#child.queue_free() # delete old dreamrooms
 			#child.name = '(deleted)'
+	for current_room in get_tree().get_nodes_in_group(SOLE_ROOM_GROUP_NAME):
+		current_room.remove_from_group(SOLE_ROOM_GROUP_NAME)
+
 	dreamroom = newroom#.duplicate()
 	if dreamroom:
+		dreamroom.add_to_group(SOLE_ROOM_GROUP_NAME)
 		dreamroom.position = Vector2.ZERO
 		add_child.call_deferred(dreamroom, true)
 		update_camera_position()
@@ -83,3 +93,6 @@ func goto_new_land(land: DreamLand, roomname: String):
 		self.set_dreamroom(room)
 	else:
 		push_error("goto_new_land failed; dreamland %s does not have room '%s'" % [land.name, roomname])
+
+static func GetRoom(node_in_tree:Node) -> DreamRoom:
+	return node_in_tree.get_tree().get_first_node_in_group(SOLE_ROOM_GROUP_NAME) as DreamRoom
