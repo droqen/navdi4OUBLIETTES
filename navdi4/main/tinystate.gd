@@ -6,7 +6,7 @@ func _init(firstid : int, ongo : Callable, block_starting_ongo : bool = false) -
 	self.id = firstid
 	self.ongo = ongo
 	if not block_starting_ongo:
-		ongo.call(id,id)
+		ongo.call_deferred(id,id)
 func goto(newid : int, force_ongo_signal : bool = false):
 	if self.id != newid or force_ongo_signal:
 		var previd = self.id
