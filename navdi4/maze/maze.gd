@@ -7,8 +7,7 @@ const SOLE_COLLISION_LAYER = 0
 const SOLE_NAVIGATION_LAYER = 0
 
 var tidkey_initialized : bool = false
-var dict_tids_physlayer0 : Dictionary
-var dict_tids_navigable : Dictionary
+var dict_tids_physlayers : Array[Dictionary]
 var tile_src : TileSetAtlasSource = null
 var tile_src_w : int = 0
 
@@ -21,16 +20,17 @@ func _require_tidkey():
 		tile_src = tile_set.get_source(SOLE_SOURCE_ID) as TileSetAtlasSource
 		if tile_src==null:push_error("maze's tileset has no src");return false;
 		tile_src_w = tile_src.get_atlas_grid_size().x
-		dict_tids_physlayer0.clear()
-		dict_tids_navigable.clear()
-		var has_nav_layers : bool = tile_set.get_navigation_layers_count() > 0
+		dict_tids_physlayers.clear()
+		var physlayer_count : int = tile_set.get_physics_layers_count()
+		var physlayer_range = range(physlayer_count)
+		for i in physlayer_range:
+			dict_tids_physlayers.append(Dictionary())
 		for tid in range(tile_src.get_tiles_count()):
 			var tile_data : TileData = tile_src.get_tile_data(tid2coord(tid), 0)
 			if tile_data:
-				if tile_data.get_collision_polygons_count(0) > 0:
-					dict_tids_physlayer0[tid] = true
-				if has_nav_layers and tile_data.get_navigation_polygon(SOLE_NAVIGATION_LAYER):
-					dict_tids_navigable[tid] = true
+				for i in physlayer_range:
+					if tile_data.get_collision_polygons_count(i) > 0:
+						dict_tids_physlayers[i][tid] = true
 		tidkey_initialized = true # done!
 		return true
 
@@ -57,13 +57,9 @@ func get_cell_tid(maze_coords:Vector2i) -> int:
 	_require_tidkey()
 	return coord2tid(get_cell_atlas_coords(maze_coords))
 
-func is_cell_solid(maze_coords:Vector2i) -> bool:
+func is_cell_solid(maze_coords:Vector2i, physlayer_index:int = 0) -> bool:
 	_require_tidkey()
-	return dict_tids_physlayer0.has(get_cell_tid(maze_coords))
-	
-func is_cell_navigable(maze_coords:Vector2i) -> bool:
-	_require_tidkey()
-	return dict_tids_navigable.has(get_cell_tid(maze_coords))
+	return dict_tids_physlayers[physlayer_index].has(get_cell_tid(maze_coords))
 
 func map_to_center(maze_coords:Vector2i) -> Vector2:
 	return map_to_local(maze_coords) #+ (tile_set.tile_size as Vector2 * 0.5)
