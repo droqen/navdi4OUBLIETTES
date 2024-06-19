@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu4skjph44tcw"]
+
+[ext_resource type="Script" path="res://dreamlands/monelise/player_mlise.gd" id="1_0vlyw"]
+[ext_resource type="Texture2D" uid="uid://daotawln1f18q" path="res://media/monlise.png" id="2_c21yj"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="2_dew7f"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="3_y8k0t"]
+[ext_resource type="Resource" uid="uid://cytbjuusao4d0" path="res://media/monlise_sheet.tres" id="4_odn88"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u2wh"]
+size = Vector2(8, 16)
+
+[node name="PlayerMlise" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_0vlyw")
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_c21yj")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("2_dew7f")
+sheet = ExtResource("4_odn88")
+frames = PackedInt32Array(10, 20, 30, 40)
+
+[node name="HeadSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_c21yj")
+hframes = 10
+vframes = 10
+frame = 1
+script = ExtResource("2_dew7f")
+sheet = ExtResource("4_odn88")
+frames = PackedInt32Array(1, 2, 3, 4)
+ani_period = 30
+
+[node name="mover" type="Node2D" parent="."]
+position = Vector2(0, -3)
+script = ExtResource("3_y8k0t")
+
+[node name="solidcast" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_2u2wh")
+target_position = Vector2(0, 0)
+collision_mask = 16385

@@ -62,6 +62,11 @@ plant={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="solid"
+2d_physics/layer_15="semi-solid"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
