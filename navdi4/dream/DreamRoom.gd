@@ -5,12 +5,13 @@ class_name DreamRoom
 @export var room_size : Vector2i = Vector2i(100, 100)
 @export var dbg_outline_col : Color = Color("#993399")
 @export var room_links : Array[String] = ['','','','']
-@export_enum("Blocked", "Wrap", "Escape") var blank_link_behaviour : int = BlankLinkBehaviour.WRAP
+@export_enum("Sides Blocked", "Wrap", "Escape", "Void") var blank_link_behaviour : int = BlankLinkBehaviour.WRAP
 
 enum BlankLinkBehaviour {
-	BLOCKED,
+	SIDES_BLOCKED,
 	WRAP,
 	ESCAPE,
+	VOID,
 }
 
 @export var edge_margin : int = 0

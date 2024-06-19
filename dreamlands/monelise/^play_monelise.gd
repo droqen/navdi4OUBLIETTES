@@ -1,12 +1,12 @@
 extends Node
 
-func _ready() -> void:
+func _ready() -> void:		
 	var dream : LiveDream = get_parent()
 	var land : DreamLand = load(
 		"res://dreamlands/monelise/mlLand.tscn").instantiate()
 	var firstlevelname = "rm1"
 	
-	dream.goto_new_land(land, "rm1")
+	dream.goto_new_land(land, firstlevelname)
 	await dream.player_escaped
 	dream.goto_new_land(land, "rmEnd")
 	

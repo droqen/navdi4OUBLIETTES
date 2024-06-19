@@ -120,12 +120,14 @@ func try_get_room_inst(roomname:String) -> DreamRoom:
 			return newroom
 
 func get_travel_dirid_room_inst(roomname:String, dirid:int) -> DreamRoom:
-	var room = get_node_or_null(roomname) as DreamRoom
+	var room = try_get_room_inst(roomname)
 	if room == null:
 		push_error("(get_travel_dirid_room) DreamLand %s does not contain room of name %s" % [name, roomname])
 		return null
 	else:
 		var room2 = try_get_room_inst(room.room_links[dirid])
+		prints("travelling from roomname",roomname,"room",room,"in dir",dirid,"result room",room2)
+		prints("roomlinks",room.room_links)
 		return room2
 
 func try_autosnap(room:DreamRoom, dirid:int) -> void:

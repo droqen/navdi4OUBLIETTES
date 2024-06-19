@@ -5,7 +5,7 @@ var default_on : int = 10
 var bufdic : Dictionary
 var bufons : Dictionary
 
-static func Make(parent : Node):
+static func Make(parent : Node) -> Bufs:
 	var bufs = Bufs.new()
 	parent.add_child(bufs)
 	bufs.owner = parent.owner if parent.owner else parent

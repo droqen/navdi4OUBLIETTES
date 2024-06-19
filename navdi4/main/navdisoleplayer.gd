@@ -8,7 +8,7 @@ const SOLE_PLAYER_GROUP_NAME = '__nsp'
 static func GetPlayer(node_in_tree : Node) -> NavdiSolePlayer:
 	return node_in_tree.get_tree().get_first_node_in_group(SOLE_PLAYER_GROUP_NAME)
 
-func _ready():
+func _ready() -> void:
 	if GetPlayer(self) == null:
 		# i'm the new player, let's go
 		add_to_group(SOLE_PLAYER_GROUP_NAME)

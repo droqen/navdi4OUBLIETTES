@@ -13,8 +13,9 @@ var dreamroom : DreamRoom
 
 func _ready():
 	pass
-	
+
 func _physics_process(_delta: float) -> void:
+	
 	if not dreamroom or not dreamland: return
 	
 	var travel_dirid : int = -1
@@ -39,12 +40,14 @@ func _physics_process(_delta: float) -> void:
 						1: player.position.y = dreamroom.room_size.y - 1 - dreamroom.edge_margin;
 						2: player.position.x = dreamroom.room_size.x - 1 - dreamroom.edge_margin;
 						3: player.position.y = dreamroom.edge_margin;
-				DreamRoom.BlankLinkBehaviour.BLOCKED:
+				DreamRoom.BlankLinkBehaviour.VOID:
+					pass # nothing happens
+				DreamRoom.BlankLinkBehaviour.SIDES_BLOCKED:
 					match travel_dirid:
 						2: player.position.x = dreamroom.edge_margin;
-						3: player.position.y = dreamroom.room_size.y - 1 - dreamroom.edge_margin;
+						3: pass # player.position.y = dreamroom.room_size.y - 1 - dreamroom.edge_margin;
 						0: player.position.x = dreamroom.room_size.x - 1 - dreamroom.edge_margin;
-						1: player.position.y = dreamroom.edge_margin;
+						1: pass # player.position.y = dreamroom.edge_margin;
 				DreamRoom.BlankLinkBehaviour.ESCAPE:
 					set_dreamroom(null)
 					if player: player.deplayer()
@@ -53,6 +56,7 @@ func _physics_process(_delta: float) -> void:
 		else:
 			var newroom = self.dreamland.get_travel_dirid_room_inst(dreamroom.name, travel_dirid)
 			if newroom: set_dreamroom(newroom)
+			prints("travel from room",dreamroom,"in dir",travel_dirid,"target room=",newroom)
 			match travel_dirid:
 				0: player.position.x = dreamroom.edge_margin;
 				1: player.position.y = dreamroom.room_size.y - 1 - dreamroom.edge_margin;

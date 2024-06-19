@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://d25tp6wnds61m"]
+
+[ext_resource type="Script" path="res://dreamlands/monelise/gate.gd" id="1_mt7i0"]
+[ext_resource type="Texture2D" uid="uid://daotawln1f18q" path="res://media/monlise.png" id="2_qk48g"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_tpi62"]
+[ext_resource type="Resource" uid="uid://cytbjuusao4d0" path="res://media/monlise_sheet.tres" id="4_f7gud"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4fnj"]
+size = Vector2(10, 20)
+
+[node name="Gate" type="StaticBody2D"]
+collision_layer = 65537
+collision_mask = 0
+script = ExtResource("1_mt7i0")
+
+[node name="a" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("2_qk48g")
+hframes = 10
+vframes = 10
+frame = 7
+script = ExtResource("3_tpi62")
+sheet = ExtResource("4_f7gud")
+frames = PackedInt32Array(7)
+
+[node name="b" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
+rotation = 3.14159
+texture = ExtResource("2_qk48g")
+hframes = 10
+vframes = 10
+frame = 7
+script = ExtResource("3_tpi62")
+sheet = ExtResource("4_f7gud")
+frames = PackedInt32Array(7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u4fnj")

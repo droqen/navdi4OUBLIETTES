@@ -1,6 +1,10 @@
-extends NavdiSolePlayer
+extends Node2D
 
 enum { FLORBUF, PINJUMPBUF, PLANTEDBUF, }
+
+@export var fake_dpad_x : int = 1
+@export var fake_dpad_duration : int = 30	
+@export var my_headst_id : int = 1
 
 var last_safe_position : Vector2
 var last_headspr_frame : int = -1
@@ -14,40 +18,8 @@ var bufs : Bufs = Bufs.Make(self).setup_bufons([
 	PLANTEDBUF,8,
 ])
 
-var _stashed_room_name
-var _stashed_room_links
-var _stashed_room_blb
-
-const ALLOWED_TO_TRAVEL_HEADS = [0,2,3,4]
-
 var headfrm : int = 1
-var headst : TinyState = TinyState.new(1, func(then,now):
-	if now == 2 || then == 2:
-		$mover/solidcast.set_collision_mask_value(15, now != 2)
-	#if now in [2,3,4] || then in [2,3,4]:
-		#$mover/solidcast.set_collision_mask_value(16, now in [2,3,4])
-	if now in ALLOWED_TO_TRAVEL_HEADS || then in ALLOWED_TO_TRAVEL_HEADS:
-		var room = LiveDream.GetRoom(self)
-		if room:
-			if now in ALLOWED_TO_TRAVEL_HEADS:
-				if _stashed_room_name == room.name:
-					prints("h0 - reverting",room,"... ",_stashed_room_links,_stashed_room_blb)
-					room.room_links = _stashed_room_links
-					room.blank_link_behaviour = _stashed_room_blb
-					room.edge_margin = 0
-					prints('h0 - reverted',room,'!',room.room_links)
-				else:
-					prints('h0 - mismatched room name',_stashed_room_name,'!=',room.name)
-			else:
-				_stashed_room_name = room.name
-				_stashed_room_links = room.room_links.duplicate()
-				_stashed_room_blb = room.blank_link_behaviour
-				prints("h0 - stashing",room,"... ",_stashed_room_links,_stashed_room_blb)
-				for i in range(4): room.room_links[i] = ''
-				room.blank_link_behaviour = room.BlankLinkBehaviour.WRAP
-		else:
-			push_error("Wuh-oh! mlise head 1 broken, room may no longer work . . .")
-		
+var headst : TinyState = TinyState.new(my_headst_id, func(_then,now):
 	if now == 0:
 		$mover.position.y = 1
 		($mover/solidcast.shape as RectangleShape2D).size.y = 8
@@ -61,12 +33,11 @@ var headst : TinyState = TinyState.new(1, func(then,now):
 , true)
 
 func _ready() -> void:
-	super._ready()
 	await get_tree().create_timer(0.1).timeout
 	if is_instance_valid(self):
 		print("head 1 on ready")
 		headst.id = 0
-		headst.goto(1, true)
+		headst.goto(my_headst_id, true)
 
 func _physics_process(_delta: float) -> void:
 	var x_movement_speed : float = 1.0
@@ -87,14 +58,17 @@ func _physics_process(_delta: float) -> void:
 	if bufs.has(PLANTEDBUF):
 		pass # skip all inputs
 	else:
-		dpad = Vector2i(
-			(1 if Input.is_action_pressed("right") else 0)
-			-(1 if Input.is_action_pressed("left") else 0),
-			0
-		)
-		if Input.is_action_just_pressed("jump"): bufs.on(PINJUMPBUF)
-		jumpheld = Input.is_action_pressed("jump")
-		plantaction = Input.is_action_just_pressed("plant")
+		if fake_dpad_duration > 0:
+			fake_dpad_duration -= 1
+			dpad = Vector2i(
+				fake_dpad_x,
+				0
+			)
+			if fake_dpad_duration < 155: x_movement_speed *= 0.5
+			if fake_dpad_duration < 100: x_movement_speed *= 0.5
+		#if Input.is_action_just_pressed("jump"): bufs.on(PINJUMPBUF)
+		#jumpheld = Input.is_action_pressed("jump")
+		#plantaction = Input.is_action_just_pressed("plant")
 
 	if dpad.x:
 		$SheetSprite.flip_h = (dpad.x < 0)
@@ -122,7 +96,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if prev_onfloor and not onfloor:
 		vel.x *= 0.75; position.y += 0.5 # drop
-		print("aaa drop")
 	
 	if vel.y < 0 and not jumpheld: vel.y = move_toward(vel.y, 0.0, 0.07)
 	
@@ -165,7 +138,10 @@ func _physics_process(_delta: float) -> void:
 	elif onfloor:
 		if dpad.x:
 			$HeadSprite.setup([headfrm,headfrm+10],7)
-			$SheetSprite.setup([20,30],7)
+			if fake_dpad_duration < 100:
+				$SheetSprite.setup([20,10,30,10],7)
+			else:
+				$SheetSprite.setup([20,30],7)
 		else:
 			$HeadSprite.setup([headfrm,headfrm,headfrm,headfrm+10],30)
 			$SheetSprite.setup([10])
