@@ -21,7 +21,7 @@ size = Vector2(8, 16)
 size = Vector2(8, 16)
 
 [node name="mlland" type="Node2D"]
-self_modulate = Color(1, 1, 0.149126, 1)
+self_modulate = Color(1, 1, -0.211011, 1)
 script = ExtResource("1_jparw")
 autolinking = true
 labelsettings = SubResource("LabelSettings_7aocp")
