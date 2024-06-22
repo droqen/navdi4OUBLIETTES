@@ -2,6 +2,8 @@ extends NavdiSolePlayer
 
 enum { FLORBUF, PINJUMPBUF, PLANTEDBUF, }
 
+signal touched_sparkles
+
 var vel : Vector2 # velocity
 var onfloor : bool
 var onwall : int = 0 # -1 : left, 1 : right
@@ -88,7 +90,15 @@ func _physics_process(_delta: float) -> void:
 		else:
 			$SheetSprite.setup([4])
 	else:
-		$SheetSprite.setup([5 if vel.y < 0 else 7])
+		if vel.y < 0:
+			$SheetSprite.setup([5])
+		elif vel.y < 0.2:
+			$SheetSprite.setup([15])
+		else:
+			$SheetSprite.setup([7])
+	
+	if $spikes_detector.get_overlapping_bodies():
+		touched_sparkles.emit()
 
 func interact_ground_tile():
 	bufs.on(PLANTEDBUF)
@@ -122,7 +132,8 @@ func interact_ground_tile():
 	
 	if planting:
 		position.x = lerp(position.x, maze.map_to_center(player_cell).x, 0.8)
-			
+		try_plant(room, maze, player_cell + Vector2i.DOWN)
+		
 	#if marking:
 		#var cell : Vector2i
 		#var cell_tid : int
@@ -143,6 +154,27 @@ func interact_ground_tile():
 #
 #func highlight(maze : Maze, cell : Vector2i, tid : int):
 	#maze.set_cell_tid(cell, tid+10)
+
+func try_plant(room : DreamRoom, maze : Maze, cell : Vector2i) -> bool:
+	match maze.get_cell_tid(cell):
+		16:
+			maze.set_cell_tid(cell, 23)
+			for dir in [Vector2i.RIGHT,Vector2i.UP,Vector2i.LEFT,Vector2i.DOWN,]:
+				var cel2 = cell
+				for i in range(20):
+					cel2 += dir
+					match maze.get_cell_tid(cel2):
+						1,2,3:
+							maze.set_cell_tid(cel2, 33)
+						33,34,35,36,37:
+							maze.set_cell_tid(cel2, 1 + randi()%3)
+			return true
+		17,18:
+			maze.set_cell_tid(cell, 23)
+			return true
+	
+	return false # failed
+	
 
 func is_maze_cell_solid(maze : Maze, cell : Vector2i) -> bool:
 	if maze.is_cell_solid(cell): return true

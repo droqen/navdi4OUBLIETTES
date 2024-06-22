@@ -92,12 +92,14 @@ func _ready() -> void:
 				ProjectSettings.get_setting("display/window/size/viewport_width"),
 				ProjectSettings.get_setting("display/window/size/viewport_height")
 			)
+			$LiveDream.windfish_awakened.connect(Cat.on_windfish_awakened)
 		else:
 			print("Cat not found - You do not have access to JS")
 		
 		if OS.has_feature("editor"):
 			screenshotting_enabled = true
 			print("framecapture tool enabled.")
+		
 
 # TODO - this should all be in a separate node
 

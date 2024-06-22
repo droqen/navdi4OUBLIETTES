@@ -98,6 +98,11 @@ func draw_connected_rooms(room1:DreamRoom, dir:Vector2i, room2:DreamRoom, _onewa
 		if dir.y: uv1.y = 0.5 + 0.5 * dir.y; uv2.y = 1-uv1.y
 		draw_arrow(roomuvpos(room1, uv1), roomuvpos(room2, uv2), Color.WHITE, 2.0, 10.0)
 
+func forget_room_inst(roomname:String) -> void:
+	if room_inst_dict.has(roomname):
+		room_inst_dict.erase(roomname) # easy!
+		# . . . ok and . . .
+
 func try_get_room_inst(roomname:String) -> DreamRoom:
 	prints("try_get_room_inst", roomname)
 	if room_inst_dict.has(roomname):

@@ -5,6 +5,7 @@ class_name LiveDream
 const SOLE_ROOM_GROUP_NAME : String = "-dCRGN"
 
 signal player_escaped
+signal windfish_awakened
 
 @export var camera : Camera2D
 
@@ -62,6 +63,19 @@ func _physics_process(_delta: float) -> void:
 				1: player.position.y = dreamroom.room_size.y - 1 - dreamroom.edge_margin;
 				2: player.position.x = dreamroom.room_size.x - 1 - dreamroom.edge_margin;
 				3: player.position.y = dreamroom.edge_margin;
+
+func reload_dreamroom():
+	var current_roomname : String = ''
+	for child in get_children():
+		if child is DreamRoom:
+			current_roomname = child.name
+	if current_roomname:
+		dreamroom = null
+		dreamland.forget_room_inst(current_roomname)
+		set_dreamroom(
+			dreamland.try_get_room_inst(current_roomname)
+		)
+	
 
 func set_dreamroom(newroom : DreamRoom):
 	if dreamroom == newroom:
