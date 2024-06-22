@@ -155,7 +155,7 @@ func interact_ground_tile():
 #func highlight(maze : Maze, cell : Vector2i, tid : int):
 	#maze.set_cell_tid(cell, tid+10)
 
-func try_plant(room : DreamRoom, maze : Maze, cell : Vector2i) -> bool:
+func try_plant(_room : DreamRoom, maze : Maze, cell : Vector2i) -> bool:
 	match maze.get_cell_tid(cell):
 		16:
 			maze.set_cell_tid(cell, 23)

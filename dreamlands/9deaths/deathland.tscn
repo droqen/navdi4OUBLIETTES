@@ -39,7 +39,7 @@ script = ExtResource("4_h7wvc")
 script = ExtResource("5_7m3k0")
 
 [node name="lichp" type="Node2D" parent="rm1"]
-position = Vector2(95, 54)
+position = Vector2(35, 115)
 script = ExtResource("5_slmmp")
 
 [node name="SheetSprite" type="Sprite2D" parent="rm1/lichp"]

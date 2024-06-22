@@ -13,7 +13,7 @@ var dreamland : DreamLand
 var dreamroom : DreamRoom
 
 func _ready():
-	pass
+	windfish_awakened.connect(func():prints(self,". . . WIND FISH AWAKENED . . ."))
 
 func _physics_process(_delta: float) -> void:
 	

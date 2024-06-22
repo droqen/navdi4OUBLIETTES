@@ -12,10 +12,11 @@ func _ready() -> void:
 	dream.goto_new_land(land, "rmEnd")
 	
 	# end
+	prints("9deaths - awaken the wind fish!")
 	dream.windfish_awakened.emit()
 
 var player : Node = null
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var cur_player = NavdiSolePlayer.GetPlayer(self)
 	if player != cur_player:
 		player = cur_player

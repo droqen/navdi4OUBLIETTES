@@ -5,7 +5,7 @@ var blue_loop_buf : int = 20
 
 var allgone : bool = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var maze : Maze = get_parent()
 	if blue_loop_buf > 0:
 		blue_loop_buf -= 1
@@ -31,4 +31,5 @@ func _physics_process(delta: float) -> void:
 			allgone = false; break;
 		if allgone:
 			NavdiSolePlayer.GetPlayer(self).queue_free() # bye player
+			prints("awaken the wind fish", $"../../..")
 			$"../../..".windfish_awakened.emit()
