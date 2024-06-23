@@ -59,7 +59,7 @@ position = Vector2(90, 5)
 [node name="ChatterLabel" type="RichTextLabel" parent="rm2"]
 offset_left = 21.0
 offset_top = 140.0
-offset_right = 100.0
+offset_right = 104.0
 offset_bottom = 170.0
 theme = ExtResource("7_4rq42")
 bbcode_enabled = true
