@@ -63,9 +63,10 @@ offset_right = 104.0
 offset_bottom = 170.0
 theme = ExtResource("7_4rq42")
 bbcode_enabled = true
-text = "O! Kind monst-er, spare our
+text = "O! Kind monst- er, spare our
 great works!"
 scroll_active = false
+visible_characters_behavior = 1
 script = ExtResource("8_anqrf")
 printing = false
 
