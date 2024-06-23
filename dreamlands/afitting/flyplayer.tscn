@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://p2ti6iexhw1m"]
+
+[ext_resource type="Script" path="res://dreamlands/afitting/flyplayer.gd" id="1_is352"]
+[ext_resource type="Texture2D" uid="uid://bnfh10j7aqlrp" path="res://media/afitting.png" id="2_24xxc"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_0ol73"]
+[ext_resource type="Resource" uid="uid://cioe2c1y6ynn4" path="res://media/afitting_sheet.tres" id="4_ndeg6"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_bya0a"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymazer.gd" id="6_h7gjd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cu3s6"]
+size = Vector2(6, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qno8"]
+size = Vector2(2, 2)
+
+[node name="flyplayer" type="Node2D"]
+position = Vector2(89, 195)
+script = ExtResource("1_is352")
+
+[node name="spr" type="Sprite2D" parent="."]
+texture = ExtResource("2_24xxc")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("3_0ol73")
+sheet = ExtResource("4_ndeg6")
+frames = PackedInt32Array(2)
+ani_period = 4
+
+[node name="mover" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, 1)
+script = ExtResource("5_bya0a")
+
+[node name="solidcast" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_cu3s6")
+target_position = Vector2(0, 0)
+
+[node name="mazer" type="Marker2D" parent="."]
+visible = false
+script = ExtResource("6_h7gjd")
+
+[node name="playermask" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, 2)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playermask"]
+shape = SubResource("RectangleShape2D_4qno8")

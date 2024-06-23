@@ -10,22 +10,28 @@ config_version=5
 
 [application]
 
-config/name="2024, June 21st ~ nine deaths"
+config/name="AFITTING"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(0.278431, 0.317647, 0.317647, 1)
+boot_splash/bg_color=Color(0.952941, 0.94902, 0.780392, 1)
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
+
+[autoload]
+
+Pin="*res://navdi4/main/navdipin.gd"
 
 [display]
 
 window/size/viewport_width=180
 window/size/viewport_height=200
+window/size/transparent=true
 window/size/window_width_override=900
 window/size/window_height_override=1000
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
+window/per_pixel_transparency/allowed=true
 
 [global_group]
 
@@ -65,6 +71,7 @@ plant={
 [layer_names]
 
 2d_physics/layer_1="solid"
+2d_physics/layer_2="player"
 2d_physics/layer_6="spikes"
 2d_physics/layer_15="semi-solid"
 2d_physics/layer_16="blocked-border"
@@ -74,6 +81,6 @@ plant={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.278431, 0.317647, 0.317647, 1)
+environment/defaults/default_clear_color=Color(0.952941, 0.94902, 0.780392, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

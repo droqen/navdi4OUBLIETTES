@@ -3,20 +3,21 @@
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://cfqbm33qp3xga" path="res://icon.png" id="2_05dgp"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
-[ext_resource type="Script" path="res://dreamlands/9deaths/^play_9deaths.gd" id="4_mw7hq"]
+[ext_resource type="Script" path="res://dreamlands/afitting/^play_afitting.gd" id="4_d6wol"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_frbii"]
 
 [node name="main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
-game_name = "nine deaths"
+game_name = "AFITTING"
 view_scale = Vector2i(5, 5)
 icon = ExtResource("2_05dgp")
-bg_colour = Color(0.278431, 0.317647, 0.317647, 1)
+bg_colour = Color(0.952941, 0.94902, 0.780392, 1)
+prepend_date = false
 time_year = 2024
 time_month = "June"
-time_day = 21
+time_day = 23
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("3_vd67c")
@@ -25,7 +26,7 @@ camera = NodePath("dreamcamera")
 [node name="dreamcamera" type="Camera2D" parent="LiveDream"]
 
 [node name="^play" type="Node" parent="LiveDream"]
-script = ExtResource("4_mw7hq")
+script = ExtResource("4_d6wol")
 
 [node name="blocked-bord" type="StaticBody2D" parent="LiveDream"]
 collision_layer = 32768
