@@ -63,3 +63,25 @@ func is_cell_solid(maze_coords:Vector2i, physlayer_index:int = 0) -> bool:
 
 func map_to_center(maze_coords:Vector2i) -> Vector2:
 	return map_to_local(maze_coords) #+ (tile_set.tile_size as Vector2 * 0.5)
+
+func get_used_cells_by_tids(tids : Array[int]) -> Array[Vector2i]:
+	var used_cells : Array[Vector2i] = []
+	for tid in tids:
+		used_cells.append_array(get_used_cells_by_id(0, tid2coord(tid)))
+	return used_cells
+
+const DIRS = [Vector2i.RIGHT,Vector2i.UP,Vector2i.LEFT,Vector2i.DOWN,]
+
+func magic_wand(start : Vector2i, verifier : Callable) -> Array[Vector2i]:
+	var cells : Array[Vector2i] = [start]
+	var excluded_cells : Array[Vector2i] = []
+	var i : int = 0
+	while i < len(cells):
+		for dir in DIRS:
+			var cell2 = cells[i] + dir
+			if cells.has(cell2): continue
+			if excluded_cells.has(cell2): continue
+			if verifier.call(cell2): cells.append(cell2)
+			else: excluded_cells.append(cell2)
+		i += 1
+	return cells
