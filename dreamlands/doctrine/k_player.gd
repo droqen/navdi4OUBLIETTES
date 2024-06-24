@@ -9,7 +9,7 @@ func _ready() -> void:
 	super._ready()
 	var maze : Maze = $mazer.get_maze()
 	for c in maze.get_used_cells_by_tids([25]):
-		maze.set_cell_tid(c, min(10 + randi()%5, 10 + randi()%5))
+		maze.set_cell_tid(c, min(10 + randi()%4, 10 + randi()%4))
 
 var dead : bool = false
 var reallydead : bool = false
@@ -19,6 +19,7 @@ func revive(pos:Vector2):
 	reallydead = false
 	vel *= 0
 	rotation = 0
+	show()
 
 var last_onwall : int = 0
 var last_onfloor : bool
