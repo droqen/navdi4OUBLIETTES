@@ -2,6 +2,7 @@ extends Node2D
 
 class_name LiveDream
 
+const SOLE_LIVE_DREAM_NAME : String = "dreamN"
 const SOLE_ROOM_GROUP_NAME : String = "-dCRGN"
 
 signal player_escaped
@@ -14,6 +15,7 @@ var dreamroom : DreamRoom
 
 func _ready():
 	windfish_awakened.connect(func():prints(self,". . . WIND FISH AWAKENED . . ."))
+	add_to_group(SOLE_LIVE_DREAM_NAME)
 
 func _physics_process(_delta: float) -> void:
 	
@@ -114,3 +116,5 @@ func goto_new_land(land: DreamLand, roomname: String):
 
 static func GetRoom(node_in_tree:Node) -> DreamRoom:
 	return node_in_tree.get_tree().get_first_node_in_group(SOLE_ROOM_GROUP_NAME) as DreamRoom
+static func GetDream(node_in_tree:Node) -> LiveDream:
+	return node_in_tree.get_tree().get_first_node_in_group(SOLE_LIVE_DREAM_NAME) as LiveDream

@@ -3,21 +3,21 @@
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://cfqbm33qp3xga" path="res://icon.png" id="2_05dgp"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
-[ext_resource type="Script" path="res://dreamlands/afitting/^play_afitting.gd" id="4_d6wol"]
+[ext_resource type="Script" path="res://dreamlands/doctrine/^play_doctrine.gd" id="4_ro3yy"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_frbii"]
 
 [node name="main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
-game_name = "AFITTING"
+game_name = "a-simple-crossing"
+game_size = Vector2i(300, 200)
 view_scale = Vector2i(5, 5)
 icon = ExtResource("2_05dgp")
-bg_colour = Color(0.952941, 0.94902, 0.780392, 1)
-prepend_date = false
+bg_colour = Color(0.227726, 0.316708, 0.431252, 1)
 time_year = 2024
 time_month = "June"
-time_day = 23
+time_day = 24
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("3_vd67c")
@@ -26,7 +26,7 @@ camera = NodePath("dreamcamera")
 [node name="dreamcamera" type="Camera2D" parent="LiveDream"]
 
 [node name="^play" type="Node" parent="LiveDream"]
-script = ExtResource("4_d6wol")
+script = ExtResource("4_ro3yy")
 
 [node name="blocked-bord" type="StaticBody2D" parent="LiveDream"]
 collision_layer = 32768
