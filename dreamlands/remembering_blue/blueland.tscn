@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://w5es6q28mro2" path="res://dreamlands/remembering_blue/player_blue.tscn" id="5_h8hsw"]
 
 [node name="Blueland" type="Node2D"]
-self_modulate = Color(1, 1, 0.962711, 0.503977)
+self_modulate = Color(1, 1, 1, 0.5)
 script = ExtResource("1_0cyid")
 
 [node name="rmA" type="Node2D" parent="."]
