@@ -90,23 +90,18 @@ func _physics_process(_delta: float) -> void:
 		if not $mover.try_slip_move(self, $mover/solidcast, HORIZONTAL, vel.x):
 			vel.x=0
 		if not $mover.try_slip_move(self, $mover/solidcast, VERTICAL, vel.y):
-			if vel.y>0:
-				vel.y=0
-			elif vel.y<-1:
-				vel.y=-1
+			vel.y=0
 			if terminal_velocity:
-				splatted = true; bufs.setmin(DEADBUF, randi_range(60,120))
-				terminal_velocity = false
-				vel.y = -1.5
+				splat()
 	if do_jumpupdate:
 		if onwall: if bufs.try_eat([PINJUMPBUF]):
-			vel.x = -2.0 * onwall
-			vel.y = -1.0
+			vel.x = -0.8 * onwall
+			vel.y = -1.25
 			onwall = 0
 			onfloor = false
 		if onfloor: bufs.on(FLORBUF)
 		if bufs.try_eat([FLORBUF,PINJUMPBUF]):
-			vel.y = -2.0
+			vel.y = -1.60
 			onfloor = false
 		if bufs.try_eat([ONWALBUF,PINJUMPBUF]):
 			vel.x = -1.0 * last_onwall
@@ -144,30 +139,67 @@ func lightningboltme():
 	var floor_cell = $mazer.find_best_floor_cell_if_any(position, $mover/solidcast.shape)
 	var maze : Maze = $mazer.get_maze()
 	position.x = lerp(position.x, maze.map_to_center(floor_cell).x, 0.8)
-	var bolt = LIGHTNINGBOLT_PFB.instantiate().setup(maze, floor_cell + Vector2i.UP, position)
-	LiveDream.GetDream(self).add_child(bolt)
-	var x : int = floor_cell.x
-	var y : int = floor_cell.y
-	for dy in [0,-1,-2]:
-		for dx in [0,-1,1]:
-			lightningboltcell(maze, Vector2i(x+dx, y+dy))
+	lightningboltradius(maze, floor_cell + Vector2i.UP)
 	#y -= 3
 	#while y >= 0:
 		#lightningboltcell(maze, Vector2i(x, y))
 		#y -= 1
 
-func lightningboltcell(maze : Maze, cell : Vector2i):
+func exploderadius(maze : Maze, cell : Vector2i):
+	var boom = BIGEXPLOSION_PFB.instantiate().setup(maze, cell)
+	LiveDream.GetDream(self).add_child(boom)
+	var x : int = cell.x
+	var y : int = cell.y
+	for dy in [2,1,0,-1,-2]:
+		for dx in [0,-1,1,-2,2]:
+			lightningboltcell(maze, Vector2i(x+dx, y+dy), true)
+
+func lightningboltradius(maze : Maze, cell : Vector2i):
+	var bolt = LIGHTNINGBOLT_PFB.instantiate().setup(maze, cell)
+	LiveDream.GetDream(self).add_child(bolt)
+	var x : int = cell.x
+	var y : int = cell.y
+	for dy in [1,0,-1]:
+		for dx in [0,-1,1]:
+			lightningboltcell(maze, Vector2i(x+dx, y+dy))
+
+func splat():
+	splatted = true; bufs.setmin(DEADBUF, randi_range(60,120))
+	terminal_velocity = false
+	vel.y = -1.5
+
+func lightningboltcell(maze : Maze, cell : Vector2i, is_explosion : bool = false):
+	var playercell = maze.local_to_map(position)
+	if cell == playercell and is_explosion:
+		splat()
 	match maze.get_cell_tid(cell):
 		11,12:
 			maze.set_cell_tid(cell, 10)
 		21:
 			maze.set_cell_tid(cell, 20)
 		
-		15: maze.set_cell_tid(cell, 25)
-		16: maze.set_cell_tid(cell, 26)
-		17: maze.set_cell_tid(cell, 27)
+		15:
+			maze.set_cell_tid(cell, 25)
+			await get_tree().create_timer(0.15).timeout
+			exploderadius(maze, cell)
+		16:
+			maze.set_cell_tid(cell, 26)
+			await get_tree().create_timer(0.1).timeout
+			lightningboltradius(maze, cell)
+		17:
+			if is_explosion:
+				maze.set_cell_tid(cell, 27)
+			else:
+				await get_tree().create_timer(0.05).timeout
+				for dy in [1,0,-1]:
+					for dx in [0,-1,1]:
+						var cel2 : Vector2i = cell + Vector2i(dx,dy)
+						if cel2 == playercell:
+							maze.set_cell_tid(cel2, 28)
+						elif not maze.is_cell_solid(cel2):
+							maze.set_cell_tid(cel2, 18)
 		18: maze.set_cell_tid(cell, 28)
 		19: maze.set_cell_tid(cell, 29)
-	
 
 const LIGHTNINGBOLT_PFB = preload("res://dreamlands/ascend_demon/lightningbolt.tscn")
+const BIGEXPLOSION_PFB = preload("res://dreamlands/ascend_demon/big_explosion.tscn")
