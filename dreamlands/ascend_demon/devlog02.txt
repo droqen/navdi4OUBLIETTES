@@ -1,0 +1,21 @@
+devlog 02
+
+[AB]
+
+ok, did i even succeed at what i wanted to do?
+
+from 01:
+[ A. player makes careful decisions when climbing a tower
+
+  B. world contains ten 'fragile' towers. treated as disposable;
+	 if player fails, they easily move on to the next tower.
+	 simple victory: clear any tower. deeper victory: clear all. ]
+
+... currently there are no careful decisions to be made...
+it's absolutely trivial to climb a tower. there are no critical blocks
+that you don't want to destroy. the lightning bolt effect is COOL
+but it really is not necessary to use it, at all! hmm...
+i'll try making a level that's hard to climb. level design!
+
+UPDATE: i made the walljump (significantly) worse for climbing.
+now i can make a tower that's impossible to climb -- which is good!

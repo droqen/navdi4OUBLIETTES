@@ -100,8 +100,8 @@ func _physics_process(_delta: float) -> void:
 				vel.y = -1.5
 	if do_jumpupdate:
 		if onwall: if bufs.try_eat([PINJUMPBUF]):
-			vel.x = -1.0 * onwall
-			vel.y = vel.y * 0.5 - 1.25
+			vel.x = -2.0 * onwall
+			vel.y = -1.0
 			onwall = 0
 			onfloor = false
 		if onfloor: bufs.on(FLORBUF)
