@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://navdi4/main/navdibodymazer.gd" id="6_e8qqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34b3w"]
-size = Vector2(5.8, 4.8)
+size = Vector2(7.8, 4.8)
 
 [node name="ascendant_plr" type="Node2D"]
 texture_filter = 1
