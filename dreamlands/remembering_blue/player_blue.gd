@@ -1,4 +1,4 @@
-extends Node2D
+extends NavdiSolePlayer
 
 enum { PADDLE_BUF, DIGGING_BUF, }
 var bufs = Bufs.Make(self).setup_bufons([PADDLE_BUF, 15, DIGGING_BUF, 60, ])
@@ -6,6 +6,10 @@ var paddle_dpadx : int = 0
 var vel : Vector2
 var faceleft : bool = false
 var blue_frictionless : bool = false
+
+func _ready():
+	super._ready()
+	#vel.y = 1.0
 
 func _physics_process(_delta: float) -> void:
 	var dpad = Pin.get_dpad()
@@ -31,19 +35,20 @@ func _physics_process(_delta: float) -> void:
 		vel.y = 0
 	
 	if bufs.has(DIGGING_BUF):
-		if bufs.read(DIGGING_BUF) == 60-20:
+		if vel.y > 0.15: bufs.clr(DIGGING_BUF)
+		if bufs.read(DIGGING_BUF) == 60-11:
 			var tid = get_diggable_tid_here()
-			if tid < 0:
-				vel.y = -0.35
+			if tid <= 0:
 				bufs.clr(DIGGING_BUF)
-		if bufs.read(DIGGING_BUF) == 1:
-			var tid = get_diggable_tid_here()
-			match tid:
-				1:
-					var maze : Maze = $mazer.get_maze()
-					maze.set_cell_tid(last_dig_cell, 10 * (randi()%6))
-			vel.y = -0.35
-			bufs.clr(DIGGING_BUF)
+			elif tid == 10:
+				dig_here()
+				bufs.clr(DIGGING_BUF); bufs.setmin(DIGGING_BUF, 10)
+			else:
+				dig_here()
+		if bufs.read(DIGGING_BUF) == 60-33:
+		#if bufs.read(DIGGING_BUF) == 1:
+			dig_here()
+			#bufs.clr(DIGGING_BUF)
 	elif not bufs.has(PADDLE_BUF) and Pin.get_jump_hit():
 		vel.y = -0.65
 		paddle_dpadx = dpad.x
@@ -79,7 +84,7 @@ var last_dig_cell : Vector2i
 func get_diggable_tid_here() -> int:
 	var maze : Maze = $mazer.get_maze()
 	var dig_point = Vector2(
-		position.x + (-4 if faceleft else 4),
+		position.x + (-3 if faceleft else 3),
 		position.y + (10)
 	)
 	last_dig_cell = maze.local_to_map(dig_point);
@@ -87,3 +92,10 @@ func get_diggable_tid_here() -> int:
 	match dig_tid:
 		1, 0,10,20,30,40,50: return dig_tid
 		_: return -1
+
+func dig_here():
+	var tid = get_diggable_tid_here()
+	match tid:
+		10,20,30,40,50:
+			var maze : Maze = $mazer.get_maze()
+			maze.set_cell_tid(last_dig_cell, tid - 10)

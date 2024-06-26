@@ -11,7 +11,6 @@
 texture_filter = 1
 script = ExtResource("1_bg03g")
 game_name = "blue"
-game_size = Vector2i(240, 120)
 view_scale = Vector2i(5, 5)
 icon = ExtResource("2_05dgp")
 bg_colour = Color(0, 0, 0.721569, 1)
