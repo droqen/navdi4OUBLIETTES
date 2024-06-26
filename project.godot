@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="2024, June 24th ~ a-simple-crossing"
+config/name="2024, June 24th ~ blue"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(0.227726, 0.316708, 0.431252, 1)
+boot_splash/bg_color=Color(0, 0, 0.721569, 1)
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
@@ -24,11 +24,11 @@ Pin="*res://navdi4/main/navdipin.gd"
 
 [display]
 
-window/size/viewport_width=300
-window/size/viewport_height=200
+window/size/viewport_width=240
+window/size/viewport_height=120
 window/size/transparent=true
-window/size/window_width_override=1500
-window/size/window_height_override=1000
+window/size/window_width_override=1200
+window/size/window_height_override=600
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 window/per_pixel_transparency/allowed=true
@@ -81,7 +81,7 @@ plant={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.227726, 0.316708, 0.431252, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0.721569, 1)
 viewport/transparent_background=true
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
