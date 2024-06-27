@@ -18,7 +18,7 @@ bg_colour = Color(0.572549, 0.211765, 0.309804, 1)
 time_year = 2024
 time_month = "June"
 time_day = 27
-gcap_frmdelay = 6
+gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("3_vd67c")
