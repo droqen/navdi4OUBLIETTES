@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://i2sbt22mydae"]
+[gd_scene load_steps=9 format=3 uid="uid://i2sbt22mydae"]
 
 [ext_resource type="Script" path="res://dreamlands/ascend_demon/ascendant_plr.gd" id="1_xfoly"]
 [ext_resource type="Texture2D" uid="uid://b2xp6ci4k7l8t" path="res://media/ascendant-towers.png" id="2_ekdgg"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34b3w"]
 size = Vector2(7.8, 4.8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6txxc"]
+size = Vector2(4, 4)
 
 [node name="ascendant_plr" type="Node2D"]
 texture_filter = 1
@@ -35,3 +38,10 @@ target_position = Vector2(0, 0)
 [node name="mazer" type="Marker2D" parent="."]
 visible = false
 script = ExtResource("6_e8qqv")
+
+[node name="plrzone" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plrzone"]
+shape = SubResource("RectangleShape2D_6txxc")

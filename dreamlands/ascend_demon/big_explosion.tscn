@@ -4,8 +4,8 @@
 
 [node name="Bigexplosion" type="CanvasGroup"]
 script = ExtResource("1_qlfq5")
-starting_fullstrength = 2
-starting_lifespan = 25
+starting_lifespan = 80
+explosion_colours = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_left = -25.0

@@ -1,14 +1,18 @@
 extends NavdiSolePlayer
 
 enum {
-	FLORBUF = 1000, PINJUMPBUF, PLANTINGBUF, ONWALBUF, TERMINAL_FREEZ_BUF, DEADBUF,
+	FLORBUF = 1000, PINJUMPBUF, PLANTINGBUF, ONWALBUF, DEADBUF,
+	GREENUNSTICKBUF,
 	PLANT_WHILEBUF = 2000, INAIR_VARVELY,
 		ONGROUND_BLINKING, ONGROUND_RUNNING, SPLATTED,
 		ONWALL,
 }
 
+var greens_triggered : int = 0
+
 var bufs : Bufs = Bufs.Make(self).setup_bufons([
 	FLORBUF,4, PINJUMPBUF,5, PLANTINGBUF,16, ONWALBUF,4, DEADBUF,60,
+	GREENUNSTICKBUF,23,
 ])
 var last_onwall : int
 
@@ -36,8 +40,11 @@ const QUICKFALL_GRAVITY : float = 0.12
 
 func _ready() -> void: super._ready()
 func _physics_process(_delta: float) -> void:
-	if bufs.has(TERMINAL_FREEZ_BUF): return # unused
-	if splatted and not bufs.has(DEADBUF): splatted = false; vel.y = -2.0; lightningboltme()
+	if splatted and not bufs.has(DEADBUF):
+		if try_lightningboltme():
+			splatted = false; vel.y = -2.0;
+		else:
+			bufs.on(DEADBUF)
 	
 	# frame-only values
 	var dpad : Vector2
@@ -61,7 +68,7 @@ func _physics_process(_delta: float) -> void:
 	if do_inputs:
 		if onfloor and Pin.get_plant_hit():
 			# cancel remainder of inputs
-			lightningboltme()
+			try_lightningboltme()
 		else:
 			dpad = Pin.get_dpad()
 			if Pin.get_jump_hit(): bufs.on(PINJUMPBUF)
@@ -78,10 +85,7 @@ func _physics_process(_delta: float) -> void:
 			last_onwall = onwall
 			bufs.on(ONWALBUF)
 	if do_velupdate:
-		if terminal_velocity:
-			vel.x = move_toward(vel.x, 0.1 * dpad.x, 0.1)
-		else:
-			vel.x = move_toward(vel.x, 1.0 * dpad.x, 0.1)
+		vel.x = move_toward(vel.x, 1.0 * dpad.x, 0.1)
 		if onwall:
 			vel.y = move_toward(vel.y * 0.95, 0.2, 0.02)
 		else:
@@ -132,18 +136,36 @@ func update_inair_spr():
 	elif vel.y < TERMINAL_VELOCITY: $spr.setup([3])
 	else: $spr.setup([7,8],5)
 	
-func lightningboltme():
+func try_lightningboltme() -> bool:
 	bufs.on(PLANTINGBUF)
 	vel.x = 0.0 # stop in place
 	vel.y = -0.8
 	var floor_cell = $mazer.find_best_floor_cell_if_any(position, $mover/solidcast.shape)
 	var maze : Maze = $mazer.get_maze()
-	position.x = lerp(position.x, maze.map_to_center(floor_cell).x, 0.8)
-	lightningboltradius(maze, floor_cell + Vector2i.UP)
+	if floor_cell:
+		position.x = lerp(position.x, maze.map_to_center(floor_cell).x, 0.8)
+		lightningboltradius(maze, floor_cell + Vector2i.UP)
+		return true
+	else:
+		return false
 	#y -= 3
 	#while y >= 0:
 		#lightningboltcell(maze, Vector2i(x, y))
 		#y -= 1
+
+func freezeradius(maze : Maze, cell : Vector2i):
+	var snowflake = FREEZEPOP_PFB.instantiate().setup(maze, cell)
+	LiveDream.GetDream(self).add_child(snowflake)
+	freezecell(maze, cell)
+	for r in [1,2]:
+		for dx in [-r,0,r]:
+			for dy in [-r,0,r]:
+				freezecell(maze, cell + Vector2i(dx,dy))
+
+func freezecell(maze : Maze, cell : Vector2i):
+	var tid = maze.get_cell_tid(cell)
+	if (tid >= 10 and tid < 20) or (tid == 21):
+		maze.set_cell_tid(cell, tid+30)
 
 func exploderadius(maze : Maze, cell : Vector2i):
 	var boom = BIGEXPLOSION_PFB.instantiate().setup(maze, cell)
@@ -155,6 +177,7 @@ func exploderadius(maze : Maze, cell : Vector2i):
 			lightningboltcell(maze, Vector2i(x+dx, y+dy), true)
 
 func lightningboltradius(maze : Maze, cell : Vector2i):
+	greens_triggered = 0
 	var bolt = LIGHTNINGBOLT_PFB.instantiate().setup(maze, cell)
 	LiveDream.GetDream(self).add_child(bolt)
 	var x : int = cell.x
@@ -162,6 +185,8 @@ func lightningboltradius(maze : Maze, cell : Vector2i):
 	for dy in [1,0,-1]:
 		for dx in [0,-1,1]:
 			lightningboltcell(maze, Vector2i(x+dx, y+dy))
+	if greens_triggered > 1:
+		bufs.on(GREENUNSTICKBUF)
 
 func splat():
 	splatted = true; bufs.setmin(DEADBUF, randi_range(60,120))
@@ -172,24 +197,30 @@ func lightningboltcell(maze : Maze, cell : Vector2i, is_explosion : bool = false
 	var playercell = maze.local_to_map(position)
 	if cell == playercell and is_explosion:
 		splat()
-	match maze.get_cell_tid(cell):
+	var tid = maze.get_cell_tid(cell)
+	match tid:
 		11,12:
 			maze.set_cell_tid(cell, 10)
 		21:
 			maze.set_cell_tid(cell, 20)
 		
+		13:
+			maze.set_cell_tid(cell, 23)
+			await get_tree().create_timer(0.25).timeout
+			freezeradius(maze, cell)
 		15:
 			maze.set_cell_tid(cell, 25)
 			await get_tree().create_timer(0.15).timeout
 			exploderadius(maze, cell)
 		16:
 			maze.set_cell_tid(cell, 26)
-			await get_tree().create_timer(0.1).timeout
+			await get_tree().create_timer(0.10).timeout
 			lightningboltradius(maze, cell)
 		17:
 			if is_explosion:
 				maze.set_cell_tid(cell, 27)
-			else:
+			elif not bufs.has(GREENUNSTICKBUF):
+				greens_triggered += 1
 				await get_tree().create_timer(0.05).timeout
 				for dy in [1,0,-1]:
 					for dx in [0,-1,1]:
@@ -200,6 +231,9 @@ func lightningboltcell(maze : Maze, cell : Vector2i, is_explosion : bool = false
 							maze.set_cell_tid(cel2, 18)
 		18: maze.set_cell_tid(cell, 28)
 		19: maze.set_cell_tid(cell, 29)
+		
+		40,41,42,43,44,45,46,47,48,49, 51: maze.set_cell_tid(cell, tid-30)
 
 const LIGHTNINGBOLT_PFB = preload("res://dreamlands/ascend_demon/lightningbolt.tscn")
 const BIGEXPLOSION_PFB = preload("res://dreamlands/ascend_demon/big_explosion.tscn")
+const FREEZEPOP_PFB = preload("res://dreamlands/ascend_demon/freezepop.tscn")

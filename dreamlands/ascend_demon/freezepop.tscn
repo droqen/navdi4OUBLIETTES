@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq4eo7u4632wj"]
+
+[ext_resource type="Script" path="res://dreamlands/ascend_demon/lightningbolt.gd" id="1_y55ff"]
+
+[node name="Freezepop" type="CanvasGroup"]
+script = ExtResource("1_y55ff")
+starting_fullstrength = 5
+starting_lifespan = 100
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -25.0
+offset_top = -5.0
+offset_right = 25.0
+offset_bottom = 5.0
+color = Color(0.482353, 0.858824, 0.886275, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -5.0
+offset_top = -25.0
+offset_right = 5.0
+offset_bottom = 25.0
+color = Color(0.482353, 0.858824, 0.886275, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+color = Color(0.482353, 0.858824, 0.886275, 1)
+
+[node name="Corner" type="ColorRect" parent="."]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = -15.0
+offset_bottom = -15.0
+color = Color(0.482353, 0.858824, 0.886275, 1)
+
+[node name="Corner2" type="ColorRect" parent="."]
+offset_left = 15.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = -15.0
+color = Color(0.482353, 0.858824, 0.886275, 1)
+
+[node name="Corner3" type="ColorRect" parent="."]
+offset_left = -25.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = 25.0
+color = Color(0.482353, 0.858824, 0.886275, 1)
+
+[node name="Corner4" type="ColorRect" parent="."]
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 25.0
+offset_bottom = 25.0
+color = Color(0.482353, 0.858824, 0.886275, 1)
