@@ -3,18 +3,18 @@
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://cfqbm33qp3xga" path="res://icon.png" id="2_05dgp"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
-[ext_resource type="Script" path="res://dreamlands/ascend_demon/^play_ascend_demon.gd" id="4_qmafk"]
+[ext_resource type="Script" path="res://dreamlands/grouse_mountain_2/^play_grouse.gd" id="4_bmw67"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_frbii"]
 
 [node name="main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
-game_name = "ascend to the top of a demon tower"
-game_size = Vector2i(180, 300)
+game_name = "grouse mountain 2"
+game_size = Vector2i(140, 200)
 view_scale = Vector2i(3, 3)
 icon = ExtResource("2_05dgp")
-bg_colour = Color(0.572549, 0.211765, 0.309804, 1)
+bg_colour = Color(0.43552, 0.676061, 0.591017, 1)
 time_year = 2024
 time_month = "June"
 time_day = 27
@@ -47,7 +47,7 @@ shape = SubResource("WorldBoundaryShape2D_frbii")
 position = Vector2(180, 200)
 shape = SubResource("WorldBoundaryShape2D_frbii")
 
-[node name="^play_ascend_demon" type="Node" parent="LiveDream"]
-script = ExtResource("4_qmafk")
+[node name="^play_grouse" type="Node" parent="LiveDream"]
+script = ExtResource("4_bmw67")
 
 [node name="playerparent" type="Node2D" parent="." groups=["PlayerParent"]]

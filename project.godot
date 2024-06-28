@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="2024, June 27th ~ ascend to the top of a demon tower"
+config/name="2024, June 27th ~ grouse mountain 2"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(0.572549, 0.211765, 0.309804, 1)
+boot_splash/bg_color=Color(0.43552, 0.676061, 0.591017, 1)
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
@@ -24,10 +24,10 @@ Pin="*res://navdi4/main/navdipin.gd"
 
 [display]
 
-window/size/viewport_width=180
-window/size/viewport_height=300
-window/size/window_width_override=540
-window/size/window_height_override=900
+window/size/viewport_width=140
+window/size/viewport_height=200
+window/size/window_width_override=420
+window/size/window_height_override=600
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 
@@ -79,6 +79,6 @@ plant={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.572549, 0.211765, 0.309804, 1)
+environment/defaults/default_clear_color=Color(0.43552, 0.676061, 0.591017, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
