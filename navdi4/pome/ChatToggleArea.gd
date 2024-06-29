@@ -9,7 +9,6 @@ signal toggle_changed(area,toggle_value)
 @export var disable_on_no_overlap : bool = true
 
 func _ready() -> void:
-	print("ready")
 	if not get_shape_owners():
 		var colshape2d = CollisionShape2D.new()
 		colshape2d.name = "CollisionShape2D"

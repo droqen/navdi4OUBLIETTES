@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://byjrmiq01vbbv"]
+
+[ext_resource type="Script" path="res://dreamlands/grouse_mountain_2/pikky-item.gd" id="1_yjh7o"]
+[ext_resource type="Texture2D" uid="uid://cqypkdtjjm26e" path="res://media/grouse.png" id="2_3547d"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_v762k"]
+[ext_resource type="Resource" uid="uid://dyj45fbuyjl8n" path="res://media/grouse_sheet_mini.tres" id="4_wwk0s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxyop"]
+size = Vector2(4, 4)
+
+[node name="item_woim_start" type="Node2D"]
+z_index = 1
+position = Vector2(115, 65)
+script = ExtResource("1_yjh7o")
+is_worm = true
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 2.5)
+texture = ExtResource("2_3547d")
+hframes = 20
+vframes = 20
+frame = 95
+script = ExtResource("3_v762k")
+sheet = ExtResource("4_wwk0s")
+frames = PackedInt32Array(95, 96, 97, 94)
+ani_period = 14
+
+[node name="hitbox" type="Area2D" parent="."]
+position = Vector2(0, 3)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_pxyop")

@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://x72hus55oyeo"]
+
+[ext_resource type="FontFile" uid="uid://depgdmj80k21a" path="res://navdi4/fonts/roughyFIVEbySIX.ttf" id="1_yn3gq"]
+
+[sub_resource type="FontVariation" id="FontVariation_lqppd"]
+base_font = ExtResource("1_yn3gq")
+
+[resource]
+default_font = SubResource("FontVariation_lqppd")
+default_font_size = 8
+RichTextLabel/colors/default_color = Color(0.435294, 0.67451, 0.592157, 1)

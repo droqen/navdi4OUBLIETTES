@@ -4,3 +4,4 @@
 
 [node name="ExtractIcon" type="Node"]
 script = ExtResource("1_6eike")
+frame = 10

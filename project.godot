@@ -24,10 +24,10 @@ Pin="*res://navdi4/main/navdipin.gd"
 
 [display]
 
-window/size/viewport_width=140
-window/size/viewport_height=200
-window/size/window_width_override=420
-window/size/window_height_override=600
+window/size/viewport_width=280
+window/size/viewport_height=240
+window/size/window_width_override=560
+window/size/window_height_override=480
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 
@@ -70,6 +70,7 @@ plant={
 
 2d_physics/layer_1="solid"
 2d_physics/layer_2="player"
+2d_physics/layer_4="item"
 2d_physics/layer_6="spikes"
 2d_physics/layer_15="semi-solid"
 2d_physics/layer_16="blocked-border"
