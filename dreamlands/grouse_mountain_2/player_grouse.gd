@@ -1,5 +1,7 @@
 extends NavdiSolePlayer
 
+const IS_PLAYER_GROUSE : bool = true
+
 signal peck_ended
 
 enum { GRASSRUSTLEBUF=1000, BIGFLAPBUF, PREBIGFLAPBUF, PECKBUF, }
@@ -52,24 +54,14 @@ func _physics_process(delta: float) -> void:
 	if onfloor and Pin.get_plant_hit():
 		bufs.on(PECKBUF); vel.x = 0;
 		peck_pickup()
-	var hidden_in_grass : bool = false
-	var maze : Maze = LiveDream.GetRoom(self).maze
-	var rect = RectangleShape2D.new()
-	rect.size = Vector2(2,2)
-	for cell in $mazer.find_all_overlapping_cells(position + Vector2(0,-2), rect):
-		var tid = maze.get_cell_tid(cell)
-		match tid:
-			12,13:
-				if bufs.read(GRASSRUSTLEBUF) <= 1:
-					maze.set_cell_tid(cell, 12 if tid!=12 else 13)
-				hidden_in_grass = true
 	
-	if hidden_in_grass:
+	var maze : Maze = get_maze()
+	if get_is_hidden_in_grass(maze):
 		hide()
 		if bufs.read(GRASSRUSTLEBUF) <= 1: bufs.on(GRASSRUSTLEBUF)
 	else:
 		show()
-		if bufs.read(GRASSRUSTLEBUF) == 1:
+		if bufs.read(GRASSRUSTLEBUF) == 1 and maze:
 			for cell in maze.get_used_cells_by_tids([13]):
 				maze.set_cell_tid(cell, 12)
 		if onfloor:
@@ -91,6 +83,9 @@ func chick_try_eat() -> bool:
 		return true # worm got ate!
 	# else:
 	return false
+
+func _exit_tree() -> void:
+	drop_item()
 
 func drop_item() -> Node2D:
 	match held_item_st.id:
@@ -131,3 +126,25 @@ func try_get_item(item):
 	else:
 		push_error("try_get_item failed - "+item+" is not an item")
 		return false
+
+func on_replace_player(prev_player):
+	position = prev_player.position
+	prints('TODO replacing player',prev_player)
+
+func get_maze() -> Maze:
+	var room : DreamRoom = LiveDream.GetRoom(self)
+	if room: return room.maze
+	else: return null # no maze.
+func get_is_hidden_in_grass(maze : Maze) -> bool:
+	if maze == null: return false # no maze.
+	var rect = RectangleShape2D.new()
+	rect.size = Vector2(2,2)
+	for cell in $mazer.find_all_overlapping_cells(position + Vector2(0,-2), rect):
+		var tid = maze.get_cell_tid(cell)
+		match tid:
+			12,13:
+				if bufs.read(GRASSRUSTLEBUF) <= 1:
+					maze.set_cell_tid(cell, 12 if tid!=12 else 13)
+				return true
+	# else:
+	return false

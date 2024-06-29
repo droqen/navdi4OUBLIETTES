@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnicfgtrbh7aw"]
+
+[ext_resource type="Script" path="res://dreamlands/grouse_mountain_2/bgm_subsystem/grouse_basement_music.gd" id="1_phbuh"]
+[ext_resource type="AudioStream" uid="uid://b21e0th4geueo" path="res://dreamlands/grouse_mountain_2/horn section.ogg" id="2_r2ag2"]
+
+[node name="GrouseBasementMusic" type="Node" groups=["GrouseBGM"]]
+script = ExtResource("1_phbuh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_r2ag2")

@@ -6,6 +6,7 @@ const SOLE_LIVE_DREAM_NAME : String = "dreamN"
 const SOLE_ROOM_GROUP_NAME : String = "-dCRGN"
 
 signal player_escaped
+signal player_died
 signal windfish_awakened
 
 @export var camera : Camera2D

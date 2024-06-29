@@ -1,11 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://byjrmiq01vbbv"]
+[gd_scene load_steps=8 format=3 uid="uid://byjrmiq01vbbv"]
 
 [ext_resource type="Script" path="res://dreamlands/grouse_mountain_2/pikky-item.gd" id="1_yjh7o"]
 [ext_resource type="Texture2D" uid="uid://cqypkdtjjm26e" path="res://media/grouse.png" id="2_3547d"]
 [ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_v762k"]
 [ext_resource type="Resource" uid="uid://dyj45fbuyjl8n" path="res://media/grouse_sheet_mini.tres" id="4_wwk0s"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_smsec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxyop"]
+size = Vector2(4, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4u1hk"]
 size = Vector2(4, 4)
 
 [node name="item_woim_start" type="Node2D"]
@@ -32,3 +36,11 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("RectangleShape2D_pxyop")
+
+[node name="mover" type="Node2D" parent="."]
+position = Vector2(0, 3)
+script = ExtResource("5_smsec")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_4u1hk")
+target_position = Vector2(0, 0)

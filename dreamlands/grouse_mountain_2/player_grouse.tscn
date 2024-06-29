@@ -32,6 +32,7 @@ sheet = ExtResource("4_7pxrq")
 frames = PackedInt32Array(10, 11)
 
 [node name="peck_zone" type="Area2D" parent="spr"]
+visible = false
 position = Vector2(3, 3)
 collision_layer = 0
 collision_mask = 8
@@ -77,6 +78,7 @@ visible = false
 script = ExtResource("7_mmsp4")
 
 [node name="plr_area" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 0
 

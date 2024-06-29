@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3e70lk6fhf6l"]
+
+[ext_resource type="Script" path="res://dreamlands/grouse_mountain_2/great_horned_owl.gd" id="1_16of8"]
+[ext_resource type="Texture2D" uid="uid://cqypkdtjjm26e" path="res://media/grouse.png" id="2_eovy0"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_sp7mj"]
+[ext_resource type="Resource" uid="uid://cn2f4mm0avho7" path="res://media/grouse_sheet.tres" id="4_fiips"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dnph"]
+size = Vector2(16, 10)
+
+[node name="great_horned_owl" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_16of8")
+
+[node name="owl" type="Node2D" parent="."]
+position = Vector2(19, -18)
+
+[node name="talons" type="Sprite2D" parent="owl"]
+position = Vector2(3, 4)
+texture = ExtResource("2_eovy0")
+hframes = 10
+vframes = 10
+frame = 34
+script = ExtResource("3_sp7mj")
+sheet = ExtResource("4_fiips")
+frames = PackedInt32Array(34)
+
+[node name="wing" type="Sprite2D" parent="owl"]
+position = Vector2(-3, -1)
+texture = ExtResource("2_eovy0")
+hframes = 10
+vframes = 10
+frame = 23
+script = ExtResource("3_sp7mj")
+sheet = ExtResource("4_fiips")
+frames = PackedInt32Array(23)
+
+[node name="head" type="Sprite2D" parent="owl"]
+position = Vector2(3, -1)
+texture = ExtResource("2_eovy0")
+hframes = 10
+vframes = 10
+frame = 24
+script = ExtResource("3_sp7mj")
+sheet = ExtResource("4_fiips")
+frames = PackedInt32Array(24)
+
+[node name="player_catcher" type="Area2D" parent="owl"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="owl/player_catcher"]
+position = Vector2(3, 7)
+shape = SubResource("RectangleShape2D_3dnph")
+
+[node name="move_target" type="Marker2D" parent="."]
+position = Vector2(19, -18)
+
+[node name="player_target" type="Marker2D" parent="."]
+position = Vector2(19, -18)

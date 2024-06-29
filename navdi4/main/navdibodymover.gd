@@ -61,6 +61,21 @@ func try_slip_move(body : Node2D, caster : ShapeCast2D, axis, movement_amount : 
 			movement_amount *= fraction
 		move(body, axis, movement_amount, snap_dir)
 	return fraction >= 1.0
+	
+func try_move(body : Node2D, caster : ShapeCast2D, axis, movement_amount : float) -> bool:
+	body.position -= Vector2(
+		1 if (axis == HORIZONTAL) else 0,
+		1 if (axis == VERTICAL) else 0
+	) * sign(movement_amount)
+	movement_amount += sign(movement_amount)
+	
+	var snap_dir = 0#cast_best_snap_dir(body, caster, axis, movement_amount)
+	var fraction = cast_fraction(body, caster, axis, movement_amount, snap_dir)
+	if fraction > 0.001:
+		if fraction < 1.0:
+			movement_amount *= fraction
+		move(body, axis, movement_amount, snap_dir)
+	return fraction >= 1.0
 
 func snapp(value : float, snap_dir : int) -> float:
 	return value + snap_dir
