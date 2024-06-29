@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bg3k8v42cn58y"]
+[gd_scene load_steps=19 format=4 uid="uid://bg3k8v42cn58y"]
 
 [ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_j5q2i"]
 [ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_vjw1p"]
@@ -16,6 +16,9 @@
 [ext_resource type="Script" path="res://dreamlands/grouse_mountain_2/chick.gd" id="12_yyfs2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_edsf6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imfxd"]
+size = Vector2(53, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g74kw"]
 size = Vector2(30, 1.9)
@@ -61,6 +64,34 @@ position = Vector2(30, 165)
 
 [node name="item_woim_start" parent="rmA" instance=ExtResource("9_h1u70")]
 position = Vector2(145, 165)
+
+[node name="getWormCL" type="RichTextLabel" parent="rmA/item_woim_start"]
+offset_left = -23.0
+offset_top = -41.0
+offset_right = 36.0
+offset_bottom = 7.0
+theme = ExtResource("10_lis2p")
+bbcode_enabled = true
+text = " a worm!
+tap DOWN
+to get it"
+fit_content = true
+scroll_active = false
+visible_characters_behavior = 1
+script = ExtResource("11_ghoeu")
+printing = false
+long_delay_chars = "?.!"
+
+[node name="getWormCTZ" type="Area2D" parent="rmA/item_woim_start" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_3syfn")
+label = NodePath("../getWormCL")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmA/item_woim_start/getWormCTZ"]
+position = Vector2(6.5, -14.5)
+shape = SubResource("RectangleShape2D_imfxd")
 
 [node name="SheetSprite" type="Sprite2D" parent="rmA"]
 script = ExtResource("6_xhpb8")
