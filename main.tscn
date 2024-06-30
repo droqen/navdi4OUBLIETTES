@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddcpe6s55fgss"]
+[gd_scene load_steps=6 format=3 uid="uid://ddcpe6s55fgss"]
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://cfqbm33qp3xga" path="res://icon.png" id="2_05dgp"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 [ext_resource type="Script" path="res://dreamlands/grouse_mountain_2/^play_grouse.gd" id="4_mvqmg"]
-[ext_resource type="PackedScene" uid="uid://dnicfgtrbh7aw" path="res://dreamlands/grouse_mountain_2/bgm_subsystem/GrouseBasementMusic.tscn" id="5_6sat7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_frbii"]
 
@@ -49,7 +48,5 @@ shape = SubResource("WorldBoundaryShape2D_frbii")
 
 [node name="^play" type="Node" parent="LiveDream"]
 script = ExtResource("4_mvqmg")
-
-[node name="GrouseBasementMusic" parent="LiveDream" instance=ExtResource("5_6sat7")]
 
 [node name="playerparent" type="Node2D" parent="." groups=["PlayerParent"]]
