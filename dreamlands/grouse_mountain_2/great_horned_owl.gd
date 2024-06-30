@@ -92,6 +92,9 @@ func _physics_process(_delta: float) -> void:
 	if vel.y > 0:
 		var rotty = vel.angle_to(to_mt)
 		vel = vel.rotated(clamp(rotty,-0.12,0.12))
+	if to_mt.length() < 10:
+		var rotty = vel.angle_to(to_mt)
+		vel = vel.rotated(clamp(rotty,-0.22,0.22))
 	$owl.position += vel
 	
 	# flap animation

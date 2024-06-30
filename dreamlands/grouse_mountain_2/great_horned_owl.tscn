@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://cn2f4mm0avho7" path="res://media/grouse_sheet.tres" id="4_fiips"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dnph"]
-size = Vector2(16, 10)
+size = Vector2(6, 10)
 
 [node name="great_horned_owl" type="Node2D"]
 texture_filter = 1

@@ -6,6 +6,11 @@ extends Node2D
 var falling : bool = true # always starts true
 var yvel : float = 0.0
 
+func _enter_tree() -> void:
+	if position.x < 0: position.x = 0
+	if position.x > get_parent().room_size.x + 1:
+		position.x = get_parent().room_size.x + 1
+
 func _physics_process(delta: float) -> void:
 	if falling:
 		yvel += 0.1

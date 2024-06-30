@@ -12,7 +12,7 @@
 size = Vector2(2, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n25j4"]
-size = Vector2(6, 8)
+size = Vector2(6, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rihgb"]
 size = Vector2(6, 6)
@@ -66,12 +66,12 @@ frames = PackedInt32Array(34, 35, 36, 37, 34, 34, 34, 34)
 ani_index = 1
 
 [node name="mover" type="Node2D" parent="."]
-visible = false
-position = Vector2(0, 1)
+position = Vector2(0, 1.5)
 script = ExtResource("6_oix33")
 
 [node name="solidcast" type="ShapeCast2D" parent="mover"]
 shape = SubResource("RectangleShape2D_n25j4")
+target_position = Vector2(0, 0)
 
 [node name="mazer" type="Marker2D" parent="."]
 visible = false

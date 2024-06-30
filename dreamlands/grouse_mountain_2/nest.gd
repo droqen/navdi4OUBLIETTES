@@ -18,7 +18,11 @@ func _ready():
 			$hungryBabiesCL.text = CLMESSAGES[hungry_chick_count]
 			if hungry_chick_count == 0:
 				$hungryBabiesCTZ.disable_on_no_overlap = false
+				$hungryBabiesCL.zero_on_enter = false
 				$hungryBabiesCL.visible_characters = 0
+				$hungryBabiesCL.doneprinting.connect(func():
+					LiveDream.GetDream(self).windfish_awakened.emit()
+				)
 			else:
 				$hungryBabiesCL.visible_characters = 12
 			#all_chicks.erase.call_deferred(chick)

@@ -4,12 +4,15 @@ const IS_PLAYER_GROUSE : bool = true
 
 signal peck_ended
 
-enum { GRASSRUSTLEBUF=1000, BIGFLAPBUF, PREBIGFLAPBUF, PECKBUF, }
+enum { GRASSRUSTLEBUF=1000, BIGFLAPBUF, PREBIGFLAPBUF, PECKBUF,
+HIDDENINGRASSBUF, }
 
 const DROP_WOIM_PFB = preload("res://dreamlands/grouse_mountain_2/item_woim.tscn")
 const DROP_JEWEL_PFB = preload("res://dreamlands/grouse_mountain_2/item_jewel.tscn")
 
 enum { ITEM_NONE, ITEM_WORM, ITEM_JEWEL, }
+
+var autoflap : bool = true
 
 var held_item_st = TinyState.new(
 	ITEM_NONE,
@@ -28,7 +31,7 @@ var held_item_st = TinyState.new(
 )
 
 var vel : Vector2
-var bufs : Bufs = Bufs.Make(self).setup_bufons([GRASSRUSTLEBUF,10, BIGFLAPBUF,13, PREBIGFLAPBUF,3, PECKBUF,10,])
+var bufs : Bufs = Bufs.Make(self).setup_bufons([GRASSRUSTLEBUF,10, BIGFLAPBUF,13, PREBIGFLAPBUF,3, PECKBUF,10, HIDDENINGRASSBUF,2,])
 func _physics_process(delta: float) -> void:
 	var dpad : Vector2
 	dpad = Pin.get_dpad()
@@ -39,8 +42,9 @@ func _physics_process(delta: float) -> void:
 		vel.y = -1.5
 		bufs.on(BIGFLAPBUF)
 		bufs.on(PREBIGFLAPBUF)
+		autoflap = false
 	vel.x = move_toward(vel.x, dpad.x, 0.1)
-	if Pin.get_jump_held() and not bufs.has(BIGFLAPBUF):
+	if (Pin.get_jump_held() or autoflap) and not bufs.has(BIGFLAPBUF):
 		vel.y = move_toward(vel.y * 0.95, 1.0, 0.02)
 	else:
 		vel.y = move_toward(vel.y, 1.5, 0.09)
@@ -51,16 +55,20 @@ func _physics_process(delta: float) -> void:
 		vel.y = 0
 	var onfloor : bool = $mover.cast_fraction(self, $mover/solidcast,
 	VERTICAL, 1.0) < 1 and vel.y >= 0
-	if onfloor and Pin.get_plant_hit():
-		bufs.on(PECKBUF); vel.x = 0;
-		peck_pickup()
+	if onfloor:
+		autoflap = false
+		if Pin.get_plant_hit():
+			bufs.on(PECKBUF); vel.x = 0;
+			peck_pickup()
 	
 	var maze : Maze = get_maze()
 	if get_is_hidden_in_grass(maze):
+		bufs.on(HIDDENINGRASSBUF)
 		hide()
 		if bufs.read(GRASSRUSTLEBUF) <= 1: bufs.on(GRASSRUSTLEBUF)
 	else:
-		show()
+		if not bufs.has(HIDDENINGRASSBUF):
+			show()
 		if bufs.read(GRASSRUSTLEBUF) == 1 and maze:
 			for cell in maze.get_used_cells_by_tids([13]):
 				maze.set_cell_tid(cell, 12)
@@ -74,7 +82,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			if bufs.has(PREBIGFLAPBUF): $spr.setup([20])
 			elif bufs.has(BIGFLAPBUF): $spr.setup([21])
-			elif Pin.get_jump_held(): $spr.setup([20,21],7)
+			elif Pin.get_jump_held() or autoflap: $spr.setup([20,21],7)
 			else: $spr.setup([20])
 
 func chick_try_eat() -> bool:
@@ -83,6 +91,9 @@ func chick_try_eat() -> bool:
 		return true # worm got ate!
 	# else:
 	return false
+
+func _enter_tree() -> void:
+	hide()
 
 func _exit_tree() -> void:
 	drop_item()
@@ -108,7 +119,12 @@ func peck_pickup():
 	for area in $spr/peck_zone.get_overlapping_areas():
 		var item = area.get_parent()
 		if item == dropped_item: continue
-		if try_get_item(item): break # you got somethin'!
+		if try_get_item(item): return # you got somethin'!
+	if not dropped_item:
+		#magic_from_point(position)
+		for item in LiveDream.GetRoom(self).get_children():
+			if item.get('is_jewel') and not item.falling:
+				magic_from_point(item.position)
 
 func delayed_item_goto(item_enum):
 	await peck_ended
@@ -148,3 +164,27 @@ func get_is_hidden_in_grass(maze : Maze) -> bool:
 				return true
 	# else:
 	return false
+
+func magic_from_point(point:Vector2):
+	var maze : Maze = $mazer.get_maze()
+	var floor_cell = $mazer.find_best_floor_cell_if_any(
+		point, $mover/solidcast.shape)
+	if floor_cell:
+		var floor_tid : int = maze.get_cell_tid(floor_cell)
+		match floor_tid:
+			52,53,54,55,56:
+				var cells = maze.magic_wand(floor_cell,
+					func(c2):return maze.get_cell_tid(c2)==floor_tid)
+				for cell in cells:
+					maze.set_cell_tid(cell, 51)
+				await get_tree().create_timer(0.2).timeout
+				if cells.size() > 0:
+					for item in LiveDream.GetRoom(self).get_children():
+						if item.get('is_jewel'): item.falling = true
+						if item.get('is_worm'): item.falling = true
+					match floor_tid:
+						56:for cell in cells:maze.set_cell_tid(cell,55)
+						55:for cell in cells:maze.set_cell_tid(cell,54)
+						54:for cell in cells:maze.set_cell_tid(cell,53)
+						53:for cell in cells:maze.set_cell_tid(cell,52)
+						52:for cell in cells:maze.set_cell_tid(cell,57)

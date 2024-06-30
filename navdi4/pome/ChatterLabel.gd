@@ -6,6 +6,7 @@ signal charprinted(c)
 signal doneprinting()
 
 @export var zero_on_ready : bool = true
+@export var zero_on_enter : bool = false
 @export var printing : bool = true
 enum NotPrintingBehaviour { INSTANT_ZERO, STAY, BACKSPACE }
 @export var printing_pace : int = 3
@@ -30,6 +31,9 @@ enum DelayLength { NONE, NORMAL, MIDI, LONG }
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		if zero_on_ready: visible_characters = 0
+func _enter_tree() -> void:
+	if not Engine.is_editor_hint():
+		if zero_on_enter: visible_characters = 0
 
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint():
