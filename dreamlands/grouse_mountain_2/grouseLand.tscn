@@ -37,7 +37,7 @@ size = Vector2(4, 2)
 size = Vector2(30, 30)
 
 [node name="GrouseLand" type="Node2D"]
-self_modulate = Color(1, 0.0762314, 0.141736, 1)
+self_modulate = Color(1, 0.340563, -0.156963, 1)
 script = ExtResource("1_j5q2i")
 autolinking = true
 autosnapping = true
@@ -406,7 +406,6 @@ the sorcerous king should be free."
 fit_content = true
 scroll_active = false
 script = ExtResource("11_ghoeu")
-zero_on_enter = null
 linebreak_delay = 3
 
 [node name="item_jewel" parent="rmPuzzle1" instance=ExtResource("10_mfdo5")]
@@ -440,7 +439,6 @@ You thought it all had to be done."
 fit_content = true
 scroll_active = false
 script = ExtResource("11_ghoeu")
-zero_on_enter = null
 linebreak_delay = 3
 tab_delay = 0
 
@@ -472,7 +470,6 @@ the Dalyoon throne can sit empty."
 fit_content = true
 scroll_active = false
 script = ExtResource("11_ghoeu")
-zero_on_enter = null
 midi_delay_chars = ":-"
 long_delay = 40
 long_delay_chars = "!?.;,"
@@ -506,7 +503,6 @@ but never did it."
 fit_content = true
 scroll_active = false
 script = ExtResource("11_ghoeu")
-zero_on_enter = null
 linebreak_delay = 3
 
 [node name="StaticBody2D" type="StaticBody2D" parent="rmEmptyThrone"]
@@ -545,7 +541,6 @@ On grouse mountain."
 fit_content = true
 scroll_active = false
 script = ExtResource("11_ghoeu")
-zero_on_enter = null
 linebreak_delay = 3
 
 [node name="item_woim_start" parent="rmPuzzle4" instance=ExtResource("9_h1u70")]
@@ -582,5 +577,4 @@ Dalyoo Sr."
 fit_content = true
 scroll_active = false
 script = ExtResource("11_ghoeu")
-zero_on_enter = null
 linebreak_delay = 3
