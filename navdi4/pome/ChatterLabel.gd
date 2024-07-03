@@ -7,6 +7,7 @@ signal doneprinting()
 
 @export var zero_on_ready : bool = true
 @export var zero_on_enter : bool = false
+@export var unfinished_done_on_exit : bool = false
 @export var printing : bool = true
 enum NotPrintingBehaviour { INSTANT_ZERO, STAY, BACKSPACE }
 @export var printing_pace : int = 3
@@ -34,6 +35,10 @@ func _ready() -> void:
 func _enter_tree() -> void:
 	if not Engine.is_editor_hint():
 		if zero_on_enter: visible_characters = 0
+func _exit_tree() -> void:
+	if not Engine.is_editor_hint() and unfinished_done_on_exit and printing:
+		visible_characters = -1
+		doneprinting.emit()
 
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint():
