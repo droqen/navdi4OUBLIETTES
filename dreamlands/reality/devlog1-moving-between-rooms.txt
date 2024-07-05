@@ -1,0 +1,25 @@
+[A. At the moment, loading a new land is destructive.
+	This is fine as long as you don't want to return to
+	a land after leaving it.
+	
+ B. Create a way to return to previous lands.
+	For now, do this by creating
+	a simple save + load machine for DreamLands.
+	You can already start them in any room.
+	Create the possibility for starting the player
+	at any position & with any params...
+	It won't be easy, probably scratch NavdiSolePlayer entirely.]
+
+The current paradigm that navdi is using for moving between rooms
+doesn't quite cut it for the structure I have in mind...
+
+I need to take it one step at a time. hmm.
+
+OK, first of all I'm splitting things up into two "lands."
+This won't quite cut it, so I also need to handle NavdiSolePlayer
+differently...
+
+Rather than the way I've been handling it,
+	*each land has an assigned player.*
+
+You have to be able to return to a land...
