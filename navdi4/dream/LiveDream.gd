@@ -5,8 +5,8 @@ class_name LiveDream
 const SOLE_LIVE_DREAM_NAME : String = "dreamN"
 const SOLE_ROOM_GROUP_NAME : String = "-dCRGN"
 
-signal player_escaped
-signal player_died
+signal sole_player_replaced(prevplayer, newplayer)
+signal player_escaped(code)
 signal windfish_awakened
 
 @export var camera : Camera2D
@@ -17,6 +17,10 @@ var dreamroom : DreamRoom
 func _ready():
 	windfish_awakened.connect(func():prints(self,". . . WIND FISH AWAKENED . . ."))
 	add_to_group(SOLE_LIVE_DREAM_NAME)
+	sole_player_replaced.connect(func(prevplayer, newplayer):
+		if prevplayer: prevplayer.escaped.disconnect(self.player_escaped.emit)
+		newplayer.escaped.connect(self.player_escaped.emit)
+	)
 
 func _physics_process(_delta: float) -> void:
 	
@@ -105,12 +109,13 @@ func update_camera_position():
 	if camera and dreamroom:
 		camera.position = dreamroom.position + (dreamroom.room_size/2 as Vector2)
 
-func goto_new_land(land: DreamLand, roomname: String):
+func goto_new_land(land: DreamLand, roomname: String, callback_mut_room: Callable = Callable()):
 	var room : DreamRoom = land.try_get_room_inst(roomname)
 	if room:
 		var player = NavdiSolePlayer.GetPlayer(self)
 		if player: player.queue_free()
 		self.dreamland = land
+		if not callback_mut_room.is_null(): callback_mut_room.call(room)
 		self.set_dreamroom(room)
 	else:
 		push_error("goto_new_land failed; dreamland %s does not have room '%s'" % [land.name, roomname])

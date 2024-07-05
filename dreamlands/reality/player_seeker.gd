@@ -1,4 +1,4 @@
-extends Node2D
+extends NavdiSolePlayer
 
 enum { PIN_JUMPBUF, PIN_DUCKBUF, FLORBUF, DUCKBUF, ONWALBUF, }
 var bufs : Bufs = Bufs.Make(self).setup_bufons([
@@ -74,4 +74,5 @@ func _physics_process(delta: float) -> void:
 	
 	var maze : Maze = mazer.get_maze()
 	match maze.get_cell_tid(maze.local_to_map(position)):
-		8: LiveDream.GetDream(self).player_escaped.emit('tid8entrance')
+		6: escape(6)
+		8: escape(8)

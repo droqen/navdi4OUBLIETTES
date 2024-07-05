@@ -1,6 +1,8 @@
 extends Node2D
 class_name NavdiSolePlayer
 
+signal escaped(code)
+
 const SOLE_PLAYER_GROUP_NAME = '__nsp'
 
 @export var player_parent_group : String = "PlayerParent"
@@ -30,7 +32,15 @@ func _ready() -> void:
 				break; # only do this for the first parent.
 		else:
 			# if i want to be kept: hide and delete me
-			hide(); queue_free();
+			hide(); queue_free(); return;
+	
+	var dream = LiveDream.GetDream(self)
+	if dream: dream.sole_player_replaced.emit(prev_player, self)
+
+func escape(code):
+	if is_instance_valid(self):
+		escaped.emit(code)
+		queue_free() # always delete a player who escapes.
 
 func deplayer():
 	remove_from_group(SOLE_PLAYER_GROUP_NAME)
