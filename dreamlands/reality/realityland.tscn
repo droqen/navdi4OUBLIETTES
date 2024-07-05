@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=4 uid="uid://cp2p2sm3xycdu"]
+
+[ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_hvmt3"]
+[ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_pfda2"]
+[ext_resource type="TileSet" uid="uid://4klbt88cnnvf" path="res://media/all-of-reality_tiles.tres" id="3_ak0c3"]
+[ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_pvhad"]
+
+[node name="Realityland" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0.5)
+script = ExtResource("1_hvmt3")
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("2_pfda2")
+
+[node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAACAAkAAAAAAAAAAAABAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAA=")
+tile_set = ExtResource("3_ak0c3")
+navigation_enabled = false
+script = ExtResource("4_pvhad")
