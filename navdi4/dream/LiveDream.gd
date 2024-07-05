@@ -56,7 +56,7 @@ func _physics_process(_delta: float) -> void:
 					set_dreamroom(null)
 					if player: player.deplayer()
 					dreamland = null
-					player_escaped.emit()
+					player_escaped.emit(dreamroom.name)
 		else:
 			var newroom = self.dreamland.get_travel_dirid_room_inst(dreamroom.name, travel_dirid)
 			if newroom: set_dreamroom(newroom)

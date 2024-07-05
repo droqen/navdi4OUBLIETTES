@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://wwy70xwi4oqo"]
+
+[ext_resource type="Script" path="res://dreamlands/reality/player_seeker.gd" id="1_bgutx"]
+[ext_resource type="Texture2D" uid="uid://d2fsfqgxj4nnv" path="res://media/all-of-reality.png" id="2_sn135"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_urhb7"]
+[ext_resource type="Resource" uid="uid://rtfvuiqb2fo8" path="res://media/all-of-reality_sheet.tres" id="4_24db4"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_ff4b2"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymazer.gd" id="6_fcom8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8jjs"]
+size = Vector2(6, 8)
+
+[node name="seeker" type="Node2D"]
+position = Vector2(156, 5)
+script = ExtResource("1_bgutx")
+
+[node name="spr" type="Sprite2D" parent="."]
+texture = ExtResource("2_sn135")
+hframes = 10
+vframes = 10
+frame = 1
+script = ExtResource("3_urhb7")
+sheet = ExtResource("4_24db4")
+frames = PackedInt32Array(1)
+
+[node name="mover" type="Node2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("5_ff4b2")
+
+[node name="solidcast" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_g8jjs")
+target_position = Vector2(0, 0)
+
+[node name="mazer" type="Marker2D" parent="."]
+script = ExtResource("6_fcom8")

@@ -24,10 +24,10 @@ Pin="*res://navdi4/main/navdipin.gd"
 
 [display]
 
-window/size/viewport_width=300
-window/size/viewport_height=400
-window/size/window_width_override=600
-window/size/window_height_override=800
+window/size/viewport_width=250
+window/size/viewport_height=250
+window/size/window_width_override=500
+window/size/window_height_override=500
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 

@@ -6,6 +6,7 @@ class_name DreamRoom
 @export var dbg_outline_col : Color = Color("#993399")
 @export var room_links : Array[String] = ['','','','']
 @export_enum("Sides Blocked", "Wrap", "Escape", "Void") var blank_link_behaviour : int = BlankLinkBehaviour.WRAP
+@export var do_not_instance : bool
 
 enum BlankLinkBehaviour {
 	SIDES_BLOCKED,
