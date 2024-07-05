@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 		
 	var onfloor : bool
 	onfloor = vel.y>=0 and mover.cast_fraction(self,solidcast,VERTICAL,1)<1
-	if onfloor: bufs.on(FLORBUF)
+	
 	if bufs.try_eat([PIN_JUMPBUF,FLORBUF]):
 		vel.y = -1.85
 		onfloor = false
@@ -49,6 +49,8 @@ func _physics_process(delta: float) -> void:
 	elif bufs.try_eat([ONWALBUF, PIN_JUMPBUF]):
 		vel.y = -1.44
 		vel.x = -0.50 * last_onwal_dir
+	
+	if onfloor: bufs.on(FLORBUF)
 	
 	if bufs.has(FLORBUF) and not onfloor:
 		if vel.y >= 0: vel.y = 0.50
@@ -75,4 +77,4 @@ func _physics_process(delta: float) -> void:
 	var maze : Maze = mazer.get_maze()
 	match maze.get_cell_tid(maze.local_to_map(position)):
 		6: escape(6)
-		8: escape(8)
+		8: if onfloor: escape(8)
