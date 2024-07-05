@@ -8,9 +8,8 @@
 [node name="main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
-game_name = "beatrice"
-game_size = Vector2i(100, 100)
-view_scale = Vector2i(4, 4)
+game_name = "all-of-reality"
+game_size = Vector2i(300, 400)
 icon = ExtResource("2_05dgp")
 bg_colour = Color(0.43552, 0.676061, 0.591017, 1)
 time_year = 2024
