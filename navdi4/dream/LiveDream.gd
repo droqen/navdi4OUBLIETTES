@@ -57,10 +57,11 @@ func _physics_process(_delta: float) -> void:
 						0: player.position.x = dreamroom.room_size.x - 1 - dreamroom.edge_margin;
 						1: pass # player.position.y = dreamroom.edge_margin;
 				DreamRoom.BlankLinkBehaviour.ESCAPE:
+					var escape_code : String = dreamroom.name
 					set_dreamroom(null)
 					if player: player.deplayer()
 					dreamland = null
-					player_escaped.emit(dreamroom.name)
+					player_escaped.emit(escape_code)
 		else:
 			var newroom = self.dreamland.get_travel_dirid_room_inst(dreamroom.name, travel_dirid)
 			if newroom: set_dreamroom(newroom)

@@ -26,8 +26,8 @@ Pin="*res://navdi4/main/navdipin.gd"
 
 window/size/viewport_width=250
 window/size/viewport_height=250
-window/size/window_width_override=500
-window/size/window_height_override=500
+window/size/window_width_override=1000
+window/size/window_height_override=1000
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 
