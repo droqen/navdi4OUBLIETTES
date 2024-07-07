@@ -115,6 +115,10 @@ func goto_new_land(land: DreamLand, roomname: String, callback_mut_room: Callabl
 		var player = NavdiSolePlayer.GetPlayer(self)
 		if player: player.queue_free()
 		self.dreamland = land
+		ProjectSettings.set_setting(
+			"rendering/environment/defaults/default_clear_color",
+			self.dreamland.background_colour
+		)
 		if not callback_mut_room.is_null(): callback_mut_room.call(room)
 		self.set_dreamroom(room)
 	else:

@@ -72,6 +72,7 @@ plant={
 2d_physics/layer_2="player"
 2d_physics/layer_4="item"
 2d_physics/layer_6="spikes"
+2d_physics/layer_9="floorONLY"
 2d_physics/layer_15="semi-solid"
 2d_physics/layer_16="blocked-border"
 2d_physics/layer_17="can-take-damage"

@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dycorjx7juxym"]
+
+[ext_resource type="FontFile" uid="uid://b23vrkinia56w" path="res://navdi4/fonts/quizardry.ttf" id="1_yprtk"]
+
+[sub_resource type="FontVariation" id="FontVariation_1jfpf"]
+base_font = ExtResource("1_yprtk")
+spacing_top = -3
+
+[resource]
+default_font = SubResource("FontVariation_1jfpf")

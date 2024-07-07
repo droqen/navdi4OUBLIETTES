@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://cfqbm33qp3xga" path="res://icon.png" id="2_05dgp"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
-[ext_resource type="Script" path="res://dreamlands/reality/^play_reality.gd" id="4_7xok6"]
+[ext_resource type="Script" path="res://dreamlands/kafkatrask/^play_ktrask.gd" id="4_jexnc"]
 
 [node name="main" type="Node2D"]
 texture_filter = 1
@@ -25,6 +25,6 @@ camera = NodePath("dreamcamera")
 [node name="dreamcamera" type="Camera2D" parent="LiveDream"]
 
 [node name="^play" type="Node" parent="LiveDream"]
-script = ExtResource("4_7xok6")
+script = ExtResource("4_jexnc")
 
 [node name="playerparent" type="Node2D" parent="." groups=["PlayerParent"]]

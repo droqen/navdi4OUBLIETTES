@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://cp2p2sm3xycdu"]
+[gd_scene load_steps=7 format=4 uid="uid://cp2p2sm3xycdu"]
 
 [ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_hvmt3"]
 [ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_pfda2"]
 [ext_resource type="TileSet" uid="uid://4klbt88cnnvf" path="res://media/all-of-reality_tiles.tres" id="3_ak0c3"]
 [ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_pvhad"]
+[ext_resource type="Script" path="res://dreamlands/reality/^bubbling.gd" id="5_hoq44"]
 [ext_resource type="PackedScene" uid="uid://wwy70xwi4oqo" path="res://dreamlands/reality/player_realityseeker.tscn" id="5_oypg7"]
 
 [node name="Realityland" type="Node2D"]
@@ -20,6 +21,9 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAA
 tile_set = ExtResource("3_ak0c3")
 navigation_enabled = false
 script = ExtResource("4_pvhad")
+
+[node name="^bubbling" type="Node" parent="rmA/Maze"]
+script = ExtResource("5_hoq44")
 
 [node name="seeker" parent="rmA" instance=ExtResource("5_oypg7")]
 position = Vector2(109, 125)

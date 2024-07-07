@@ -11,8 +11,12 @@ var dict_tids_physlayers : Array[Dictionary]
 var tile_src : TileSetAtlasSource = null
 var tile_src_w : int = 0
 
+@export var hide_on_play : bool = false
+
 func _ready():
-	if not Engine.is_editor_hint(): _require_tidkey()
+	if not Engine.is_editor_hint():
+		_require_tidkey()
+		if hide_on_play: hide()
 
 func _require_tidkey():
 	if not tidkey_initialized:
