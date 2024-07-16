@@ -10,7 +10,7 @@ func land_kafkatrask():
 		load(
 			"res://dreamlands/kafkatrask/kafkatraskLAND.tscn"
 		).instantiate(),
-		"rmSunlight3" # "rmA"
+		"rmA"
 	)
 	
 	var code = await dream.player_escaped
