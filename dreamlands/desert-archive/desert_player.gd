@@ -7,8 +7,8 @@ func _physics_process(_delta: float) -> void:
 	var dpad = Pin.get_dpad()
 	var floor = vel.y >= 0 and $mover.cast_fraction(self, $mover/solidcast, VERTICAL, 1) < 1
 	vel.x = move_toward(vel.x, dpad.x, 0.05)
-	vel.y = move_toward(vel.y, 1.05, 0.05)
-	if floor and Pin.get_jump_hit(): vel.y = -0.5; floor = false;
+	vel.y = move_toward(vel.y, 2.05, 0.05)
+	if floor and Pin.get_jump_hit(): vel.y = -1.5; floor = false;
 	if floor and Pin.get_plant_held(): vel.x *= 0.9;
 	if not floor and vel.y > 0:
 		$SheetSprite.setup([24,25], 10)
@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 			$SheetSprite.setup([2,3,4,5],13)
 		
 	if not $mover.try_slip_move(self, $mover/solidcast, HORIZONTAL, vel.x * scale.x):
-		if dpad.x: vel.y -= 0.1
+		#if dpad.x: vel.y -= 0.1
 		vel.x = 0
 	if not $mover.try_slip_move(self, $mover/solidcast, VERTICAL, vel.y * scale.y):
 		vel.y = 0

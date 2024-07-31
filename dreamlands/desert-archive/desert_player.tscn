@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_yl1po"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dx5lw"]
-size = Vector2(5, 7.9)
+size = Vector2(5, 5.9)
 
 [node name="desert_player" type="Node2D"]
 position = Vector2(14, 55)
@@ -24,7 +24,7 @@ frames = PackedInt32Array(2, 3, 4, 5)
 ani_period = 13
 
 [node name="mover" type="Node2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 2)
 script = ExtResource("5_yl1po")
 
 [node name="solidcast" type="ShapeCast2D" parent="mover"]

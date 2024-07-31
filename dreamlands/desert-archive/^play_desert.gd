@@ -3,12 +3,12 @@ extends Node
 @onready var dream : LiveDream = get_parent()
 
 func _ready() -> void:
-	land_kafkatrask()
+	land_desert()
 	
-func land_kafkatrask():
+func land_desert():
 	dream.goto_new_land(
 		load(
 			"res://dreamlands/desert-archive/DesertArchiveLAND.tscn"
 		).instantiate(),
-		"rmSun"
+		"rmA"
 	)
