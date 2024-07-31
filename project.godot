@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Pin="*res://navdi4/main/navdipin.gd"
+Sav="*res://navdi4/main/navdisav.gd"
 
 [display]
 
