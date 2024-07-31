@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://c58vxrv26cm4j"]
+
+[ext_resource type="Script" path="res://dreamlands/desert-archive/desert_player.gd" id="1_y71o8"]
+[ext_resource type="Texture2D" uid="uid://cflto8koc4ubp" path="res://dreamlands/desert-archive/desert-archive.png" id="2_axi4d"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_dd5va"]
+[ext_resource type="Resource" uid="uid://bld0e3ytvxflv" path="res://dreamlands/desert-archive/desert-archive_sheet.tres" id="4_6ph1v"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_yl1po"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dx5lw"]
+size = Vector2(5, 7.9)
+
+[node name="desert_player" type="Node2D"]
+position = Vector2(14, 55)
+script = ExtResource("1_y71o8")
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_axi4d")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("3_dd5va")
+sheet = ExtResource("4_6ph1v")
+frames = PackedInt32Array(2, 3, 4, 5)
+ani_period = 13
+
+[node name="mover" type="Node2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("5_yl1po")
+
+[node name="solidcast" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_dx5lw")
+target_position = Vector2(0, 0)
