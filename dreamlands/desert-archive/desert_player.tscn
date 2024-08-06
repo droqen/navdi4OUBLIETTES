@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c58vxrv26cm4j"]
+[gd_scene load_steps=8 format=3 uid="uid://c58vxrv26cm4j"]
 
 [ext_resource type="Script" path="res://dreamlands/desert-archive/desert_player.gd" id="1_y71o8"]
 [ext_resource type="Texture2D" uid="uid://cflto8koc4ubp" path="res://dreamlands/desert-archive/desert-archive.png" id="2_axi4d"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dx5lw"]
 size = Vector2(5, 5.9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcpf6"]
+size = Vector2(3, 6)
 
 [node name="desert_player" type="Node2D"]
 position = Vector2(14, 55)
@@ -28,5 +31,13 @@ position = Vector2(0, 2)
 script = ExtResource("5_yl1po")
 
 [node name="solidcast" type="ShapeCast2D" parent="mover"]
+visible = false
 shape = SubResource("RectangleShape2D_dx5lw")
 target_position = Vector2(0, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_gcpf6")

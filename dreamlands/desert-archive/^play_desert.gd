@@ -12,3 +12,11 @@ func land_desert():
 		).instantiate(),
 		"rmA"
 	)
+	await dream.player_escaped
+	print("player escaped.")
+	dream.goto_new_land(
+		load(
+			"res://dreamlands/desert-archive/DesertArchiveLAND_Post.tscn"
+		).instantiate(),
+		"rmDeep4"
+	)

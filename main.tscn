@@ -1,21 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddcpe6s55fgss"]
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
-[ext_resource type="Texture2D" uid="uid://cfqbm33qp3xga" path="res://icon.png" id="2_05dgp"]
+[ext_resource type="Texture2D" uid="uid://bd5b2yoxfucri" path="res://dreamlands/desert-archive/icon.png" id="2_j5og2"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 [ext_resource type="Script" path="res://dreamlands/desert-archive/^play_desert.gd" id="4_nlmnj"]
 
 [node name="main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
-game_name = "beetles-unyielding"
+game_name = "desert-archive"
 game_size = Vector2i(100, 100)
 view_scale = Vector2i(4, 4)
-icon = ExtResource("2_05dgp")
+icon = ExtResource("2_j5og2")
 bg_colour = Color(0.43552, 0.676061, 0.591017, 1)
 time_year = 2024
-time_month = "July"
-time_day = 1
+time_month = "August"
+time_day = 6
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]

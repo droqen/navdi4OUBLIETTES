@@ -3,6 +3,7 @@ var vel : Vector2
 var recoverfromflipbuf : int = 0
 var recoverfromrunbuf : int = 0
 var recoverfromfallbuf : int = 0
+@export var wallflying : bool = false
 func _physics_process(_delta: float) -> void:
 	var dpad = Pin.get_dpad()
 	var floor = vel.y >= 0 and $mover.cast_fraction(self, $mover/solidcast, VERTICAL, 1) < 1
@@ -36,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 			$SheetSprite.setup([2,3,4,5],13)
 		
 	if not $mover.try_slip_move(self, $mover/solidcast, HORIZONTAL, vel.x * scale.x):
-		#if dpad.x: vel.y -= 0.1
+		if wallflying and dpad.x: vel.y -= 0.1
 		vel.x = 0
 	if not $mover.try_slip_move(self, $mover/solidcast, VERTICAL, vel.y * scale.y):
 		vel.y = 0
