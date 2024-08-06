@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Sheet" load_steps=3 format=3 uid="uid://bld0e3ytvxflv"]
+
+[ext_resource type="Script" path="res://navdi4/main/navdisheet.gd" id="1_otp8y"]
+[ext_resource type="Texture2D" uid="uid://cflto8koc4ubp" path="res://dreamlands/desert-archive/desert-archive.png" id="2_ku27y"]
+
+[resource]
+script = ExtResource("1_otp8y")
+texture = ExtResource("2_ku27y")
+hframes = 10
+vframes = 10
+defaultframe = 0

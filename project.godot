@@ -10,17 +10,18 @@ config_version=5
 
 [application]
 
-config/name="2024, July 1st ~ beatrice"
+config/name="2024, August 6th ~ desert-archive"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.43552, 0.676061, 0.591017, 1)
-boot_splash/image="res://icon.png"
+boot_splash/image="res://dreamlands/desert-archive/icon.png"
 boot_splash/fullsize=false
-config/icon="res://icon.png"
+config/icon="res://dreamlands/desert-archive/icon.png"
 
 [autoload]
 
 Pin="*res://navdi4/main/navdipin.gd"
+Sav="*res://navdi4/main/navdisav.gd"
 
 [display]
 
@@ -72,6 +73,7 @@ plant={
 2d_physics/layer_2="player"
 2d_physics/layer_4="item"
 2d_physics/layer_6="spikes"
+2d_physics/layer_9="floorONLY"
 2d_physics/layer_15="semi-solid"
 2d_physics/layer_16="blocked-border"
 2d_physics/layer_17="can-take-damage"

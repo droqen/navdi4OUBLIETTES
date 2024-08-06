@@ -8,6 +8,8 @@ var autolinking_buf : int = 0
 var autosnapping_buf : int = 0
 @export var labelsettings : LabelSettings
 
+@export var background_colour : Color = Color.CORNFLOWER_BLUE
+
 var room_inst_dict : Dictionary
 
 func _ready():

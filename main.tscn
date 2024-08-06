@@ -1,23 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddcpe6s55fgss"]
+[gd_scene load_steps=5 format=3 uid="uid://ddcpe6s55fgss"]
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
-[ext_resource type="Texture2D" uid="uid://cfqbm33qp3xga" path="res://icon.png" id="2_05dgp"]
+[ext_resource type="Texture2D" uid="uid://bd5b2yoxfucri" path="res://dreamlands/desert-archive/icon.png" id="2_j5og2"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
-[ext_resource type="Script" path="res://dreamlands/beatrice/^play_Beatrice.gd" id="4_fgmhn"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_frbii"]
+[ext_resource type="Script" path="res://dreamlands/desert-archive/^play_desert.gd" id="4_nlmnj"]
 
 [node name="main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
-game_name = "beatrice"
+game_name = "desert-archive"
 game_size = Vector2i(100, 100)
 view_scale = Vector2i(4, 4)
-icon = ExtResource("2_05dgp")
+icon = ExtResource("2_j5og2")
 bg_colour = Color(0.43552, 0.676061, 0.591017, 1)
 time_year = 2024
-time_month = "July"
-time_day = 1
+time_month = "August"
+time_day = 6
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -26,28 +24,7 @@ camera = NodePath("dreamcamera")
 
 [node name="dreamcamera" type="Camera2D" parent="LiveDream"]
 
-[node name="blocked-bord" type="StaticBody2D" parent="LiveDream"]
-collision_layer = 32768
-collision_mask = 0
-
-[node name="wall1" type="CollisionShape2D" parent="LiveDream/blocked-bord"]
-rotation = 1.5708
-shape = SubResource("WorldBoundaryShape2D_frbii")
-
-[node name="wall2" type="CollisionShape2D" parent="LiveDream/blocked-bord"]
-rotation = 3.14159
-shape = SubResource("WorldBoundaryShape2D_frbii")
-
-[node name="wall3" type="CollisionShape2D" parent="LiveDream/blocked-bord"]
-position = Vector2(180, 200)
-rotation = 4.71239
-shape = SubResource("WorldBoundaryShape2D_frbii")
-
-[node name="wall4" type="CollisionShape2D" parent="LiveDream/blocked-bord"]
-position = Vector2(180, 200)
-shape = SubResource("WorldBoundaryShape2D_frbii")
-
 [node name="^play" type="Node" parent="LiveDream"]
-script = ExtResource("4_fgmhn")
+script = ExtResource("4_nlmnj")
 
 [node name="playerparent" type="Node2D" parent="." groups=["PlayerParent"]]
