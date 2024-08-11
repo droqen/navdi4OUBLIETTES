@@ -8,6 +8,11 @@ const SOLE_PLAYER_GROUP_NAME = '__nsp'
 @export var player_parent_group : String = "PlayerParent"
 @export var replaces_player_if_different : bool = false
 
+static func ClearPlayer(node_in_tree : Node) -> void:
+	var player = GetPlayer(node_in_tree)
+	if player:
+		player.remove_from_group(SOLE_PLAYER_GROUP_NAME)
+		player.queue_free()
 static func GetPlayer(node_in_tree : Node) -> NavdiSolePlayer:
 	return node_in_tree.get_tree().get_first_node_in_group(SOLE_PLAYER_GROUP_NAME)
 

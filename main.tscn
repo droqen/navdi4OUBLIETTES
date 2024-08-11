@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddcpe6s55fgss"]
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
+[ext_resource type="Script" path="res://dreamlands/eidetic8/^play_eidetic.gd" id="3_l4g3o"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
-[ext_resource type="Script" path="res://dreamlands/considering/^play-considering.gd" id="4_oen12"]
 
 [node name="main" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
-game_name = "considering"
-game_size = Vector2i(300, 100)
+game_name = "eidetic8&stargaze&leaf"
+game_size = Vector2i(180, 280)
 view_scale = Vector2i(3, 3)
-bg_colour = Color(0.918955, 0.829585, 0.902215, 1)
+bg_colour = Color(0.262672, 0.297724, 0.195376, 1)
 time_year = 2024
-time_month = "August"
-time_day = 6
+time_month = "January"
+time_day = 7
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -23,6 +23,6 @@ camera = NodePath("dreamcamera")
 [node name="dreamcamera" type="Camera2D" parent="LiveDream"]
 
 [node name="^play" type="Node" parent="LiveDream"]
-script = ExtResource("4_oen12")
+script = ExtResource("3_l4g3o")
 
 [node name="playerparent" type="Node2D" parent="." groups=["PlayerParent"]]
