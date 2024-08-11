@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bgdqm5x62q414"]
+
+[ext_resource type="FontFile" uid="uid://cv58t81duux5y" path="res://navdi4/fonts/droqenserif.ttf" id="1_qeqly"]
+
+[resource]
+font = ExtResource("1_qeqly")
+font_color = Color(0.670588, 0.866667, 0.909804, 1)

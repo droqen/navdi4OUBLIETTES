@@ -17,8 +17,10 @@ func _physics_process(_delta: float) -> void:
 	if dead:
 		if dead_age < 100:
 			dead_age += 1
-		if Pin.get_dpad_tap() or Pin.get_jump_hit():
-			escape("respawn"); return;
+		if Pin.get_jump_hit() and dead_age > 10:
+			if Checkpoint.CheckRoomName != '':
+				escape("respawn"); return;
+			
 		vx = move_toward(vx, 0, 0.01)
 	elif onfloor:
 		crawl = Pin.get_plant_held()
@@ -48,14 +50,15 @@ func _physics_process(_delta: float) -> void:
 			$spr.flip_h = dpad.x < 0
 		
 	if dead:
-		$spr.setup([24])
+		$spr.setup([24 if (dead_age>10 and vy<0.1) else 16])
 	elif onwall:
 		$spr.setup([15])
 		$spr.flip_h = onwall < 0
 	elif not onfloor:
-		if vy >= 0.90: $spr.setup([25,26,27],13)
+		if vy >= 0.90: $spr.setup([25,26,27],13); vy = 1.00;
 		elif vy >= 0.80: $spr.setup([25,34],3)
-		elif vy >= 0.60: $spr.setup([25,35,34,35],3)
+		elif vy >= 0.70: $spr.setup([25,35,34,35],3)
+		elif vy >= 0.50: $spr.setup([35,34,34,34],3)
 		elif vy >= 0.40: $spr.setup([34])
 		elif vy >= 0.40: $spr.setup([34])
 		elif vy >= 0.25: $spr.setup([33])
