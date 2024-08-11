@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=4 uid="uid://bl1ll324a16er"]
+
+[ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_46ya8"]
+[ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_nlb88"]
+[ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="3_bvipl"]
+[ext_resource type="TileSet" uid="uid://c853te20nvgyi" path="res://dreamlands/anothertest/anothertest_tiles.tres" id="3_xft8b"]
+[ext_resource type="Texture2D" uid="uid://c3wlf8kc3hnm2" path="res://dreamlands/anothertest/anothertest.png" id="5_mr4sx"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="6_jj1tr"]
+[ext_resource type="Resource" uid="uid://briy3u0ahlrmh" path="res://dreamlands/anothertest/anothertest_sheet.tres" id="7_lxxui"]
+
+[node name="Anotherland" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0.5)
+script = ExtResource("1_46ya8")
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("2_nlb88")
+room_size = Vector2i(150, 150)
+
+[node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_map_data = PackedByteArray("AAACAAkAAAABAAAAAAACAAoAAAABAAAAAAACAAsAAAABAAAAAAACAAwAAAABAAAAAAACAA0AAAABAAAAAAADAA0AAAABAAAAAAAEAA0AAAABAAAAAAAEAAwAAAABAAAAAAAFAAwAAAABAAAAAAAFAAsAAAABAAAAAAAEAAsAAAABAAAAAAAFAAoAAAABAAAAAAAEAAoAAAABAAAAAAADAAoAAAABAAAAAAADAAwAAAABAAAAAAA=")
+tile_set = ExtResource("3_xft8b")
+navigation_enabled = false
+script = ExtResource("3_bvipl")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmA"]
+position = Vector2(47, 95)
+texture = ExtResource("5_mr4sx")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("6_jj1tr")
+sheet = ExtResource("7_lxxui")
+frames = PackedInt32Array(10, 11)

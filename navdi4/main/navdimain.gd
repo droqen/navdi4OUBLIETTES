@@ -4,87 +4,57 @@ class_name NavdiMain
 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-@export var setup_button : bool :
-	set(v) : if v :
-		if prepend_date:
-			setting("application/config/name",
-				"%d, %s %s ~ %s" %
-					[time_year, time_month, stndth(time_day), game_name])
+#@export var refresh_icon : bool = false :
+	#set(v) : if v : _refresh_icon()
+
+const ICON_LOADING : Texture2D = preload("res://navdi4/editortools/icon_loading.png")
+
+@export var icon_preview : Texture2D
+
+@export var apply_cart : bool = false :
+	set(v) : if v : _apply_cart()
+
+@export var cart : NavdiCart = null
+
+func _apply_cart() -> void:
+	if Engine.is_editor_hint():
+		if cart:
+			if cart.birth_year == 0: cart.autofill_birth_today()
+			AutomakeSpritesheetStuff.Make(cart.sheet_src, cart.tile_size)
+			_cart = cart
+			_sheet = AutomakeSpritesheetStuff.LastMakeResult_Sheet
+			_tiles = AutomakeSpritesheetStuff.LastMakeResult_Tiles
+			cart.apply_changes(self)
+			name = "[[ %s ]]" % cart.name
 		else:
-			setting("application/config/name", game_name)
-		
-		setting("application/run/main_scene",
-			scene_file_path)
-		setting("display/window/size/viewport_width",
-			maxi(1,game_size.x))
-		setting("display/window/size/viewport_height",
-			maxi(1,game_size.y))
-		setting("display/window/size/window_width_override",
-			maxi(1,game_size.x * view_scale.x))
-		setting("display/window/size/window_height_override",
-			maxi(1,game_size.y * view_scale.y))
-		setting("display/window/stretch/mode",
-			"viewport")
-		setting("display/window/stretch/aspect",
-			"ignore")
-		setting("rendering/environment/defaults/default_clear_color",
-			bg_colour)
-		setting("application/boot_splash/bg_color",
-			bg_colour)
-		setting("application/boot_splash/image",
-			icon.resource_path if icon else '')
-		setting("application/config/icon",
-			icon.resource_path if icon else '')
-		setting("application/boot_splash/fullsize", false)
-		if pixelated:
-			setting("rendering/2d/snap/snap_2d_transforms_to_pixel", true)
-			setting("rendering/2d/snap/snap_2d_vertices_to_pixel", true)
-			texture_filter = TEXTURE_FILTER_NEAREST
-		
+			_cart = cart # ideally, null?
+			_sheet = null
+			_tiles = null
+			name = "-- no cart inserted --"
 		notify_property_list_changed()
+		_refresh_icon()
+
+var _cart : NavdiCart
+var _sheet : Sheet
+var _tiles : TileSet
+
+func _refresh_icon() -> void:
+	if Engine.is_editor_hint() and _cart and _sheet:
+		AutomakeIcon2.MakeSave(_sheet, _cart.icon_idx)
+		for s in ["application/boot_splash/image", "application/config/icon"]:
+			ProjectSettings.set_setting(s,"res://icon.png")
 		ProjectSettings.notify_property_list_changed()
-		ProjectSettings.save()
-		
-		print("changes to ProjectSettings saved!")
-
-@export var game_name : String = "void"
-@export var game_size : Vector2i = Vector2i(180, 200)
-@export var view_scale : Vector2i = Vector2i(2, 2)
-@export var icon : Texture2D
-@export var bg_colour : Color = Color("#d45455")
-@export var pixelated : bool = true
-@export_category("Today's Date")
-@export var prepend_date : bool = true
-@export var autofill_today_button : bool :
-	set(v):if v:
-		var now = Time.get_datetime_dict_from_system()
-		prints(now)
-		time_year = now.year
-		time_month = MONTHS[now.month-1]
-		time_day = now.day
+		EditorInterface.get_resource_filesystem().scan()
+		icon_preview = ICON_LOADING
 		notify_property_list_changed()
-@export var time_year : int = 0
-@export var time_month : String = "?"
-@export var time_day : int = 0
-
-func stndth(number : int) -> String:
-	if number <= 0: return str(number)
-	else: match number % 10:
-		1: return str(number) + "st"
-		2: return str(number) + "nd"
-		_: return str(number) + "th"
-
-func setting(settingname : String, value):
-	ProjectSettings.set_setting(settingname, value)
+		await get_tree().create_timer(0.1).timeout
+		icon_preview = ResourceLoader.load("res://icon.png")
+		notify_property_list_changed()
 
 var screenshotting_enabled = false
 
 func _ready() -> void:
-	if texture_filter != TEXTURE_FILTER_NEAREST and pixelated:
-		texture_filter = TEXTURE_FILTER_NEAREST
-		notify_property_list_changed()
 	if not Engine.is_editor_hint():
-		
 		var Cat = JavaScriptBridge.get_interface('Cat')
 		if Cat:
 			print("Cat found!")
@@ -102,6 +72,13 @@ func _ready() -> void:
 			screenshotting_enabled = true
 			print("framecapture tool enabled.")
 		
+		if cart and cart.play_script:
+			prints("play go")
+			var play = cart.play_script.new()
+			$LiveDream.add_child(play)
+			play.owner = owner if owner else self
+			if play.has_method('play'):
+				play.play.call_deferred($LiveDream)
 
 # TODO - this should all be in a separate node
 
@@ -118,6 +95,11 @@ var gif_capture_frameindex : int = 0
 var _gif_capture_frm_delay_buf : int = 0
 
 func _physics_process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		if _cart != cart:
+			_apply_cart()
+			_cart = cart
+	
 	if screenshotting_enabled and gcap_enabled:
 		if gif_capturing:
 			if gif_capture_frameindex <= gcap_max_dur:
@@ -143,9 +125,10 @@ func _physics_process(_delta: float) -> void:
 				var now = Time.get_datetime_dict_from_system()
 				#Returns the current date as a dictionary of keys: year, month, day,
 				#weekday, hour, minute, second, and dst (Daylight Savings Time).
-				gif_capture_label = "%04d%02d%02d-%02d-%02d-%02d" % [
+				gif_capture_label = "%04d%02d%02d-%02d-%02d-%02d-%s" % [
 					now['year'],now['month'] ,now['day'],
 					now['hour'],now['minute'],now['second'],
+					cart.name if (cart and cart.name) else 'noname'
 				]
 				DirAccess.make_dir_recursive_absolute("captures/%s"%gif_capture_label)
 				var _gdignore_file = FileAccess.open("captures/.gdignore", FileAccess.WRITE)

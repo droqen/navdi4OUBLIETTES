@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="2024, January 7th ~ eidetic8&stargaze&leaf"
+config/name="2024, August 11st ~ anotherland"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(0.262672, 0.297724, 0.195376, 1)
+boot_splash/bg_color=Color(0.933333, 0.647059, 0.866667, 1)
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
@@ -25,14 +25,12 @@ Sav="*res://navdi4/main/navdisav.gd"
 
 [display]
 
-window/size/viewport_width=180
-window/size/viewport_height=280
-window/size/transparent=true
-window/size/window_width_override=540
-window/size/window_height_override=840
+window/size/viewport_width=150
+window/size/viewport_height=150
+window/size/window_width_override=300
+window/size/window_height_override=300
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
-window/per_pixel_transparency/allowed=true
 
 [global_group]
 
@@ -84,7 +82,6 @@ plant={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.262672, 0.297724, 0.195376, 1)
-viewport/transparent_background=true
+environment/defaults/default_clear_color=Color(0.933333, 0.647059, 0.866667, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

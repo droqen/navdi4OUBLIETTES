@@ -1,5 +1,7 @@
 @tool
 extends Node
+class_name ExtractIcon
+
 @export var sheet : Sheet
 @export var exporticon : Texture2D
 var _frame : int = 0

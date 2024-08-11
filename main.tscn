@@ -1,21 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddcpe6s55fgss"]
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
+[ext_resource type="Resource" uid="uid://c47jpcp7syngh" path="res://dreamlands/anothertest/cart.tres" id="2_t6j0s"]
 [ext_resource type="Texture2D" uid="uid://clkewja1u2kwe" path="res://icon.png" id="2_wdlrg"]
-[ext_resource type="Script" path="res://dreamlands/eidetic8/^play_eidetic.gd" id="3_l4g3o"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
-[node name="main" type="Node2D"]
+[node name="[[ anotherland ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
-game_name = "eidetic8&stargaze&leaf"
-game_size = Vector2i(180, 280)
-view_scale = Vector2i(3, 3)
-icon = ExtResource("2_wdlrg")
-bg_colour = Color(0.262672, 0.297724, 0.195376, 1)
-time_year = 2024
-time_month = "January"
-time_day = 7
+icon_preview = ExtResource("2_wdlrg")
+cart = ExtResource("2_t6j0s")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -23,8 +17,5 @@ script = ExtResource("3_vd67c")
 camera = NodePath("dreamcamera")
 
 [node name="dreamcamera" type="Camera2D" parent="LiveDream"]
-
-[node name="^play" type="Node" parent="LiveDream"]
-script = ExtResource("3_l4g3o")
 
 [node name="playerparent" type="Node2D" parent="." groups=["PlayerParent"]]

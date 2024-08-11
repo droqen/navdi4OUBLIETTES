@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=4 uid="uid://bi0pmrebiw7yf"]
+
+[ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_22mrp"]
+[ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_f16cj"]
+[ext_resource type="TileSet" uid="uid://dfvn1v5jcg087" path="res://dreamlands/smalltest/smalltest_tiles.tres" id="3_xfgmh"]
+[ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_5iku8"]
+
+[node name="Smallland" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0.5)
+script = ExtResource("1_22mrp")
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("2_f16cj")
+
+[node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_map_data = PackedByteArray("AAAAAAUAAAABAAEAAAABAAUAAAABAAEAAAABAAYAAAABAAEAAAACAAYAAAABAAEAAAADAAcAAAABAAEAAAAEAAgAAAABAAEAAAAFAAgAAAABAAEAAAAGAAgAAAABAAEAAAAGAAkAAAABAAEAAAAHAAkAAAABAAEAAAAHAAgAAAABAAEAAAAIAAgAAAABAAEAAAAJAAgAAAABAAEAAAA=")
+tile_set = ExtResource("3_xfgmh")
+navigation_enabled = false
+script = ExtResource("4_5iku8")
