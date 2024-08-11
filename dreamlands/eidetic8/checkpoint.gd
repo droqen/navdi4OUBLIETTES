@@ -19,22 +19,23 @@ var flagst : TinyState = TinyState.new(NOTACTIVE, func(_then,now):
 			$flagspr.setup([5,6,7,8],8)
 			$yay.one_shot = true
 			$yay.restart() # emitting = true?
-			CheckRoomName = get_parent().name
-			CheckName = name
+			Checkpoint.CheckRoomName = get_parent().name
+			Checkpoint.CheckName = name
 			show()
 )
 
 func _ready() -> void:
 	$flagspr.setup([4]); $flagspr.frame = 4
-	$plrdet.area_entered.connect(func(_area):
+	var connecterr = $plrdet.area_entered.connect(func(_area):
 		flagst.goto(ACTIVE)
 	)
 
 func _physics_process(_delta: float) -> void:
-	if flagst.id == ACTIVE and name != CheckName: flagst.goto(NOTACTIVE)
+	if flagst.id == ACTIVE and name != Checkpoint.CheckName:
+		flagst.goto(NOTACTIVE)
 
 func _enter_tree() -> void:
-	if get_parent().name == CheckRoomName and name == CheckName:
+	if get_parent().name == Checkpoint.CheckRoomName and name == Checkpoint.CheckName:
 		flagst.goto(ACTIVE); $yay.emitting = false
 	else:
 		flagst.goto(NOTACTIVE)
