@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddcpe6s55fgss"]
+[gd_scene load_steps=5 format=3 uid="uid://ddcpe6s55fgss"]
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
+[ext_resource type="Texture2D" uid="uid://c4cjsovi61vwt" path="res://icon.png" id="2_wdlrg"]
 [ext_resource type="Script" path="res://dreamlands/eidetic8/^play_eidetic.gd" id="3_l4g3o"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
@@ -10,6 +11,7 @@ script = ExtResource("1_bg03g")
 game_name = "eidetic8&stargaze&leaf"
 game_size = Vector2i(180, 280)
 view_scale = Vector2i(3, 3)
+icon = ExtResource("2_wdlrg")
 bg_colour = Color(0.262672, 0.297724, 0.195376, 1)
 time_year = 2024
 time_month = "January"
