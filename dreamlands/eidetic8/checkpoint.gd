@@ -25,6 +25,7 @@ var flagst : TinyState = TinyState.new(NOTACTIVE, func(_then,now):
 )
 
 func _ready() -> void:
+	$flagspr.setup([4]); $flagspr.frame = 4
 	$plrdet.area_entered.connect(func(_area):
 		flagst.goto(ACTIVE)
 	)

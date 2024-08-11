@@ -5,7 +5,7 @@ const LAND = preload("res://dreamlands/eidetic8/eidetic8land.tscn")
 
 func _ready() -> void:
 	var land = LAND.instantiate()
-	dream.goto_new_land( land, "rmA" )
+	dream.goto_new_land( land, "rmHigherPlace2" )
 	dream.player_escaped.connect(func(escape_code):
 		match escape_code:
 			"respawn":
