@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddcpe6s55fgss"]
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
-[ext_resource type="Resource" uid="uid://c47jpcp7syngh" path="res://dreamlands/anothertest/cart.tres" id="2_t6j0s"]
 [ext_resource type="Texture2D" uid="uid://clkewja1u2kwe" path="res://icon.png" id="2_wdlrg"]
+[ext_resource type="Resource" uid="uid://bho8c6f1xuo4u" path="res://dreamlands/path-of-saints/cart.tres" id="3_g2gqa"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
-[node name="[[ anotherland ]]" type="Node2D"]
+[node name="[[ saints-path ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("2_t6j0s")
+cart = ExtResource("3_g2gqa")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
