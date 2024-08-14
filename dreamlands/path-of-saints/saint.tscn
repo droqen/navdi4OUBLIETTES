@@ -24,6 +24,14 @@ font_color = Color(0.0156863, 0.0156863, 0.0666667, 1)
 position = Vector2(95, -16)
 script = ExtResource("1_ic5ae")
 
+[node name="skinless" type="Sprite2D" parent="."]
+texture = ExtResource("2_mv5o1")
+hframes = 10
+vframes = 10
+script = ExtResource("3_2u5v3")
+sheet = ExtResource("4_d4x0v")
+frames = PackedInt32Array(0)
+
 [node name="SheetSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_mv5o1")

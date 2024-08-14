@@ -46,6 +46,8 @@ func _physics_process(_delta: float) -> void:
 			if skinned_progression >= 1:
 				LiveDream.GetDream(self).windfish_awakened.emit()
 	else:
+		if skinned_progression > 0:
+			skinned_progression -= 0.005
 		var room = LiveDream.GetRoom(self)
 		if room:
 			var maze = LiveDream.GetRoom(self).maze
@@ -55,6 +57,8 @@ func _physics_process(_delta: float) -> void:
 					if maze.get_cell_tid(curcell) == 12:
 						bufs.on(OUCHBUF)
 						SaintsTransgressions.transgressions += 1
+						skinned_progression = 0.5
+						maze.add_child(load("res://dreamlands/path-of-saints/^flash_maze.gd").new())
 					prevcell = curcell
 	var spr = $SheetSprite
 	var hang_ray = $hang_ray
@@ -99,9 +103,8 @@ func _physics_process(_delta: float) -> void:
 				_: spr.setup([2,4,2,3],8)
 	else: spr.setup([2])
 	
-	if skinned:
-		if skinned_progression < randf():
-			$SheetSprite.show(); $skinless.hide();
-		else:
-			$SheetSprite.hide(); $skinless.show();
-			$score.hide();
+	if skinned_progression <= 0 or skinned_progression < randf():
+		$SheetSprite.show(); $skinless.hide();
+	else:
+		$SheetSprite.hide(); $skinless.show();
+		$score.hide();

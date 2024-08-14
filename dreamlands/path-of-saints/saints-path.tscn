@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://btojpye6383d4"]
+[gd_scene load_steps=11 format=4 uid="uid://btojpye6383d4"]
 
 [ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_rkybw"]
 [ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_8cla6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_rt6nq"]
 [ext_resource type="PackedScene" uid="uid://cgrdl0wi41m4y" path="res://dreamlands/path-of-saints/saint.tscn" id="5_i1p43"]
 [ext_resource type="FontFile" uid="uid://cv58t81duux5y" path="res://navdi4/fonts/droqenserif.ttf" id="6_8bxlk"]
+[ext_resource type="Script" path="res://dreamlands/path-of-saints/^roomcopy.gd" id="7_r5ul5"]
 [ext_resource type="PackedScene" uid="uid://decbdtwcw4rhb" path="res://dreamlands/path-of-saints/skinned_saint.tscn" id="8_b5giw"]
 
 [sub_resource type="FontVariation" id="FontVariation_4us4y"]
@@ -115,6 +116,10 @@ tile_set = ExtResource("3_81phd")
 navigation_enabled = false
 script = ExtResource("4_rt6nq")
 
+[node name="RoomCopy" type="Node" parent="rmDownTower/Maze"]
+script = ExtResource("7_r5ul5")
+copyname = "DownTower"
+
 [node name="rmDownTower2" type="Node2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 373)
@@ -177,6 +182,10 @@ tile_set = ExtResource("3_81phd")
 navigation_enabled = false
 script = ExtResource("4_rt6nq")
 
+[node name="RoomCopy" type="Node" parent="rmVaultApproach/Maze"]
+script = ExtResource("7_r5ul5")
+copyname = "VaultApproachEcho"
+
 [node name="rmVaultApproach2" type="Node2D" parent="."]
 texture_filter = 1
 position = Vector2(406, 544)
@@ -192,6 +201,10 @@ tile_set = ExtResource("3_81phd")
 navigation_enabled = false
 script = ExtResource("4_rt6nq")
 
+[node name="RoomCopy" type="Node" parent="rmVaultApproach2/Maze"]
+script = ExtResource("7_r5ul5")
+copyname = "VaultApproachEcho"
+
 [node name="rmVaultApproach3" type="Node2D" parent="."]
 texture_filter = 1
 position = Vector2(608, 544)
@@ -204,6 +217,10 @@ tile_map_data = PackedByteArray("AAAAAAUAAAABAAEAAAABAAUAAAABAAEAAAACAAUAAAABAAE
 tile_set = ExtResource("3_81phd")
 navigation_enabled = false
 script = ExtResource("4_rt6nq")
+
+[node name="RoomCopy" type="Node" parent="rmVaultApproach3/Maze"]
+script = ExtResource("7_r5ul5")
+copyname = "VaultApproachEcho"
 
 [node name="saint" parent="rmVaultApproach3" instance=ExtResource("5_i1p43")]
 position = Vector2(17, 33)
@@ -232,6 +249,10 @@ tile_map_data = PackedByteArray("AAAFAAUAAAABAAEAAAAGAAUAAAABAAEAAAAHAAUAAAABAAE
 tile_set = ExtResource("3_81phd")
 navigation_enabled = false
 script = ExtResource("4_rt6nq")
+
+[node name="RoomCopy" type="Node" parent="rmVaultApproach4/Maze"]
+script = ExtResource("7_r5ul5")
+copyname = "VaultApproachEcho"
 
 [node name="black" type="ColorRect" parent="rmVaultApproach4"]
 offset_left = 90.0
@@ -355,6 +376,10 @@ tile_set = ExtResource("3_81phd")
 navigation_enabled = false
 script = ExtResource("4_rt6nq")
 
+[node name="RoomCopy" type="Node" parent="rmSideGLITCH2/Maze"]
+script = ExtResource("7_r5ul5")
+copyname = "DownTower"
+
 [node name="black" type="ColorRect" parent="rmSideGLITCH2"]
 offset_left = 120.0
 offset_right = 190.0
@@ -373,6 +398,10 @@ tile_map_data = PackedByteArray("AAAMAAcAAAACAAEAAAANAAcAAAACAAEAAAAOAAcAAAABAAE
 tile_set = ExtResource("3_81phd")
 navigation_enabled = false
 script = ExtResource("4_rt6nq")
+
+[node name="RoomCopy" type="Node" parent="rmSideGLITCH/Maze"]
+script = ExtResource("7_r5ul5")
+copyname = "DownTower"
 
 [node name="black" type="ColorRect" parent="rmSideGLITCH"]
 offset_right = 120.0
