@@ -44,7 +44,11 @@ func _refresh_icon() -> void:
 		for s in ["application/boot_splash/image", "application/config/icon"]:
 			ProjectSettings.set_setting(s,"res://icon.png")
 		ProjectSettings.notify_property_list_changed()
-		EditorInterface.get_resource_filesystem().scan()
+		
+		#EditorInterface.get_resource_filesystem().scan()
+		var editor_interface = Engine.get_singleton("EditorInterface")
+		editor_interface.get_resource_filesystem().scan()
+		
 		icon_preview = ICON_LOADING
 		notify_property_list_changed()
 		await get_tree().create_timer(0.1).timeout
