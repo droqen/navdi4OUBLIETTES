@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgrdl0wi41m4y"]
+
+[ext_resource type="Script" path="res://dreamlands/path-of-saints/saint.gd" id="1_ic5ae"]
+[ext_resource type="Texture2D" uid="uid://cbvbjp5tgtp4e" path="res://dreamlands/path-of-saints/saints-path.png" id="2_mv5o1"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_2u5v3"]
+[ext_resource type="Resource" uid="uid://b5cvmpbkvv4hf" path="res://dreamlands/path-of-saints/saints-path_sheet.tres" id="4_d4x0v"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_l6mk0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rig60"]
+size = Vector2(7.9, 7.9)
+
+[node name="saint" type="Node2D"]
+position = Vector2(95, -16)
+script = ExtResource("1_ic5ae")
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_mv5o1")
+hframes = 10
+vframes = 10
+frame = 6
+script = ExtResource("3_2u5v3")
+sheet = ExtResource("4_d4x0v")
+frames = PackedInt32Array(6)
+
+[node name="mover" type="Node2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("5_l6mk0")
+
+[node name="cast" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_rig60")
+target_position = Vector2(0, 0)
+
+[node name="hang_ray" type="RayCast2D" parent="."]
+position = Vector2(0, -4)
+target_position = Vector2(10, 0)
+
+[node name="hang_ray2" type="RayCast2D" parent="."]
+position = Vector2(0, -1)
+target_position = Vector2(10, 0)

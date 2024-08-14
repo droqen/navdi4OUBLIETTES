@@ -6,4 +6,5 @@ func play(dream:LiveDream) -> void:
 			"res://dreamlands/path-of-saints/saints-path.tscn"
 		).instantiate(),
 		"rmA"
+		#"rmVaultApproach3"
 	)
