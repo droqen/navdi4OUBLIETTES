@@ -129,13 +129,13 @@ color = Color(0.0156863, 0.0156863, 0.0666667, 1)
 
 [node name="Label" type="Label" parent="rmDownTower2/ColorRect"]
 layout_mode = 0
-offset_left = 1.0
+offset_left = 3.0
 offset_top = 4.0
 offset_right = 40.0
 offset_bottom = 49.0
-text = "down
-safe
-in to"
+text = "down,
+down,
+down,"
 label_settings = SubResource("LabelSettings_ki7jy")
 horizontal_alignment = 1
 
@@ -277,12 +277,14 @@ color = Color(0.0156863, 0.0156863, 0.0666667, 1)
 
 [node name="Label" type="Label" parent="rmVault/ColorRect"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 8.0
-offset_right = 69.0
-offset_bottom = 22.0
-text = "the vault"
+offset_left = -4.0
+offset_top = 1.0
+offset_right = 75.0
+offset_bottom = 33.0
+text = "safe in
+the vault,"
 label_settings = SubResource("LabelSettings_ki7jy")
+horizontal_alignment = 1
 
 [node name="rmVault2" type="Node2D" parent="."]
 texture_filter = 1
