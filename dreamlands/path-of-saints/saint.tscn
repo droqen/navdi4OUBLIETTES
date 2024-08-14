@@ -54,13 +54,13 @@ position = Vector2(0, -1)
 target_position = Vector2(10, 0)
 
 [node name="score" type="Label" parent="."]
+visible = false
 texture_filter = 1
 offset_left = -26.0
-offset_top = -17.0
+offset_top = -1.0
 offset_right = 28.0
-offset_bottom = 2.0
-text = "1000
-20"
+offset_bottom = 7.0
+text = "0"
 label_settings = SubResource("LabelSettings_ff6el")
 horizontal_alignment = 1
 visible_characters_behavior = 1

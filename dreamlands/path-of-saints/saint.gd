@@ -8,22 +8,28 @@ enum{JUMPBUF,  FLORBUF,  LANDBUF,  OUCHBUF, }
 	[JUMPBUF,4,FLORBUF,4,LANDBUF,8,OUCHBUF,8]
 )
 
-var vx : float = 0.0; var vy : float = 2.5; # maxfall
+var vx : float = 0.0; var vy : float = 0.0;
 var prevcell : Vector2i
 var time_paused : bool = true
 
+func _ready() -> void:
+	super._ready()
+	if skinned and SaintsTransgressions.transgressions == 0:
+		skinned = false
+		LiveDream.GetDream(self).windfish_awakened.emit()
+
 func _physics_process(_delta: float) -> void:
 	
-	if Pin.get_plant_held():
-		$score.show()
-		@warning_ignore("integer_division")
-		$score.text = "%04d\n%d" % [mini(9999,SaintsTransgressions.time/60), SaintsTransgressions.transgressions]
+	#if Pin.get_plant_held():
+		#$score.show()
+		#@warning_ignore("integer_division")
+		#$score.text = "%d" % SaintsTransgressions.transgressions
 		#$SheetSprite.hide()
 		#if skinned: $skinless.hide()
-		#time_paused = true
-		#return
-	elif $score.visible:
-		$score.hide()
+		##time_paused = true
+		##return
+	#elif $score.visible:
+		#$score.hide()
 		#$SheetSprite.show()
 	
 	if time_paused:
@@ -37,6 +43,8 @@ func _physics_process(_delta: float) -> void:
 	if skinned:
 		if skinned_progression < 1:
 			skinned_progression += 0.002
+			if skinned_progression >= 1:
+				LiveDream.GetDream(self).windfish_awakened.emit()
 	else:
 		var room = LiveDream.GetRoom(self)
 		if room:

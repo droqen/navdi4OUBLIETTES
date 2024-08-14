@@ -26,16 +26,6 @@ script = ExtResource("1_1ljgr")
 skinned = true
 replaces_player_if_different = true
 
-[node name="SheetSprite" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_hw8sn")
-hframes = 10
-vframes = 10
-frame = 6
-script = ExtResource("3_0j8dj")
-sheet = ExtResource("4_xj7sb")
-frames = PackedInt32Array(6)
-
 [node name="skinless" type="Sprite2D" parent="."]
 texture = ExtResource("2_hw8sn")
 hframes = 10
@@ -43,6 +33,15 @@ vframes = 10
 script = ExtResource("3_0j8dj")
 sheet = ExtResource("4_xj7sb")
 frames = PackedInt32Array(0)
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_hw8sn")
+hframes = 10
+vframes = 10
+frame = 6
+script = ExtResource("3_0j8dj")
+sheet = ExtResource("4_xj7sb")
+frames = PackedInt32Array(6)
 
 [node name="mover" type="Node2D" parent="."]
 position = Vector2(0, 1)
@@ -61,6 +60,7 @@ position = Vector2(0, -1)
 target_position = Vector2(10, 0)
 
 [node name="score" type="Label" parent="."]
+visible = false
 texture_filter = 1
 offset_left = -26.0
 offset_top = -17.0
