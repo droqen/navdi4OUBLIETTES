@@ -6,5 +6,6 @@ func play(dream:LiveDream) -> void:
 			"res://dreamlands/path-of-saints/saints-path.tscn"
 		).instantiate(),
 		"rmA"
-		#"rmVaultApproach3"
+		#"rmVault2"
 	)
+	dream.player_escaped.connect(func(_code): dream.windfish_awakened.emit())

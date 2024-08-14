@@ -1,13 +1,53 @@
 extends NavdiSolePlayer
 
-enum { JUMPBUF, FLORBUF, LANDBUF, }
+@export var skinned : bool = false
+var skinned_progression : float = 0.0
+
+enum{JUMPBUF,  FLORBUF,  LANDBUF,  OUCHBUF, }
 @onready var bufs = Bufs.Make(self).setup_bufons(
-	[JUMPBUF,4,FLORBUF,4,LANDBUF,8,]
+	[JUMPBUF,4,FLORBUF,4,LANDBUF,8,OUCHBUF,8]
 )
 
 var vx : float = 0.0; var vy : float = 2.5; # maxfall
+var prevcell : Vector2i
+var time_paused : bool = true
 
 func _physics_process(_delta: float) -> void:
+	
+	if Pin.get_plant_held():
+		$score.show()
+		@warning_ignore("integer_division")
+		$score.text = "%04d\n%d" % [mini(9999,SaintsTransgressions.time/60), SaintsTransgressions.transgressions]
+		#$SheetSprite.hide()
+		#if skinned: $skinless.hide()
+		#time_paused = true
+		#return
+	elif $score.visible:
+		$score.hide()
+		#$SheetSprite.show()
+	
+	if time_paused:
+		if not skinned and (vx or vx):
+			time_paused = false
+	else:
+		SaintsTransgressions.time += 1
+	
+	if bufs.read(OUCHBUF) % 2 == 1: return
+	
+	if skinned:
+		if skinned_progression < 1:
+			skinned_progression += 0.002
+	else:
+		var room = LiveDream.GetRoom(self)
+		if room:
+			var maze = LiveDream.GetRoom(self).maze
+			if maze:
+				var curcell = maze.local_to_map(position)
+				if curcell != prevcell:
+					if maze.get_cell_tid(curcell) == 12:
+						bufs.on(OUCHBUF)
+						SaintsTransgressions.transgressions += 1
+					prevcell = curcell
 	var spr = $SheetSprite
 	var hang_ray = $hang_ray
 	var dpad = Pin.get_dpad()
@@ -38,7 +78,8 @@ func _physics_process(_delta: float) -> void:
 		if vy > 0.5: bufs.on(LANDBUF)
 		if vy > 0: vy = 0
 		
-	if not onfloor:
+	if bufs.has(OUCHBUF): spr.setup([16])
+	elif not onfloor:
 		if hanging: spr.setup([6])
 		elif vy < -1: spr.setup([13])
 		else: spr.setup([14])
@@ -49,4 +90,10 @@ func _physics_process(_delta: float) -> void:
 				2: spr.setup([3,2,4,2],8)
 				_: spr.setup([2,4,2,3],8)
 	else: spr.setup([2])
-		
+	
+	if skinned:
+		if skinned_progression < randf():
+			$SheetSprite.show(); $skinless.hide();
+		else:
+			$SheetSprite.hide(); $skinless.show();
+			$score.hide();
