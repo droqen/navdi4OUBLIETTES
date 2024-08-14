@@ -45,10 +45,12 @@ func _physics_process(_delta: float) -> void:
 			tile_set.set_source_id(tile_set.get_source_id(0), SOLE_SOURCE_ID)
 
 func tid2coord(tid:int)->Vector2i:
+	_require_tidkey()
 	if tid < 0: return Vector2(-1,-1)
 	@warning_ignore("integer_division")
 	return Vector2i(tid%tile_src_w,tid/tile_src_w)
 func coord2tid(atlas_coord:Vector2i)->int:
+	_require_tidkey()
 	if atlas_coord.x < 0: return -1
 	return atlas_coord.x+atlas_coord.y*tile_src_w
 
