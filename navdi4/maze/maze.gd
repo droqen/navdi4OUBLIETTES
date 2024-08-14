@@ -20,6 +20,7 @@ func _ready():
 
 func _require_tidkey():
 	if not tidkey_initialized:
+		tidkey_initialized = true # don't call this again ever!
 		if tile_set==null:push_error("maze has no tileset");return false;
 		tile_src = tile_set.get_source(SOLE_SOURCE_ID) as TileSetAtlasSource
 		if tile_src==null:push_error("maze's tileset has no src");return false;
@@ -35,7 +36,6 @@ func _require_tidkey():
 				for i in physlayer_range:
 					if tile_data.get_collision_polygons_count(i) > 0:
 						dict_tids_physlayers[i][tid] = true
-		tidkey_initialized = true # done!
 		return true
 
 func _physics_process(_delta: float) -> void:
