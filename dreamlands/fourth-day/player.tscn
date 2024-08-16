@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://dg8p0enomvu2j"]
+
+[ext_resource type="Script" path="res://dreamlands/fourth-day/player.gd" id="1_5el8v"]
+[ext_resource type="Texture2D" uid="uid://d2r0sa6g1kpoo" path="res://dreamlands/fourth-day/fourth-day.png" id="2_ae65m"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_su3sr"]
+[ext_resource type="Resource" uid="uid://bafldcqcxe80d" path="res://dreamlands/fourth-day/fourth-day_sheet.tres" id="4_0075n"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_pwgb8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjlya"]
+size = Vector2(6.1, 7.9)
+
+[node name="player" type="Node2D"]
+position = Vector2(50, 145)
+script = ExtResource("1_5el8v")
+
+[node name="spr" type="Sprite2D" parent="."]
+texture = ExtResource("2_ae65m")
+hframes = 10
+vframes = 10
+frame = 11
+script = ExtResource("3_su3sr")
+sheet = ExtResource("4_0075n")
+frames = PackedInt32Array(11)
+
+[node name="mover" type="Node2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("5_pwgb8")
+
+[node name="solidcast" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_jjlya")
+target_position = Vector2(0, 0)
