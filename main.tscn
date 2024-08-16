@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://clkewja1u2kwe" path="res://icon.png" id="2_wdlrg"]
-[ext_resource type="Resource" uid="uid://bho8c6f1xuo4u" path="res://dreamlands/path-of-saints/cart.tres" id="3_g2gqa"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
+[ext_resource type="Resource" uid="uid://d3iyoi44ie2t8" path="res://dreamlands/compatible/cart.tres" id="3_xoa83"]
 
-[node name="[[ saints-path ]]" type="Node2D"]
+[node name="[[ compatible ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_g2gqa")
+cart = ExtResource("3_xoa83")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -17,24 +17,5 @@ script = ExtResource("3_vd67c")
 camera = NodePath("dreamcamera")
 
 [node name="dreamcamera" type="Camera2D" parent="LiveDream"]
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="LiveDream/dreamcamera"]
-z_index = 10
-position = Vector2(19, -86)
-amount = 30
-lifetime = 4.5
-preprocess = 4.5
-local_coords = true
-emission_shape = 3
-emission_rect_extents = Vector2(250, 1)
-direction = Vector2(-0.5, 1)
-spread = 5.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 40.0
-initial_velocity_max = 50.0
-angle_min = 20.0
-angle_max = 30.0
-scale_amount_min = 2.0
-scale_amount_max = 10.0
 
 [node name="playerparent" type="Node2D" parent="." groups=["PlayerParent"]]

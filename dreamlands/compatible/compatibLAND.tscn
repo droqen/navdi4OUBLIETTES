@@ -1,0 +1,63 @@
+[gd_scene load_steps=13 format=4 uid="uid://d22jhe2m04s2d"]
+
+[ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_32db6"]
+[ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_rb030"]
+[ext_resource type="TileSet" uid="uid://gjcbvce4isps" path="res://dreamlands/compatible/compatible_tiles.tres" id="3_x6rob"]
+[ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_cealo"]
+[ext_resource type="Script" path="res://dreamlands/compatible/violent.gd" id="5_n1vkr"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="6_l2dll"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="7_ha45p"]
+[ext_resource type="Texture2D" uid="uid://cx0af61oi62nt" path="res://dreamlands/compatible/compatible.png" id="7_wa1qj"]
+[ext_resource type="Resource" uid="uid://lyl04gk5ymh3" path="res://dreamlands/compatible/compatible_sheet.tres" id="9_hb4ju"]
+[ext_resource type="FontFile" uid="uid://b23vrkinia56w" path="res://navdi4/fonts/quizardry.ttf" id="10_inbxk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqkww"]
+size = Vector2(2.9, 7.9)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uj14k"]
+font = ExtResource("10_inbxk")
+
+[node name="CompatibLand" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0.5)
+script = ExtResource("1_32db6")
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("2_rb030")
+room_size = Vector2i(320, 240)
+
+[node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_map_data = PackedByteArray("AAACAAsAAAAAAAEAAAADAAsAAAAAAAEAAAAEAAsAAAAAAAEAAAAFAAsAAAAAAAEAAAAGAAsAAAAAAAEAAAAHAAsAAAAAAAEAAAAFAAwAAAABAAEAAAAFAA0AAAABAAEAAAAEAA0AAAABAAEAAAAEAA4AAAABAAEAAAAEAA8AAAABAAEAAAAFAA8AAAABAAEAAAAFAA4AAAABAAEAAAADAA0AAAAAAAEAAAADAA4AAAABAAEAAAAMAA0AAAAAAAEAAAANAA0AAAAAAAEAAAAOAA0AAAAAAAEAAAAPAA0AAAABAAEAAAAQAA0AAAABAAEAAAAOAA4AAAABAAEAAAANAA4AAAABAAEAAAANAA8AAAABAAEAAAANABAAAAABAAEAAAAOABAAAAABAAEAAAAOAA8AAAABAAEAAAAPAA8AAAABAAEAAAAPAA4AAAABAAEAAAAQAA4AAAAAAAEAAAAEAAwAAAABAAEAAAAGAAwAAAABAAEAAAAHAAwAAAABAAEAAAAHAA0AAAABAAEAAAAPABAAAAABAAEAAAAQABAAAAABAAEAAAAQAA8AAAABAAEAAAALAA4AAAAAAAEAAAAMAA4AAAAAAAEAAAALAA0AAAAAAAEAAAARAA0AAAAAAAEAAAASAA0AAAAAAAEAAAARAA4AAAAAAAEAAAAVAA8AAAAAAAEAAAAWABAAAAABAAEAAAAXABAAAAAAAAEAAAAYABAAAAAAAAEAAAAZABAAAAAAAAEAAAAXABEAAAABAAEAAAAWABEAAAABAAEAAAAWABIAAAABAAEAAAAWABMAAAABAAEAAAAXABMAAAABAAEAAAAYABMAAAABAAEAAAAZABMAAAABAAEAAAAaABIAAAABAAEAAAAbABEAAAABAAEAAAAaABEAAAABAAEAAAAZABIAAAABAAEAAAAZABQAAAABAAEAAAAZABUAAAABAAEAAAAUAA8AAAAAAAEAAAAWAA8AAAAAAAEAAAAXAA8AAAAAAAEAAAAYAA8AAAAAAAEAAAAZAA8AAAAAAAEAAAAaAA8AAAAAAAEAAAAZABEAAAAAAAEAAAAYABEAAAAAAAEAAAAYABIAAAAAAAEAAAAXABIAAAAAAAEAAAAaABAAAAAAAAEAAAA=")
+tile_set = ExtResource("3_x6rob")
+navigation_enabled = false
+script = ExtResource("4_cealo")
+
+[node name="violent" type="Node2D" parent="rmA"]
+position = Vector2(46, 105)
+script = ExtResource("5_n1vkr")
+
+[node name="mover" type="Node2D" parent="rmA/violent"]
+position = Vector2(0, 1)
+script = ExtResource("6_l2dll")
+
+[node name="solidcast" type="ShapeCast2D" parent="rmA/violent/mover"]
+shape = SubResource("RectangleShape2D_bqkww")
+target_position = Vector2(0, 0)
+
+[node name="spr" type="Sprite2D" parent="rmA/violent"]
+texture = ExtResource("7_wa1qj")
+hframes = 10
+vframes = 10
+frame = 1
+script = ExtResource("7_ha45p")
+sheet = ExtResource("9_hb4ju")
+frames = PackedInt32Array(1, 2, 1, 3)
+ani_period = 6
+
+[node name="Label" type="Label" parent="rmA"]
+offset_left = 84.0
+offset_top = 72.0
+offset_right = 276.0
+offset_bottom = 95.0
+text = "\"gimme something to shoot\""
+label_settings = SubResource("LabelSettings_uj14k")
