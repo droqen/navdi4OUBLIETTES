@@ -1,7 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c5wbc0mqjlm0k"]
-
-[ext_resource type="FontFile" uid="uid://kgla71s2w7a3" path="res://navdi4/fonts/quizardrymono.ttf" id="1_1arvo"]
-
-[resource]
-font = ExtResource("1_1arvo")
-font_color = Color(0.996078, 0.729412, 0.0509804, 1)
