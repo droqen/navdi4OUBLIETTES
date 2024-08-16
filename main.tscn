@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://clkewja1u2kwe" path="res://icon.png" id="2_wdlrg"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
-[ext_resource type="Resource" uid="uid://d3iyoi44ie2t8" path="res://dreamlands/compatible/cart.tres" id="3_xoa83"]
+[ext_resource type="Resource" uid="uid://cke2c63ud5l4t" path="res://dreamlands/fourth-day/cart.tres" id="3_w1via"]
 
-[node name="[[ compatible ]]" type="Node2D"]
+[node name="[[ dawn of the fourth day ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_xoa83")
+cart = ExtResource("3_w1via")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]

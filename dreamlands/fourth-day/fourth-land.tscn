@@ -1,0 +1,50 @@
+[gd_scene load_steps=11 format=4 uid="uid://dfof85hmdbr77"]
+
+[ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_icrs7"]
+[ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_00asq"]
+[ext_resource type="TileSet" uid="uid://s4d0avtoas1a" path="res://dreamlands/fourth-day/fourth-day_tiles.tres" id="3_a8i8x"]
+[ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_hewet"]
+[ext_resource type="Script" path="res://dreamlands/fourth-day/player.gd" id="5_wgbo0"]
+[ext_resource type="Texture2D" uid="uid://d2r0sa6g1kpoo" path="res://dreamlands/fourth-day/fourth-day.png" id="6_r3ypo"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="7_mhr6p"]
+[ext_resource type="Resource" uid="uid://bafldcqcxe80d" path="res://dreamlands/fourth-day/fourth-day_sheet.tres" id="8_15guo"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="9_i66e6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjlya"]
+size = Vector2(6.1, 9.9)
+
+[node name="Fourth-land" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0.5)
+script = ExtResource("1_icrs7")
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("2_00asq")
+room_size = Vector2i(220, 200)
+dbg_outline_col = Color(0, 0.924401, 0.389761, 1)
+
+[node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_map_data = PackedByteArray("AAABABAAAAABAAAAAAACABAAAAABAAAAAAADABAAAAABAAAAAAAEABAAAAABAAAAAAABAA8AAAABAAAAAAAAAA8AAAABAAAAAAAAABAAAAABAAAAAAACAA8AAAABAAAAAAABABEAAAABAAAAAAABABIAAAABAAAAAAACABIAAAABAAAAAAADABIAAAABAAAAAAAEABEAAAABAAAAAAAEAA8AAAABAAAAAAAFAA8AAAABAAAAAAAFABAAAAABAAAAAAAFABEAAAABAAAAAAAFABIAAAABAAAAAAAGABIAAAABAAAAAAADAA8AAAABAAAAAAACABEAAAABAAAAAAAEABIAAAABAAAAAAADABEAAAABAAAAAAAGAA8AAAACAAAAAAAHAA8AAAACAAAAAAAIAA8AAAACAAAAAAAJAA8AAAACAAAAAAAKAA8AAAACAAAAAAALAA8AAAACAAAAAAAMAA8AAAACAAAAAAANAA8AAAACAAAAAAAOAA8AAAACAAAAAAAPAA8AAAABAAAAAAAQAA8AAAABAAAAAAARAA8AAAABAAAAAAASAA8AAAABAAAAAAATAA8AAAABAAAAAAAUAA8AAAABAAAAAAAVAA8AAAABAAAAAAAOABAAAAABAAAAAAAOABEAAAABAAAAAAAOABIAAAABAAAAAAAPABIAAAABAAAAAAAPABEAAAABAAAAAAAQABEAAAABAAAAAAAQABAAAAABAAAAAAARABAAAAABAAAAAAAPABAAAAABAAAAAAASABAAAAABAAAAAAATABAAAAABAAAAAAAVABAAAAABAAAAAAAUABAAAAABAAAAAAAUABEAAAABAAAAAAATABEAAAABAAAAAAASABEAAAABAAAAAAARABEAAAABAAAAAAARABIAAAABAAAAAAAQABIAAAABAAAAAAAQABMAAAABAAAAAAAPABMAAAABAAAAAAAOABMAAAABAAAAAAACABMAAAABAAAAAAADABMAAAABAAAAAAAEABMAAAABAAAAAAAFABMAAAABAAAAAAAGABMAAAABAAAAAAACAA4AAAABAAAAAAAKAA4AAAACAAEAAAAGABAAAAACAAAAAAAGABEAAAACAAAAAAAHABAAAAACAAAAAAAHABEAAAACAAAAAAAIABAAAAACAAAAAAAIABEAAAACAAAAAAAJABAAAAACAAAAAAAJABEAAAACAAAAAAAKABAAAAACAAAAAAAKABEAAAACAAAAAAALABAAAAACAAAAAAALABEAAAACAAAAAAAMABAAAAACAAAAAAAMABEAAAACAAAAAAANABAAAAACAAAAAAANABEAAAACAAAAAAAHABIAAAACAAAAAAAHABMAAAACAAAAAAAIABIAAAACAAAAAAAIABMAAAACAAAAAAAJABIAAAACAAAAAAAJABMAAAACAAAAAAAKABIAAAACAAAAAAAKABMAAAACAAAAAAALABIAAAACAAAAAAALABMAAAACAAAAAAAMABIAAAACAAAAAAAMABMAAAACAAAAAAANABIAAAACAAAAAAANABMAAAACAAAAAAA=")
+tile_set = ExtResource("3_a8i8x")
+navigation_enabled = false
+script = ExtResource("4_hewet")
+
+[node name="player" type="Node2D" parent="rmA"]
+position = Vector2(50, 145)
+script = ExtResource("5_wgbo0")
+
+[node name="spr" type="Sprite2D" parent="rmA/player"]
+texture = ExtResource("6_r3ypo")
+hframes = 10
+vframes = 10
+frame = 11
+script = ExtResource("7_mhr6p")
+sheet = ExtResource("8_15guo")
+frames = PackedInt32Array(11)
+
+[node name="mover" type="Node2D" parent="rmA/player"]
+script = ExtResource("9_i66e6")
+
+[node name="solidcast" type="ShapeCast2D" parent="rmA/player/mover"]
+shape = SubResource("RectangleShape2D_jjlya")
+target_position = Vector2(0, 0)
