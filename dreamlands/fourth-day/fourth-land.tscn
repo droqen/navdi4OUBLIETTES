@@ -10,7 +10,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_d1try"]
 
 [node name="Fourth-land" type="Node2D"]
-self_modulate = Color(1, 0.278121, -0.219909, 1)
+self_modulate = Color(1, 0.0113865, 0.021878, 1)
 script = ExtResource("1_icrs7")
 autolinking = true
 autosnapping = true

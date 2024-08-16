@@ -1,15 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddcpe6s55fgss"]
+[gd_scene load_steps=8 format=3 uid="uid://ddcpe6s55fgss"]
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://clkewja1u2kwe" path="res://icon.png" id="2_wdlrg"]
+[ext_resource type="Script" path="res://dreamlands/seeing-like-an-industry/^play-seeing.gd" id="3_0tamt"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
-[ext_resource type="Resource" uid="uid://cke2c63ud5l4t" path="res://dreamlands/fourth-day/cart.tres" id="3_w1via"]
+[ext_resource type="Script" path="res://navdi4/main/navdicart.gd" id="4_htic2"]
+[ext_resource type="Texture2D" uid="uid://0d43m6nn61by" path="res://dreamlands/seeing-like-an-industry/seeing.png" id="5_5yvfm"]
 
-[node name="[[ dawn of the fourth day ]]" type="Node2D"]
+[sub_resource type="Resource" id="Resource_mknfg"]
+script = ExtResource("4_htic2")
+name = "SEEING LIKE AN INDUSTRY"
+play_script = ExtResource("3_0tamt")
+game_size = Vector2i(360, 100)
+view_scale = Vector2i(4, 4)
+bg_transparent = false
+bg_colour = Color(0.41769, 0.502328, 0.570071, 1)
+pixelated = true
+prepend_date = true
+birth_year = 2024
+birth_month = "August"
+birth_day = 16
+sheet_src = ExtResource("5_5yvfm")
+tile_size = Vector2i(10, 10)
+icon_idx = 9
+
+[node name="[[ SEEING LIKE AN INDUSTRY ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_w1via")
+cart = SubResource("Resource_mknfg")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
