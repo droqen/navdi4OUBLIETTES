@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_57vct"]
 [ext_resource type="TileSet" uid="uid://7fk04vmilro8" path="res://dreamlands/seeing-like-an-industry/seeing_tiles.tres" id="3_2tv3q"]
 [ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_g0701"]
-[ext_resource type="PackedScene" uid="uid://drvm83fixmt5q" path="res://dreamlands/fourth-day/you.tscn" id="5_vwo5a"]
+[ext_resource type="PackedScene" uid="uid://drvm83fixmt5q" path="res://dreamlands/seeing-like-an-industry/you.tscn" id="5_vwo5a"]
 [ext_resource type="Script" path="res://dreamlands/seeing-like-an-industry/ending_oops.gd" id="7_gpyvo"]
 [ext_resource type="Script" path="res://dreamlands/seeing-like-an-industry/ending_left.gd" id="7_r4xdu"]
 [ext_resource type="PackedScene" uid="uid://d4i7tmg25t0fd" path="res://dreamlands/seeing-like-an-industry/them.tscn" id="10_0p8wb"]
@@ -12,7 +12,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_ihrse"]
 
 [node name="IndustryLand" type="Node2D"]
-self_modulate = Color(1, 0.166815, -0.190012, 1)
+self_modulate = Color(1, 0.340258, 0.276807, 1)
 script = ExtResource("1_h3hrq")
 autolinking = true
 autosnapping = true
