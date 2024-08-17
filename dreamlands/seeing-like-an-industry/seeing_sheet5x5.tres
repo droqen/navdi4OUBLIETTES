@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Sheet" load_steps=3 format=3 uid="uid://5u054hymxike"]
+
+[ext_resource type="Script" path="res://navdi4/main/navdisheet.gd" id="1_3i01n"]
+[ext_resource type="Texture2D" uid="uid://0d43m6nn61by" path="res://dreamlands/seeing-like-an-industry/seeing.png" id="2_skslr"]
+
+[resource]
+script = ExtResource("1_3i01n")
+texture = ExtResource("2_skslr")
+hframes = 20
+vframes = 20
+defaultframe = 0
