@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="2024, August 16th ~ SEEING LIKE AN INDUSTRY"
+config/name="2024, August 16th ~ dawn of the fourth day"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(0.41769, 0.502328, 0.570071, 1)
+boot_splash/bg_color=Color(0.854902, 0.807843, 0.847059, 1)
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
@@ -25,10 +25,10 @@ Sav="*res://navdi4/main/navdisav.gd"
 
 [display]
 
-window/size/viewport_width=360
-window/size/viewport_height=100
-window/size/window_width_override=1440
-window/size/window_height_override=400
+window/size/viewport_width=220
+window/size/viewport_height=200
+window/size/window_width_override=660
+window/size/window_height_override=600
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 
@@ -82,6 +82,6 @@ plant={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.41769, 0.502328, 0.570071, 1)
+environment/defaults/default_clear_color=Color(0.854902, 0.807843, 0.847059, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

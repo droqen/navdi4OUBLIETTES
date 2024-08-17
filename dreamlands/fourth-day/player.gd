@@ -37,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 		if vy > 0:
 			vy = move_toward(vy, 1.5, 0.02) # reduced gravity
 		else:
-			vy = move_toward(vy, 1.5, 0.03) # *mildly* reduced gravity
+			vy = move_toward(vy, 1.5, 0.02) # *mildly* reduced gravity
 	else:
 		vy = move_toward(vy, 1.5, 0.04)
 	if bufs.try_eat([JUMPBUF, ONWALLBUF]):
