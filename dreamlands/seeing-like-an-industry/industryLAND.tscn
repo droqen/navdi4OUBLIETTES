@@ -10,10 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://d4i7tmg25t0fd" path="res://dreamlands/seeing-like-an-industry/them.tscn" id="10_0p8wb"]
 
 [node name="IndustryLand" type="Node2D"]
-self_modulate = Color(1, -0.0188887, -0.155569, 1)
+self_modulate = Color(1, 1, 1, 0.5)
 script = ExtResource("1_h3hrq")
-autolinking = true
-autosnapping = true
 
 [node name="rmA" type="Node2D" parent="."]
 texture_filter = 1
