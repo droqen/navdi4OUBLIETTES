@@ -32,10 +32,10 @@ func _physics_process(_delta: float) -> void:
 	if player:
 		if player.position.x < 0 + dreamroom.edge_margin:
 			travel_dirid = 2
-		elif player.position.y < 0 + dreamroom.edge_margin:
-			travel_dirid = 1
 		elif player.position.x >= dreamroom.room_size.x - dreamroom.edge_margin:
 			travel_dirid = 0
+		elif player.position.y < 0 + dreamroom.edge_margin:
+			travel_dirid = 1
 		elif player.position.y >= dreamroom.room_size.y - dreamroom.edge_margin:
 			travel_dirid = 3
 	

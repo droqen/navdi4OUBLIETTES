@@ -26,17 +26,18 @@ func _physics_process(_delta: float) -> void:
 		if tunneling_patience <= 0 or not Pin.get_plant_held():
 			var goingtocell = maze.local_to_map(position + Vector2(dpad.x*3,0))
 			if not maze.is_cell_solid(goingtocell):
+				tunneling_start_cell = goingtocell
+			
+			var tunneling_start_pos = maze.map_to_local(tunneling_start_cell)
+			var to_start_pos = tunneling_start_pos - position
+			if abs(to_start_pos.x) < 1:
 				tunneling = false
 				crawling = false; nocrawl_release = true;
-				position.x = maze.map_to_local(goingtocell).x
+				position.x = maze.map_to_local(tunneling_start_cell).x
 				vy = -0.8 # i'm free!
+				#dpad.x = 0
 			else:
-				dpad.x = 2 * sign(tunneling_start_cell.x - maze.local_to_map(position).x)
-				if dpad.x == 0:
-					tunneling = false
-					crawling = false; nocrawl_release = true;
-					position.x = maze.map_to_local(tunneling_start_cell).x
-					vy = -0.8 # i'm free!
+				dpad.x = 2 * sign(to_start_pos.x)
 		else:
 			tunneling_patience -= 1
 			if tunneling_patience < 30: dpad.x = 0

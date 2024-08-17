@@ -4,5 +4,5 @@ func play(dream:LiveDream) -> void:
 		load(
 			"res://dreamlands/seeing-like-an-industry/industryLAND.tscn"
 		).instantiate(),
-		"rmCrossing3"
+		"rmDenseCityEnd"
 	)

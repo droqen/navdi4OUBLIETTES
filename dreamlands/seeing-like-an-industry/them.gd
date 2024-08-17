@@ -5,6 +5,8 @@ var lastmovedir : Vector2i
 var targetpos : Vector2
 var wait : int = 0
 @export var initialwait : int = 0
+@export var inrma : bool = true
+@export var denseroom : bool = false
 
 func _ready() -> void:
 	wait = initialwait
@@ -53,9 +55,12 @@ func can_move_dir(cell : Vector2i, dir : Vector2i) -> bool:
 	var cell2 : Vector2i = cell + dir
 	
 	# prefer not to go very fast west
-	if dir.x < 0 and cell2.x < randi_range(3,6): return false
+	if inrma and dir.x < 0 and cell2.x < randi_range(3,6): return false
 	
-	var cell2_standable = maze.is_cell_solid(cell2 + Vector2i(0,1))
+	# they refuse to enter the blackness
+	if denseroom and dir.x > 0 and cell2.x > 17: return false
+	
+	var cell2_standable = maze.is_cell_solid(cell2 + Vector2i(0,1)) or maze.get_cell_tid(cell2 + Vector2i(0,1)) == 4
 	if not cell2_standable: return false
 	var cell2_enterable = true
 	if maze.is_cell_solid(cell2): match maze.get_cell_tid(cell2):
@@ -75,5 +80,5 @@ func can_move_dir(cell : Vector2i, dir : Vector2i) -> bool:
 			if cell2_ladder: return true # good
 			else: return false # climbing down to cell2 not allowed
 	
-	prints("[them.gd]","can_move_dir","illegal case","at cell,dir:",cell,dir)
-	return false
+	#prints("[them.gd]","can_move_dir","illegal case","at cell,dir:",cell,dir)
+	#return false
