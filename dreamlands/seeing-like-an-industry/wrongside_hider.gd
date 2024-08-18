@@ -2,23 +2,26 @@ extends Node2D
 
 var player : Node2D = null
 
-var targetpos_x : float = 0
+@export var awaken_on_left : bool = false
 
 func _enter_tree() -> void:
 	show()
 	player = NavdiSolePlayer.GetPlayer(self)
 	if player: update_hide()
-	position.x = targetpos_x
 
 func _physics_process(delta: float) -> void:
 	if not player: player = NavdiSolePlayer.GetPlayer(self)
-	if player: update_hide()
+	if player and is_instance_valid(player): update_hide()
 
 func update_hide() -> void:
-	if player.position.x <= 175:
-		targetpos_x = 180
-	elif player.position.x >= 185:
-		targetpos_x = -180
+	if awaken_on_left:
+		position.x = -180
+		if player and is_instance_valid(player):
+			if player.position.x <= 175:
+				player.queue_free()
+				LiveDream.GetDream(self).windfish_lucidwake.emit("A")
 	else:
-		targetpos_x = 0
-	position.x = lerp(position.x, targetpos_x, 0.1)
+		if player.position.x < 178:
+			position.x = 180
+		else:
+			position.x = -180
