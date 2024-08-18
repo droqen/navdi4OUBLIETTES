@@ -1,7 +1,7 @@
 extends NavdiSolePlayer
 enum {FLORBUF,JUMPBUF,ONWALLBUF,WALLJUMPEDBUF}
 var bufs = Bufs.Make(self).setup_bufons(
-	[FLORBUF,4,JUMPBUF,7,ONWALLBUF,4,WALLJUMPEDBUF,10]
+	[FLORBUF,5,JUMPBUF,7,ONWALLBUF,4,WALLJUMPEDBUF,10]
 )
 var onwall : bool
 var lastonwalldir : int = 0

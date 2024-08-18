@@ -17,5 +17,6 @@ func _physics_process(_delta: float) -> void:
 			):
 				player.queue_free()
 				player = null
-				await get_tree().create_timer(2.00).timeout
+				if not but_actually_right:
+					await get_tree().create_timer(2.00).timeout
 				LiveDream.GetDream(self).windfish_lucidwake.emit(ending_string)

@@ -19,6 +19,7 @@ func update_hide() -> void:
 		if player and is_instance_valid(player):
 			if player.position.x <= 175:
 				player.queue_free()
+				await get_tree().create_timer(1.0).timeout
 				LiveDream.GetDream(self).windfish_lucidwake.emit("A")
 	else:
 		if player.position.x < 178:

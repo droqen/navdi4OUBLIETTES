@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://clkewja1u2kwe" path="res://icon.png" id="2_wdlrg"]
-[ext_resource type="Resource" uid="uid://720qtwhh7lgf" path="res://dreamlands/seeing-like-an-industry/cart2.tres" id="3_cjimm"]
+[ext_resource type="Resource" uid="uid://d35gfjtlmgcaf" path="res://dreamlands/seeing-like-an-industry/cart.tres" id="3_twonu"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
-[node name="[[ BLIND LIKE SOMETHING ELSE ]]" type="Node2D"]
+[node name="[[ SEEING LIKE AN INDUSTRY ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_cjimm")
+cart = ExtResource("3_twonu")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
