@@ -125,6 +125,7 @@ denseroom = true
 [node name="ending_right" type="Node" parent="rmDenseCityEnd"]
 script = ExtResource("7_r4xdu")
 but_actually_right = true
+ending_string = "B"
 
 [node name="maze_foreground" type="TileMapLayer" parent="rmDenseCityEnd"]
 z_index = 10

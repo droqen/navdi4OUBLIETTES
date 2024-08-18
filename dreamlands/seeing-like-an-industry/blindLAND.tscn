@@ -15,7 +15,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_mp2pu"]
 
 [node name="BlindLand" type="Node2D"]
-self_modulate = Color(1, 0.999992, 1, 0.500001)
+self_modulate = Color(1, 1, 1, 0.5)
 script = ExtResource("1_u2vhu")
 labelsettings = SubResource("LabelSettings_mp2pu")
 

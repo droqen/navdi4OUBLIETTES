@@ -1,6 +1,7 @@
 extends Node
 
 @export var but_actually_right : bool = false
+@export var ending_string : String = "A"
 
 var player
 
@@ -17,4 +18,4 @@ func _physics_process(_delta: float) -> void:
 				player.queue_free()
 				player = null
 				await get_tree().create_timer(2.00).timeout
-				LiveDream.GetDream(self).windfish_awakened.emit()
+				LiveDream.GetDream(self).windfish_lucidwake.emit(ending_string)
