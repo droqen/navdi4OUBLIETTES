@@ -69,6 +69,9 @@ func _ready() -> void:
 			$LiveDream.windfish_awakened.connect(
 				func(): Cat.on_windfish_awakened()
 			)
+			$LiveDream.windfish_lucidwake.connect(
+				func(memory): Cat.on_windfish_lucidwake(memory)
+			)
 		else:
 			print("Cat not found - You do not have access to JS")
 		

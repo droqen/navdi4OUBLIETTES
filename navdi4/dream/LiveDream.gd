@@ -8,7 +8,7 @@ const SOLE_ROOM_GROUP_NAME : String = "-dCRGN"
 signal sole_player_replaced(prevplayer, newplayer)
 signal player_escaped(code)
 signal windfish_awakened
-signal windfish_lucidwake(code)
+signal windfish_lucidwake(memory)
 
 @export var camera : Camera2D
 
@@ -17,7 +17,7 @@ var dreamroom : DreamRoom
 
 func _ready():
 	windfish_awakened.connect(func():prints(self,". . . WIND FISH AWAKENED . . ."))
-	windfish_lucidwake.connect(func(code):prints(self,". . . WIND FISH AWAKENED RECALLING . . .", code, ". . ."))
+	windfish_lucidwake.connect(func(memory):prints(self,". . . WIND FISH AWAKENED LUCIDLY RECALLING . . .", memory, ". . ."))
 	add_to_group(SOLE_LIVE_DREAM_NAME)
 	sole_player_replaced.connect(func(prevplayer, newplayer):
 		if prevplayer: prevplayer.escaped.disconnect(self.player_escaped.emit)
