@@ -3,6 +3,7 @@ extends NavdiSolePlayer
 enum { INAIRBUF, }
 var bufs = Bufs.Make(self).setup_bufons([INAIRBUF,15,])
 
+var auto_right_dpad : int = 35
 var initialized : bool = false
 var maze : Maze
 var my_cell : Vector2i
@@ -27,6 +28,9 @@ func _physics_process(_delta: float) -> void:
 		if Pin.get_jump_hit() and tomove == Vector2.ZERO: bufs.on(INAIRBUF)
 		# now accepting input.
 		var dx : int = Pin.get_dpad().x
+		if auto_right_dpad > 0:
+			if dx == 0: auto_right_dpad -= 1; dx = 1;
+			else: auto_right_dpad = 0
 		var dy : int = (1 if Pin.get_plant_held() else 0) - (1 if Pin.get_jump_held() else 0)
 		if tomove.y == 0 and dx < 0 and (dy == 0 or !can_move_dir(my_cell,Vector2i(0,dy))) and !can_move_dir(my_cell,Vector2i(-1,0)):
 			tomove.x -= 5

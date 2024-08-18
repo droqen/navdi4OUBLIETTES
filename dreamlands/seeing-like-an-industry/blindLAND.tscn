@@ -73,6 +73,7 @@ inrma = false
 denseroom = true
 
 [node name="you_small" parent="rmDenseCityStart" instance=ExtResource("6_xm7e7")]
+position = Vector2(179, 85)
 
 [node name="wrongside_hider" type="Node2D" parent="rmDenseCityStart"]
 visible = false
