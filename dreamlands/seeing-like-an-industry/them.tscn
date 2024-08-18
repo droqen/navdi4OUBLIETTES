@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4i7tmg25t0fd"]
+
+[ext_resource type="Script" path="res://dreamlands/seeing-like-an-industry/them.gd" id="1_tvmos"]
+[ext_resource type="Texture2D" uid="uid://0d43m6nn61by" path="res://dreamlands/seeing-like-an-industry/seeing.png" id="2_3nfmi"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_rrd3j"]
+[ext_resource type="Resource" uid="uid://5u054hymxike" path="res://dreamlands/seeing-like-an-industry/seeing_sheet5x5.tres" id="4_7mp1c"]
+
+[node name="them" type="Node2D"]
+position = Vector2(125, 75)
+script = ExtResource("1_tvmos")
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_3nfmi")
+centered = false
+hframes = 20
+vframes = 20
+frame = 35
+script = ExtResource("3_rrd3j")
+sheet = ExtResource("4_7mp1c")
+frames = PackedInt32Array(34, 35, 36, 37)
+ani_period = 5
+ani_index = 1
