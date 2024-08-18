@@ -1,6 +1,7 @@
 extends Node2D
 class_name NavdiSolePlayer
 
+signal travelled_dir(travel_dir)
 signal escaped(code)
 
 const SOLE_PLAYER_GROUP_NAME = '__nsp'

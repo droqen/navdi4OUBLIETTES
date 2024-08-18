@@ -8,6 +8,7 @@ const SOLE_ROOM_GROUP_NAME : String = "-dCRGN"
 signal sole_player_replaced(prevplayer, newplayer)
 signal player_escaped(code)
 signal windfish_awakened
+signal windfish_lucidwake(code)
 
 @export var camera : Camera2D
 
@@ -16,6 +17,7 @@ var dreamroom : DreamRoom
 
 func _ready():
 	windfish_awakened.connect(func():prints(self,". . . WIND FISH AWAKENED . . ."))
+	windfish_lucidwake.connect(func(code):prints(self,". . . WIND FISH AWAKENED RECALLING . . .", code, ". . ."))
 	add_to_group(SOLE_LIVE_DREAM_NAME)
 	sole_player_replaced.connect(func(prevplayer, newplayer):
 		if prevplayer: prevplayer.escaped.disconnect(self.player_escaped.emit)
@@ -71,6 +73,13 @@ func _physics_process(_delta: float) -> void:
 				1: player.position.y = dreamroom.room_size.y - 1 - dreamroom.edge_margin;
 				2: player.position.x = dreamroom.room_size.x - 1 - dreamroom.edge_margin;
 				3: player.position.y = dreamroom.edge_margin;
+			var travel_dir : Vector2i
+			match travel_dirid:
+				0: travel_dir = Vector2i( 1, 0)
+				1: travel_dir = Vector2i( 0,-1)
+				2: travel_dir = Vector2i(-1, 0)
+				3: travel_dir = Vector2i( 0, 1)
+			player.travelled_dir.emit(travel_dir)
 
 func reload_dreamroom():
 	var current_roomname : String = ''

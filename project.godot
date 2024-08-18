@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="2024, August 16th ~ SEEING LIKE AN INDUSTRY"
+config/name="2024, August 17th ~ BLIND LIKE SOMETHING ELSE"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.41769, 0.502328, 0.570071, 1)
