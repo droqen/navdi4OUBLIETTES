@@ -1,0 +1,563 @@
+[gd_scene load_steps=15 format=4 uid="uid://jinf6u35c1jj"]
+
+[ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_k0n5m"]
+[ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_xxbqu"]
+[ext_resource type="TileSet" uid="uid://brvh2rc382ts0" path="res://dreamlands/fires-burning-in-december/december_tiles.tres" id="3_lx2sa"]
+[ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="3_u6v06"]
+[ext_resource type="LabelSettings" uid="uid://drd0crmsoc6wr" path="res://dreamlands/fires-burning-in-december/caption_ls.tres" id="5_autiv"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="6_2et3t"]
+[ext_resource type="Script" path="res://dreamlands/fires-burning-in-december/captionlabel.gd" id="6_dgvys"]
+[ext_resource type="Script" path="res://dreamlands/fires-burning-in-december/player.gd" id="6_hah2o"]
+[ext_resource type="PackedScene" uid="uid://boukgxumh4bdb" path="res://dreamlands/fires-burning-in-december/december_maze.tscn" id="7_n5i2n"]
+[ext_resource type="Texture2D" uid="uid://cp3i6n6q4q6ul" path="res://dreamlands/fires-burning-in-december/december.png" id="7_ux5ip"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="8_fivjq"]
+[ext_resource type="Resource" uid="uid://ckmh7oxq5w5bq" path="res://dreamlands/fires-burning-in-december/december_sheet.tres" id="9_0q77q"]
+[ext_resource type="PackedScene" uid="uid://b0cua2tewx1q3" path="res://dreamlands/fires-burning-in-december/january_maze.tscn" id="13_qvd5n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7bog"]
+size = Vector2(6, 8)
+
+[node name="Decemberland" type="Node2D"]
+self_modulate = Color(1, 0.15265, -0.185514, 1)
+script = ExtResource("1_k0n5m")
+autolinking = true
+autosnapping = true
+
+[node name="rmWest" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(-97, 25)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmA", "", "", "rmWest2"])
+
+[node name="Maze" type="TileMapLayer" parent="rmWest"]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAAAAAcAAAAAAAEAAAAAAAgAAAAAAAEAAAAAAAkAAAABAAEAAAAAAAoAAAABAAEAAAAAAAsAAAAAAAEAAAAAAAwAAAADAAEAAAAAAA0AAAADAAEAAAAAAA4AAAADAAEAAAABAAAAAAABAAEAAAABAAEAAAABAAEAAAABAAIAAAABAAEAAAABAAMAAAADAAEAAAABAAQAAAAAAAEAAAABAAUAAAADAAEAAAABAAYAAAABAAEAAAABAAcAAAACAAEAAAABAAgAAAACAAEAAAABAAkAAAACAAEAAAABAAoAAAAAAAEAAAABAAsAAAABAAEAAAABAAwAAAADAAEAAAABAA0AAAADAAEAAAABAA4AAAADAAEAAAACAAAAAAABAAEAAAACAAEAAAABAAEAAAACAAIAAAABAAEAAAACAAMAAAADAAEAAAACAAQAAAADAAEAAAACAAUAAAADAAEAAAACAAYAAAABAAEAAAACAAcAAAACAAEAAAACAAgAAAACAAEAAAACAAkAAAACAAEAAAACAAoAAAACAAEAAAACAAsAAAACAAEAAAACAAwAAAADAAEAAAACAA0AAAADAAEAAAACAA4AAAADAAEAAAADAAAAAAAAAAEAAAADAAEAAAABAAEAAAADAAIAAAACAAEAAAADAAMAAAADAAEAAAADAAQAAAABAAEAAAADAAUAAAADAAEAAAADAAYAAAABAAEAAAADAAcAAAAAAAEAAAADAAgAAAACAAEAAAADAAkAAAACAAEAAAADAAoAAAACAAEAAAADAAsAAAACAAEAAAADAAwAAAADAAEAAAADAA0AAAADAAEAAAADAA4AAAADAAEAAAAEAAAAAAABAAEAAAAEAAEAAAACAAEAAAAEAAIAAAACAAEAAAAEAAMAAAADAAEAAAAEAAQAAAADAAEAAAAEAAUAAAACAAEAAAAEAAYAAAABAAEAAAAEAAcAAAABAAEAAAAEAAgAAAABAAEAAAAEAAkAAAACAAEAAAAEAAoAAAACAAEAAAAEAAsAAAACAAEAAAAEAAwAAAADAAEAAAAEAA0AAAADAAEAAAAEAA4AAAADAAEAAAAFAAAAAAABAAEAAAAFAAEAAAADAAEAAAAFAAIAAAADAAEAAAAFAAMAAAADAAEAAAAFAAQAAAADAAEAAAAFAAUAAAACAAEAAAAFAAYAAAACAAEAAAAFAAcAAAABAAEAAAAFAAgAAAABAAEAAAAFAAkAAAACAAEAAAAFAAoAAAACAAEAAAAFAAsAAAACAAEAAAAFAAwAAAADAAEAAAAFAA0AAAADAAEAAAAFAA4AAAADAAEAAAAGAAAAAAACAAEAAAAGAAEAAAADAAEAAAAGAAIAAAADAAEAAAAGAAMAAAADAAEAAAAGAAQAAAACAAEAAAAGAAUAAAACAAEAAAAGAAYAAAACAAEAAAAGAAcAAAABAAEAAAAGAAgAAAABAAEAAAAGAAkAAAABAAEAAAAGAAoAAAACAAEAAAAGAAsAAAACAAEAAAAGAAwAAAADAAEAAAAGAA0AAAADAAEAAAAGAA4AAAADAAEAAAAHAAAAAAABAAEAAAAHAAEAAAADAAEAAAAHAAIAAAADAAEAAAAHAAMAAAADAAEAAAAHAAQAAAABAAEAAAAHAAUAAAABAAEAAAAHAAYAAAABAAEAAAAHAAcAAAABAAEAAAAHAAgAAAABAAEAAAAHAAkAAAABAAEAAAAHAAoAAAABAAEAAAAHAAsAAAACAAEAAAAHAAwAAAADAAEAAAAHAA0AAAADAAEAAAAHAA4AAAADAAEAAAAIAAAAAAABAAEAAAAIAAEAAAABAAEAAAAIAAIAAAABAAEAAAAIAAMAAAABAAEAAAAIAAQAAAAAAAEAAAAIAAUAAAAAAAEAAAAIAAYAAAABAAEAAAAIAAcAAAABAAEAAAAIAAgAAAABAAEAAAAIAAkAAAABAAEAAAAIAAoAAAACAAEAAAAIAAsAAAACAAEAAAAIAAwAAAADAAEAAAAIAA0AAAADAAEAAAAIAA4AAAADAAEAAAAJAAAAAAABAAEAAAAJAAEAAAABAAEAAAAJAAIAAAAAAAEAAAAJAAMAAAAAAAEAAAAJAAQAAAAAAAEAAAAJAAUAAAABAAEAAAAJAAYAAAABAAEAAAAJAAcAAAABAAEAAAAJAAgAAAAAAAEAAAAJAAkAAAAAAAEAAAAJAAoAAAACAAEAAAAJAAsAAAAAAAEAAAAJAAwAAAADAAEAAAAJAA0AAAADAAEAAAAJAA4AAAADAAEAAAA=")
+tile_set = ExtResource("3_lx2sa")
+navigation_enabled = false
+script = ExtResource("3_u6v06")
+
+[node name="Label" type="Label" parent="rmWest"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "Invalid access of index '13' on a base object of type: 'Array'."
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="rmWest2" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(-97, 193)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmDecemberAtLast", "rmWest", "", ""])
+
+[node name="Maze" type="TileMapLayer" parent="rmWest2"]
+tile_map_data = PackedByteArray("AAAAAAAAAAADAAEAAAAAAAEAAAADAAEAAAAAAAIAAAADAAEAAAAAAAMAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAgAAAAAAAEAAAAAAAkAAAAAAAEAAAAAAAoAAAAAAAEAAAAAAAsAAAACAAEAAAAAAAwAAAACAAEAAAAAAA0AAAACAAEAAAAAAA4AAAAAAAEAAAABAAAAAAADAAEAAAABAAEAAAADAAEAAAABAAIAAAADAAEAAAABAAMAAAAAAAEAAAABAAQAAAAAAAEAAAABAAUAAAAAAAEAAAABAAYAAAAAAAEAAAABAAcAAAAAAAEAAAABAAgAAAAAAAEAAAABAAkAAAAAAAEAAAABAAoAAAAAAAEAAAABAAsAAAAAAAEAAAABAAwAAAAAAAEAAAABAA0AAAAAAAEAAAABAA4AAAAAAAEAAAACAAAAAAADAAEAAAACAAEAAAADAAEAAAACAAIAAAADAAEAAAACAAMAAAAAAAEAAAACAAQAAAAAAAEAAAACAAUAAAAAAAEAAAACAAYAAAADAAEAAAACAAcAAAAAAAEAAAACAAgAAAAAAAEAAAACAAkAAAADAAEAAAACAAoAAAAAAAEAAAACAAsAAAADAAEAAAACAAwAAAADAAEAAAACAA0AAAADAAEAAAACAA4AAAAAAAEAAAADAAAAAAADAAEAAAADAAEAAAADAAEAAAADAAIAAAADAAEAAAADAAMAAAAAAAEAAAADAAQAAAADAAEAAAADAAUAAAADAAEAAAADAAYAAAADAAEAAAADAAcAAAADAAEAAAADAAgAAAADAAEAAAADAAkAAAADAAEAAAADAAoAAAAAAAEAAAADAAsAAAAAAAEAAAADAAwAAAADAAEAAAADAA0AAAADAAEAAAADAA4AAAAAAAEAAAAEAAAAAAADAAEAAAAEAAEAAAADAAEAAAAEAAIAAAADAAEAAAAEAAMAAAACAAEAAAAEAAQAAAACAAEAAAAEAAUAAAACAAEAAAAEAAYAAAACAAEAAAAEAAcAAAACAAEAAAAEAAgAAAACAAEAAAAEAAkAAAACAAEAAAAEAAoAAAACAAEAAAAEAAsAAAACAAEAAAAEAAwAAAACAAEAAAAEAA0AAAACAAEAAAAEAA4AAAACAAEAAAAFAAAAAAADAAEAAAAFAAEAAAADAAEAAAAFAAIAAAADAAEAAAAFAAMAAAAAAAEAAAAFAAQAAAADAAEAAAAFAAUAAAADAAEAAAAFAAYAAAADAAEAAAAFAAcAAAADAAEAAAAFAAgAAAACAAEAAAAFAAkAAAAAAAEAAAAFAAoAAAAAAAEAAAAFAAsAAAAAAAEAAAAFAAwAAAAAAAEAAAAFAA0AAAADAAEAAAAFAA4AAAAAAAEAAAAGAAAAAAADAAEAAAAGAAEAAAADAAEAAAAGAAIAAAADAAEAAAAGAAMAAAAAAAEAAAAGAAQAAAADAAEAAAAGAAUAAAADAAEAAAAGAAYAAAADAAEAAAAGAAcAAAAAAAEAAAAGAAgAAAAAAAEAAAAGAAkAAAAAAAEAAAAGAAoAAAAAAAEAAAAGAAsAAAADAAEAAAAGAAwAAAADAAEAAAAGAA0AAAADAAEAAAAGAA4AAAAAAAEAAAAHAAAAAAADAAEAAAAHAAEAAAADAAEAAAAHAAIAAAADAAEAAAAHAAMAAAAAAAEAAAAHAAQAAAAAAAEAAAAHAAUAAAAAAAEAAAAHAAYAAAAAAAEAAAAHAAcAAAAAAAEAAAAHAAgAAAAAAAEAAAAHAAkAAAAAAAEAAAAHAAoAAAAAAAEAAAAHAAsAAAADAAEAAAAHAAwAAAADAAEAAAAHAA0AAAADAAEAAAAHAA4AAAAAAAEAAAAIAAAAAAADAAEAAAAIAAEAAAADAAEAAAAIAAIAAAADAAEAAAAIAAMAAAAAAAEAAAAIAAQAAAAAAAEAAAAIAAUAAAAAAAEAAAAIAAYAAAAAAAEAAAAIAAcAAAAAAAEAAAAIAAgAAAAAAAEAAAAIAAkAAAAAAAEAAAAIAAoAAAADAAEAAAAIAAsAAAADAAEAAAAIAAwAAAADAAEAAAAIAA0AAAADAAEAAAAIAA4AAAAAAAEAAAAJAAAAAAADAAEAAAAJAAEAAAADAAEAAAAJAAIAAAADAAEAAAAJAAMAAAAAAAEAAAAJAAQAAAAAAAEAAAAJAAUAAAAAAAEAAAAJAAYAAAAAAAEAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAEAAAAJAAkAAAAAAAEAAAAJAAoAAAAAAAEAAAAJAAsAAAADAAEAAAAJAAwAAAADAAEAAAAJAA0AAAADAAEAAAAJAA4AAAAAAAEAAAA=")
+tile_set = ExtResource("3_lx2sa")
+navigation_enabled = false
+script = ExtResource("3_u6v06")
+
+[node name="Label" type="Label" parent="rmWest2"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "Invalid access of index '13' on a base object of type: 'Array'."
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(26, 25)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmMonth", "", "rmWest", "rmDecemberAtLast"])
+
+[node name="DecemberMaze" parent="rmA" instance=ExtResource("7_n5i2n")]
+
+[node name="Label" type="Label" parent="rmA"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "it's not december
+and the fires
+    aren't burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmA"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmA/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmA/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmA/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmDecemberAtLast" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(26, 194)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["", "rmA", "rmWest2", ""])
+
+[node name="DecemberMaze" parent="rmDecemberAtLast" instance=ExtResource("7_n5i2n")]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAABAAAAAAAAAAgAAAABAAAAAAAAAAkAAAACAAEAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAABAAAAAAABAAkAAAABAAEAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAABAAAAAAACAAkAAAABAAEAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAABAAAAAAADAAkAAAABAAEAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAABAAAAAAAEAAkAAAABAAEAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAABAAAAAAAFAAkAAAABAAEAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAABAAAAAAAGAAgAAAABAAEAAAAGAAkAAAAAAAEAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAABAAAAAAAHAAcAAAABAAAAAAAHAAgAAAABAAEAAAAHAAkAAAACAAEAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAADAAAAAAAIAAYAAAABAAAAAAAIAAcAAAABAAEAAAAIAAgAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAkAAAABAAEAAAAJAAgAAAABAAEAAAAJAAcAAAABAAEAAAAJAAYAAAABAAAAAAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAAoAAAAAAAEAAAAAAAsAAAADAAEAAAAAAAwAAAADAAEAAAAAAA0AAAADAAEAAAAAAA4AAAAAAAEAAAABAA4AAAAAAAEAAAACAA4AAAAAAAEAAAADAA4AAAAAAAEAAAAEAA4AAAAAAAEAAAAFAA4AAAADAAEAAAAGAA4AAAABAAEAAAAHAA4AAAAAAAEAAAAIAA4AAAABAAEAAAAIAA0AAAADAAEAAAAJAA0AAAADAAEAAAAJAAwAAAADAAEAAAAJAAsAAAACAAEAAAAJAAoAAAABAAEAAAAJAA4AAAADAAEAAAABAAoAAAACAAEAAAABAAsAAAADAAEAAAABAAwAAAADAAEAAAABAA0AAAADAAEAAAACAAoAAAACAAEAAAACAAsAAAADAAEAAAACAAwAAAADAAEAAAACAA0AAAADAAEAAAADAAoAAAAAAAEAAAADAAsAAAADAAEAAAADAAwAAAADAAEAAAADAA0AAAADAAEAAAAEAAoAAAABAAEAAAAEAAsAAAADAAEAAAAEAAwAAAAAAAEAAAAEAA0AAAADAAEAAAAFAAoAAAACAAEAAAAFAAsAAAADAAEAAAAFAAwAAAADAAEAAAAFAA0AAAADAAEAAAAGAAoAAAAAAAEAAAAGAAsAAAACAAEAAAAGAAwAAAACAAEAAAAGAA0AAAABAAEAAAAHAAoAAAACAAEAAAAHAAsAAAACAAEAAAAHAAwAAAADAAEAAAAHAA0AAAADAAEAAAAIAAoAAAABAAEAAAAIAAsAAAABAAEAAAAIAAwAAAAAAAEAAAA=")
+
+[node name="Label" type="Label" parent="rmDecemberAtLast"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "it's december
+and the fires
+    are burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmDecemberAtLast"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmDecemberAtLast/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmDecemberAtLast/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmDecemberAtLast/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmMonth" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(140, 25)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmMonth2", "", "rmA", ""])
+
+[node name="DecemberMaze" parent="rmMonth" instance=ExtResource("7_n5i2n")]
+
+[node name="Label" type="Label" parent="rmMonth"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "it's not november
+and the fires
+    aren't burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmMonth"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmMonth/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmMonth/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmMonth/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmMonth2" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(254, 27)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmMonth3", "", "rmMonth", ""])
+
+[node name="DecemberMaze" parent="rmMonth2" instance=ExtResource("7_n5i2n")]
+
+[node name="Label" type="Label" parent="rmMonth2"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "it's not october
+and the fires
+    aren't burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmMonth2"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmMonth2/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmMonth2/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmMonth2/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmMonth3" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(368, 26)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmMonth4", "", "rmMonth2", ""])
+
+[node name="DecemberMaze" parent="rmMonth3" instance=ExtResource("7_n5i2n")]
+
+[node name="Label" type="Label" parent="rmMonth3"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "it's not september
+and the fires
+    aren't burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmMonth3"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmMonth3/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmMonth3/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmMonth3/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmMonth4" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(483, 26)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmMonth5", "", "rmMonth3", ""])
+
+[node name="DecemberMaze" parent="rmMonth4" instance=ExtResource("7_n5i2n")]
+
+[node name="Label" type="Label" parent="rmMonth4"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "it's not juyl
+and the fires
+    aren't burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmMonth4"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmMonth4/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmMonth4/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmMonth4/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmMonth5" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(600, 29)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmMonth6", "", "rmMonth4", ""])
+
+[node name="DecemberMaze" parent="rmMonth5" instance=ExtResource("7_n5i2n")]
+
+[node name="Label" type="Label" parent="rmMonth5"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "it's not june or
+whatever other
+month there is"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmMonth5"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmMonth5/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmMonth5/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmMonth5/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmMonth6" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(716, 30)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmMonth7", "", "rmMonth5", ""])
+
+[node name="DecemberMaze" parent="rmMonth6" instance=ExtResource("7_n5i2n")]
+
+[node name="Label" type="Label" parent="rmMonth6"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "tbhe fires aren't
+burning
+regardless of when"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmMonth6"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmMonth6/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmMonth6/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmMonth6/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmMonth7" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(828, 30)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmMonth8", "", "rmMonth6", ""])
+
+[node name="JanuaryMaze" parent="rmMonth7" instance=ExtResource("13_qvd5n")]
+
+[node name="Label" type="Label" parent="rmMonth7"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "it's not february
+and the fires
+    aren't burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmMonth7"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmMonth7/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmMonth7/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmMonth7/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmMonth8" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(943, 31)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmMonth9", "", "rmMonth7", ""])
+
+[node name="JanuaryMaze" parent="rmMonth8" instance=ExtResource("13_qvd5n")]
+
+[node name="Label" type="Label" parent="rmMonth8"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "it's not january
+and the fires
+    aren't burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmMonth8"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmMonth8/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmMonth8/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmMonth8/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmMonth9" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(1060, 33)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmMonth10", "", "rmMonth8", ""])
+
+[node name="JanuaryMaze" parent="rmMonth9" instance=ExtResource("13_qvd5n")]
+
+[node name="Label" type="Label" parent="rmMonth9"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "it's not 0
+and the fires
+    aren't burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmMonth9"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmMonth9/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmMonth9/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmMonth9/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmMonth10" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(1183, 33)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["", "", "rmMonth9", ""])
+
+[node name="Maze" type="TileMapLayer" parent="rmMonth10"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAMAAAABAAAAAAABAAAAAAABAAEAAAABAAEAAAABAAIAAAABAAIAAAABAAMAAAABAAMAAAACAAAAAAACAAAAAAACAAEAAAACAAEAAAACAAIAAAACAAIAAAACAAMAAAACAAMAAAAAAAQAAAAAAAQAAAAAAAUAAAAAAAUAAAAAAAYAAAAAAAYAAAAAAAcAAAAAAAcAAAAAAAgAAAAAAAgAAAAAAAkAAAAAAAkAAAABAAQAAAABAAQAAAABAAUAAAABAAUAAAABAAYAAAABAAYAAAABAAcAAAABAAcAAAABAAgAAAABAAgAAAABAAkAAAABAAkAAAACAAQAAAACAAQAAAACAAUAAAACAAUAAAACAAYAAAACAAYAAAACAAcAAAACAAcAAAACAAgAAAACAAgAAAACAAkAAAACAAkAAAADAAAAAAADAAAAAAADAAEAAAADAAEAAAADAAIAAAADAAIAAAADAAMAAAADAAMAAAADAAQAAAADAAQAAAADAAUAAAADAAUAAAADAAYAAAADAAYAAAADAAcAAAADAAcAAAADAAgAAAADAAgAAAADAAkAAAADAAkAAAAEAAAAAAAEAAAAAAAEAAEAAAAEAAEAAAAEAAIAAAAEAAIAAAAEAAMAAAAEAAMAAAAEAAQAAAAEAAQAAAAEAAUAAAAEAAUAAAAEAAYAAAAEAAYAAAAEAAcAAAAEAAcAAAAEAAgAAAAEAAgAAAAEAAkAAAAEAAkAAAAFAAAAAAAFAAAAAAAFAAEAAAAFAAEAAAAFAAIAAAAFAAIAAAAFAAMAAAAFAAMAAAAFAAQAAAAFAAQAAAAFAAUAAAAFAAUAAAAFAAYAAAAFAAYAAAAFAAcAAAAFAAcAAAAFAAgAAAAFAAgAAAAFAAkAAAAFAAkAAAAGAAAAAAAGAAAAAAAGAAEAAAAGAAEAAAAGAAIAAAAGAAIAAAAGAAMAAAAGAAMAAAAGAAQAAAAGAAQAAAAGAAUAAAAGAAUAAAAGAAYAAAAGAAYAAAAGAAcAAAAGAAcAAAAGAAgAAAAGAAgAAAAGAAkAAAAGAAkAAAAHAAAAAAAHAAAAAAAHAAEAAAAHAAEAAAAHAAIAAAAHAAIAAAAHAAMAAAAHAAMAAAAHAAQAAAAHAAQAAAAHAAUAAAAHAAUAAAAHAAYAAAAHAAYAAAAHAAcAAAAHAAcAAAAHAAgAAAAHAAgAAAAHAAkAAAAHAAkAAAAIAAAAAAAIAAAAAAAIAAEAAAAIAAEAAAAIAAIAAAAIAAIAAAAIAAMAAAAIAAMAAAAIAAQAAAAIAAQAAAAIAAUAAAAIAAUAAAAIAAYAAAAIAAYAAAAIAAcAAAAIAAcAAAAIAAgAAAAIAAgAAAAIAAkAAAAIAAkAAAAJAAkAAAAJAAkAAAAJAAgAAAAJAAgAAAAJAAcAAAAJAAcAAAAJAAYAAAAJAAYAAAAJAAUAAAAJAAUAAAAJAAQAAAAJAAQAAAAJAAMAAAAJAAMAAAAJAAIAAAAJAAIAAAAJAAEAAAAJAAEAAAAJAAAAAAAJAAAAAAA=")
+tile_set = ExtResource("3_lx2sa")
+navigation_enabled = false
+script = ExtResource("3_u6v06")
+
+[node name="Label" type="Label" parent="rmMonth10"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "Invalid access of index '-1' on a base object of type: 'Array'."
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmMonth10"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmMonth10/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmMonth10/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmMonth10/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)

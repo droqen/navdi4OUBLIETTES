@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://drd0crmsoc6wr"]
+
+[ext_resource type="FontFile" uid="uid://b23vrkinia56w" path="res://navdi4/fonts/quizardry.ttf" id="1_pip3w"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_pip3w")
+font_color = Color(0.952941, 0.886275, 0.52549, 1)
