@@ -19,7 +19,11 @@ const ICON_LOADING : Texture2D = preload("res://navdi4/editortools/icon_loading.
 func _apply_cart() -> void:
 	if Engine.is_editor_hint():
 		if cart:
-			if cart.birth_year == 0: cart.autofill_birth_today()
+			if cart.diary_written:
+				if cart.birth_year == 0: cart.autofill_birth_today()
+			else:
+				push_error("Write your diary entry for cart %s first!" % name)
+				return;
 			AutomakeSpritesheetStuff.Make(cart.sheet_src, cart.tile_size)
 			_cart = cart
 			_sheet = AutomakeSpritesheetStuff.LastMakeResult_Sheet
@@ -140,3 +144,11 @@ func _physics_process(_delta: float) -> void:
 				DirAccess.make_dir_recursive_absolute("captures/%s"%gif_capture_label)
 				var _gdignore_file = FileAccess.open("captures/.gdignore", FileAccess.WRITE)
 				print("starting.. [%s]" % gif_capture_label)
+
+func _get_configuration_warnings() -> PackedStringArray:
+	if cart == null:
+		return ["No cart inserted!"]
+	elif cart.diary_written == false:
+		return ["Write your diary first!"]
+	return []
+		

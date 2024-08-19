@@ -4,6 +4,8 @@ class_name NavdiCart
 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
+@export var diary_written : bool = false
+@export var diary_keywords : Array[String] = ['','','','']
 @export var name : String = 'unmarked'
 @export var play_script : GDScript
 @export var game_size : Vector2i = Vector2i(180, 200)

@@ -6,6 +6,8 @@
 
 [resource]
 script = ExtResource("2_lq3lo")
+diary_written = true
+diary_keywords = Array[String](["(old, no diary)"])
 name = "BLIND LIKE SOMETHING ELSE"
 play_script = ExtResource("1_1j4ft")
 game_size = Vector2i(360, 100)

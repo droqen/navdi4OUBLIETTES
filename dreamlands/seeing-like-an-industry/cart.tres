@@ -6,6 +6,8 @@
 
 [resource]
 script = ExtResource("2_u48nr")
+diary_written = true
+diary_keywords = Array[String](["(old, no diary)"])
 name = "SEEING LIKE AN INDUSTRY"
 play_script = ExtResource("1_p4602")
 game_size = Vector2i(360, 100)

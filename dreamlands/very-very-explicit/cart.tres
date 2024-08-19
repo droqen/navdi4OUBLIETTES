@@ -6,6 +6,8 @@
 
 [resource]
 script = ExtResource("1_tcp4t")
+diary_written = false
+diary_keywords = Array[String](["", "", "", ""])
 name = "Very Very Explicit"
 play_script = ExtResource("1_cc2g2")
 game_size = Vector2i(180, 200)
