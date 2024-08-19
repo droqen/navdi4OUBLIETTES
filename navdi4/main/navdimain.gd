@@ -22,7 +22,7 @@ func _apply_cart() -> void:
 			if cart.diary_written:
 				if cart.birth_year == 0: cart.autofill_birth_today()
 			else:
-				push_error("Write your diary entry for cart %s first!" % name)
+				push_error("LOG OUT & WRITE A DIARY ENTRY FIRST. (cart '%s')" % cart.name)
 				return;
 			AutomakeSpritesheetStuff.Make(cart.sheet_src, cart.tile_size)
 			_cart = cart
