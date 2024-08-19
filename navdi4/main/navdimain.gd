@@ -22,6 +22,12 @@ func _apply_cart() -> void:
 			if cart.diary_written:
 				if cart.birth_year == 0: cart.autofill_birth_today()
 			else:
+				icon_preview = ICON_LOADING
+				ProjectSettings.set_setting(
+					"rendering/environment/defaults/default_clear_color",
+					Color(0,0,0)
+				)
+				notify_property_list_changed()
 				push_error("LOG OUT & WRITE A DIARY ENTRY FIRST. (cart '%s')" % cart.name)
 				return;
 			AutomakeSpritesheetStuff.Make(cart.sheet_src, cart.tile_size)

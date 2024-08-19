@@ -134,6 +134,9 @@ func goto_new_land(land: DreamLand, roomname: String, callback_mut_room: Callabl
 	else:
 		push_error("goto_new_land failed; dreamland %s does not have room '%s'" % [land.name, roomname])
 
+static func GetMaze(node_in_tree:Node) -> Maze:
+	var room = GetRoom(node_in_tree)
+	return room.maze if room else null
 static func GetRoom(node_in_tree:Node) -> DreamRoom:
 	return node_in_tree.get_tree().get_first_node_in_group(SOLE_ROOM_GROUP_NAME) as DreamRoom
 static func GetDream(node_in_tree:Node) -> LiveDream:

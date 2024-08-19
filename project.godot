@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="2024, August 18th ~ Very Very Explicit"
+config/name="2024, August 19th ~ fires burning in december"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(0.929412, 0.305882, 0.388235, 1)
+boot_splash/bg_color=Color(0.870588, 0.807843, 0.733333, 1)
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
@@ -25,9 +25,9 @@ Sav="*res://navdi4/main/navdisav.gd"
 
 [display]
 
-window/size/viewport_width=180
+window/size/viewport_width=150
 window/size/viewport_height=200
-window/size/window_width_override=360
+window/size/window_width_override=300
 window/size/window_height_override=400
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
@@ -82,6 +82,6 @@ plant={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.929412, 0.305882, 0.388235, 1)
+environment/defaults/default_clear_color=Color(0.870588, 0.807843, 0.733333, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

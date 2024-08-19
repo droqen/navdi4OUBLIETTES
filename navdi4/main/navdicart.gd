@@ -30,6 +30,8 @@ func autofill_birth_today() -> void:
 @export var tile_size : Vector2i = Vector2i(10, 10)
 @export var icon_idx : int = 9 # default: top right = game icon
 
+@export var exits : Array[String] = ['']
+
 func apply_changes(main : Node2D) -> void:
 		if prepend_date:
 			setting("application/config/name",

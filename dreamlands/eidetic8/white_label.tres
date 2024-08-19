@@ -1,6 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c53ovhffd0vwr"]
-
-[ext_resource type="FontFile" uid="uid://cv58t81duux5y" path="res://navdi4/fonts/droqenserif.ttf" id="1_4jysv"]
-
-[resource]
-font = ExtResource("1_4jysv")
