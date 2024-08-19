@@ -18,14 +18,14 @@
 size = Vector2(6, 8)
 
 [node name="Decemberland" type="Node2D"]
-self_modulate = Color(1, -0.0217324, -0.0791397, 1)
+self_modulate = Color(1, -0.015719, -0.156963, 1)
 script = ExtResource("1_k0n5m")
 autolinking = true
 autosnapping = true
 
 [node name="rmWest" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(-97, 25)
+position = Vector2(-96, 34)
 script = ExtResource("2_xxbqu")
 room_size = Vector2i(100, 150)
 room_links = Array[String](["rmA", "", "", "rmWest2"])
@@ -47,7 +47,7 @@ script = ExtResource("6_dgvys")
 
 [node name="rmWest2" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(-97, 193)
+position = Vector2(-96, 209)
 script = ExtResource("2_xxbqu")
 room_size = Vector2i(100, 150)
 room_links = Array[String](["rmDecemberAtLast", "rmWest", "", ""])
@@ -72,7 +72,7 @@ texture_filter = 1
 position = Vector2(26, 25)
 script = ExtResource("2_xxbqu")
 room_size = Vector2i(100, 150)
-room_links = Array[String](["rmMonth", "", "rmWest", "rmDecemberAtLast"])
+room_links = Array[String](["rmMonth", "", "rmWest", ""])
 
 [node name="DecemberMaze" parent="rmA" instance=ExtResource("7_n5i2n")]
 
@@ -110,13 +110,13 @@ target_position = Vector2(0, 0)
 
 [node name="rmDecemberAtLast" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(26, 194)
+position = Vector2(25, 225)
 script = ExtResource("2_xxbqu")
 room_size = Vector2i(100, 150)
-room_links = Array[String](["", "rmA", "rmWest2", ""])
+room_links = Array[String](["rmNovemberAtLast", "", "rmWest2", ""])
 
 [node name="DecemberMaze" parent="rmDecemberAtLast" instance=ExtResource("7_n5i2n")]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAABAAAAAAAAAAgAAAABAAAAAAAAAAkAAAACAAEAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAABAAAAAAABAAkAAAABAAEAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAABAAAAAAACAAkAAAABAAEAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAABAAAAAAADAAkAAAABAAEAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAABAAAAAAAEAAkAAAABAAEAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAABAAAAAAAFAAkAAAABAAEAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAABAAAAAAAGAAgAAAABAAEAAAAGAAkAAAAAAAEAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAABAAAAAAAHAAcAAAABAAAAAAAHAAgAAAABAAEAAAAHAAkAAAACAAEAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAADAAAAAAAIAAYAAAABAAAAAAAIAAcAAAABAAEAAAAIAAgAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAkAAAABAAEAAAAJAAgAAAABAAEAAAAJAAcAAAABAAEAAAAJAAYAAAABAAAAAAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAAoAAAAAAAEAAAAAAAsAAAADAAEAAAAAAAwAAAADAAEAAAAAAA0AAAADAAEAAAAAAA4AAAAAAAEAAAABAA4AAAAAAAEAAAACAA4AAAAAAAEAAAADAA4AAAAAAAEAAAAEAA4AAAAAAAEAAAAFAA4AAAADAAEAAAAGAA4AAAABAAEAAAAHAA4AAAAAAAEAAAAIAA4AAAABAAEAAAAIAA0AAAADAAEAAAAJAA0AAAADAAEAAAAJAAwAAAADAAEAAAAJAAsAAAACAAEAAAAJAAoAAAABAAEAAAAJAA4AAAADAAEAAAABAAoAAAACAAEAAAABAAsAAAADAAEAAAABAAwAAAADAAEAAAABAA0AAAADAAEAAAACAAoAAAACAAEAAAACAAsAAAADAAEAAAACAAwAAAADAAEAAAACAA0AAAADAAEAAAADAAoAAAAAAAEAAAADAAsAAAADAAEAAAADAAwAAAADAAEAAAADAA0AAAADAAEAAAAEAAoAAAABAAEAAAAEAAsAAAADAAEAAAAEAAwAAAAAAAEAAAAEAA0AAAADAAEAAAAFAAoAAAACAAEAAAAFAAsAAAADAAEAAAAFAAwAAAADAAEAAAAFAA0AAAADAAEAAAAGAAoAAAAAAAEAAAAGAAsAAAACAAEAAAAGAAwAAAACAAEAAAAGAA0AAAABAAEAAAAHAAoAAAACAAEAAAAHAAsAAAACAAEAAAAHAAwAAAADAAEAAAAHAA0AAAADAAEAAAAIAAoAAAABAAEAAAAIAAsAAAABAAEAAAAIAAwAAAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAABAAAAAAAAAAgAAAABAAAAAAAAAAkAAAACAAEAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAABAAAAAAABAAkAAAABAAEAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAABAAAAAAACAAkAAAABAAEAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAABAAAAAAADAAkAAAABAAEAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAABAAAAAAAEAAkAAAABAAEAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAABAAAAAAAFAAkAAAABAAEAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAABAAAAAAAGAAgAAAABAAEAAAAGAAkAAAAAAAEAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAABAAAAAAAHAAcAAAABAAAAAAAHAAgAAAABAAEAAAAHAAkAAAACAAEAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAYAAAABAAAAAAAIAAcAAAABAAEAAAAIAAgAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAkAAAABAAEAAAAJAAgAAAABAAEAAAAJAAcAAAABAAEAAAAJAAYAAAABAAAAAAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAAoAAAAAAAEAAAAAAAsAAAADAAEAAAAAAAwAAAADAAEAAAAAAA0AAAADAAEAAAAAAA4AAAAAAAEAAAABAA4AAAAAAAEAAAACAA4AAAAAAAEAAAADAA4AAAAAAAEAAAAEAA4AAAAAAAEAAAAFAA4AAAADAAEAAAAGAA4AAAABAAEAAAAHAA4AAAAAAAEAAAAIAA4AAAABAAEAAAAIAA0AAAADAAEAAAAJAA0AAAADAAEAAAAJAAwAAAADAAEAAAAJAAsAAAACAAEAAAAJAAoAAAABAAEAAAAJAA4AAAADAAEAAAABAAoAAAACAAEAAAABAAsAAAADAAEAAAABAAwAAAADAAEAAAABAA0AAAADAAEAAAACAAoAAAACAAEAAAACAAsAAAADAAEAAAACAAwAAAADAAEAAAACAA0AAAADAAEAAAADAAoAAAAAAAEAAAADAAsAAAADAAEAAAADAAwAAAADAAEAAAADAA0AAAADAAEAAAAEAAoAAAABAAEAAAAEAAsAAAADAAEAAAAEAAwAAAAAAAEAAAAEAA0AAAADAAEAAAAFAAoAAAACAAEAAAAFAAsAAAADAAEAAAAFAAwAAAADAAEAAAAFAA0AAAADAAEAAAAGAAoAAAAAAAEAAAAGAAsAAAACAAEAAAAGAAwAAAACAAEAAAAGAA0AAAABAAEAAAAHAAoAAAACAAEAAAAHAAsAAAACAAEAAAAHAAwAAAADAAEAAAAHAA0AAAADAAEAAAAIAAoAAAABAAEAAAAIAAsAAAABAAEAAAAIAAwAAAAAAAEAAAAIAAUAAAAAAAAAAAA=")
 
 [node name="Label" type="Label" parent="rmDecemberAtLast"]
 offset_left = 3.0
@@ -146,6 +146,88 @@ frames = PackedInt32Array(2)
 script = ExtResource("6_2et3t")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="rmDecemberAtLast/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmNovemberAtLast" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(146, 225)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmAnyMonth", "", "rmDecemberAtLast", ""])
+
+[node name="DecemberMaze" parent="rmNovemberAtLast" instance=ExtResource("7_n5i2n")]
+
+[node name="Label" type="Label" parent="rmNovemberAtLast"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "it's november
+and the fires
+    are burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmNovemberAtLast"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmNovemberAtLast/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmNovemberAtLast/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmNovemberAtLast/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmAnyMonth" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(266, 225)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmAnyMonthEnding", "", "rmNovemberAtLast", ""])
+
+[node name="DecemberMaze" parent="rmAnyMonth" instance=ExtResource("7_n5i2n")]
+
+[node name="Label" type="Label" parent="rmAnyMonth"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "it's any month
+and the fires
+    are burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmAnyMonth"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmAnyMonth/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmAnyMonth/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmAnyMonth/player/NavdiBodyMover"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_i7bog")
 target_position = Vector2(0, 0)
@@ -478,6 +560,84 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_i7bog")
 target_position = Vector2(0, 0)
 
+[node name="rmAnyMonthEnding" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(384, 225)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmAnyMonthEnding2", "", "rmAnyMonth", ""])
+
+[node name="JanuaryMaze" parent="rmAnyMonthEnding" instance=ExtResource("13_qvd5n")]
+
+[node name="Label" type="Label" parent="rmAnyMonthEnding"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "the fires are burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmAnyMonthEnding"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmAnyMonthEnding/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmAnyMonthEnding/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmAnyMonthEnding/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmAnyMonthEnding2" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(508, 226)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmExitMonth", "", "rmAnyMonthEnding", ""])
+
+[node name="JanuaryMaze" parent="rmAnyMonthEnding2" instance=ExtResource("13_qvd5n")]
+
+[node name="Label" type="Label" parent="rmAnyMonthEnding2"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "the fires are still burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmAnyMonthEnding2"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmAnyMonthEnding2/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmAnyMonthEnding2/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmAnyMonthEnding2/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
 [node name="rmMonth9" type="Node2D" parent="."]
 texture_filter = 1
 position = Vector2(1060, 33)
@@ -515,6 +675,51 @@ frames = PackedInt32Array(2)
 script = ExtResource("6_2et3t")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="rmMonth9/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i7bog")
+target_position = Vector2(0, 0)
+
+[node name="rmExitMonth" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(627, 227)
+script = ExtResource("2_xxbqu")
+room_size = Vector2i(100, 150)
+room_links = Array[String](["rmBlank", "", "rmAnyMonthEnding2", ""])
+
+[node name="Maze" type="TileMapLayer" parent="rmExitMonth"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAMAAAABAAAAAAABAAAAAAABAAEAAAABAAEAAAABAAIAAAABAAIAAAABAAMAAAABAAMAAAACAAAAAAACAAAAAAACAAEAAAACAAEAAAACAAIAAAACAAIAAAACAAMAAAACAAMAAAAAAAQAAAAAAAQAAAAAAAUAAAAAAAUAAAAAAAYAAAAAAAYAAAAAAAcAAAAAAAcAAAAAAAgAAAAAAAgAAAAAAAkAAAAAAAkAAAABAAQAAAABAAQAAAABAAUAAAABAAUAAAABAAYAAAABAAYAAAABAAcAAAABAAcAAAABAAgAAAABAAgAAAABAAkAAAABAAkAAAACAAQAAAACAAQAAAACAAUAAAACAAUAAAACAAYAAAACAAYAAAACAAcAAAACAAcAAAACAAgAAAACAAgAAAACAAkAAAACAAkAAAADAAAAAAADAAAAAAADAAEAAAADAAEAAAADAAIAAAADAAIAAAADAAMAAAADAAMAAAADAAQAAAADAAQAAAADAAUAAAADAAUAAAADAAYAAAADAAYAAAADAAcAAAADAAcAAAADAAgAAAADAAgAAAADAAkAAAADAAkAAAAEAAAAAAAEAAAAAAAEAAEAAAAEAAEAAAAEAAIAAAAEAAIAAAAEAAMAAAAEAAMAAAAEAAQAAAAEAAQAAAAEAAUAAAAEAAUAAAAEAAYAAAAEAAYAAAAEAAcAAAAEAAcAAAAEAAgAAAAEAAgAAAAEAAkAAAAEAAkAAAAFAAAAAAAFAAAAAAAFAAEAAAAFAAEAAAAFAAIAAAAFAAIAAAAFAAMAAAAFAAMAAAAFAAQAAAAFAAQAAAAFAAUAAAAFAAUAAAAFAAYAAAAFAAYAAAAFAAcAAAAFAAcAAAAFAAgAAAAFAAgAAAAFAAkAAAAFAAkAAAAGAAAAAAAGAAAAAAAGAAEAAAAGAAEAAAAGAAIAAAAGAAIAAAAGAAMAAAAGAAMAAAAGAAQAAAAGAAQAAAAGAAUAAAAGAAUAAAAGAAYAAAAGAAYAAAAGAAcAAAAGAAcAAAAGAAgAAAAGAAgAAAAGAAkAAAAGAAkAAAAHAAAAAAAHAAAAAAAHAAEAAAAHAAEAAAAHAAIAAAAHAAIAAAAHAAMAAAAHAAMAAAAHAAQAAAAHAAQAAAAHAAUAAAAHAAUAAAAHAAYAAAAHAAYAAAAHAAcAAAAHAAcAAAAHAAgAAAAHAAgAAAAHAAkAAAAHAAkAAAAIAAAAAAAIAAAAAAAIAAEAAAAIAAEAAAAIAAIAAAAIAAIAAAAIAAMAAAAIAAMAAAAIAAQAAAAIAAQAAAAIAAUAAAAIAAUAAAAIAAYAAAAIAAYAAAAIAAcAAAAIAAcAAAAIAAgAAAAIAAgAAAAIAAkAAAAIAAkAAAAJAAkAAAAJAAkAAAAJAAgAAAAJAAgAAAAJAAcAAAAJAAcAAAAJAAYAAAAJAAYAAAAJAAUAAAAJAAUAAAAJAAQAAAAJAAQAAAAJAAMAAAAJAAMAAAAJAAIAAAAJAAIAAAAJAAEAAAAJAAEAAAAJAAAAAAAJAAAAAAA=")
+tile_set = ExtResource("3_lx2sa")
+navigation_enabled = false
+script = ExtResource("3_u6v06")
+
+[node name="Label" type="Label" parent="rmExitMonth"]
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 98.0
+offset_bottom = 147.0
+text = "the fires are still
+still still still still
+still still still burning"
+label_settings = ExtResource("5_autiv")
+script = ExtResource("6_dgvys")
+
+[node name="player" type="Node2D" parent="rmExitMonth"]
+position = Vector2(38, 75)
+script = ExtResource("6_hah2o")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmExitMonth/player"]
+texture = ExtResource("7_ux5ip")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("8_fivjq")
+sheet = ExtResource("9_0q77q")
+frames = PackedInt32Array(2)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmExitMonth/player"]
+script = ExtResource("6_2et3t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmExitMonth/player/NavdiBodyMover"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_i7bog")
 target_position = Vector2(0, 0)
