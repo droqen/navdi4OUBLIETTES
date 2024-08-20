@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq5yo4dwvwhss"]
+
+[ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_783yb"]
+[ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_v7voo"]
+[ext_resource type="TileSet" uid="uid://6vnsl046fp2b" path="res://dreamlands/a-thing-of-beauty/beauty_tiles.tres" id="3_6ign3"]
+[ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_qc4e2"]
+
+[node name="BeautyLand" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0.5)
+script = ExtResource("1_783yb")
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("2_v7voo")
+
+[node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_set = ExtResource("3_6ign3")
+navigation_enabled = false
+script = ExtResource("4_qc4e2")

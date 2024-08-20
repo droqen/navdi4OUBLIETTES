@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
+[ext_resource type="Resource" uid="uid://nqrlmmw1wufo" path="res://dreamlands/a-thing-of-beauty/cart.tres" id="3_bywdi"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
-[ext_resource type="Resource" uid="uid://c1lwhh5jkm7m0" path="res://dreamlands/fires-burning-in-december/cart.tres" id="3_vyxpv"]
 
-[node name="[[ fires burning in december ]]" type="Node2D"]
+[node name="[[ a thing of beauty ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_vyxpv")
+cart = ExtResource("3_bywdi")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
