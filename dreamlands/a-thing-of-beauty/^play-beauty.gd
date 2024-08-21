@@ -4,5 +4,5 @@ func play(dream:LiveDream)->void:
 		load(
 			"res://dreamlands/a-thing-of-beauty/beautyLand.tscn"
 		).instantiate(),
-		"rmA"
+		"rmTopRight"
 	)

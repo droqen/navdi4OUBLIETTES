@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0eslyjddijkm"]
+[gd_scene load_steps=8 format=3 uid="uid://b0eslyjddijkm"]
 
 [ext_resource type="Script" path="res://dreamlands/a-thing-of-beauty/beholder.gd" id="1_hov8e"]
 [ext_resource type="Texture2D" uid="uid://dthqqmewf52hq" path="res://dreamlands/a-thing-of-beauty/beauty.png" id="2_qjgxh"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aabu"]
 size = Vector2(6, 5.8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_435im"]
+size = Vector2(4, 4)
 
 [node name="beholder" type="Node2D"]
 position = Vector2(105, 65)
@@ -29,3 +32,10 @@ script = ExtResource("5_uiqa4")
 [node name="ShapeCast2D" type="ShapeCast2D" parent="NavdiBodyMover"]
 shape = SubResource("RectangleShape2D_5aabu")
 target_position = Vector2(0, 0)
+
+[node name="player_area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_area"]
+shape = SubResource("RectangleShape2D_435im")
