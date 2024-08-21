@@ -31,6 +31,7 @@ func autofill_birth_today() -> void:
 @export var icon_idx : int = 9 # default: top right = game icon
 
 @export var exits : Array[String] = ['']
+@export var songlink : String # i hope this has no limit
 
 func apply_changes(main : Node2D) -> void:
 		if prepend_date:
