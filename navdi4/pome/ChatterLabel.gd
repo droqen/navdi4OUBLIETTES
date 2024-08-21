@@ -36,9 +36,13 @@ func _enter_tree() -> void:
 	if not Engine.is_editor_hint():
 		if zero_on_enter: visible_characters = 0
 func _exit_tree() -> void:
-	if not Engine.is_editor_hint() and unfinished_done_on_exit and printing:
-		visible_characters = -1
-		doneprinting.emit()
+	if not Engine.is_editor_hint() and unfinished_done_on_exit:
+		if printing:
+			visible_characters = -1
+			doneprinting.emit()
+		else: match not_printing_behaviour:
+			NotPrintingBehaviour.INSTANT_ZERO, NotPrintingBehaviour.BACKSPACE:
+				visible_characters = 0
 
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint():

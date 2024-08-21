@@ -29,7 +29,10 @@ func _physics_process(_delta: float) -> void:
 		var maze : Maze = LiveDream.GetMaze(self)
 		if maze:
 			var cell : Vector2i = maze.local_to_map(self.position)
-			if maze.is_cell_solid(cell+Vector2i.DOWN):
+			if maze.get_cell_tid(cell) == 25:
+				die()
+				return
+			elif maze.is_cell_solid(cell+Vector2i.DOWN):
 				if last_safe_cell != cell:
 					last_safe_cell = cell
 					last_safe_room_name = LiveDream.GetRoom(self).name
@@ -89,7 +92,7 @@ func die() -> void:
 			if dream:
 				var safe_room = dream.dreamland.try_get_room_inst(last_safe_room_name)
 				if dream.dreamroom != safe_room:
-					dream.set_dreamroom(safe_room)
+					dream.set_dreamroom.call_deferred(safe_room)
 			break
 		else:
 			await get_tree().physics_frame

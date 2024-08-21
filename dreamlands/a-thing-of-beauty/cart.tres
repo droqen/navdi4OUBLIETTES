@@ -22,4 +22,4 @@ birth_day = 20
 sheet_src = ExtResource("3_0uurr")
 tile_size = Vector2i(10, 10)
 icon_idx = 9
-exits = Array[String]([""])
+exits = Array[String](["CLOSER"])

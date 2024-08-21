@@ -4,7 +4,13 @@ class_name ChatToggleArea
 
 signal toggle_changed(area,toggle_value)
 
-@export var label : ChatterLabel
+@export var label : ChatterLabel :
+	get(): return label
+	set(v):
+		if v != null and v != label:
+			label = v
+			label_path = get_path_to(label)
+@export var label_path : NodePath
 @export var enable_on_overlap : bool = true
 @export var disable_on_no_overlap : bool = true
 
@@ -22,6 +28,8 @@ func _ready() -> void:
 		# set mask '2' true, which is the navdi4 de facto player mask.
 
 func _physics_process(_delta: float) -> void:
+	if not Engine.is_editor_hint() and label == null:
+		label = get_node(label_path)
 	if label:
 		if get_overlapping_areas() or get_overlapping_bodies():
 			if enable_on_overlap:
