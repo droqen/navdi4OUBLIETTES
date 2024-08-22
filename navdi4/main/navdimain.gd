@@ -19,8 +19,11 @@ const ICON_LOADING : Texture2D = preload("res://navdi4/editortools/icon_loading.
 func _apply_cart() -> void:
 	if Engine.is_editor_hint():
 		if cart:
+			$diary.text = '[center][b][[ %s ]][/b]' % cart.name
 			if cart.diary_written:
 				if cart.birth_year == 0: cart.autofill_birth_today()
+				for line in cart.diary_keywords:
+					$diary.text += '\n' + line
 			else:
 				icon_preview = ICON_LOADING
 				ProjectSettings.set_setting(

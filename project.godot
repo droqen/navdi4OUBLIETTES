@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="2024, August 20th ~ a thing of beauty"
+config/name="2024, August 22nd ~ cut & court"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(0.745098, 0.627451, 0.443137, 1)
+boot_splash/bg_color=Color(0.831373, 0.329412, 0.333333, 1)
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
@@ -25,10 +25,10 @@ Sav="*res://navdi4/main/navdisav.gd"
 
 [display]
 
-window/size/viewport_width=250
-window/size/viewport_height=250
-window/size/window_width_override=750
-window/size/window_height_override=750
+window/size/viewport_width=180
+window/size/viewport_height=200
+window/size/window_width_override=360
+window/size/window_height_override=400
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 
@@ -82,6 +82,6 @@ plant={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.745098, 0.627451, 0.443137, 1)
+environment/defaults/default_clear_color=Color(0.831373, 0.329412, 0.333333, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
