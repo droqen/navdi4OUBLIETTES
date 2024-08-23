@@ -1,21 +1,25 @@
-[gd_resource type="Resource" script_class="NavdiCart" load_steps=2 format=3 uid="uid://c0dtskryomgei"]
+[gd_resource type="Resource" script_class="NavdiCart" load_steps=4 format=3 uid="uid://c0dtskryomgei"]
 
 [ext_resource type="Script" path="res://navdi4/main/navdicart.gd" id="1_2ctem"]
+[ext_resource type="Script" path="res://dreamlands/cut-and-court/^play-cut-court.gd" id="1_y2fm2"]
+[ext_resource type="Texture2D" uid="uid://crdyxasivwtqk" path="res://dreamlands/cut-and-court/cut-and-court.png" id="3_n7i2y"]
 
 [resource]
 script = ExtResource("1_2ctem")
 diary_written = true
-diary_keywords = Array[String](["the same courtyard", "goddess' face", "fourteen pigeons", ""])
+diary_keywords = Array[String](["the same courtyard", "goddess' face", "fourteen pigeons", "wrestling cartoon characters"])
 name = "cut & court"
-game_size = Vector2i(180, 200)
-view_scale = Vector2i(2, 2)
+play_script = ExtResource("1_y2fm2")
+game_size = Vector2i(250, 250)
+view_scale = Vector2i(4, 4)
 bg_transparent = false
-bg_colour = Color(0.831373, 0.329412, 0.333333, 1)
+bg_colour = Color(0.752941, 0.486275, 0.152941, 1)
 pixelated = true
 prepend_date = true
 birth_year = 2024
 birth_month = "August"
 birth_day = 22
+sheet_src = ExtResource("3_n7i2y")
 tile_size = Vector2i(10, 10)
 icon_idx = 9
 exits = Array[String]([""])
