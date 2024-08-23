@@ -21,7 +21,7 @@ size = Vector2(8, 8)
 size = Vector2(4, 4)
 
 [node name="Cut-court-land" type="Node2D"]
-self_modulate = Color(1, -0.0147484, 0.149126, 1)
+self_modulate = Color(1, 0.0437089, -0.190012, 1)
 script = ExtResource("1_dfej1")
 autolinking = true
 autosnapping = true
@@ -47,13 +47,13 @@ script = ExtResource("6_q72ef")
 texture = ExtResource("6_owcth")
 hframes = 10
 vframes = 10
-frame = 36
+frame = 38
 script = ExtResource("4_grxny")
 sheet = ExtResource("8_oy87q")
 playing = true
 frames = PackedInt32Array(34, 35, 36, 37, 38)
 ani_period = 12
-ani_index = 2
+ani_index = 4
 
 [node name="hbox" type="Area2D" parent="rmA/cloud-foe"]
 collision_layer = 65568

@@ -2,11 +2,12 @@ extends NavdiSolePlayer
 
 enum{
 	FLORBUF,JUMPHITBUF,ONWALLBUF,SLASHINGBUF,TUMBLINGBUF,FREEZE_IN_AIR_BUF,
+	TUMBLINGAIRJUMPBUF,
 	STRIKINGBUF,
 	IDLE,WALK,AIR,AIRSLASH,TUMBLING}
 var bufs:Bufs=Bufs.Make(self).setup_bufons(
 	[FLORBUF,4,JUMPHITBUF,4,ONWALLBUF,4,
-	SLASHINGBUF,100,TUMBLINGBUF,100,
+	SLASHINGBUF,100,TUMBLINGBUF,40,TUMBLINGAIRJUMPBUF,48,
 	FREEZE_IN_AIR_BUF,8,STRIKINGBUF,4]
 )
 var v:Vector2;
@@ -42,10 +43,13 @@ func _physics_process(_delta: float) -> void:
 	if bufs.try_eat([FLORBUF,JUMPHITBUF]):onfloor=false;v.y=-1.0
 	if not onfloor and airslashes>0 and bufs.try_eat([JUMPHITBUF]):
 		airslashes-=1
+		v.y = v.y * 0.5 - 0.5
+		if dpad.x < 0: v.x = min(v.x, -0.5)
+		if dpad.x > 0: v.x = max(v.x,  0.5)
 		if v.y > 0: v.y = 0
-		v = v.normalized() * 3.1
+		v = v.normalized() * 2.7
 		if v == Vector2.ZERO:
-			v = Vector2(-3.1 if spr.flip_h else 3.1, 0)
+			v = Vector2(-2.7 if spr.flip_h else 2.7, 0)
 		bufs.on(SLASHINGBUF)
 		bufs.on(FREEZE_IN_AIR_BUF)
 		if v.x: spr.flip_h = v.x < 0
@@ -59,12 +63,14 @@ func _physics_process(_delta: float) -> void:
 				v.y -= 0.05
 				v.y = lerp(v.y, clamp(v.y,-2.0,-1.0), 0.5)
 			if bufs.has(SLASHINGBUF):
-				bufs.setmin(TUMBLINGBUF, bufs.read(SLASHINGBUF))
+				bufs.on(TUMBLINGBUF)
+				bufs.on(TUMBLINGAIRJUMPBUF)
 				bufs.clr(SLASHINGBUF)
 			v.x = 0
 		if v.y and!mover.try_slip_move(self,caster,VERTICAL,v.y):
 			if bufs.has(SLASHINGBUF):
-				bufs.setmin(TUMBLINGBUF, bufs.read(SLASHINGBUF))
+				bufs.on(TUMBLINGBUF)
+				bufs.on(TUMBLINGAIRJUMPBUF)
 				bufs.clr(SLASHINGBUF)
 			v.y = 0
 	
@@ -91,14 +97,14 @@ func _physics_process(_delta: float) -> void:
 			var speed : float = v.length()
 			if speed < 0.1:
 				bufs.clr(TUMBLINGBUF)
+				bufs.clr(TUMBLINGAIRJUMPBUF)
+				bufs.setmin(TUMBLINGAIRJUMPBUF, 8)
 		spr.setup([61,62,63,64],8)
 		#v *= 0.975
 		#v.y += 0.03
 		if v.x: spr.flip_h = v.x < 0
 		v.x=move_toward(v.x,dpad.x*0.9,0.09)
 		v.y=move_toward(v.y,1.5,0.04)
-		if bufs.try_eat([JUMPHITBUF,TUMBLINGBUF]):
-			v.y=-1.0
 	else:
 		if dpad.x: spr.flip_h = dpad.x < 0
 		v.x=move_toward(v.x,dpad.x*0.9,0.09)
@@ -113,3 +119,8 @@ func _physics_process(_delta: float) -> void:
 				spr.setup([31])
 			else:
 				spr.setup([71,70,71,71,71,71,71,71,],4)
+
+	if bufs.try_eat([JUMPHITBUF,TUMBLINGAIRJUMPBUF]):
+		if v.y > -0.5: v.y = -0.5
+		else: v.y -= 1.0
+		bufs.clr(TUMBLINGBUF)
