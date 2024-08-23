@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddm2bqph8smiu"]
+
+[ext_resource type="Script" path="res://dreamlands/cut-and-court/cutter_player.gd" id="1_jh5y2"]
+[ext_resource type="Texture2D" uid="uid://crdyxasivwtqk" path="res://dreamlands/cut-and-court/cut-and-court.png" id="2_aa78w"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_mguca"]
+[ext_resource type="Resource" uid="uid://dx1qhb5ufbp6l" path="res://dreamlands/cut-and-court/cut-and-court_sheet.tres" id="4_oatut"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_bkymu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hyim"]
+size = Vector2(5.9, 5.9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6l8g"]
+size = Vector2(6, 6)
+
+[node name="cutter-player" type="Node2D"]
+position = Vector2(31, 215)
+script = ExtResource("1_jh5y2")
+
+[node name="spr" type="Sprite2D" parent="."]
+texture = ExtResource("2_aa78w")
+hframes = 10
+vframes = 10
+frame = 43
+script = ExtResource("3_mguca")
+sheet = ExtResource("4_oatut")
+frames = PackedInt32Array(43)
+ani_period = 16
+
+[node name="mover" type="Node2D" parent="."]
+position = Vector2(0, 2)
+script = ExtResource("5_bkymu")
+
+[node name="solidcast" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_0hyim")
+target_position = Vector2(0, 0)
+
+[node name="sword_sprite" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+texture = ExtResource("2_aa78w")
+hframes = 10
+vframes = 10
+frame = 44
+script = ExtResource("3_mguca")
+sheet = ExtResource("4_oatut")
+playing = true
+frames = PackedInt32Array(44, 45)
+ani_period = 2
+
+[node name="sword_area" type="Area2D" parent="."]
+position = Vector2(4, 0)
+
+[node name="shape" type="CollisionShape2D" parent="sword_area"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_w6l8g")
