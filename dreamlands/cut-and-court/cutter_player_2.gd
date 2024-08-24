@@ -4,12 +4,16 @@ enum{
 	FLORBUF,JUMPHITBUF,ONWALLBUF,SLASHINGBUF,TUMBLINGBUF,FREEZE_IN_AIR_BUF,
 	TUMBLINGAIRJUMPBUF,
 	STRIKINGBUF,
+	HURTINVINCBUF,HURTSTUNBUF,JUST_STARTED_TUMBLING_BUF,
+	RECENTLY_INVINC_BUF,
 	IDLE,WALK,AIR,AIRSLASH,TUMBLING}
-var bufs:Bufs=Bufs.Make(self).setup_bufons(
-	[FLORBUF,4,JUMPHITBUF,4,ONWALLBUF,4,
+var bufs:Bufs=Bufs.Make(self).setup_bufons([
+	FLORBUF,4,JUMPHITBUF,4,ONWALLBUF,4,
 	SLASHINGBUF,100,TUMBLINGBUF,40,TUMBLINGAIRJUMPBUF,48,
-	FREEZE_IN_AIR_BUF,8,STRIKINGBUF,4]
-)
+	FREEZE_IN_AIR_BUF,8,STRIKINGBUF,4,
+	HURTSTUNBUF,30,HURTINVINCBUF,40,JUST_STARTED_TUMBLING_BUF,2,
+])
+var last_safe_xpos:float;
 var v:Vector2;
 var airslashes:int=0;
 @onready var spr:SheetSprite = $spr;
@@ -18,17 +22,23 @@ var airslashes:int=0;
 
 func take_damage():
 	airslashes = 0
-	v.x = 1 if spr.flip_h else -1
+	#if v.x: spr.flip_h = v.x < 0
+	# knock player towards last safe position!
+	var kb_dir : float = -1 if (last_safe_xpos<position.x) else 1
+	if v.x * kb_dir < 0: v.x = 0
+	v.x *= 0.75
+	v.x += kb_dir * 1
+	spr.flip_h = -v.x < 0
+	v.y = -1
 	bufs.bufdic.clear() # clear all bufs
+	bufs.on(HURTSTUNBUF)
+	bufs.on(HURTINVINCBUF)
+	bufs.setmin(RECENTLY_INVINC_BUF, bufs.read(HURTINVINCBUF)+2)
 
 func _ready() -> void:
 	super._ready()
-	$hbox.area_entered.connect(func(hit_area):
-		if bufs.has(TUMBLINGBUF):
-			pass # nothing
-		else:
-			take_damage() # ouch
-	)
+	$hbox.area_entered.connect(func(hit_area):take_damage())
+	$hbox.body_entered.connect(func(hit_body):take_damage())
 	$slashbox.area_entered.connect(func(hit_area):
 		if bufs.has(STRIKINGBUF):
 			hit_area.get_parent().take_damage() # ha ha eat it
@@ -37,16 +47,24 @@ func _ready() -> void:
 			if airslashes < 1 : airslashes = 1
 			bufs.on(FREEZE_IN_AIR_BUF)
 	)
+	travelled_dir.connect(func(travel_dir:Vector2i):
+		last_safe_xpos -= travel_dir.x * 250
+	)
+
 
 func _physics_process(_delta: float) -> void:
 	var dpad=Pin.get_dpad()
+	if bufs.has(HURTSTUNBUF): dpad.x = 0
 	if Pin.get_jump_hit():bufs.on(JUMPHITBUF)
 	var tofloor=mover.cast_fraction(self,caster,VERTICAL,1)
 	var onfloor:bool=false
+	if bufs.has(HURTINVINCBUF): bufs.setmin(RECENTLY_INVINC_BUF, 2)
 	if v.y>=0 and tofloor<1:
 		position.y+=tofloor
 		onfloor=true
 		airslashes=1
+		if not bufs.has(RECENTLY_INVINC_BUF):
+			last_safe_xpos=position.x
 	if bufs.try_eat([FLORBUF,JUMPHITBUF]):onfloor=false;v.y=-1.0
 	if not onfloor and airslashes>0 and bufs.try_eat([JUMPHITBUF]):
 		airslashes-=1
@@ -78,23 +96,31 @@ func _physics_process(_delta: float) -> void:
 			if bufs.has(SLASHINGBUF):
 				bufs.on(TUMBLINGBUF)
 				bufs.on(TUMBLINGAIRJUMPBUF)
+				bufs.on(JUST_STARTED_TUMBLING_BUF)
 				bufs.clr(SLASHINGBUF)
 		if v.y and!mover.try_slip_move(self,caster,VERTICAL,v.y):
 			if bufs.has(TUMBLINGBUF) and v.y > 0.5:
 				v.y *= -0.5
 				bufs.on(TUMBLINGBUF) # reset dat
 				bufs.on(TUMBLINGAIRJUMPBUF) # reset dat
+				bufs.on(JUST_STARTED_TUMBLING_BUF)
 			else:
 				v.y = 0
 			if bufs.has(SLASHINGBUF):
 				bufs.on(TUMBLINGBUF)
 				bufs.on(TUMBLINGAIRJUMPBUF)
+				bufs.on(JUST_STARTED_TUMBLING_BUF)
 				bufs.clr(SLASHINGBUF)
 	
-	if bufs.has(SLASHINGBUF):
+	if bufs.has(HURTSTUNBUF):
+		# no inputs
+		v.y += 0.05
+		spr.setup([73,74],5)
+	elif bufs.has(SLASHINGBUF):
 		var slash : int = bufs.read(SLASHINGBUF)
 		var speed : float = v.length()
-		if slash > 96: spr.setup([50])
+		if slash >= 99: spr.setup([72])
+		elif slash > 96: spr.setup([50])
 		elif slash > 92: spr.setup([51])
 		elif speed > 1.0:
 			bufs.on(STRIKINGBUF)
@@ -147,7 +173,10 @@ func _physics_process(_delta: float) -> void:
 			else:
 				spr.setup([71,70,71,71,71,71,71,71,],4)
 
-	if bufs.try_eat([JUMPHITBUF,TUMBLINGAIRJUMPBUF]):
+	if (
+		not bufs.has(JUST_STARTED_TUMBLING_BUF)
+		and bufs.try_eat([JUMPHITBUF,TUMBLINGAIRJUMPBUF])
+	):
 		if v.y > -0.5: v.y = -0.5
 		else: v.y -= 1.0
 		bufs.clr(TUMBLINGBUF)
@@ -157,10 +186,12 @@ func _physics_process(_delta: float) -> void:
 			onfloor=false
 			bufs.on(TUMBLINGBUF)
 			bufs.on(TUMBLINGAIRJUMPBUF)
+			bufs.on(JUST_STARTED_TUMBLING_BUF)
 			v.x=-1.65 if spr.flip_h else 1.65
 		else:
 			bufs.on(TUMBLINGBUF)
 			bufs.on(TUMBLINGAIRJUMPBUF)
+			bufs.on(JUST_STARTED_TUMBLING_BUF)
 			bufs.clr(SLASHINGBUF)
 			bufs.clr(STRIKINGBUF)
 			v.x=-1.25 if spr.flip_h else 1.25
@@ -170,3 +201,9 @@ func _physics_process(_delta: float) -> void:
 	match bufs.read(STRIKINGBUF):
 		4: $slashbox/shape.disabled = false; $slashbox.position.x = -3 if spr.flip_h else 3;
 		0: $slashbox/shape.disabled = true
+	if bufs.has(TUMBLINGBUF) and not bufs.has(JUST_STARTED_TUMBLING_BUF):
+		bufs.setmin(HURTINVINCBUF,3)
+	$hbox/CollisionShape2D.disabled = bufs.has(HURTINVINCBUF)
+	
+	if bufs.read(HURTINVINCBUF) % 5 > 3: hide()
+	else: show()

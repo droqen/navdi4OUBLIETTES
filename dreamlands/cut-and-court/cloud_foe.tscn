@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vh8jh"]
 size = Vector2(8, 8)
 
-[node name="cloud-foe" type="Node2D"]
+[node name="cloud-foe" type="Node2D" groups=["CutCourtEnemy"]]
 position = Vector2(95, 186)
 script = ExtResource("1_1w2qs")
 
