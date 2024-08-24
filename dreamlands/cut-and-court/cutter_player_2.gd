@@ -24,14 +24,18 @@ func take_damage():
 func _ready() -> void:
 	super._ready()
 	$hbox.area_entered.connect(func(hit_area):
-		if bufs.has(STRIKINGBUF):
-			hit_area.get_parent().take_damage() # ha ha eat it
-			bufs.on(SLASHINGBUF)
-			bufs.on(FREEZE_IN_AIR_BUF)
-		elif bufs.has(TUMBLINGBUF):
+		if bufs.has(TUMBLINGBUF):
 			pass # nothing
 		else:
 			take_damage() # ouch
+	)
+	$slashbox.area_entered.connect(func(hit_area):
+		if bufs.has(STRIKINGBUF):
+			hit_area.get_parent().take_damage() # ha ha eat it
+			bufs.setmin(SLASHINGBUF,50)
+			v = v.normalized()
+			if airslashes < 1 : airslashes = 1
+			bufs.on(FREEZE_IN_AIR_BUF)
 	)
 
 func _physics_process(_delta: float) -> void:
@@ -98,7 +102,10 @@ func _physics_process(_delta: float) -> void:
 			v *= 0.975
 			v.y *= 0.99
 		elif speed > 0.1 and abs(v.x) > 0.1:
-			spr.setup([56,56,56,56,55,56,56,56,56,56,56,55,],2)
+			if airslashes > 0:
+				spr.setup([55])
+			else:
+				spr.setup([56,56,56,56,55,56,56,56,56,56,56,55,],2)
 			v *= 0.95
 			v.y += 0.03
 		else:
@@ -160,3 +167,6 @@ func _physics_process(_delta: float) -> void:
 			if v.y < 0.50: v.y = 0.50
 			v.y += 0.75
 	
+	match bufs.read(STRIKINGBUF):
+		4: $slashbox/shape.disabled = false; $slashbox.position.x = -3 if spr.flip_h else 3;
+		0: $slashbox/shape.disabled = true

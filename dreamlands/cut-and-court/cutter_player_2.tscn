@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgthsx1nluyd3"]
+[gd_scene load_steps=9 format=3 uid="uid://dgthsx1nluyd3"]
 
 [ext_resource type="Script" path="res://dreamlands/cut-and-court/cutter_player_2.gd" id="1_5rw0a"]
 [ext_resource type="Texture2D" uid="uid://crdyxasivwtqk" path="res://dreamlands/cut-and-court/cut-and-court.png" id="2_fv11y"]
@@ -10,7 +10,10 @@
 size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uchx6"]
-size = Vector2(8, 8)
+size = Vector2(4, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dmvf"]
+size = Vector2(6, 8)
 
 [node name="cutter-player-2" type="Node2D"]
 position = Vector2(24, 215)
@@ -36,7 +39,15 @@ target_position = Vector2(0, 0)
 
 [node name="hbox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 65568
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hbox"]
 shape = SubResource("RectangleShape2D_uchx6")
+
+[node name="slashbox" type="Area2D" parent="."]
+position = Vector2(3, 0)
+collision_layer = 0
+collision_mask = 65536
+
+[node name="shape" type="CollisionShape2D" parent="slashbox"]
+shape = SubResource("RectangleShape2D_7dmvf")
