@@ -1,27 +1,14 @@
-[gd_scene load_steps=14 format=4 uid="uid://7550j2n8ld4s"]
+[gd_scene load_steps=7 format=4 uid="uid://7550j2n8ld4s"]
 
 [ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_dfej1"]
 [ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_umw5g"]
 [ext_resource type="TileSet" uid="uid://bjhce21wwvlao" path="res://dreamlands/cut-and-court/cut-and-court_tiles.tres" id="3_jduob"]
 [ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_4nuom"]
-[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="4_grxny"]
-[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_vyjuw"]
-[ext_resource type="Texture2D" uid="uid://crdyxasivwtqk" path="res://dreamlands/cut-and-court/cut-and-court.png" id="6_owcth"]
-[ext_resource type="Script" path="res://dreamlands/cut-and-court/cloud_foe.gd" id="6_q72ef"]
-[ext_resource type="Resource" uid="uid://dx1qhb5ufbp6l" path="res://dreamlands/cut-and-court/cut-and-court_sheet.tres" id="8_oy87q"]
-[ext_resource type="Script" path="res://dreamlands/cut-and-court/cutter_player_2.gd" id="9_4lt3f"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh8jh"]
-size = Vector2(8, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehlgm"]
-size = Vector2(8, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uchx6"]
-size = Vector2(4, 4)
+[ext_resource type="PackedScene" uid="uid://6xjhu32m4kfn" path="res://dreamlands/cut-and-court/cloud_foe.tscn" id="5_q0yky"]
+[ext_resource type="PackedScene" uid="uid://dgthsx1nluyd3" path="res://dreamlands/cut-and-court/cutter_player_2.tscn" id="6_c4sgv"]
 
 [node name="Cut-court-land" type="Node2D"]
-self_modulate = Color(1, 0.0437089, -0.190012, 1)
+self_modulate = Color(1, 0.406232, 0.149126, 1)
 script = ExtResource("1_dfej1")
 autolinking = true
 autosnapping = true
@@ -39,57 +26,24 @@ tile_set = ExtResource("3_jduob")
 navigation_enabled = false
 script = ExtResource("4_4nuom")
 
-[node name="cloud-foe" type="Node2D" parent="rmA"]
-position = Vector2(95, 186)
-script = ExtResource("6_q72ef")
+[node name="cloud-foe" parent="rmA" instance=ExtResource("5_q0yky")]
 
-[node name="SheetSprite" type="Sprite2D" parent="rmA/cloud-foe"]
-texture = ExtResource("6_owcth")
-hframes = 10
-vframes = 10
-frame = 38
-script = ExtResource("4_grxny")
-sheet = ExtResource("8_oy87q")
-playing = true
-frames = PackedInt32Array(34, 35, 36, 37, 38)
-ani_period = 12
-ani_index = 4
+[node name="cloud-foe2" parent="rmA" instance=ExtResource("5_q0yky")]
+position = Vector2(146, 123)
 
-[node name="hbox" type="Area2D" parent="rmA/cloud-foe"]
-collision_layer = 65568
-collision_mask = 0
+[node name="cloud-foe3" parent="rmA" instance=ExtResource("5_q0yky")]
+position = Vector2(79, 118)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rmA/cloud-foe/hbox"]
-shape = SubResource("RectangleShape2D_vh8jh")
+[node name="cloud-foe4" parent="rmA" instance=ExtResource("5_q0yky")]
+position = Vector2(174, 189)
 
-[node name="cutter-player-2" type="Node2D" parent="rmA"]
-position = Vector2(24, 215)
-script = ExtResource("9_4lt3f")
+[node name="cloud-foe5" parent="rmA" instance=ExtResource("5_q0yky")]
+position = Vector2(194, 193)
 
-[node name="spr" type="Sprite2D" parent="rmA/cutter-player-2"]
-texture = ExtResource("6_owcth")
-hframes = 10
-vframes = 10
-frame = 30
-script = ExtResource("4_grxny")
-sheet = ExtResource("8_oy87q")
-frames = PackedInt32Array(30)
+[node name="cloud-foe6" parent="rmA" instance=ExtResource("5_q0yky")]
+position = Vector2(210, 189)
 
-[node name="mover" type="Node2D" parent="rmA/cutter-player-2"]
-visible = false
-position = Vector2(0, 1)
-script = ExtResource("5_vyjuw")
-
-[node name="solidcast" type="ShapeCast2D" parent="rmA/cutter-player-2/mover"]
-shape = SubResource("RectangleShape2D_ehlgm")
-target_position = Vector2(0, 0)
-
-[node name="hbox" type="Area2D" parent="rmA/cutter-player-2"]
-collision_layer = 0
-collision_mask = 65568
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rmA/cutter-player-2/hbox"]
-shape = SubResource("RectangleShape2D_uchx6")
+[node name="cutter-player-2" parent="rmA" instance=ExtResource("6_c4sgv")]
 
 [node name="rmMoonBtwn" type="Node2D" parent="."]
 texture_filter = 1

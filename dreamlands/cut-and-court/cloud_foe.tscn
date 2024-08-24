@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://6xjhu32m4kfn"]
+
+[ext_resource type="Script" path="res://dreamlands/cut-and-court/cloud_foe.gd" id="1_1w2qs"]
+[ext_resource type="Texture2D" uid="uid://crdyxasivwtqk" path="res://dreamlands/cut-and-court/cut-and-court.png" id="2_ke1eq"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_fa663"]
+[ext_resource type="Resource" uid="uid://dx1qhb5ufbp6l" path="res://dreamlands/cut-and-court/cut-and-court_sheet.tres" id="4_h6mne"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh8jh"]
+size = Vector2(8, 8)
+
+[node name="cloud-foe" type="Node2D"]
+position = Vector2(95, 186)
+script = ExtResource("1_1w2qs")
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ke1eq")
+hframes = 10
+vframes = 10
+frame = 38
+script = ExtResource("3_fa663")
+sheet = ExtResource("4_h6mne")
+frames = PackedInt32Array(34, 35, 36, 37, 38)
+ani_period = 12
+ani_index = 4
+
+[node name="hbox" type="Area2D" parent="."]
+collision_layer = 65568
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hbox"]
+shape = SubResource("RectangleShape2D_vh8jh")

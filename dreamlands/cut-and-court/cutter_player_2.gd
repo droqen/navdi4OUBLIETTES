@@ -26,7 +26,10 @@ func _ready() -> void:
 	$hbox.area_entered.connect(func(hit_area):
 		if bufs.has(STRIKINGBUF):
 			hit_area.get_parent().take_damage() # ha ha eat it
+			bufs.on(SLASHINGBUF)
 			bufs.on(FREEZE_IN_AIR_BUF)
+		elif bufs.has(TUMBLINGBUF):
+			pass # nothing
 		else:
 			take_damage() # ouch
 	)
@@ -54,25 +57,35 @@ func _physics_process(_delta: float) -> void:
 		bufs.on(FREEZE_IN_AIR_BUF)
 		if v.x: spr.flip_h = v.x < 0
 	if onfloor:bufs.on(FLORBUF)
-	
 	if bufs.has(FREEZE_IN_AIR_BUF):
 		pass
 	else:
 		if v.x and!mover.try_slip_move(self,caster,HORIZONTAL,v.x):
 			if bufs.has(TUMBLINGBUF):
-				v.y -= 0.05
-				v.y = lerp(v.y, clamp(v.y,-2.0,-1.0), 0.5)
+				if v.y > 0.1:
+					v.x *= -1.5
+					v.y = -0.5
+				else:
+					v.x = 0
+					v.y -= 0.05
+					v.y = lerp(v.y, clamp(v.y,-2.0,-1.0), 0.5)
+			else:
+				v.x = 0
 			if bufs.has(SLASHINGBUF):
 				bufs.on(TUMBLINGBUF)
 				bufs.on(TUMBLINGAIRJUMPBUF)
 				bufs.clr(SLASHINGBUF)
-			v.x = 0
 		if v.y and!mover.try_slip_move(self,caster,VERTICAL,v.y):
+			if bufs.has(TUMBLINGBUF) and v.y > 0.5:
+				v.y *= -0.5
+				bufs.on(TUMBLINGBUF) # reset dat
+				bufs.on(TUMBLINGAIRJUMPBUF) # reset dat
+			else:
+				v.y = 0
 			if bufs.has(SLASHINGBUF):
 				bufs.on(TUMBLINGBUF)
 				bufs.on(TUMBLINGAIRJUMPBUF)
 				bufs.clr(SLASHINGBUF)
-			v.y = 0
 	
 	if bufs.has(SLASHINGBUF):
 		var slash : int = bufs.read(SLASHINGBUF)
@@ -99,16 +112,23 @@ func _physics_process(_delta: float) -> void:
 				bufs.clr(TUMBLINGBUF)
 				bufs.clr(TUMBLINGAIRJUMPBUF)
 				bufs.setmin(TUMBLINGAIRJUMPBUF, 8)
-		spr.setup([61,62,63,64],8)
+		var tumblingframesleft = bufs.read(TUMBLINGBUF) # 40-0
+		if tumblingframesleft > 20:
+			spr.setup([61,62,63,64],4)
+		else:
+			spr.setup([61,62,63,64],8)
 		#v *= 0.975
 		#v.y += 0.03
-		if v.x: spr.flip_h = v.x < 0
-		v.x=move_toward(v.x,dpad.x*0.9,0.09)
-		v.y=move_toward(v.y,1.5,0.04)
+		if v.y > 0: # falling - worse control
+			v.x=move_toward(v.x,dpad.x*0.9,0.02)
+		else: # rising - better control
+			v.x=move_toward(v.x,dpad.x*0.9,0.09)
+			if v.x: spr.flip_h = v.x < 0
+		if v.y < 1.5: v.y += 0.04
 	else:
 		if dpad.x: spr.flip_h = dpad.x < 0
 		v.x=move_toward(v.x,dpad.x*0.9,0.09)
-		v.y=move_toward(v.y,1.5,0.04)
+		if v.y < 1.5: v.y += 0.04
 		if onfloor:
 			if dpad.x:
 				spr.setup([40,41,42,40],4)
@@ -124,3 +144,19 @@ func _physics_process(_delta: float) -> void:
 		if v.y > -0.5: v.y = -0.5
 		else: v.y -= 1.0
 		bufs.clr(TUMBLINGBUF)
+	
+	if Pin.get_plant_hit():
+		if onfloor:
+			onfloor=false
+			bufs.on(TUMBLINGBUF)
+			bufs.on(TUMBLINGAIRJUMPBUF)
+			v.x=-1.65 if spr.flip_h else 1.65
+		else:
+			bufs.on(TUMBLINGBUF)
+			bufs.on(TUMBLINGAIRJUMPBUF)
+			bufs.clr(SLASHINGBUF)
+			bufs.clr(STRIKINGBUF)
+			v.x=-1.25 if spr.flip_h else 1.25
+			if v.y < 0.50: v.y = 0.50
+			v.y += 0.75
+	
