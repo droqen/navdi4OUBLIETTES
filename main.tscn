@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
+[ext_resource type="Resource" uid="uid://dtcsqs5k46ff4" path="res://dreamlands/path-of-saints-astray/cart.tres" id="3_bhkww"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
-[ext_resource type="Resource" uid="uid://c0dtskryomgei" path="res://dreamlands/cut-and-court/cart.tres" id="3_xnjsd"]
 
-[node name="[[ cut & court ]]" type="Node2D"]
+[node name="[[ saints-astray ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_xnjsd")
+cart = ExtResource("3_bhkww")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -28,8 +28,8 @@ offset_bottom = 100.0
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
-text = "[center][b][[ cut & court ]][/b]
-the same courtyard
-goddess' face
-fourteen pigeons
-wrestling cartoon characters"
+text = "[center][b][[ saints-astray ]][/b]
+every day
+i wake up
+sainted
+and i turn away"

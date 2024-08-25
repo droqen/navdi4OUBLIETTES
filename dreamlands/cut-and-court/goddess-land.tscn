@@ -13,7 +13,7 @@
 font_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
 
 [node name="Goddess-land" type="Node2D"]
-self_modulate = Color(1, 0.290289, 0.0797072, 1)
+self_modulate = Color(1, -0.0169998, -0.190012, 1)
 position = Vector2(-1, 0)
 script = ExtResource("1_k61vj")
 autolinking = true
