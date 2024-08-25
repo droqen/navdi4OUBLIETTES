@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgrdl0wi41m4y"]
+[gd_scene load_steps=11 format=3 uid="uid://cgrdl0wi41m4y"]
 
 [ext_resource type="Script" path="res://dreamlands/path-of-saints/saint.gd" id="1_ic5ae"]
 [ext_resource type="Texture2D" uid="uid://cbvbjp5tgtp4e" path="res://dreamlands/path-of-saints/saints-path.png" id="2_mv5o1"]
@@ -19,6 +19,9 @@ spacing_bottom = -2
 font = SubResource("FontVariation_twj1u")
 font_size = 8
 font_color = Color(0.0156863, 0.0156863, 0.0666667, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eg4kf"]
+size = Vector2(2, 2)
 
 [node name="saint" type="Node2D"]
 position = Vector2(95, -16)
@@ -72,3 +75,10 @@ text = "0"
 label_settings = SubResource("LabelSettings_ff6el")
 horizontal_alignment = 1
 visible_characters_behavior = 1
+
+[node name="plr" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plr"]
+shape = SubResource("RectangleShape2D_eg4kf")

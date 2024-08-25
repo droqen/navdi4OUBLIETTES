@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddcpe6s55fgss"]
+[gd_scene load_steps=6 format=3 uid="uid://ddcpe6s55fgss"]
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
-[ext_resource type="Resource" uid="uid://dtcsqs5k46ff4" path="res://dreamlands/path-of-saints-astray/cart.tres" id="3_bhkww"]
+[ext_resource type="Resource" uid="uid://dtcsqs5k46ff4" path="res://dreamlands/path-of-saints/cart.tres" id="3_bhkww"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
+[ext_resource type="PackedScene" uid="uid://0i15an1ecdeo" path="res://dreamlands/path-of-saints/saints_particles.tscn" id="5_dgaog"]
 
 [node name="[[ saints-astray ]]" type="Node2D"]
 texture_filter = 1
@@ -17,6 +18,8 @@ script = ExtResource("3_vd67c")
 camera = NodePath("dreamcamera")
 
 [node name="dreamcamera" type="Camera2D" parent="LiveDream"]
+
+[node name="saints_particles" parent="LiveDream/dreamcamera" instance=ExtResource("5_dgaog")]
 
 [node name="playerparent" type="Node2D" parent="." groups=["PlayerParent"]]
 

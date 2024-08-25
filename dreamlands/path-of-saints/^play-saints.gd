@@ -3,7 +3,7 @@ extends Node
 func play(dream:LiveDream) -> void:
 	dream.goto_new_land(
 		load(
-			"res://dreamlands/path-of-saints/saints-path.tscn"
+			"res://dreamlands/path-of-saints/saints-astray-land.tscn"
 		).instantiate(),
 		"rmA"
 		#"rmVault2"
@@ -16,5 +16,5 @@ func play(dream:LiveDream) -> void:
 			).instantiate(),
 			"rmNowSafe"
 		)
-		dream.windfish_awakened.emit()
+		dream.windfish_lucidwake.emit("B")
 	)

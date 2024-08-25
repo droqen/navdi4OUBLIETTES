@@ -16,7 +16,7 @@ func _ready() -> void:
 	super._ready()
 	if skinned and SaintsTransgressions.transgressions == 0:
 		skinned = false
-		LiveDream.GetDream(self).windfish_awakened.emit()
+		LiveDream.GetDream(self).windfish_lucidwake.emit("A+")
 
 func _physics_process(_delta: float) -> void:
 	
@@ -44,7 +44,7 @@ func _physics_process(_delta: float) -> void:
 		if skinned_progression < 1:
 			skinned_progression += 0.002
 			if skinned_progression >= 1:
-				LiveDream.GetDream(self).windfish_awakened.emit()
+				LiveDream.GetDream(self).windfish_lucidwake.emit("A")
 	else:
 		if skinned_progression > 0:
 			skinned_progression -= 0.005

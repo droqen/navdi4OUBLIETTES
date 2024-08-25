@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bvn88ccn0he5b"]
+
+[ext_resource type="FontFile" uid="uid://cl366j80sxll6" path="res://navdi4/fonts/fiver.ttf" id="1_hvqdo"]
+
+[sub_resource type="FontVariation" id="FontVariation_kq4pb"]
+base_font = ExtResource("1_hvqdo")
+
+[resource]
+default_font = SubResource("FontVariation_kq4pb")
+default_font_size = 5
+RichTextLabel/colors/default_color = Color(0.0156863, 0.0156863, 0.0666667, 1)
