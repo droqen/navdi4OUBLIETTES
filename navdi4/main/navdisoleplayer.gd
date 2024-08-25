@@ -46,7 +46,7 @@ func _ready() -> void:
 func escape(code):
 	if is_instance_valid(self):
 		escaped.emit(code)
-		queue_free() # always delete a player who escapes.
+		deplayer() # always delete a player who escapes.
 
 func deplayer():
 	remove_from_group(SOLE_PLAYER_GROUP_NAME)

@@ -1,5 +1,7 @@
 extends NavdiSolePlayer
 
+@export var spawn_tumbling : bool = false
+
 enum{
 	FLORBUF,JUMPHITBUF,ONWALLBUF,SLASHINGBUF,TUMBLINGBUF,FREEZE_IN_AIR_BUF,
 	TUMBLINGAIRJUMPBUF,
@@ -50,6 +52,10 @@ func _ready() -> void:
 	travelled_dir.connect(func(travel_dir:Vector2i):
 		last_safe_xpos -= travel_dir.x * 250
 	)
+	
+	if spawn_tumbling:
+		v.y = 1
+		bufs.on(TUMBLING)
 
 
 func _physics_process(_delta: float) -> void:
@@ -103,13 +109,13 @@ func _physics_process(_delta: float) -> void:
 				v.y *= -0.5
 				bufs.on(TUMBLINGBUF) # reset dat
 				bufs.on(TUMBLINGAIRJUMPBUF) # reset dat
-				bufs.on(JUST_STARTED_TUMBLING_BUF)
+				#bufs.on(JUST_STARTED_TUMBLING_BUF)
 			else:
 				v.y = 0
 			if bufs.has(SLASHINGBUF):
 				bufs.on(TUMBLINGBUF)
 				bufs.on(TUMBLINGAIRJUMPBUF)
-				bufs.on(JUST_STARTED_TUMBLING_BUF)
+				#bufs.on(JUST_STARTED_TUMBLING_BUF)
 				bufs.clr(SLASHINGBUF)
 	
 	if bufs.has(HURTSTUNBUF):
@@ -203,7 +209,7 @@ func _physics_process(_delta: float) -> void:
 		0: $slashbox/shape.disabled = true
 	if bufs.has(TUMBLINGBUF) and not bufs.has(JUST_STARTED_TUMBLING_BUF):
 		bufs.setmin(HURTINVINCBUF,3)
-	$hbox/CollisionShape2D.disabled = bufs.has(HURTINVINCBUF)
+	$hbox/CollisionShape2D.disabled = bufs.has(HURTINVINCBUF) and not bufs.has(JUST_STARTED_TUMBLING_BUF)
 	
 	if bufs.read(HURTINVINCBUF) % 5 > 3: hide()
 	else: show()
