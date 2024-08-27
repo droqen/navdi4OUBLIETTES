@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Sheet" load_steps=3 format=3 uid="uid://d1ud1uarh4ell"]
+
+[ext_resource type="Script" path="res://navdi4/main/navdisheet.gd" id="1_8aumy"]
+[ext_resource type="Texture2D" uid="uid://b2mrg1sd3bsqf" path="res://dreamlands/this-second-kind-of-fire/second_fire.png" id="2_qbrt4"]
+
+[resource]
+script = ExtResource("1_8aumy")
+texture = ExtResource("2_qbrt4")
+hframes = 10
+vframes = 10
+defaultframe = 0

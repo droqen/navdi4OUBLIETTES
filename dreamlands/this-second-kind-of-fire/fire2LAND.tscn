@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6n3mi4alhlrv"]
+
+[ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_xo2g6"]
+[ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_8gagv"]
+[ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="3_kb1ng"]
+
+[node name="Fire2land" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0.5)
+script = ExtResource("1_xo2g6")
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("2_8gagv")
+room_size = Vector2i(150, 150)
+dbg_outline_col = Color(0.91124, 0.739068, 0.692058, 1)
+
+[node name="Camera2D" type="Camera2D" parent="rmA"]
+position = Vector2(82, 86)
+
+[node name="Label" type="Label" parent="rmA"]
+offset_left = 63.0
+offset_top = 71.0
+offset_right = 103.0
+offset_bottom = 94.0
+text = "hello"
+
+[node name="Maze" type="TileMapLayer" parent="rmA"]
+navigation_enabled = false
+script = ExtResource("3_kb1ng")
