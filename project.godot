@@ -25,10 +25,10 @@ Sav="*res://navdi4/main/navdisav.gd"
 
 [display]
 
-window/size/viewport_width=180
-window/size/viewport_height=200
-window/size/window_width_override=360
-window/size/window_height_override=400
+window/size/viewport_width=300
+window/size/viewport_height=220
+window/size/window_width_override=900
+window/size/window_height_override=660
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 

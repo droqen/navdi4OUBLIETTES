@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcxoggofdwgo1"]
+
+[ext_resource type="Script" path="res://dreamlands/this-second-kind-of-fire/flagcheckpoint.gd" id="1_p1k8m"]
+[ext_resource type="Texture2D" uid="uid://b2mrg1sd3bsqf" path="res://dreamlands/this-second-kind-of-fire/second_fire.png" id="1_qh0is"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="2_qp1sa"]
+[ext_resource type="Resource" uid="uid://d1ud1uarh4ell" path="res://dreamlands/this-second-kind-of-fire/second_fire_sheet.tres" id="3_dni1c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jajlj"]
+size = Vector2(10, 2)
+
+[node name="flagcheckpoint" type="Node2D"]
+position = Vector2(52, 105)
+script = ExtResource("1_p1k8m")
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_qh0is")
+hframes = 10
+vframes = 10
+frame = 41
+script = ExtResource("2_qp1sa")
+sheet = ExtResource("3_dni1c")
+frames = PackedInt32Array(41, 42, 43, 44)
+ani_period = 17
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_jajlj")

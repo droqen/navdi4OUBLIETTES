@@ -7,3 +7,6 @@ func play(d:LiveDream)->void:
 		).instantiate(),
 		"rmA"
 	)
+	#await get_tree().process_frame
+	#F2FlagCheckpoint.ActiveCheckName = "check3"
+	#NavdiSolePlayer.GetPlayer(self).die()

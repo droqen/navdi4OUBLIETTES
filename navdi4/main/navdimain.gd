@@ -99,6 +99,7 @@ func _ready() -> void:
 			play.owner = owner if owner else self
 			if play.has_method('play'):
 				play.play.call_deferred($LiveDream)
+		$diary.hide()
 
 # TODO - this should all be in a separate node
 
