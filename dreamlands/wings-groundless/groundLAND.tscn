@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://btllpp13iduyo"]
+
+[ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_iyvlp"]
+[ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_ho3j2"]
+[ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="3_tc80q"]
+[ext_resource type="Script" path="res://dreamlands/wings-groundless/player.gd" id="4_gbca0"]
+[ext_resource type="Texture2D" uid="uid://jpwh6jj46rdy" path="res://dreamlands/wings-groundless/earth-calls.png" id="5_rgjfg"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="6_5lhfp"]
+[ext_resource type="Resource" uid="uid://b7874ab3nscjl" path="res://dreamlands/wings-groundless/earth-calls_sheet.tres" id="7_afmbf"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="8_12snh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwat1"]
+size = Vector2(6, 6)
+
+[node name="GroundLand" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0.5)
+script = ExtResource("1_iyvlp")
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("2_ho3j2")
+room_size = Vector2i(130, 180)
+
+[node name="Maze" type="TileMapLayer" parent="rmA"]
+navigation_enabled = false
+script = ExtResource("3_tc80q")
+
+[node name="player" type="Node2D" parent="rmA"]
+script = ExtResource("4_gbca0")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmA/player"]
+texture = ExtResource("5_rgjfg")
+hframes = 10
+vframes = 10
+frame = 2
+script = ExtResource("6_5lhfp")
+sheet = ExtResource("7_afmbf")
+playing = true
+frames = PackedInt32Array(1, 2, 0, 0)
+ani_period = 6
+ani_index = 1
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmA/player"]
+position = Vector2(0, 2)
+script = ExtResource("8_12snh")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmA/player/NavdiBodyMover"]
+enabled = false
+shape = SubResource("RectangleShape2D_hwat1")
+target_position = Vector2(0, 0)

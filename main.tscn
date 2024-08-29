@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
-[ext_resource type="Resource" uid="uid://hh2tr310qpgk" path="res://dreamlands/this-second-kind-of-fire/cart.tres" id="3_gyn6e"]
+[ext_resource type="Resource" uid="uid://cry5wd63g5804" path="res://dreamlands/wings-groundless/cart.tres" id="3_4jai5"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
-[node name="[[ this-second-kind-of-fire ]]" type="Node2D"]
+[node name="[[ wings-groundless ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_gyn6e")
+cart = ExtResource("3_4jai5")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -28,11 +28,8 @@ offset_bottom = 100.0
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
-text = "[center][b][[ this-second-kind-of-fire ]][/b]
-i don't want to
-set the world on fire
-longing
-personal
-reaching one person
-reaching myself
-*relationships*"
+text = "[center][b][[ wings-groundless ]][/b]
+you can double jump
+you can fly
+but what do you do
+when the earth calls"
