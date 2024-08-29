@@ -1,50 +1,404 @@
-[gd_scene load_steps=10 format=3 uid="uid://btllpp13iduyo"]
+[gd_scene load_steps=12 format=4 uid="uid://btllpp13iduyo"]
 
 [ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_iyvlp"]
 [ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_ho3j2"]
+[ext_resource type="FontFile" uid="uid://cl366j80sxll6" path="res://navdi4/fonts/fiver.ttf" id="2_qukdh"]
+[ext_resource type="TileSet" uid="uid://bj5j8v0otfq5f" path="res://dreamlands/wings-groundless/earth-calls_tiles.tres" id="3_ip5w5"]
 [ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="3_tc80q"]
-[ext_resource type="Script" path="res://dreamlands/wings-groundless/player.gd" id="4_gbca0"]
-[ext_resource type="Texture2D" uid="uid://jpwh6jj46rdy" path="res://dreamlands/wings-groundless/earth-calls.png" id="5_rgjfg"]
-[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="6_5lhfp"]
-[ext_resource type="Resource" uid="uid://b7874ab3nscjl" path="res://dreamlands/wings-groundless/earth-calls_sheet.tres" id="7_afmbf"]
-[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="8_12snh"]
+[ext_resource type="PackedScene" uid="uid://eibq07u43v0a" path="res://dreamlands/wings-groundless/player.tscn" id="5_i5frv"]
+[ext_resource type="Theme" uid="uid://2qg2l4x5xsd2" path="res://dreamlands/wings-groundless/wings-theme.tres" id="6_rtrxv"]
+[ext_resource type="Script" path="res://navdi4/pome/ChatterLabel.gd" id="7_v7j55"]
+[ext_resource type="Script" path="res://navdi4/pome/ChatToggleArea.gd" id="8_joogu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwat1"]
-size = Vector2(6, 6)
+[sub_resource type="LabelSettings" id="LabelSettings_28y83"]
+font = ExtResource("2_qukdh")
+font_size = 5
+font_color = Color(0.94902, 0.588235, 0.329412, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdvcy"]
+size = Vector2(130, 100)
 
 [node name="GroundLand" type="Node2D"]
-self_modulate = Color(1, 1, 1, 0.5)
+self_modulate = Color(1, 0.169263, -0.156963, 1)
 script = ExtResource("1_iyvlp")
+autolinking = true
+autosnapping = true
+labelsettings = SubResource("LabelSettings_28y83")
 
 [node name="rmA" type="Node2D" parent="."]
 texture_filter = 1
 script = ExtResource("2_ho3j2")
 room_size = Vector2i(130, 180)
+room_links = Array[String](["rmRight", "", "rmLeft", ""])
+blank_link_behaviour = 2
 
 [node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_map_data = PackedByteArray("AAAAAAcAAAAAAAEAAAABAAoAAAAAAAEAAAABAAsAAAAAAAEAAAACAAsAAAAAAAEAAAACAAwAAAAAAAEAAAADAAwAAAAAAAEAAAADAAsAAAAAAAEAAAAEAAsAAAAAAAEAAAAFAAoAAAAAAAEAAAAGAAoAAAAAAAEAAAAGAAsAAAAAAAEAAAAHAAsAAAAAAAEAAAAHAAwAAAAAAAEAAAAKAAsAAAAAAAEAAAALAAsAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAAAAAgAAAAAAAIAAAAAAAkAAAAAAAIAAAABAAwAAAAAAAIAAAACAA0AAAAAAAIAAAACAA4AAAAAAAIAAAADAA0AAAAAAAIAAAAEAAwAAAAAAAIAAAAFAAsAAAAAAAIAAAAHAA0AAAAAAAIAAAAHAA4AAAAAAAIAAAAHAA8AAAAAAAIAAAAIAA0AAAAAAAIAAAAJAA0AAAAAAAIAAAAJAA4AAAAAAAIAAAAKAAwAAAAAAAIAAAAKAA0AAAAAAAIAAAAMAAsAAAAAAAIAAAAMAAwAAAAAAAIAAAAAAAoAAAAAAAMAAAAAAAsAAAAAAAMAAAAAAAwAAAAAAAMAAAAAAA0AAAAAAAMAAAAAAA4AAAAAAAMAAAAAAA8AAAAAAAMAAAAAABAAAAAAAAMAAAAAABEAAAAAAAMAAAADABAAAAAAAAMAAAADAA8AAAAAAAMAAAADAA4AAAAAAAMAAAAEAA4AAAAAAAMAAAAEAA0AAAAAAAMAAAAFAA0AAAAAAAMAAAAFAAwAAAAAAAMAAAAGAAwAAAAAAAMAAAAGAA0AAAAAAAMAAAAGAA4AAAAAAAMAAAAFAA4AAAAAAAMAAAAFAA8AAAAAAAMAAAAEAA8AAAAAAAMAAAAEABAAAAAAAAMAAAAEABEAAAAAAAMAAAADABEAAAAAAAMAAAACABEAAAAAAAMAAAACABAAAAAAAAMAAAACAA8AAAAAAAMAAAABAA8AAAAAAAMAAAABAA4AAAAAAAMAAAABAA0AAAAAAAMAAAABABAAAAAAAAMAAAABABEAAAAAAAMAAAAFABEAAAAAAAMAAAAFABAAAAAAAAMAAAAGABAAAAAAAAMAAAAGAA8AAAAAAAMAAAAGABEAAAAAAAMAAAAHABEAAAAAAAMAAAAHABAAAAAAAAMAAAAIABAAAAAAAAMAAAAIAA8AAAAAAAMAAAAIAA4AAAAAAAMAAAAJAA8AAAAAAAMAAAAJABAAAAAAAAMAAAAJABEAAAAAAAMAAAAIABEAAAAAAAMAAAAKABEAAAAAAAMAAAAKABAAAAAAAAMAAAAKAA8AAAAAAAMAAAAKAA4AAAAAAAMAAAALAA4AAAAAAAMAAAALAA0AAAAAAAMAAAALAAwAAAAAAAMAAAAMAA0AAAAAAAMAAAAMAA4AAAAAAAMAAAAMAA8AAAAAAAMAAAALAA8AAAAAAAMAAAALABAAAAAAAAMAAAALABEAAAAAAAMAAAAMABEAAAAAAAMAAAAMABAAAAAAAAMAAAADAAYAAAAAAAEAAAADAAcAAAAAAAIAAAADAAgAAAAAAAMAAAADAAkAAAAAAAMAAAADAAoAAAAAAAMAAAAHAAYAAAAAAAEAAAAHAAcAAAAAAAIAAAAHAAgAAAAAAAMAAAAHAAkAAAAAAAMAAAAHAAoAAAAAAAMAAAAKAAUAAAAAAAEAAAALAAUAAAAAAAEAAAAMAAUAAAAAAAEAAAALAAQAAAAAAAEAAAALAAYAAAAAAAEAAAAKAAYAAAAAAAIAAAAKAAcAAAAAAAIAAAALAAcAAAAAAAIAAAAMAAYAAAAAAAIAAAAMAAcAAAAAAAIAAAAKAAgAAAAAAAMAAAALAAgAAAAAAAMAAAAMAAgAAAAAAAMAAAAKAAkAAAAAAAMAAAALAAkAAAAAAAMAAAAKAAoAAAAAAAMAAAAMAAkAAAAAAAMAAAAIAAwAAAABAAIAAAAJAAwAAAABAAIAAAA=")
+tile_set = ExtResource("3_ip5w5")
 navigation_enabled = false
 script = ExtResource("3_tc80q")
 
-[node name="player" type="Node2D" parent="rmA"]
-script = ExtResource("4_gbca0")
+[node name="player" parent="rmA" instance=ExtResource("5_i5frv")]
 
-[node name="SheetSprite" type="Sprite2D" parent="rmA/player"]
-texture = ExtResource("5_rgjfg")
-hframes = 10
-vframes = 10
-frame = 2
-script = ExtResource("6_5lhfp")
-sheet = ExtResource("7_afmbf")
-playing = true
-frames = PackedInt32Array(1, 2, 0, 0)
-ani_period = 6
-ani_index = 1
+[node name="ChatterLabel" type="RichTextLabel" parent="rmA"]
+offset_top = 8.0
+offset_right = 130.0
+offset_bottom = 40.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]the palace
+the clouds
+blessed you"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+linebreak_delay = 3
 
-[node name="NavdiBodyMover" type="Node2D" parent="rmA/player"]
-position = Vector2(0, 2)
-script = ExtResource("8_12snh")
+[node name="ChatToggleArea" type="Area2D" parent="rmA" node_paths=PackedStringArray("label")]
+position = Vector2(65, 88)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="rmA/player/NavdiBodyMover"]
-enabled = false
-shape = SubResource("RectangleShape2D_hwat1")
-target_position = Vector2(0, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmA/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_tdvcy")
+
+[node name="rmRight" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(140, 0)
+script = ExtResource("2_ho3j2")
+room_size = Vector2i(130, 180)
+room_links = Array[String](["rmRight2", "", "rmA", ""])
+blank_link_behaviour = 2
+
+[node name="Maze" type="TileMapLayer" parent="rmRight"]
+tile_map_data = PackedByteArray("AAAAAAgAAAAAAAMAAAAAAAkAAAAAAAMAAAAAAAYAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAUAAAAAAAEAAAAAAAoAAAAAAAEAAAABAAoAAAAAAAEAAAACAAoAAAAAAAEAAAACAAsAAAAAAAEAAAACAAwAAAAAAAEAAAADAAwAAAABAAIAAAAEAAwAAAABAAIAAAAFAA0AAAABAAIAAAAGAA0AAAABAAIAAAADAA0AAAAAAAEAAAAEAA0AAAAAAAEAAAAFAA4AAAAAAAEAAAAGAA4AAAAAAAIAAAAHAA4AAAABAAIAAAAIAA4AAAABAAIAAAAAAAsAAAAAAAIAAAABAAsAAAAAAAIAAAACAA0AAAAAAAIAAAADAA4AAAAAAAIAAAADAA8AAAAAAAIAAAADABAAAAAAAAIAAAAEAA4AAAAAAAIAAAAFAA8AAAAAAAIAAAAHAA8AAAAAAAIAAAAHABAAAAAAAAIAAAAHABEAAAAAAAIAAAAIAA8AAAAAAAEAAAAJAA8AAAABAAIAAAAJABAAAAAAAAIAAAAJABEAAAAAAAIAAAAKABAAAAAAAAIAAAAKABEAAAAAAAIAAAALABAAAAABAAIAAAALABEAAAAAAAIAAAAMABAAAAABAAIAAAAMABEAAAAAAAIAAAAIABAAAAAAAAIAAAAIABEAAAAAAAMAAAAGAA8AAAAAAAMAAAAGABAAAAAAAAMAAAAGABEAAAAAAAMAAAAEAA8AAAAAAAMAAAAEABAAAAAAAAMAAAAEABEAAAAAAAMAAAAFABAAAAAAAAMAAAAFABEAAAAAAAMAAAAAABEAAAAAAAMAAAABABEAAAAAAAMAAAACABEAAAAAAAMAAAADABEAAAAAAAMAAAAAAAwAAAAAAAMAAAAAAA0AAAAAAAMAAAAAAA4AAAAAAAMAAAAAAA8AAAAAAAMAAAAAABAAAAAAAAMAAAABAAwAAAAAAAMAAAABAA0AAAAAAAMAAAABAA4AAAAAAAMAAAABAA8AAAAAAAMAAAABABAAAAAAAAMAAAACAA4AAAAAAAMAAAACAA8AAAAAAAMAAAACABAAAAAAAAMAAAAKAA8AAAABAAIAAAA=")
+tile_set = ExtResource("3_ip5w5")
+navigation_enabled = false
+script = ExtResource("3_tc80q")
+
+[node name="player" parent="rmRight" instance=ExtResource("5_i5frv")]
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmRight"]
+offset_top = 8.0
+offset_right = 130.0
+offset_bottom = 40.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]easily crossed"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmRight" node_paths=PackedStringArray("label")]
+position = Vector2(65, 88)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmRight/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_tdvcy")
+
+[node name="rmRight2" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(284, 1)
+script = ExtResource("2_ho3j2")
+room_size = Vector2i(130, 180)
+room_links = Array[String](["rmRight3", "", "rmRight", ""])
+blank_link_behaviour = 2
+
+[node name="Maze" type="TileMapLayer" parent="rmRight2"]
+tile_map_data = PackedByteArray("AAAAABEAAAABAAIAAAABABEAAAABAAIAAAACABEAAAAAAAEAAAADABEAAAAAAAEAAAACABAAAAABAAIAAAAEABAAAAAAAAEAAAAEABEAAAAAAAIAAAA=")
+tile_set = ExtResource("3_ip5w5")
+navigation_enabled = false
+script = ExtResource("3_tc80q")
+
+[node name="player" parent="rmRight2" instance=ExtResource("5_i5frv")]
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmRight2"]
+visible = false
+offset_top = 8.0
+offset_right = 130.0
+offset_bottom = 40.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]here this place where
+the earth pulls away
+despite your longing"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmRight2" node_paths=PackedStringArray("label")]
+visible = false
+position = Vector2(65, 88)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmRight2/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_tdvcy")
+
+[node name="rmRight3" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(425, 2)
+script = ExtResource("2_ho3j2")
+room_size = Vector2i(130, 180)
+room_links = Array[String](["rmRight4", "", "rmRight2", ""])
+blank_link_behaviour = 2
+
+[node name="Maze" type="TileMapLayer" parent="rmRight3"]
+tile_set = ExtResource("3_ip5w5")
+navigation_enabled = false
+script = ExtResource("3_tc80q")
+
+[node name="player" parent="rmRight3" instance=ExtResource("5_i5frv")]
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmRight3"]
+visible = false
+offset_top = 8.0
+offset_right = 130.0
+offset_bottom = 40.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]crossed
+because
+it was easy"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmRight3" node_paths=PackedStringArray("label")]
+visible = false
+position = Vector2(65, 88)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmRight3/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_tdvcy")
+
+[node name="rmRight4" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(570, 3)
+script = ExtResource("2_ho3j2")
+room_size = Vector2i(130, 180)
+room_links = Array[String](["rmRight5", "", "rmRight3", ""])
+blank_link_behaviour = 2
+
+[node name="Maze" type="TileMapLayer" parent="rmRight4"]
+tile_map_data = PackedByteArray("AAABABEAAAAAAAMAAAABABAAAAAAAAIAAAABAA8AAAAAAAEAAAAGAA0AAAAAAAEAAAAKAA4AAAAAAAEAAAAGAA4AAAAAAAIAAAAKAA8AAAAAAAIAAAAKABAAAAAAAAIAAAAGAA8AAAAAAAMAAAAGABAAAAAAAAMAAAAGABEAAAAAAAMAAAAKABEAAAAAAAMAAAA=")
+tile_set = ExtResource("3_ip5w5")
+navigation_enabled = false
+script = ExtResource("3_tc80q")
+
+[node name="player" parent="rmRight4" instance=ExtResource("5_i5frv")]
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmRight4"]
+visible = false
+offset_top = 8.0
+offset_right = 130.0
+offset_bottom = 40.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]crossed
+because
+it was easy"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmRight4" node_paths=PackedStringArray("label")]
+visible = false
+position = Vector2(65, 88)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmRight4/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_tdvcy")
+
+[node name="rmRight5" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(712, 3)
+script = ExtResource("2_ho3j2")
+room_size = Vector2i(130, 180)
+room_links = Array[String](["rmRight6", "", "rmRight4", ""])
+blank_link_behaviour = 2
+
+[node name="Maze" type="TileMapLayer" parent="rmRight5"]
+tile_map_data = PackedByteArray("AAAKAA4AAAAAAAEAAAAKAA8AAAAAAAIAAAAKABAAAAAAAAIAAAAKABEAAAAAAAMAAAAAABEAAAAAAAIAAAABABAAAAAAAAEAAAACABAAAAAAAAEAAAADAA8AAAAAAAEAAAAEAA8AAAAAAAEAAAAFABAAAAAAAAEAAAAGABAAAAAAAAEAAAAHAA8AAAAAAAEAAAAIAAwAAAAAAAIAAAAJAAwAAAAAAAEAAAAKAAwAAAAAAAEAAAALAAwAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAAMAAsAAAAAAAIAAAALAAsAAAAAAAIAAAALAA0AAAAAAAMAAAAKAA0AAAAAAAIAAAAIAA8AAAAAAAEAAAAIABAAAAAAAAIAAAAHABAAAAAAAAIAAAAGABEAAAAAAAIAAAAFABEAAAAAAAIAAAAEABAAAAAAAAIAAAADABEAAAAAAAIAAAACABEAAAAAAAIAAAABABEAAAAAAAIAAAADABAAAAAAAAIAAAAJAA4AAAAAAAEAAAAJAA8AAAAAAAIAAAAJABAAAAAAAAMAAAAJABEAAAAAAAMAAAAIABEAAAAAAAMAAAAHABEAAAAAAAMAAAAEABEAAAAAAAMAAAALAA4AAAAAAAMAAAALAA8AAAAAAAMAAAALABAAAAAAAAMAAAALABEAAAAAAAMAAAAMAA0AAAAAAAMAAAAMAAwAAAAAAAMAAAAMAA4AAAAAAAMAAAAMAA8AAAAAAAMAAAAMABAAAAAAAAMAAAAMABEAAAAAAAMAAAAJAA0AAAAAAAIAAAAIAA0AAAAAAAMAAAAIAAsAAAAAAAEAAAABAA8AAAABAAIAAAACAA8AAAABAAIAAAAHAA4AAAABAAIAAAAGAA8AAAABAAIAAAAFAA8AAAABAAIAAAAJAAsAAAABAAIAAAAKAAsAAAABAAIAAAA=")
+tile_set = ExtResource("3_ip5w5")
+navigation_enabled = false
+script = ExtResource("3_tc80q")
+
+[node name="player" parent="rmRight5" instance=ExtResource("5_i5frv")]
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmRight5"]
+offset_top = 8.0
+offset_right = 130.0
+offset_bottom = 40.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]wanting"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmRight5" node_paths=PackedStringArray("label")]
+position = Vector2(65, 88)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmRight5/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_tdvcy")
+
+[node name="rmRight6" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(852, 1)
+script = ExtResource("2_ho3j2")
+room_size = Vector2i(130, 180)
+room_links = Array[String](["rmRight7", "", "rmRight5", ""])
+blank_link_behaviour = 2
+
+[node name="Maze" type="TileMapLayer" parent="rmRight6"]
+tile_map_data = PackedByteArray("AAAAAAoAAAAAAAEAAAABAAoAAAAAAAEAAAACAAoAAAAAAAEAAAADAAoAAAAAAAEAAAAEAAoAAAAAAAEAAAAIAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAABAAAAAAAAAAIAAAABAAEAAAAAAAIAAAABAAIAAAAAAAIAAAABAAMAAAAAAAIAAAACAAQAAAAAAAIAAAADAAUAAAAAAAIAAAAEAAYAAAAAAAIAAAAFAAYAAAAAAAEAAAAGAAYAAAAAAAEAAAAHAAYAAAAAAAIAAAAIAAYAAAAAAAIAAAAJAAYAAAAAAAIAAAAKAAYAAAAAAAEAAAALAAYAAAAAAAEAAAAMAAYAAAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAIAAAACAAIAAAAAAAIAAAACAAMAAAAAAAIAAAADAAAAAAAAAAIAAAADAAEAAAAAAAIAAAADAAIAAAAAAAIAAAADAAMAAAAAAAIAAAAEAAAAAAAAAAIAAAAEAAEAAAAAAAEAAAAEAAIAAAAAAAIAAAAEAAMAAAAAAAIAAAAFAAAAAAAAAAEAAAAFAAEAAAAAAAEAAAAFAAIAAAAAAAEAAAAFAAMAAAAAAAEAAAAGAAAAAAAAAAEAAAAGAAEAAAAAAAEAAAAGAAIAAAAAAAEAAAAGAAMAAAAAAAEAAAAHAAAAAAAAAAEAAAAHAAEAAAAAAAEAAAAHAAIAAAAAAAEAAAAHAAMAAAAAAAIAAAAIAAAAAAAAAAEAAAAIAAEAAAAAAAEAAAAIAAIAAAAAAAEAAAAIAAMAAAAAAAEAAAAJAAAAAAAAAAEAAAAJAAEAAAAAAAEAAAAJAAIAAAAAAAEAAAAJAAMAAAAAAAEAAAAKAAAAAAAAAAEAAAAKAAEAAAAAAAEAAAAKAAIAAAAAAAEAAAAKAAMAAAAAAAEAAAALAAAAAAAAAAEAAAALAAEAAAAAAAEAAAALAAIAAAAAAAEAAAALAAMAAAAAAAEAAAAMAAAAAAAAAAEAAAAMAAEAAAAAAAEAAAAMAAIAAAAAAAEAAAAMAAMAAAAAAAEAAAADAAQAAAAAAAIAAAAEAAQAAAAAAAIAAAAEAAUAAAAAAAIAAAAFAAQAAAAAAAEAAAAFAAUAAAAAAAEAAAAGAAQAAAAAAAEAAAAGAAUAAAAAAAEAAAAHAAQAAAAAAAIAAAAHAAUAAAAAAAIAAAAIAAQAAAAAAAEAAAAIAAUAAAAAAAIAAAAJAAQAAAAAAAEAAAAJAAUAAAAAAAIAAAAKAAQAAAAAAAEAAAAKAAUAAAAAAAEAAAALAAQAAAAAAAEAAAALAAUAAAAAAAEAAAAMAAQAAAAAAAEAAAAMAAUAAAAAAAEAAAAFAAoAAAAAAAEAAAAGAAoAAAAAAAEAAAAHAAoAAAAAAAEAAAAAAAsAAAAAAAIAAAAAAAwAAAAAAAMAAAABAAsAAAAAAAIAAAABAAwAAAAAAAIAAAACAAsAAAAAAAIAAAACAAwAAAAAAAMAAAADAAsAAAAAAAIAAAADAAwAAAAAAAIAAAAEAAsAAAAAAAIAAAAEAAwAAAAAAAIAAAAFAAsAAAAAAAEAAAAFAAwAAAAAAAEAAAAGAAsAAAAAAAEAAAAGAAwAAAAAAAEAAAAHAAsAAAAAAAIAAAAHAAwAAAAAAAIAAAAIAAsAAAAAAAIAAAAIAAwAAAAAAAIAAAAJAAsAAAAAAAIAAAAJAAwAAAAAAAIAAAAKAAsAAAAAAAEAAAAKAAwAAAAAAAEAAAALAAsAAAAAAAEAAAALAAwAAAAAAAEAAAAMAAsAAAAAAAIAAAAMAAwAAAAAAAIAAAAEAA0AAAAAAAIAAAAFAA0AAAAAAAEAAAAGAA0AAAAAAAEAAAAHAA0AAAAAAAIAAAAIAA0AAAAAAAIAAAAJAA0AAAAAAAIAAAAKAA0AAAAAAAEAAAALAA0AAAAAAAEAAAAMAA0AAAAAAAIAAAAIAA4AAAAAAAIAAAAHAA4AAAAAAAIAAAAJAA4AAAAAAAIAAAAKAA4AAAAAAAEAAAALAA4AAAAAAAEAAAAMAA4AAAAAAAIAAAAMAA8AAAAAAAIAAAALAA8AAAAAAAEAAAAKAA8AAAAAAAEAAAAKABAAAAAAAAIAAAAKABEAAAAAAAIAAAALABEAAAAAAAIAAAALABAAAAAAAAIAAAAJAA8AAAAAAAIAAAAJABAAAAAAAAIAAAAMABAAAAAAAAIAAAAMABEAAAAAAAIAAAAFAA4AAAAAAAEAAAAGAA4AAAAAAAEAAAAFAA8AAAAAAAEAAAAGAA8AAAAAAAEAAAAFABAAAAAAAAEAAAAGABAAAAAAAAEAAAAFAAcAAAAAAAMAAAAFAAgAAAAAAAMAAAAFAAkAAAAAAAMAAAAGAAcAAAAAAAMAAAAGAAgAAAAAAAMAAAAGAAkAAAAAAAMAAAAKAAcAAAAAAAMAAAAKAAgAAAAAAAMAAAALAAcAAAAAAAMAAAALAAgAAAAAAAMAAAAAAA0AAAAAAAMAAAAAAA4AAAAAAAMAAAAAAA8AAAAAAAMAAAAAABAAAAAAAAMAAAABAA0AAAAAAAMAAAABAA4AAAAAAAMAAAABAA8AAAAAAAMAAAABABAAAAAAAAMAAAACAA0AAAAAAAMAAAACAA4AAAAAAAMAAAACAA8AAAAAAAMAAAACABAAAAAAAAMAAAADAA0AAAAAAAMAAAADAA4AAAAAAAMAAAADAA8AAAAAAAMAAAADABAAAAAAAAMAAAAAABEAAAAAAAMAAAABABEAAAAAAAMAAAACABEAAAAAAAMAAAADABEAAAAAAAMAAAAEABAAAAAAAAMAAAAEAA8AAAAAAAMAAAAEAA4AAAAAAAMAAAAEABEAAAAAAAMAAAAFABEAAAAAAAIAAAAGABEAAAAAAAIAAAAHABEAAAAAAAMAAAAHABAAAAAAAAMAAAAHAA8AAAAAAAMAAAAIABAAAAAAAAMAAAAIABEAAAAAAAMAAAAIAA8AAAAAAAMAAAAJABEAAAAAAAMAAAA=")
+tile_set = ExtResource("3_ip5w5")
+navigation_enabled = false
+script = ExtResource("3_tc80q")
+
+[node name="player" parent="rmRight6" instance=ExtResource("5_i5frv")]
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmRight6"]
+offset_top = 8.0
+offset_right = 130.0
+offset_bottom = 40.0
+theme = ExtResource("6_rtrxv")
+theme_override_colors/default_color = Color(0.054902, 0.635294, 0.458824, 1)
+bbcode_enabled = true
+text = "[center]wanting"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmRight6" node_paths=PackedStringArray("label")]
+position = Vector2(65, 88)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmRight6/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_tdvcy")
+
+[node name="rmRight7" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(994, 1)
+script = ExtResource("2_ho3j2")
+room_size = Vector2i(130, 180)
+room_links = Array[String](["", "", "rmRight6", ""])
+blank_link_behaviour = 2
+
+[node name="Maze" type="TileMapLayer" parent="rmRight7"]
+tile_map_data = PackedByteArray("AAAAAAoAAAAAAAEAAAABAAoAAAAAAAEAAAACAAoAAAAAAAEAAAADAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAABAAAAAAAAAAEAAAABAAEAAAAAAAEAAAABAAIAAAAAAAEAAAABAAMAAAAAAAEAAAACAAQAAAAAAAEAAAADAAUAAAAAAAEAAAAJAAYAAAAAAAIAAAAKAAYAAAAAAAEAAAALAAYAAAAAAAEAAAAMAAYAAAAAAAIAAAACAAAAAAAAAAEAAAACAAEAAAAAAAEAAAACAAIAAAAAAAEAAAACAAMAAAAAAAEAAAADAAAAAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAADAAMAAAAAAAEAAAAJAAAAAAAAAAEAAAAJAAEAAAAAAAEAAAAJAAIAAAAAAAEAAAAJAAMAAAAAAAEAAAAKAAAAAAAAAAEAAAAKAAEAAAAAAAEAAAAKAAIAAAAAAAEAAAAKAAMAAAAAAAEAAAALAAAAAAAAAAEAAAALAAEAAAAAAAEAAAALAAIAAAAAAAEAAAALAAMAAAAAAAEAAAAMAAAAAAAAAAEAAAAMAAEAAAAAAAEAAAAMAAIAAAAAAAEAAAAMAAMAAAAAAAEAAAADAAQAAAAAAAEAAAAJAAQAAAAAAAEAAAAJAAUAAAAAAAEAAAAKAAQAAAAAAAEAAAAKAAUAAAAAAAEAAAALAAQAAAAAAAEAAAALAAUAAAAAAAEAAAAMAAQAAAAAAAEAAAAMAAUAAAAAAAEAAAAAAAsAAAAAAAIAAAAAAAwAAAAAAAIAAAABAAsAAAAAAAEAAAABAAwAAAAAAAEAAAACAAsAAAAAAAEAAAACAAwAAAAAAAEAAAADAAsAAAAAAAIAAAADAAwAAAAAAAIAAAAJAAsAAAAAAAIAAAAJAAwAAAAAAAIAAAAKAAsAAAAAAAEAAAAKAAwAAAAAAAEAAAALAAsAAAAAAAEAAAALAAwAAAAAAAEAAAAMAAsAAAAAAAIAAAAMAAwAAAAAAAIAAAAJAA0AAAAAAAIAAAAKAA0AAAAAAAEAAAALAA0AAAAAAAEAAAAMAA0AAAAAAAIAAAAJAA4AAAAAAAIAAAAKAA4AAAAAAAEAAAALAA4AAAAAAAEAAAAMAA4AAAAAAAIAAAAMAA8AAAAAAAIAAAALAA8AAAAAAAEAAAAKAA8AAAAAAAEAAAAKABAAAAAAAAEAAAAKABEAAAAAAAEAAAALABEAAAAAAAEAAAALABAAAAAAAAEAAAAJAA8AAAAAAAIAAAAJABAAAAAAAAIAAAAMABAAAAAAAAIAAAAMABEAAAAAAAIAAAAFAAkAAAAAAAMAAAAGAAkAAAAAAAMAAAAAAA0AAAAAAAIAAAAAAA4AAAAAAAIAAAAAAA8AAAAAAAIAAAAAABAAAAAAAAIAAAABAA0AAAAAAAEAAAABAA4AAAAAAAEAAAABAA8AAAAAAAEAAAABABAAAAAAAAEAAAACAA0AAAAAAAEAAAACAA4AAAAAAAEAAAACAA8AAAAAAAEAAAACABAAAAAAAAEAAAADAA0AAAAAAAIAAAADAA4AAAAAAAIAAAADAA8AAAAAAAIAAAADABAAAAAAAAIAAAAAABEAAAAAAAIAAAABABEAAAAAAAIAAAACABEAAAAAAAEAAAADABEAAAAAAAIAAAAJABEAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAYAAAAAAAIAAAABAAQAAAAAAAEAAAABAAUAAAAAAAEAAAABAAYAAAAAAAEAAAACAAUAAAAAAAEAAAACAAYAAAAAAAEAAAADAAYAAAAAAAIAAAAKAAkAAAAAAAEAAAALAAkAAAAAAAEAAAAMAAkAAAAAAAIAAAALAAcAAAAAAAEAAAALAAgAAAAAAAEAAAAMAAgAAAAAAAIAAAAMAAcAAAAAAAIAAAAJAAcAAAAAAAIAAAAJAAgAAAAAAAIAAAAJAAkAAAAAAAIAAAAKAAgAAAAAAAEAAAAKAAcAAAAAAAEAAAABAAcAAAAAAAMAAAABAAgAAAAAAAMAAAABAAkAAAAAAAMAAAACAAkAAAAAAAMAAAACAAgAAAAAAAMAAAACAAcAAAAAAAMAAAA=")
+tile_set = ExtResource("3_ip5w5")
+navigation_enabled = false
+script = ExtResource("3_tc80q")
+
+[node name="player" parent="rmRight7" instance=ExtResource("5_i5frv")]
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmRight7"]
+offset_top = 158.0
+offset_right = 130.0
+offset_bottom = 190.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]wanting"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmRight7" node_paths=PackedStringArray("label")]
+position = Vector2(65, 88)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmRight7/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_tdvcy")
+
+[node name="rmLeft" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(-139, 0)
+script = ExtResource("2_ho3j2")
+room_size = Vector2i(130, 180)
+room_links = Array[String](["rmA", "", "", ""])
+blank_link_behaviour = 2
+
+[node name="Maze" type="TileMapLayer" parent="rmLeft"]
+tile_map_data = PackedByteArray("AAAAAAkAAAAAAAMAAAAIAAsAAAAAAAEAAAAJAAoAAAAAAAEAAAAKAAoAAAAAAAIAAAALAAoAAAAAAAIAAAAMAAoAAAAAAAMAAAAFAA4AAAAAAAEAAAAGAA4AAAAAAAEAAAAHAA4AAAAAAAEAAAAIAA0AAAAAAAEAAAAIAA4AAAAAAAIAAAADAA8AAAAAAAEAAAADABAAAAAAAAIAAAAEAA4AAAAAAAEAAAAFAA8AAAAAAAIAAAAHAA8AAAAAAAIAAAAHABAAAAAAAAMAAAAHABEAAAAAAAMAAAAIAA8AAAAAAAMAAAAJAAsAAAAAAAIAAAAKAAsAAAAAAAIAAAAKAAwAAAAAAAIAAAALAAsAAAAAAAMAAAAMAAsAAAAAAAMAAAAJAAwAAAAAAAIAAAAJAA0AAAAAAAMAAAAJAA4AAAAAAAMAAAAJAA8AAAAAAAMAAAAKAA0AAAAAAAIAAAAKAA4AAAAAAAIAAAALAA4AAAAAAAMAAAALAA0AAAAAAAMAAAAMAA0AAAAAAAMAAAAMAAwAAAAAAAMAAAALAAwAAAAAAAMAAAAJABAAAAAAAAMAAAAJABEAAAAAAAMAAAAKAA8AAAAAAAIAAAAKABAAAAAAAAMAAAAKABEAAAAAAAMAAAALAA8AAAAAAAMAAAALABAAAAAAAAMAAAALABEAAAAAAAMAAAAMAA4AAAAAAAMAAAAMAA8AAAAAAAMAAAAMABAAAAAAAAMAAAAMABEAAAAAAAMAAAAIABAAAAAAAAMAAAAIABEAAAAAAAMAAAAGAA8AAAAAAAIAAAAGABAAAAAAAAIAAAAGABEAAAAAAAIAAAAEAA8AAAAAAAIAAAAEABAAAAAAAAMAAAAEABEAAAAAAAMAAAAFABAAAAAAAAMAAAAFABEAAAAAAAMAAAAAABEAAAAAAAMAAAABABEAAAAAAAIAAAACABEAAAAAAAMAAAADABEAAAAAAAMAAAAAAA8AAAAAAAEAAAAAABAAAAAAAAIAAAABAA8AAAAAAAEAAAABABAAAAAAAAIAAAACAA8AAAAAAAEAAAACABAAAAAAAAIAAAAJAAkAAAAAAAMAAAAKAAkAAAAAAAEAAAALAAkAAAAAAAIAAAAMAAkAAAAAAAIAAAAMAAcAAAAAAAEAAAALAAcAAAAAAAEAAAAKAAgAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAABAAAAAAAAAAIAAAABAAEAAAAAAAIAAAABAAIAAAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAMAAAABAAMAAAAAAAMAAAABAAQAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAEAAAAAAAYAAAAAAAIAAAADAAAAAAAAAAMAAAAAAAcAAAAAAAIAAAACAAQAAAAAAAEAAAACAAIAAAAAAAMAAAABAAUAAAAAAAEAAAACAAUAAAAAAAIAAAABAAYAAAAAAAIAAAACAAYAAAAAAAMAAAABAAcAAAAAAAMAAAABAAgAAAAAAAMAAAAAAAgAAAAAAAIAAAALAAgAAAAAAAIAAAAMAAgAAAAAAAIAAAAEAA0AAAAAAAMAAAAEAAwAAAAAAAEAAAAEAAsAAAAAAAMAAAADAAsAAAAAAAEAAAAFAAsAAAAAAAMAAAAIAAwAAAAAAAMAAAADAAwAAAAAAAIAAAACAAsAAAAAAAMAAAA=")
+tile_set = ExtResource("3_ip5w5")
+navigation_enabled = false
+script = ExtResource("3_tc80q")
+
+[node name="player" parent="rmLeft" instance=ExtResource("5_i5frv")]
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmLeft"]
+offset_left = 31.0
+offset_top = 8.0
+offset_right = 130.0
+offset_bottom = 40.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "a place
+from before
+left behind"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmLeft" node_paths=PackedStringArray("label")]
+position = Vector2(65, 88)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmLeft/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_tdvcy")
+
+[node name="rmEternalFlight" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(286, -245)
+script = ExtResource("2_ho3j2")
+room_size = Vector2i(130, 180)
+blank_link_behaviour = 2
+
+[node name="player" parent="rmEternalFlight" instance=ExtResource("5_i5frv")]
+position = Vector2(65, 179)
+eternally_flying = true

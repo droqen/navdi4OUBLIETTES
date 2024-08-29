@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://eibq07u43v0a"]
+
+[ext_resource type="Script" path="res://dreamlands/wings-groundless/player.gd" id="1_c11yh"]
+[ext_resource type="Texture2D" uid="uid://jpwh6jj46rdy" path="res://dreamlands/wings-groundless/earth-calls.png" id="2_woshf"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_wenb5"]
+[ext_resource type="Resource" uid="uid://b7874ab3nscjl" path="res://dreamlands/wings-groundless/earth-calls_sheet.tres" id="4_mltfr"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_vxwk8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwat1"]
+size = Vector2(6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_134av"]
+size = Vector2(2, 2)
+
+[node name="player" type="Node2D"]
+position = Vector2(61, 95)
+script = ExtResource("1_c11yh")
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_woshf")
+hframes = 10
+vframes = 10
+frame = 14
+script = ExtResource("3_wenb5")
+sheet = ExtResource("4_mltfr")
+frames = PackedInt32Array(14, 14, 13, 15, 15, 13)
+
+[node name="NavdiBodyMover" type="Node2D" parent="."]
+position = Vector2(0, 2)
+script = ExtResource("5_vxwk8")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="NavdiBodyMover"]
+enabled = false
+shape = SubResource("RectangleShape2D_hwat1")
+target_position = Vector2(0, 0)
+
+[node name="wings" type="Node2D" parent="."]
+position = Vector2(0, 2)
+
+[node name="LPIVOT" type="Node2D" parent="wings"]
+
+[node name="L" type="Sprite2D" parent="wings/LPIVOT"]
+position = Vector2(-10, 0)
+texture = ExtResource("2_woshf")
+hframes = 10
+vframes = 10
+frame = 9
+script = ExtResource("3_wenb5")
+sheet = ExtResource("4_mltfr")
+frames = PackedInt32Array(9)
+
+[node name="RPIVOT" type="Node2D" parent="wings"]
+
+[node name="R" type="Sprite2D" parent="wings/RPIVOT"]
+position = Vector2(10, 0)
+texture = ExtResource("2_woshf")
+flip_h = true
+hframes = 10
+vframes = 10
+frame = 9
+script = ExtResource("3_wenb5")
+sheet = ExtResource("4_mltfr")
+frames = PackedInt32Array(9)
+
+[node name="plrhit" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plrhit"]
+shape = SubResource("RectangleShape2D_134av")
