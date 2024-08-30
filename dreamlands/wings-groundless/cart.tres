@@ -8,7 +8,7 @@
 script = ExtResource("1_024xm")
 diary_written = true
 diary_keywords = Array[String](["you can double jump", "you can fly", "but what do you do", "when the earth calls"])
-name = "wings-groundless"
+name = "the-earth-stays"
 play_script = ExtResource("1_627hm")
 game_size = Vector2i(130, 180)
 view_scale = Vector2i(2, 2)
@@ -22,5 +22,5 @@ birth_day = 29
 sheet_src = ExtResource("3_icv4o")
 tile_size = Vector2i(10, 10)
 icon_idx = 9
-exits = Array[String]([""])
+exits = Array[String](["NOWHERE"])
 songlink = "https://jummb.us/#j6N0fthe-earth-staysn310s0k0l00e07t1ka7g0fj07r1O_U00000000i0o343T9v0pu1ff010o500q040Oad030w2h0MMMDDxxkkoobb550000eeoohhhhoouukkrrkkrrrrxxDDDDuukkkkkkkkkkrrAAMME0c0T1v0xu16f0000q040Oad030A0F0B0Q0000Pff00R0000E1c0617T0v0pu10f0000qg410Oad040w2h0E0c0T2v0pu15f180q040Oad030w0E0c0b4h4h8w0000008Nd50000014h4h4000004h4h4g00000p24hFDdVsFyWKg0lPbSfdvogFDE-x0Gr7yWa5cn9gMGCbGV51n8Zn5O4m9yX7EGTj5R-4capjGW22oKyaNcnlQF89GW4Nqchuo8kNtkaCsTF9yXoGKbGVN-TLNgaIVvGV7KbAuFqaoKGaIUKQV7GVEWJoQTQvgzGXSuY7J-xmCEFyW22ooKh2j5Mk5BAkRsxnamj5B4yegpgKCzByoKHFPMMNt6qoKHpESaRncVGqOk7y2emOSsgjlQuVew0FBUIj8N2yhQq97Asx0At6yhw0"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://btllpp13iduyo"]
+[gd_scene load_steps=13 format=4 uid="uid://btllpp13iduyo"]
 
 [ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_iyvlp"]
 [ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_ho3j2"]
@@ -18,8 +18,11 @@ font_color = Color(0.94902, 0.588235, 0.329412, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tdvcy"]
 size = Vector2(130, 100)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kyx5"]
+size = Vector2(200, 10)
+
 [node name="GroundLand" type="Node2D"]
-self_modulate = Color(1, 0.169263, -0.156963, 1)
+self_modulate = Color(1, 0.278073, -0.155569, 1)
 script = ExtResource("1_iyvlp")
 autolinking = true
 autosnapping = true
@@ -198,7 +201,7 @@ room_links = Array[String](["rmRight5", "", "rmRight3", ""])
 blank_link_behaviour = 2
 
 [node name="Maze" type="TileMapLayer" parent="rmRight4"]
-tile_map_data = PackedByteArray("AAABABEAAAAAAAMAAAABABAAAAAAAAIAAAABAA8AAAAAAAEAAAAGAA0AAAAAAAEAAAAKAA4AAAAAAAEAAAAGAA4AAAAAAAIAAAAKAA8AAAAAAAIAAAAKABAAAAAAAAIAAAAGAA8AAAAAAAMAAAAGABAAAAAAAAMAAAAGABEAAAAAAAMAAAAKABEAAAAAAAMAAAA=")
+tile_map_data = PackedByteArray("AAABABEAAAAAAAMAAAABABAAAAAAAAIAAAABAA8AAAAAAAEAAAAGAA0AAAAAAAEAAAAKAA4AAAAAAAEAAAAGAA4AAAAAAAIAAAAKAA8AAAAAAAIAAAAKABAAAAAAAAIAAAAGAA8AAAAAAAMAAAAGABAAAAAAAAMAAAAGABEAAAAAAAMAAAAKABEAAAAAAAMAAAABAA4AAAABAAIAAAAGAAwAAAABAAIAAAACABEAAAAAAAMAAAAFABAAAAAAAAMAAAAFABEAAAAAAAMAAAALABEAAAAAAAMAAAAMABEAAAAAAAIAAAALABAAAAAAAAMAAAA=")
 tile_set = ExtResource("3_ip5w5")
 navigation_enabled = false
 script = ExtResource("3_tc80q")
@@ -320,7 +323,7 @@ room_links = Array[String](["", "", "rmRight6", ""])
 blank_link_behaviour = 2
 
 [node name="Maze" type="TileMapLayer" parent="rmRight7"]
-tile_map_data = PackedByteArray("AAAAAAoAAAAAAAEAAAABAAoAAAAAAAEAAAACAAoAAAAAAAEAAAADAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAABAAAAAAAAAAEAAAABAAEAAAAAAAEAAAABAAIAAAAAAAEAAAABAAMAAAAAAAEAAAACAAQAAAAAAAEAAAADAAUAAAAAAAEAAAAJAAYAAAAAAAIAAAAKAAYAAAAAAAEAAAALAAYAAAAAAAEAAAAMAAYAAAAAAAIAAAACAAAAAAAAAAEAAAACAAEAAAAAAAEAAAACAAIAAAAAAAEAAAACAAMAAAAAAAEAAAADAAAAAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAADAAMAAAAAAAEAAAAJAAAAAAAAAAEAAAAJAAEAAAAAAAEAAAAJAAIAAAAAAAEAAAAJAAMAAAAAAAEAAAAKAAAAAAAAAAEAAAAKAAEAAAAAAAEAAAAKAAIAAAAAAAEAAAAKAAMAAAAAAAEAAAALAAAAAAAAAAEAAAALAAEAAAAAAAEAAAALAAIAAAAAAAEAAAALAAMAAAAAAAEAAAAMAAAAAAAAAAEAAAAMAAEAAAAAAAEAAAAMAAIAAAAAAAEAAAAMAAMAAAAAAAEAAAADAAQAAAAAAAEAAAAJAAQAAAAAAAEAAAAJAAUAAAAAAAEAAAAKAAQAAAAAAAEAAAAKAAUAAAAAAAEAAAALAAQAAAAAAAEAAAALAAUAAAAAAAEAAAAMAAQAAAAAAAEAAAAMAAUAAAAAAAEAAAAAAAsAAAAAAAIAAAAAAAwAAAAAAAIAAAABAAsAAAAAAAEAAAABAAwAAAAAAAEAAAACAAsAAAAAAAEAAAACAAwAAAAAAAEAAAADAAsAAAAAAAIAAAADAAwAAAAAAAIAAAAJAAsAAAAAAAIAAAAJAAwAAAAAAAIAAAAKAAsAAAAAAAEAAAAKAAwAAAAAAAEAAAALAAsAAAAAAAEAAAALAAwAAAAAAAEAAAAMAAsAAAAAAAIAAAAMAAwAAAAAAAIAAAAJAA0AAAAAAAIAAAAKAA0AAAAAAAEAAAALAA0AAAAAAAEAAAAMAA0AAAAAAAIAAAAJAA4AAAAAAAIAAAAKAA4AAAAAAAEAAAALAA4AAAAAAAEAAAAMAA4AAAAAAAIAAAAMAA8AAAAAAAIAAAALAA8AAAAAAAEAAAAKAA8AAAAAAAEAAAAKABAAAAAAAAEAAAAKABEAAAAAAAEAAAALABEAAAAAAAEAAAALABAAAAAAAAEAAAAJAA8AAAAAAAIAAAAJABAAAAAAAAIAAAAMABAAAAAAAAIAAAAMABEAAAAAAAIAAAAFAAkAAAAAAAMAAAAGAAkAAAAAAAMAAAAAAA0AAAAAAAIAAAAAAA4AAAAAAAIAAAAAAA8AAAAAAAIAAAAAABAAAAAAAAIAAAABAA0AAAAAAAEAAAABAA4AAAAAAAEAAAABAA8AAAAAAAEAAAABABAAAAAAAAEAAAACAA0AAAAAAAEAAAACAA4AAAAAAAEAAAACAA8AAAAAAAEAAAACABAAAAAAAAEAAAADAA0AAAAAAAIAAAADAA4AAAAAAAIAAAADAA8AAAAAAAIAAAADABAAAAAAAAIAAAAAABEAAAAAAAIAAAABABEAAAAAAAIAAAACABEAAAAAAAEAAAADABEAAAAAAAIAAAAJABEAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAYAAAAAAAIAAAABAAQAAAAAAAEAAAABAAUAAAAAAAEAAAABAAYAAAAAAAEAAAACAAUAAAAAAAEAAAACAAYAAAAAAAEAAAADAAYAAAAAAAIAAAAKAAkAAAAAAAEAAAALAAkAAAAAAAEAAAAMAAkAAAAAAAIAAAALAAcAAAAAAAEAAAALAAgAAAAAAAEAAAAMAAgAAAAAAAIAAAAMAAcAAAAAAAIAAAAJAAcAAAAAAAIAAAAJAAgAAAAAAAIAAAAJAAkAAAAAAAIAAAAKAAgAAAAAAAEAAAAKAAcAAAAAAAEAAAABAAcAAAAAAAMAAAABAAgAAAAAAAMAAAABAAkAAAAAAAMAAAACAAkAAAAAAAMAAAACAAgAAAAAAAMAAAACAAcAAAAAAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAAoAAAAAAAEAAAABAAoAAAAAAAEAAAACAAoAAAAAAAEAAAADAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAABAAAAAAAAAAEAAAABAAEAAAAAAAEAAAABAAIAAAAAAAEAAAABAAMAAAAAAAEAAAACAAQAAAAAAAEAAAADAAUAAAAAAAEAAAAJAAYAAAAAAAIAAAAKAAYAAAAAAAEAAAALAAYAAAAAAAEAAAAMAAYAAAAAAAIAAAACAAAAAAAAAAEAAAACAAEAAAAAAAEAAAACAAIAAAAAAAEAAAACAAMAAAAAAAEAAAADAAAAAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAADAAMAAAAAAAEAAAAJAAAAAAAAAAEAAAAJAAEAAAAAAAEAAAAJAAIAAAAAAAEAAAAJAAMAAAAAAAEAAAAKAAAAAAAAAAEAAAAKAAEAAAAAAAEAAAAKAAIAAAAAAAEAAAAKAAMAAAAAAAEAAAALAAAAAAAAAAEAAAALAAEAAAAAAAEAAAALAAIAAAAAAAEAAAALAAMAAAAAAAEAAAAMAAAAAAAAAAEAAAAMAAEAAAAAAAEAAAAMAAIAAAAAAAEAAAAMAAMAAAAAAAEAAAADAAQAAAAAAAEAAAAJAAQAAAAAAAEAAAAJAAUAAAAAAAEAAAAKAAQAAAAAAAEAAAAKAAUAAAAAAAEAAAALAAQAAAAAAAEAAAALAAUAAAAAAAEAAAAMAAQAAAAAAAEAAAAMAAUAAAAAAAEAAAAAAAsAAAAAAAIAAAAAAAwAAAAAAAIAAAABAAsAAAAAAAEAAAABAAwAAAAAAAEAAAACAAsAAAAAAAEAAAACAAwAAAAAAAEAAAADAAsAAAAAAAIAAAADAAwAAAAAAAIAAAAJAAsAAAAAAAIAAAAJAAwAAAAAAAIAAAAKAAsAAAAAAAEAAAAKAAwAAAAAAAEAAAALAAsAAAAAAAEAAAALAAwAAAAAAAEAAAAMAAsAAAAAAAIAAAAMAAwAAAAAAAIAAAAJAA0AAAAAAAIAAAAKAA0AAAAAAAEAAAALAA0AAAAAAAEAAAAMAA0AAAAAAAIAAAAJAA4AAAAAAAIAAAAKAA4AAAAAAAEAAAALAA4AAAAAAAEAAAAMAA4AAAAAAAIAAAAMAA8AAAAAAAIAAAALAA8AAAAAAAEAAAAKAA8AAAAAAAEAAAAKABAAAAAAAAEAAAAKABEAAAAAAAEAAAALABEAAAAAAAEAAAALABAAAAAAAAEAAAAJAA8AAAAAAAIAAAAJABAAAAAAAAIAAAAMABAAAAAAAAIAAAAMABEAAAAAAAIAAAAAAA0AAAAAAAIAAAAAAA4AAAAAAAIAAAAAAA8AAAAAAAIAAAAAABAAAAAAAAIAAAABAA0AAAAAAAEAAAABAA4AAAAAAAEAAAABAA8AAAAAAAEAAAABABAAAAAAAAEAAAACAA0AAAAAAAEAAAACAA4AAAAAAAEAAAACAA8AAAAAAAEAAAACABAAAAAAAAEAAAADAA0AAAAAAAIAAAADAA4AAAAAAAIAAAADAA8AAAAAAAIAAAADABAAAAAAAAIAAAAAABEAAAAAAAIAAAABABEAAAAAAAIAAAACABEAAAAAAAEAAAADABEAAAAAAAIAAAAJABEAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAYAAAAAAAIAAAABAAQAAAAAAAEAAAABAAUAAAAAAAEAAAABAAYAAAAAAAEAAAACAAUAAAAAAAEAAAACAAYAAAAAAAEAAAADAAYAAAAAAAIAAAAKAAkAAAAAAAEAAAALAAkAAAAAAAEAAAAMAAkAAAAAAAIAAAALAAcAAAAAAAEAAAALAAgAAAAAAAEAAAAMAAgAAAAAAAIAAAAMAAcAAAAAAAIAAAAJAAcAAAAAAAIAAAAJAAgAAAAAAAIAAAAJAAkAAAAAAAIAAAAKAAgAAAAAAAEAAAAKAAcAAAAAAAEAAAABAAcAAAAAAAMAAAABAAgAAAAAAAMAAAABAAkAAAAAAAMAAAACAAkAAAAAAAMAAAACAAgAAAAAAAMAAAACAAcAAAAAAAMAAAAEAAAAAAAAAAEAAAAEAAEAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAEAAAAEAAQAAAAAAAEAAAAEAAUAAAAAAAEAAAAFAAAAAAAAAAEAAAAFAAEAAAAAAAEAAAAFAAIAAAAAAAEAAAAFAAMAAAAAAAEAAAAFAAQAAAAAAAEAAAAFAAUAAAAAAAEAAAAGAAAAAAAAAAEAAAAGAAEAAAAAAAEAAAAGAAIAAAAAAAEAAAAGAAMAAAAAAAEAAAAGAAQAAAAAAAEAAAAGAAUAAAAAAAEAAAAHAAAAAAAAAAEAAAAHAAEAAAAAAAEAAAAHAAIAAAAAAAEAAAAHAAMAAAAAAAEAAAAHAAQAAAAAAAEAAAAHAAUAAAAAAAEAAAAIAAAAAAAAAAEAAAAIAAEAAAAAAAEAAAAIAAIAAAAAAAEAAAAIAAMAAAAAAAEAAAAIAAQAAAAAAAEAAAAIAAUAAAAAAAEAAAA=")
 tile_set = ExtResource("3_ip5w5")
 navigation_enabled = false
 script = ExtResource("3_tc80q")
@@ -402,3 +405,339 @@ blank_link_behaviour = 2
 [node name="player" parent="rmEternalFlight" instance=ExtResource("5_i5frv")]
 position = Vector2(65, 179)
 eternally_flying = true
+
+[node name="chat1" type="Node2D" parent="rmEternalFlight"]
+position = Vector2(66, 169)
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmEternalFlight/chat1"]
+offset_left = -60.0
+offset_top = -7.0
+offset_right = 60.0
+offset_bottom = 15.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]and so unlike icarus"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+backspace_pace = 10
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmEternalFlight/chat1" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmEternalFlight/chat1/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_0kyx5")
+
+[node name="chat2" type="Node2D" parent="rmEternalFlight"]
+position = Vector2(55, 155)
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmEternalFlight/chat2"]
+offset_left = -60.0
+offset_top = -7.0
+offset_right = 60.0
+offset_bottom = 15.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]were beloved"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+backspace_pace = 10
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmEternalFlight/chat2" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmEternalFlight/chat2/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_0kyx5")
+
+[node name="chat3" type="Node2D" parent="rmEternalFlight"]
+position = Vector2(78, 141)
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmEternalFlight/chat3"]
+offset_left = -60.0
+offset_top = -7.0
+offset_right = 60.0
+offset_bottom = 15.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]your wings and you"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+backspace_pace = 10
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmEternalFlight/chat3" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmEternalFlight/chat3/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_0kyx5")
+
+[node name="chat4" type="Node2D" parent="rmEternalFlight"]
+position = Vector2(24, 127)
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmEternalFlight/chat4"]
+offset_left = -60.0
+offset_top = -7.0
+offset_right = 60.0
+offset_bottom = 15.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]hurried"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+backspace_pace = 10
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmEternalFlight/chat4" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmEternalFlight/chat4/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_0kyx5")
+
+[node name="chat5" type="Node2D" parent="rmEternalFlight"]
+position = Vector2(62, 113)
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmEternalFlight/chat5"]
+offset_left = -60.0
+offset_top = -7.0
+offset_right = 60.0
+offset_bottom = 15.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]sick with anticipation"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+backspace_pace = 10
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmEternalFlight/chat5" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmEternalFlight/chat5/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_0kyx5")
+
+[node name="chat6" type="Node2D" parent="rmEternalFlight"]
+position = Vector2(110, 110)
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmEternalFlight/chat6"]
+offset_left = -60.0
+offset_top = -7.0
+offset_right = 60.0
+offset_bottom = 15.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]almost"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+backspace_pace = 10
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmEternalFlight/chat6" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmEternalFlight/chat6/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_0kyx5")
+
+[node name="chat7" type="Node2D" parent="rmEternalFlight"]
+position = Vector2(65, 88)
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmEternalFlight/chat7"]
+offset_left = -60.0
+offset_top = -7.0
+offset_right = 60.0
+offset_bottom = 15.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]flightless rose"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+backspace_pace = 10
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmEternalFlight/chat7" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmEternalFlight/chat7/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_0kyx5")
+
+[node name="chat8" type="Node2D" parent="rmEternalFlight"]
+position = Vector2(66, 74)
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmEternalFlight/chat8"]
+offset_left = -60.0
+offset_top = -7.0
+offset_right = 60.0
+offset_bottom = 15.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]above the green"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+backspace_pace = 10
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmEternalFlight/chat8" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmEternalFlight/chat8/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_0kyx5")
+
+[node name="chat9" type="Node2D" parent="rmEternalFlight"]
+position = Vector2(61, 48)
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmEternalFlight/chat9"]
+offset_left = -60.0
+offset_top = -7.0
+offset_right = 60.0
+offset_bottom = 15.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]what you saw inside"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+backspace_pace = 10
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmEternalFlight/chat9" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmEternalFlight/chat9/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_0kyx5")
+
+[node name="chat10" type="Node2D" parent="rmEternalFlight"]
+position = Vector2(71, 50)
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmEternalFlight/chat10"]
+offset_left = -60.0
+offset_top = -7.0
+offset_right = 60.0
+offset_bottom = 15.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]what you saw beneath"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+backspace_pace = 10
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmEternalFlight/chat10" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmEternalFlight/chat10/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_0kyx5")
+
+[node name="chat11" type="Node2D" parent="rmEternalFlight"]
+position = Vector2(56, 17)
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmEternalFlight/chat11"]
+offset_left = -60.0
+offset_top = -7.0
+offset_right = 60.0
+offset_bottom = 15.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]hurry and fly"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+backspace_pace = 10
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmEternalFlight/chat11" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmEternalFlight/chat11/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_0kyx5")
+
+[node name="chat12" type="Node2D" parent="rmEternalFlight"]
+position = Vector2(57, 9)
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmEternalFlight/chat12"]
+offset_left = -50.0
+offset_top = -7.0
+offset_right = 70.0
+offset_bottom = 15.0
+theme = ExtResource("6_rtrxv")
+bbcode_enabled = true
+text = "[center]in the wrong direction"
+visible_characters_behavior = 1
+script = ExtResource("7_v7j55")
+printing = false
+backspace_pace = 10
+linebreak_delay = 3
+
+[node name="ChatToggleArea" type="Area2D" parent="rmEternalFlight/chat12" node_paths=PackedStringArray("label")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_joogu")
+label = NodePath("../ChatterLabel")
+label_path = NodePath("../ChatterLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmEternalFlight/chat12/ChatToggleArea"]
+shape = SubResource("RectangleShape2D_0kyx5")

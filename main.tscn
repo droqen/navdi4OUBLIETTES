@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cry5wd63g5804" path="res://dreamlands/wings-groundless/cart.tres" id="3_4jai5"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
-[node name="[[ wings-groundless ]]" type="Node2D"]
+[node name="[[ the-earth-stays ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
@@ -28,7 +28,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
-text = "[center][b][[ wings-groundless ]][/b]
+text = "[center][b][[ the-earth-stays ]][/b]
 you can double jump
 you can fly
 but what do you do

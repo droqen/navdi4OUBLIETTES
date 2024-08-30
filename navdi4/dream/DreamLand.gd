@@ -86,7 +86,7 @@ static func dirid2dir(dirid:int) -> Vector2i:
 func draw_arrow(a:Vector2, b:Vector2, c:Color, w:float, arrowhead_size:float) -> void:
 	var arrowdir = (b - a).normalized()
 	draw_line(a, b, c, w)
-	if arrowdir:
+	if arrowdir:		
 		draw_line(b, b - arrowdir.rotated(PI*0.25) * arrowhead_size, c, w)
 		draw_line(b, b - arrowdir.rotated(PI*-.25) * arrowhead_size, c, w)
 
