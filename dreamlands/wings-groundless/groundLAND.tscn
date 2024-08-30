@@ -23,7 +23,7 @@ size = Vector2(130, 100)
 size = Vector2(200, 10)
 
 [node name="GroundLand" type="Node2D"]
-self_modulate = Color(1, 0.278121, -0.219909, 1)
+self_modulate = Color(1, 0.00475664, -0.185514, 1)
 script = ExtResource("1_iyvlp")
 autolinking = true
 autosnapping = true
@@ -74,7 +74,7 @@ texture_filter = 1
 position = Vector2(140, 0)
 script = ExtResource("2_ho3j2")
 room_size = Vector2i(130, 180)
-room_links = Array[String](["rmSun", "", "rmA", ""])
+room_links = Array[String](["rmRight2", "", "rmA", ""])
 blank_link_behaviour = 2
 
 [node name="Maze" type="TileMapLayer" parent="rmRight"]
@@ -745,10 +745,9 @@ shape = SubResource("RectangleShape2D_0kyx5")
 
 [node name="rmSun" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(273, -6)
+position = Vector2(305, 279)
 script = ExtResource("2_ho3j2")
 room_size = Vector2i(130, 180)
-room_links = Array[String](["", "", "rmRight", ""])
 blank_link_behaviour = 3
 
 [node name="MazeBg" type="TileMapLayer" parent="rmSun"]
