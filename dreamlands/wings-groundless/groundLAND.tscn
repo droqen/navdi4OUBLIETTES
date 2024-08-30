@@ -23,7 +23,7 @@ size = Vector2(130, 100)
 size = Vector2(200, 10)
 
 [node name="GroundLand" type="Node2D"]
-self_modulate = Color(1, 0.00475664, -0.185514, 1)
+self_modulate = Color(1, 0.0113967, 0.0218969, 1)
 script = ExtResource("1_iyvlp")
 autolinking = true
 autosnapping = true
