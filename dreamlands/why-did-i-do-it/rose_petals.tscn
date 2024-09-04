@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dtrcoo5fpe8kw"]
+
+[node name="rose_petals" type="CPUParticles2D"]
+position = Vector2(185, 105)
+lifetime = 5.0
+explosiveness = 1.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 50)
+initial_velocity_min = 25.0
+initial_velocity_max = 90.0
+damping_min = 45.0
+damping_max = 45.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(0.921569, 0.694118, 0.929412, 1)

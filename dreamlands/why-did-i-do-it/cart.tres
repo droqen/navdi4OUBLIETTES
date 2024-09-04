@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="NavdiCart" load_steps=4 format=3 uid="uid://cv3dolyivkdyt"]
+
+[ext_resource type="Script" path="res://navdi4/main/navdicart.gd" id="1_5815o"]
+[ext_resource type="Script" path="res://dreamlands/why-did-i-do-it/^play-why.gd" id="1_dsqf0"]
+[ext_resource type="Texture2D" uid="uid://c1l0nmqoqe7r1" path="res://dreamlands/why-did-i-do-it/why.png" id="3_wv0ak"]
+
+[resource]
+script = ExtResource("1_5815o")
+diary_written = true
+diary_keywords = Array[String](["i can't give you a reason", "a killer and the only name", "you thought to call me was", "\"rude\""])
+name = "why"
+play_script = ExtResource("1_dsqf0")
+game_size = Vector2i(200, 180)
+view_scale = Vector2i(2, 2)
+bg_transparent = false
+bg_colour = Color(0.196078, 0.168627, 0.184314, 1)
+pixelated = true
+prepend_date = true
+birth_year = 2024
+birth_month = "September"
+birth_day = 4
+sheet_src = ExtResource("3_wv0ak")
+tile_size = Vector2i(10, 10)
+icon_idx = 9
+exits = Array[String]([""])
+songlink = ""
