@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4a44py1v600e"]
+[gd_scene load_steps=8 format=3 uid="uid://b4a44py1v600e"]
 
 [ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_3lymt"]
 [ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_8b183"]
+[ext_resource type="TileSet" uid="uid://chpp5p47iu2go" path="res://dreamlands/oub18/oub18_tiles.tres" id="3_2sxf1"]
 [ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="3_mhbs2"]
+[ext_resource type="FontFile" uid="uid://cgd27m3vqxk8m" path="res://navdi4/fonts/oubliettescrawl.ttf" id="4_lavxt"]
+
+[sub_resource type="FontVariation" id="FontVariation_agq71"]
+base_font = ExtResource("4_lavxt")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2m0fc"]
+font = SubResource("FontVariation_agq71")
 
 [node name="Oub18Land" type="Node2D"]
 self_modulate = Color(1, 1, 1, 0.5)
@@ -13,6 +21,7 @@ texture_filter = 1
 script = ExtResource("2_8b183")
 
 [node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_set = ExtResource("3_2sxf1")
 navigation_enabled = false
 script = ExtResource("3_mhbs2")
 
@@ -20,11 +29,12 @@ script = ExtResource("3_mhbs2")
 offset_right = 40.0
 offset_bottom = 23.0
 text = "meaning making circles
-     my corpse like ravens
-or psychopomps making circles
+     my corpse-like ravens'
+or psychopomps' making circles
      the process of dying and being
-     in making and not making
-meaning alike making circles
-     the sun and the moon
+     in making- and not making-
+meaning (alike) making circles
+     of the sun and the moon
      and the constellations like circles
      making circles of stars."
+label_settings = SubResource("LabelSettings_2m0fc")

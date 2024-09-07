@@ -1,6 +1,7 @@
 extends Node2D
 class_name NavdiSolePlayer
 
+@warning_ignore("unused_signal")
 signal travelled_dir(travel_dir)
 signal escaped(code)
 

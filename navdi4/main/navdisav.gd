@@ -1,6 +1,6 @@
 extends Node
 
-func is_flag(flag:String) -> bool:
+func is_flag(_flag:String) -> bool:
 	return false
-func set_flag(flag:String, b:bool) -> void:
+func set_flag(_flag:String, _b:bool) -> void:
 	pass
