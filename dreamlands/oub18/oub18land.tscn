@@ -1,16 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4a44py1v600e"]
+[gd_scene load_steps=6 format=4 uid="uid://b4a44py1v600e"]
 
 [ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_3lymt"]
 [ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_8b183"]
 [ext_resource type="TileSet" uid="uid://chpp5p47iu2go" path="res://dreamlands/oub18/oub18_tiles.tres" id="3_2sxf1"]
 [ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="3_mhbs2"]
-[ext_resource type="FontFile" uid="uid://cgd27m3vqxk8m" path="res://navdi4/fonts/oubliettescrawl.ttf" id="4_lavxt"]
-
-[sub_resource type="FontVariation" id="FontVariation_agq71"]
-base_font = ExtResource("4_lavxt")
-
-[sub_resource type="LabelSettings" id="LabelSettings_2m0fc"]
-font = SubResource("FontVariation_agq71")
+[ext_resource type="LabelSettings" uid="uid://bfhkvm0huad5" path="res://dreamlands/oub18/making_circles_ls.tres" id="5_5v4vy"]
 
 [node name="Oub18Land" type="Node2D"]
 self_modulate = Color(1, 1, 1, 0.5)
@@ -19,13 +13,16 @@ script = ExtResource("1_3lymt")
 [node name="rmA" type="Node2D" parent="."]
 texture_filter = 1
 script = ExtResource("2_8b183")
+room_size = Vector2i(330, 270)
 
 [node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_map_data = PackedByteArray("AAAJABMAAAABAAEAAAAIABMAAAABAAEAAAAIABQAAAADAAEAAAAIABUAAAABAAEAAAAHABUAAAABAAEAAAAJABQAAAACAAEAAAAKABMAAAABAAEAAAAJABUAAAABAAEAAAAEABMAAAABAAEAAAAFABMAAAABAAEAAAAGABMAAAABAAEAAAAHABMAAAABAAEAAAADABUAAAADAAEAAAAEABUAAAABAAEAAAAFABUAAAACAAEAAAAGABUAAAADAAEAAAAKABUAAAABAAEAAAAKABYAAAABAAEAAAAJABYAAAADAAEAAAAJABcAAAABAAEAAAAJABgAAAABAAEAAAAHABYAAAADAAEAAAAHABcAAAACAAEAAAAGABcAAAADAAEAAAAGABgAAAADAAEAAAAGABkAAAADAAEAAAAHABkAAAADAAEAAAAHABgAAAADAAEAAAAIABgAAAACAAEAAAAIABcAAAACAAEAAAAIABYAAAACAAEAAAAGABYAAAADAAEAAAAFABYAAAACAAEAAAAFABcAAAADAAEAAAAEABcAAAADAAEAAAAEABgAAAADAAEAAAAFABgAAAADAAEAAAAFABkAAAADAAEAAAAEABkAAAADAAEAAAAFABoAAAADAAEAAAAGABoAAAADAAEAAAADABcAAAADAAEAAAACABcAAAADAAEAAAACABYAAAADAAEAAAABABUAAAADAAEAAAACABgAAAADAAEAAAACABkAAAADAAEAAAACABoAAAADAAEAAAADABoAAAADAAEAAAADABkAAAADAAEAAAADABgAAAADAAEAAAABABYAAAADAAEAAAAAABUAAAADAAEAAAAAABYAAAADAAEAAAAAABcAAAADAAEAAAABABgAAAADAAEAAAABABkAAAADAAEAAAABABoAAAADAAEAAAABABcAAAADAAEAAAAAABgAAAADAAEAAAAAABkAAAADAAEAAAAEABoAAAADAAEAAAADABYAAAADAAEAAAADABQAAAABAAEAAAADABMAAAADAAEAAAACABMAAAADAAEAAAABABMAAAADAAEAAAABABQAAAADAAEAAAACABUAAAADAAEAAAAAABIAAAABAAEAAAABABIAAAABAAEAAAACABIAAAABAAEAAAADABIAAAABAAEAAAAEABIAAAABAAEAAAAAABMAAAACAAEAAAAAABQAAAACAAEAAAACABQAAAABAAEAAAAEABYAAAACAAEAAAAFABQAAAACAAEAAAAGABQAAAACAAEAAAAHABQAAAACAAEAAAAKABQAAAADAAEAAAAEABQAAAABAAEAAAAqAA8AAAADAAEAAAArAA8AAAADAAEAAAA=")
 tile_set = ExtResource("3_2sxf1")
 navigation_enabled = false
 script = ExtResource("3_mhbs2")
 
 [node name="Label" type="Label" parent="rmA"]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "meaning making circles
@@ -37,4 +34,43 @@ meaning (alike) making circles
      of the sun and the moon
      and the constellations like circles
      making circles of stars."
-label_settings = SubResource("LabelSettings_2m0fc")
+label_settings = ExtResource("5_5v4vy")
+
+[node name="drifter1" type="Node2D" parent="rmA"]
+position = Vector2(194, 109)
+
+[node name="drift1" type="Label" parent="rmA/drifter1"]
+offset_left = -53.0
+offset_top = -14.0
+offset_right = 68.0
+offset_bottom = 15.0
+text = "meaning making circles
+     my corpse-like ravens'"
+label_settings = ExtResource("5_5v4vy")
+
+[node name="drifter2" type="Node2D" parent="rmA"]
+position = Vector2(207, 157)
+
+[node name="drift2" type="Label" parent="rmA/drifter2"]
+offset_left = -73.0
+offset_top = -24.0
+offset_right = 83.0
+offset_bottom = 21.0
+text = "or psychopomps' making circles
+     the process of dying and being
+     in making- and not making-"
+label_settings = ExtResource("5_5v4vy")
+
+[node name="drifter3" type="Node2D" parent="rmA"]
+position = Vector2(221, 226)
+
+[node name="drift3" type="Label" parent="rmA/drifter3"]
+offset_left = -73.0
+offset_top = -33.0
+offset_right = 99.0
+offset_bottom = 28.0
+text = "meaning (alike) making circles
+     of the sun and the moon
+     and the constellations like circles
+     making circles of stars."
+label_settings = ExtResource("5_5v4vy")

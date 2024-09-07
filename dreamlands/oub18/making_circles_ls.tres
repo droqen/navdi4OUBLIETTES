@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://bfhkvm0huad5"]
+
+[ext_resource type="FontFile" uid="uid://cgd27m3vqxk8m" path="res://navdi4/fonts/oubliettescrawl.ttf" id="1_2kash"]
+
+[sub_resource type="FontVariation" id="FontVariation_agq71"]
+base_font = ExtResource("1_2kash")
+
+[resource]
+font = SubResource("FontVariation_agq71")
+font_color = Color(0.4, 0.4, 0.4, 1)
