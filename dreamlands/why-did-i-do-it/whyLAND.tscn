@@ -9,7 +9,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_rpajg"]
 
 [node name="WhyLand" type="Node2D"]
-self_modulate = Color(1, -0.00944392, 0.149126, 1)
+self_modulate = Color(1, 0.0403504, -0.040208, 1)
 script = ExtResource("1_mt5nt")
 autolinking = true
 autosnapping = true

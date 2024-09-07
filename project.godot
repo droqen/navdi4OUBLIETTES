@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="2024, September 4th ~ why"
+config/name="2024, September 7th ~ OUBLIETTE 18"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(0.196078, 0.168627, 0.184314, 1)
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
@@ -25,10 +25,10 @@ Sav="*res://navdi4/main/navdisav.gd"
 
 [display]
 
-window/size/viewport_width=200
-window/size/viewport_height=180
-window/size/window_width_override=400
-window/size/window_height_override=360
+window/size/viewport_width=330
+window/size/viewport_height=270
+window/size/window_width_override=990
+window/size/window_height_override=810
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 
@@ -82,6 +82,6 @@ plant={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.196078, 0.168627, 0.184314, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
