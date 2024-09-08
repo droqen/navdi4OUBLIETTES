@@ -65,8 +65,9 @@ func _physics_process(_delta: float) -> void:
 						visible_ratio -= backspace_ratio_pace
 			NotPrintingBehaviour.STAY:
 				pass # do nothing
-	elif visible_characters >= 0 and visible_characters < len(get_parsed_text()):
-		if printing_pace > 0:
+	elif visible_characters >= 0:
+		var parsed_text_len = len(get_parsed_text())
+		while visible_characters < parsed_text_len and chardelay <= 0:
 			var c = get_parsed_text()[visible_characters]
 			visible_characters += 1
 			chardelay = printing_pace - 1
@@ -80,9 +81,9 @@ func _physics_process(_delta: float) -> void:
 					if c in no_delay_chars:chardelay=0
 					if c in midi_delay_chars:chardelay=midi_delay
 					if c in long_delay_chars:chardelay=long_delay
-	elif visible_characters >= 0:
-		doneprinting.emit()
-		visible_characters = -1
+		if visible_characters >= parsed_text_len:
+			doneprinting.emit()
+			visible_characters = -1
 
 func _validate_property(property: Dictionary):
 	if property.name in ["backspace_pace", "backspace_ratio_pace"] and not_printing_behaviour != NotPrintingBehaviour.BACKSPACE:
