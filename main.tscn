@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
+[ext_resource type="Resource" uid="uid://bxla757ps6rno" path="res://dreamlands/a-simple-jump/cart.tres" id="3_4xxid"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
-[ext_resource type="Resource" uid="uid://bpi7dbwodv6yf" path="res://dreamlands/oub18/cart.tres" id="3_wyqs0"]
 
-[node name="[[ OUBLIETTE 18 ]]" type="Node2D"]
+[node name="[[ meaning of jump a ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_wyqs0")
+cart = ExtResource("3_4xxid")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -28,8 +28,5 @@ offset_bottom = 100.0
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
-text = "[center][b][[ OUBLIETTE 18 ]][/b]
-just another fucking oubliette
-to get lost in
-to be forgotten in
-and to ultimately forget"
+text = "[center][b][[ meaning of jump a ]][/b]
+transcendental"

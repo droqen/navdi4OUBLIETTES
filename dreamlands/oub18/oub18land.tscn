@@ -49,8 +49,6 @@ label_settings = ExtResource("5_5v4vy")
 [node name="drifter1" type="Node2D" parent="rmA"]
 position = Vector2(194, 109)
 script = ExtResource("6_238ly")
-xperiod = 2000
-yperiod = 3430
 
 [node name="drift1" type="Label" parent="rmA/drifter1"]
 offset_left = -53.0
@@ -62,10 +60,8 @@ text = "meaning making circles
 label_settings = ExtResource("5_5v4vy")
 
 [node name="drifter2" type="Node2D" parent="rmA"]
-position = Vector2(207, 157)
+position = Vector2(191, 154)
 script = ExtResource("6_238ly")
-xperiod = 2000
-yperiod = 3430
 
 [node name="drift2" type="Label" parent="rmA/drifter2"]
 offset_left = -73.0
@@ -78,10 +74,8 @@ text = "or psychopomps' making circles
 label_settings = ExtResource("5_5v4vy")
 
 [node name="drifter3" type="Node2D" parent="rmA"]
-position = Vector2(221, 226)
+position = Vector2(217, 215)
 script = ExtResource("6_238ly")
-xperiod = 2000
-yperiod = 3430
 
 [node name="drift3" type="Label" parent="rmA/drifter3"]
 offset_left = -73.0
@@ -90,8 +84,9 @@ offset_right = 99.0
 offset_bottom = 28.0
 text = "meaning (alike) making circles
      of the sun and the moon
-     and the constellations like circles
-     making circles of stars."
+     and the constellations only circle
+     meaning making circles
+          of stars."
 label_settings = ExtResource("5_5v4vy")
 
 [node name="thoughtbubble" type="Node2D" parent="rmA"]
