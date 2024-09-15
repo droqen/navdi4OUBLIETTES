@@ -22,5 +22,5 @@ birth_day = 14
 sheet_src = ExtResource("3_nbvrd")
 tile_size = Vector2i(10, 10)
 icon_idx = 9
-exits = Array[String]([])
+exits = Array[String](["A"])
 songlink = ""
