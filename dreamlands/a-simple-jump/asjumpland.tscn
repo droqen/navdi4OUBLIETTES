@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cs6g0324iqt30"]
+[gd_scene load_steps=14 format=4 uid="uid://cs6g0324iqt30"]
 
 [ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_c1qnw"]
 [ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_ag170"]
@@ -10,9 +10,14 @@
 [ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="6_8ukv7"]
 [ext_resource type="Resource" uid="uid://ketkjhhp03u1" path="res://dreamlands/a-simple-jump/asjump_sheet.tres" id="7_0h1ta"]
 [ext_resource type="Script" path="res://dreamlands/a-simple-jump/dot_going_up.gd" id="10_dx2ix"]
+[ext_resource type="FontFile" uid="uid://cv58t81duux5y" path="res://navdi4/fonts/droqenserif.ttf" id="10_sln7j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dvx1"]
 size = Vector2(9.9, 9.9)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lpilf"]
+font = ExtResource("10_sln7j")
+font_color = Color(0.698039, 0.698039, 0.698039, 1)
 
 [node name="Asjumpland" type="Node2D"]
 self_modulate = Color(1, 1, 1, 0.5)
@@ -50,6 +55,15 @@ script = ExtResource("6_8ukv7")
 enabled = false
 shape = SubResource("RectangleShape2D_2dvx1")
 target_position = Vector2(0, 0)
+
+[node name="instructions" type="Label" parent="rmA"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 111.0
+offset_bottom = 34.0
+text = "[1 Key] - Jump A
+[2 Key] - Jump B"
+label_settings = SubResource("LabelSettings_lpilf")
 
 [node name="rmEnd" type="Node2D" parent="."]
 texture_filter = 1
