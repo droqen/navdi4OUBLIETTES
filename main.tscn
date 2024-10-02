@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
-[ext_resource type="Resource" uid="uid://bxla757ps6rno" path="res://dreamlands/a-simple-jump/cart.tres" id="3_4xxid"]
+[ext_resource type="Resource" uid="uid://dumc875v2c418" path="res://dreamlands/01honey/cart.tres" id="3_qayec"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
-[node name="[[ meaning of jump a ]]" type="Node2D"]
+[node name="[[ Backpack Honey ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_4xxid")
+cart = ExtResource("3_qayec")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -28,5 +28,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
-text = "[center][b][[ meaning of jump a ]][/b]
-transcendental"
+text = "[center][b][[ Backpack Honey ]][/b]
+what is a honey backpack?
+i broke something in my
+backpack... it was sticky"

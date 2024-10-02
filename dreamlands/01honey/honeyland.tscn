@@ -1,0 +1,106 @@
+[gd_scene load_steps=17 format=4 uid="uid://b6o0rthpw5ibl"]
+
+[ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_tgrtx"]
+[ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_0rkil"]
+[ext_resource type="TileSet" uid="uid://cv5askpe1v40b" path="res://dreamlands/01honey/01honey_tiles.tres" id="3_te5i1"]
+[ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_g8siy"]
+[ext_resource type="FontFile" uid="uid://cgd27m3vqxk8m" path="res://navdi4/fonts/oubliettescrawl.ttf" id="5_4j2nr"]
+[ext_resource type="FontFile" uid="uid://df5niud3b3uev" path="res://navdi4/fonts/chunkysix.ttf" id="6_kf7p3"]
+[ext_resource type="Texture2D" uid="uid://c5ehp61v3h70u" path="res://dreamlands/01honey/01honey.png" id="7_6ynip"]
+[ext_resource type="Script" path="res://dreamlands/01honey/player.gd" id="7_m37bn"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="7_yllqu"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="8_6g5rn"]
+[ext_resource type="Resource" uid="uid://byxe8gmui0n7u" path="res://dreamlands/01honey/01honey_sheet.tres" id="9_xxjci"]
+
+[sub_resource type="FontVariation" id="FontVariation_vkx0b"]
+base_font = ExtResource("5_4j2nr")
+spacing_top = -4
+spacing_bottom = -2
+
+[sub_resource type="LabelSettings" id="LabelSettings_i1oqc"]
+font = SubResource("FontVariation_vkx0b")
+font_color = Color(0.917647, 0.788235, 0.258824, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_twqeu"]
+base_font = ExtResource("6_kf7p3")
+spacing_top = -4
+spacing_bottom = -2
+
+[sub_resource type="LabelSettings" id="LabelSettings_uiao5"]
+font = SubResource("FontVariation_twqeu")
+font_color = Color(1, 0.4, 0.9, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4gip"]
+size = Vector2(6, 8)
+
+[node name="Honeyland" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0.5)
+script = ExtResource("1_tgrtx")
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("2_0rkil")
+room_size = Vector2i(180, 200)
+
+[node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_map_data = PackedByteArray("AAAGAA0AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA0AAAAAAAAAAAAAAA0AAAAAAAAAAAABAA0AAAAAAAAAAAACAA0AAAAAAAAAAAACAA4AAAAAAAEAAAACAA8AAAAAAAEAAAACABAAAAAAAAEAAAABAA4AAAAAAAEAAAAAAA4AAAAAAAEAAAABAA8AAAAAAAEAAAADAA8AAAAAAAEAAAADAA4AAAAAAAAAAAAEAA0AAAAAAAAAAAAEAA8AAAAAAAEAAAAEAA4AAAAAAAEAAAAFAA4AAAAAAAEAAAAFAA0AAAAAAAAAAAAFAA8AAAAAAAEAAAAFABAAAAAAAAEAAAAGABAAAAAAAAEAAAAGAA8AAAAAAAEAAAAFABEAAAAAAAEAAAACABEAAAAAAAEAAAADABEAAAAAAAEAAAAEABEAAAAAAAEAAAAEABAAAAAAAAEAAAADABAAAAAAAAEAAAABABAAAAAAAAEAAAABABEAAAAAAAEAAAABABIAAAAAAAEAAAACABIAAAAAAAEAAAAAAA8AAAAAAAEAAAAAABAAAAAAAAEAAAAAABEAAAAAAAEAAAAAABIAAAAAAAEAAAABABMAAAAAAAEAAAACABMAAAAAAAEAAAADABIAAAAAAAEAAAAAABMAAAAAAAEAAAAEABIAAAAAAAEAAAAFABIAAAAAAAEAAAADABMAAAAAAAEAAAAEABMAAAAAAAEAAAAFABMAAAAAAAEAAAAGABMAAAAAAAEAAAAGABIAAAAAAAEAAAAHABIAAAAAAAIAAAAHABEAAAAAAAEAAAAGABEAAAAAAAEAAAAHABMAAAAAAAIAAAAIABIAAAAAAAIAAAAJABIAAAAAAAIAAAAJABEAAAAAAAEAAAAIABEAAAAAAAEAAAAIABAAAAAAAAEAAAAHABAAAAAAAAEAAAAIABMAAAAAAAIAAAAJABMAAAAAAAIAAAAKABMAAAAAAAEAAAAKABIAAAAAAAEAAAALABIAAAAAAAEAAAALABEAAAAAAAEAAAAKABEAAAAAAAEAAAAJABAAAAAAAAEAAAAMABIAAAAAAAEAAAAMABEAAAAAAAEAAAAMABAAAAAAAAEAAAALABAAAAAAAAEAAAAKABAAAAAAAAEAAAALABMAAAAAAAEAAAAMABMAAAAAAAEAAAANABIAAAAAAAEAAAAIAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAKAA8AAAAAAAEAAAALAA8AAAAAAAAAAAAMAA8AAAAAAAEAAAANAA8AAAAAAAAAAAANABAAAAAAAAAAAAANABEAAAAAAAAAAAAOABEAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAAQABEAAAAAAAAAAAARABEAAAAAAAAAAAANABMAAAAAAAEAAAAOABMAAAAAAAEAAAAOABIAAAAAAAEAAAAPABIAAAAAAAEAAAAPABMAAAAAAAEAAAAPABEAAAAAAAEAAAAQABMAAAAAAAEAAAARABMAAAAAAAEAAAARABIAAAAAAAEAAAAQABIAAAAAAAEAAAAJAA4AAAAAAAEAAAAKAA4AAAAAAAEAAAALAA0AAAAAAAAAAAAKAA0AAAAAAAAAAAAMAA4AAAAAAAEAAAAMAA0AAAAAAAAAAAAHAA0AAAAAAAIAAAANAA0AAAAAAAIAAAANAA4AAAAAAAIAAAALAA4AAAAAAAIAAAAOAA8AAAAAAAIAAAAPAA8AAAAAAAIAAAACAAsAAAAAAAIAAAACAAwAAAAAAAIAAAACAAoAAAAAAAIAAAAKAAwAAAAAAAIAAAAKAAsAAAAAAAIAAAACAAgAAAAAAAIAAAANAAoAAAAAAAIAAAANAAsAAAAAAAIAAAA=")
+tile_set = ExtResource("3_te5i1")
+navigation_enabled = false
+script = ExtResource("4_g8siy")
+
+[node name="Label" type="Label" parent="rmA"]
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 180.0
+offset_bottom = 70.0
+text = "The brightest light you know,
+ but not the sun, suspended
+
+ in the sky, and among the clouds, birds
+ catching updrafts frozen in place,
+
+             white wings blinding white."
+label_settings = SubResource("LabelSettings_i1oqc")
+
+[node name="Label2" type="Label" parent="rmA"]
+offset_left = 63.0
+offset_top = 80.0
+offset_right = 167.0
+offset_bottom = 107.0
+text = "AS A PLAYER,
+HOW DO I FEEL?
+(WHO AM I?)"
+label_settings = SubResource("LabelSettings_uiao5")
+
+[node name="Label3" type="Label" parent="rmA"]
+offset_left = 7.0
+offset_top = 157.0
+offset_right = 111.0
+offset_bottom = 184.0
+text = "what is the story i'm telling
+here? what does it mean to
+be or have a \"backpack honey\""
+label_settings = SubResource("LabelSettings_uiao5")
+
+[node name="player" type="Node2D" parent="rmA"]
+position = Vector2(61, 125)
+script = ExtResource("7_m37bn")
+
+[node name="SheetSprite" type="Sprite2D" parent="rmA/player"]
+texture = ExtResource("7_6ynip")
+hframes = 10
+vframes = 10
+frame = 13
+script = ExtResource("7_yllqu")
+sheet = ExtResource("9_xxjci")
+frames = PackedInt32Array(13)
+
+[node name="NavdiBodyMover" type="Node2D" parent="rmA/player"]
+script = ExtResource("8_6g5rn")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="rmA/player/NavdiBodyMover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_m4gip")
+target_position = Vector2(0, 0)

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="NavdiCart" load_steps=4 format=3 uid="uid://dumc875v2c418"]
+
+[ext_resource type="Script" path="res://dreamlands/01honey/^play01honey.gd" id="1_p61lg"]
+[ext_resource type="Script" path="res://navdi4/main/navdicart.gd" id="1_rtvab"]
+[ext_resource type="Texture2D" uid="uid://c5ehp61v3h70u" path="res://dreamlands/01honey/01honey.png" id="3_oimvd"]
+
+[resource]
+script = ExtResource("1_rtvab")
+diary_written = true
+diary_keywords = Array[String](["what is a honey backpack?", "i broke something in my", "backpack... it was sticky"])
+name = "Backpack Honey"
+play_script = ExtResource("1_p61lg")
+game_size = Vector2i(180, 200)
+view_scale = Vector2i(4, 4)
+bg_transparent = false
+bg_colour = Color(0.423529, 0.380392, 0.188235, 1)
+pixelated = true
+prepend_date = true
+birth_year = 2024
+birth_month = "October"
+birth_day = 1
+sheet_src = ExtResource("3_oimvd")
+tile_size = Vector2i(10, 10)
+icon_idx = 9
+exits = Array[String]([""])
+songlink = ""
