@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="NavdiCart" load_steps=4 format=3 uid="uid://dcjm4yrytf54m"]
+
+[ext_resource type="Script" path="res://dreamlands/07earliest/^play_earliest.gd" id="1_ld3th"]
+[ext_resource type="Script" path="res://navdi4/main/navdicart.gd" id="1_rt5as"]
+[ext_resource type="Texture2D" uid="uid://dyrjglmcgtq8k" path="res://dreamlands/07earliest/earliest.png" id="3_q0xyu"]
+
+[resource]
+script = ExtResource("1_rt5as")
+diary_written = true
+diary_keywords = Array[String](["the", "earliest", "dreams"])
+name = "the earliest dreams (mapping)"
+play_script = ExtResource("1_ld3th")
+game_size = Vector2i(300, 150)
+view_scale = Vector2i(3, 3)
+bg_transparent = false
+bg_colour = Color(0.027451, 0.054902, 0.156863, 1)
+pixelated = true
+prepend_date = true
+birth_year = 2024
+birth_month = "October"
+birth_day = 7
+sheet_src = ExtResource("3_q0xyu")
+tile_size = Vector2i(10, 10)
+icon_idx = 9
+exits = Array[String]([""])
+songlink = "https://jummb.us/#j6N0a07earliestn310s0k0l00e07t2ma7g0fj07r1O_U00000000i0o421T7v0pu21f030j61552n800q050Oaad070H_SJ5JJFAAAkAAAh8IcE0c0T1v0pu62f0000qwB1a410Oa1d080A0F0B0Q00adPfe39R0000E4c0b761862863bT3v0puf3f012rc00q2B010x500f0Oaad080SU0M51pr2qiqqrrrE2c0b686T2v0pu15f180q040Oad030w0E0c0b4x8Qlw00000001400000014h4g000000014h4000000p23wFyV0kMhj15apvwANtcFOoKj8YDNw2R1qxjkaqxjk5G2R1sECpu0FyWomCbj5GyQNqoJcmCbj5FyQNqoI0bh5F2QNtobl5F2QNqoJcmCbj5FyQNqoJclxAuJpczRIzb9lczS_18ANt0mwbk5FyR1qoJcmCbj5OM6g5QgJ4mybh5EyQhqVji5F2QxqoGpvGkg00ap6b4NhkFF5c0kR1sJAyCAkRxq0J0k0"
