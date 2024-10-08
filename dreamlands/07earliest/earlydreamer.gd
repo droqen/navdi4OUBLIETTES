@@ -11,7 +11,11 @@ func _physics_process(_delta: float) -> void:
 	var dpad = Pin.get_dpad()
 	if Pin.get_jump_hit(): bufs.on(JUMPBUF)
 	var onfloor=vy>=0 and$mover.cast_fraction(self,$mover/shape,VERTICAL,1)<1
-	vy = move_toward(vy, 1.25, 0.03)
+	var overpit=$mover.cast_fraction(self,$mover/shape,VERTICAL,150)>=1
+	if overpit:
+		vy = move_toward(vy, -position.y/150.0*3.0, 0.03)
+	else:
+		vy = move_toward(vy, 1.25, 0.03)
 	vx = move_toward(vx, dpad.x*0.50, 0.05)
 	if vx and!$mover.try_slip_move(self, $mover/shape, HORIZONTAL, vx):
 		vx = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmcr05y6kbow7"]
+[gd_scene load_steps=8 format=3 uid="uid://dmcr05y6kbow7"]
 
 [ext_resource type="Script" path="res://dreamlands/07earliest/earlydreamer.gd" id="1_d0a3d"]
 [ext_resource type="Texture2D" uid="uid://dyrjglmcgtq8k" path="res://dreamlands/07earliest/earliest.png" id="2_am74t"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1xg1"]
 size = Vector2(6, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceer3"]
+size = Vector2(2, 2)
 
 [node name="earlydreamer" type="Node2D"]
 position = Vector2(113, 103)
@@ -23,9 +26,16 @@ sheet = ExtResource("4_ts1y7")
 frames = PackedInt32Array(11)
 
 [node name="mover" type="Node2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(0, 2)
 script = ExtResource("5_bkg56")
 
 [node name="shape" type="ShapeCast2D" parent="mover"]
 shape = SubResource("RectangleShape2D_b1xg1")
 target_position = Vector2(0, 0)
+
+[node name="plrtrigger" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plrtrigger"]
+shape = SubResource("RectangleShape2D_ceer3")
