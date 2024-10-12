@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcwrrfo42ed8q"]
+
+[ext_resource type="Script" path="res://dreamlands/alpha-chaos/^letscramble.gd" id="2_tuyhu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rfi75"]
+font_size = 50
+
+[node name="AchaosLand" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0.5)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 63.0
+offset_top = 38.0
+offset_right = 103.0
+offset_bottom = 107.0
+text = "C"
+label_settings = SubResource("LabelSettings_rfi75")
+horizontal_alignment = 1
+
+[node name="^letscramble" type="Node" parent="Label"]
+script = ExtResource("2_tuyhu")
+skipchance = 0.66
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 200.0
+offset_top = 40.0
+offset_right = 240.0
+offset_bottom = 109.0
+text = "C"
+label_settings = SubResource("LabelSettings_rfi75")
+horizontal_alignment = 1
+
+[node name="^letscramble" type="Node" parent="Label2"]
+script = ExtResource("2_tuyhu")
+skipchance = 0.66
+randchance = 1.0
