@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://qlykavhis8f2"]
+
+[ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_vej2q"]
+[ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_g6kpa"]
+[ext_resource type="FontFile" uid="uid://cgd27m3vqxk8m" path="res://navdi4/fonts/oubliettescrawl.ttf" id="3_apebp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fqnca"]
+font = ExtResource("3_apebp")
+
+[node name="CavernLand" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0.5)
+script = ExtResource("1_vej2q")
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("2_g6kpa")
+room_size = Vector2i(180, 200)
+
+[node name="Label" type="Label" parent="rmA"]
+offset_left = 66.0
+offset_top = 65.0
+offset_right = 130.0
+offset_bottom = 88.0
+text = "oubliettescrawl"
+label_settings = SubResource("LabelSettings_fqnca")
