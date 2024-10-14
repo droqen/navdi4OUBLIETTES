@@ -1,11 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://qlykavhis8f2"]
+[gd_scene load_steps=14 format=4 uid="uid://qlykavhis8f2"]
 
 [ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_vej2q"]
 [ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_g6kpa"]
 [ext_resource type="FontFile" uid="uid://cgd27m3vqxk8m" path="res://navdi4/fonts/oubliettescrawl.ttf" id="3_apebp"]
+[ext_resource type="TileSet" uid="uid://cvne4ulbjrln3" path="res://dreamlands/13cavernous/13cavernous_tiles.tres" id="3_npl2d"]
+[ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_ndh1o"]
+[ext_resource type="Script" path="res://dreamlands/13cavernous/player.gd" id="6_aqpam"]
+[ext_resource type="Texture2D" uid="uid://ba04ox38xfgy" path="res://dreamlands/13cavernous/13cavernous.png" id="6_tinu6"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="7_wqh00"]
+[ext_resource type="Resource" uid="uid://cw3f1i8ucagw4" path="res://dreamlands/13cavernous/13cavernous_sheet.tres" id="8_1jakf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fqnca"]
 font = ExtResource("3_apebp")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fs0vc"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lxhha"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dppgv"]
+radius = 3.5
 
 [node name="CavernLand" type="Node2D"]
 self_modulate = Color(1, 1, 1, 0.5)
@@ -16,10 +31,40 @@ texture_filter = 1
 script = ExtResource("2_g6kpa")
 room_size = Vector2i(180, 200)
 
+[node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_map_data = PackedByteArray("AAAMAAkAAAACAAAAAAANAAkAAAACAAAAAAALAAoAAAACAAAAAAALAAsAAAACAAAAAAAKAAsAAAACAAAAAAAKAAwAAAACAAAAAAAJAA0AAAACAAAAAAAJAA4AAAABAAAAAAAJAA8AAAACAAAAAAAKAA4AAAACAAAAAAALAA0AAAACAAAAAAAMAAwAAAACAAAAAAALAA4AAAACAAAAAAAKAA8AAAACAAAAAAAFAAwAAAABAAAAAAAEAAwAAAABAAAAAAADAAwAAAABAAAAAAAAAAwAAAABAAAAAAABAAwAAAABAAAAAAACAAwAAAABAAAAAAABAA0AAAABAAAAAAAAAA0AAAABAAAAAAACAA0AAAABAAAAAAADAA0AAAABAAAAAAABAA4AAAABAAAAAAAAAA4AAAABAAAAAAAPAAwAAAABAAAAAAAPAA0AAAABAAAAAAAPAA4AAAABAAAAAAAOAA0AAAABAAAAAAAOAAwAAAABAAAAAAANAAwAAAABAAAAAAAQAAwAAAABAAAAAAARAAwAAAABAAAAAAAPAA8AAAADAAAAAAAPABAAAAADAAAAAAAPABEAAAADAAAAAAAPABIAAAADAAAAAAANAA4AAAACAAAAAAAMAA4AAAACAAAAAAAOAA4AAAACAAAAAAAJAAoAAAABAAAAAAADAAkAAAACAAAAAAADAAoAAAACAAAAAAADAAsAAAACAAAAAAAEAAkAAAACAAAAAAABAAkAAAACAAAAAAACAAkAAAACAAAAAAAFAAkAAAACAAAAAAAPAAsAAAACAAAAAAAQAAsAAAACAAAAAAARAAoAAAACAAAAAAARAAkAAAACAAAAAAAQAAkAAAACAAAAAAAFAA0AAAADAAAAAAAFAA4AAAADAAAAAAAFAA8AAAADAAAAAAAFABEAAAADAAAAAAAFABIAAAADAAAAAAAFABMAAAADAAAAAAAPABMAAAADAAAAAAA=")
+tile_set = ExtResource("3_npl2d")
+navigation_enabled = false
+script = ExtResource("4_ndh1o")
+
 [node name="Label" type="Label" parent="rmA"]
-offset_left = 66.0
-offset_top = 65.0
-offset_right = 130.0
-offset_bottom = 88.0
-text = "oubliettescrawl"
+offset_left = 21.0
+offset_top = 158.0
+offset_right = 197.0
+offset_bottom = 183.0
+text = "it is because i'm a coward"
 label_settings = SubResource("LabelSettings_fqnca")
+
+[node name="player" type="RigidBody2D" parent="rmA"]
+position = Vector2(25, 116)
+physics_material_override = SubResource("PhysicsMaterial_fs0vc")
+gravity_scale = 0.05
+inertia = 1000.0
+script = ExtResource("6_aqpam")
+
+[node name="spr" type="Sprite2D" parent="rmA/player"]
+position = Vector2(0, -1)
+texture = ExtResource("6_tinu6")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("7_wqh00")
+sheet = ExtResource("8_1jakf")
+frames = PackedInt32Array(10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rmA/player"]
+shape = SubResource("CircleShape2D_lxhha")
+
+[node name="floorcast" type="ShapeCast2D" parent="rmA/player"]
+shape = SubResource("CircleShape2D_dppgv")
+target_position = Vector2(0, 2)
