@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
+[ext_resource type="Resource" uid="uid://btrcpgu7vy04r" path="res://dreamlands/24notfound/cart.tres" id="3_3aase"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
-[ext_resource type="Resource" uid="uid://c328heddnv4h8" path="res://dreamlands/13cavernous/cart.tres" id="3_wqqvi"]
 
-[node name="[[ 13-cavernous ]]" type="Node2D"]
+[node name="[[ notfound ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_wqqvi")
+cart = ExtResource("3_3aase")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -28,5 +28,8 @@ offset_bottom = 100.0
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
-text = "[center][b][[ 13-cavernous ]][/b]
-cavernous no horizon"
+text = "[center][b][[ notfound ]][/b]
+when the sun
+cannot be found
+the flowers buds
+go in the ground"
