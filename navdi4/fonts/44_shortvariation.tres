@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://dxacsefvd7ebq"]
+
+[ext_resource type="FontFile" uid="uid://box70xu60paqv" path="res://navdi4/fonts/font44mono.ttf" id="1_khsnu"]
+
+[resource]
+base_font = ExtResource("1_khsnu")
+spacing_top = -11
+spacing_bottom = 1
