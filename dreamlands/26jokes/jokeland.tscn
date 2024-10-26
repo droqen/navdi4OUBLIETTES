@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=4 uid="uid://chu7yh5km0h0x"]
+
+[ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_tv3xg"]
+[ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_4s2al"]
+[ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="3_bitnh"]
+[ext_resource type="TileSet" uid="uid://c1b05ndbtwtv5" path="res://dreamlands/26jokes/joke_tiles.tres" id="3_of5ks"]
+[ext_resource type="FontFile" uid="uid://box70xu60paqv" path="res://navdi4/fonts/font44mono.ttf" id="5_vtll1"]
+
+[sub_resource type="FontVariation" id="FontVariation_uyuco"]
+base_font = ExtResource("5_vtll1")
+spacing_top = -11
+spacing_bottom = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_s804o"]
+font = SubResource("FontVariation_uyuco")
+font_color = Color(0.913725, 0.309804, 0.752941, 1)
+
+[node name="Jokeland" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0.5)
+script = ExtResource("1_tv3xg")
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("2_4s2al")
+
+[node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_map_data = PackedByteArray("AAADAAMAAAAAAAMAAAADAAQAAAAAAAMAAAACAAQAAAAAAAMAAAACAAUAAAAAAAMAAAACAAYAAAAAAAMAAAABAAYAAAAAAAMAAAABAAcAAAAAAAMAAAAEAAMAAAAAAAMAAAAEAAQAAAAAAAMAAAAEAAUAAAAAAAMAAAAEAAYAAAAAAAMAAAADAAYAAAAAAAMAAAADAAcAAAAAAAMAAAAEAAcAAAAAAAMAAAAFAAUAAAAAAAMAAAAGAAUAAAAAAAMAAAAGAAQAAAAAAAMAAAAHAAQAAAAAAAMAAAAHAAUAAAAAAAMAAAAGAAYAAAAAAAMAAAAGAAcAAAAAAAMAAAACAAAAAAAAAAMAAAABAAEAAAAAAAMAAAA=")
+tile_set = ExtResource("3_of5ks")
+navigation_enabled = false
+script = ExtResource("3_bitnh")
+
+[node name="Label" type="Label" parent="rmA"]
+offset_left = 2.0
+offset_top = 27.0
+offset_right = 62.0
+offset_bottom = 50.0
+text = "THERE I WAS,
+MINDING ME--
+OWN BUSINESS
+WHEN IT CAME
+--THE THING."
+label_settings = SubResource("LabelSettings_s804o")
