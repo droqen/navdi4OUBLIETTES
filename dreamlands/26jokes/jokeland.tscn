@@ -32,7 +32,7 @@ texture_filter = 1
 script = ExtResource("2_4s2al")
 
 [node name="Maze" type="TileMapLayer" parent="rmA"]
-tile_map_data = PackedByteArray("AAADAAMAAAAAAAMAAAADAAQAAAAAAAMAAAACAAQAAAAAAAMAAAACAAUAAAAAAAMAAAACAAYAAAAAAAMAAAABAAYAAAAAAAMAAAABAAcAAAAAAAMAAAAEAAMAAAAAAAMAAAAEAAQAAAAAAAMAAAAEAAUAAAAAAAMAAAAEAAYAAAAAAAMAAAADAAYAAAAAAAMAAAADAAcAAAAAAAMAAAAEAAcAAAAAAAMAAAAFAAUAAAAAAAMAAAAGAAUAAAAAAAMAAAAGAAQAAAAAAAMAAAAHAAQAAAAAAAMAAAAHAAUAAAAAAAMAAAAGAAYAAAAAAAMAAAAGAAcAAAAAAAMAAAA=")
+tile_map_data = PackedByteArray("AAADAAMAAAABAAAAAAADAAQAAAABAAAAAAACAAQAAAABAAAAAAACAAUAAAABAAAAAAACAAYAAAABAAAAAAABAAYAAAABAAAAAAABAAcAAAABAAAAAAAEAAMAAAABAAAAAAAEAAQAAAABAAAAAAAEAAUAAAABAAAAAAAEAAYAAAABAAAAAAADAAYAAAABAAAAAAADAAcAAAABAAAAAAAEAAcAAAABAAAAAAAFAAUAAAABAAAAAAAGAAUAAAABAAAAAAAGAAQAAAABAAAAAAAHAAQAAAABAAAAAAAHAAUAAAABAAAAAAAGAAYAAAABAAAAAAAGAAcAAAABAAAAAAAAAAkAAAABAAAAAAABAAkAAAABAAAAAAACAAkAAAABAAAAAAADAAkAAAABAAAAAAAEAAkAAAABAAAAAAAFAAkAAAABAAAAAAAGAAkAAAABAAAAAAAHAAkAAAABAAAAAAAIAAkAAAABAAAAAAAJAAkAAAABAAAAAAAJAAgAAAABAAAAAAAJAAcAAAABAAAAAAAJAAYAAAABAAAAAAAJAAUAAAABAAAAAAAJAAQAAAABAAAAAAAJAAMAAAABAAAAAAAJAAIAAAABAAAAAAAJAAEAAAABAAAAAAAJAAAAAAABAAAAAAABAAgAAAABAAAAAAADAAgAAAABAAAAAAAEAAgAAAABAAAAAAAGAAgAAAABAAAAAAA=")
 tile_set = ExtResource("3_of5ks")
 navigation_enabled = false
 script = ExtResource("3_bitnh")
@@ -40,10 +40,12 @@ script = ExtResource("3_bitnh")
 [node name="Label" type="Label" parent="rmA"]
 offset_left = 1.0
 offset_top = 5.0
-offset_right = 61.0
+offset_right = 86.0
 offset_bottom = 28.0
-text = "well don't stand and
-gawk. DO SOMETHING!!"
+text = "At \\\\\\ the start,
+none of us -- how
+could we have? --
+knew how to love."
 label_settings = SubResource("LabelSettings_s804o")
 
 [node name="player" type="Node2D" parent="rmA"]
@@ -54,16 +56,16 @@ script = ExtResource("6_6yaqy")
 texture = ExtResource("6_36sid")
 hframes = 10
 vframes = 10
-frame = 37
+frame = 66
 script = ExtResource("7_1xy3e")
 sheet = ExtResource("8_32b1m")
-frames = PackedInt32Array(33, 34, 35, 36, 37)
-ani_index = 4
+frames = PackedInt32Array(65, 66, 65, 67)
+ani_index = 1
 
 [node name="NavdiBodyMover" type="Node2D" parent="rmA/player"]
 script = ExtResource("9_rjxfi")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="rmA/player/NavdiBodyMover"]
-visible = false
+modulate = Color(1, 1, 1, 0.203922)
 shape = SubResource("RectangleShape2D_e5jqa")
 target_position = Vector2(0, 0)
