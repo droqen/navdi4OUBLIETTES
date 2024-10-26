@@ -37,6 +37,6 @@ func _physics_process(_delta: float) -> void:
 			elif vy > 0:
 				spr.setup([66,69],10)
 			else:
-				spr.setup([68], 0)
+				spr.setup([67,68],10)
 		else:
 			spr.setup([66], 0)
