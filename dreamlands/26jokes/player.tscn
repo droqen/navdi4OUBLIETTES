@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://81mhtfmoll8i"]
+
+[ext_resource type="Script" path="res://dreamlands/26jokes/player.gd" id="1_v8ebc"]
+[ext_resource type="Texture2D" uid="uid://but3n3o47vdxc" path="res://dreamlands/26jokes/joke.png" id="2_s0nil"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_15x0c"]
+[ext_resource type="Resource" uid="uid://vwwnxknad6fh" path="res://dreamlands/26jokes/joke_sheet.tres" id="4_0cy4p"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_mlyke"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5jqa"]
+size = Vector2(7.5, 7.5)
+
+[node name="player" type="Node2D"]
+position = Vector2(55, 45)
+script = ExtResource("1_v8ebc")
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_s0nil")
+hframes = 10
+vframes = 10
+frame = 66
+script = ExtResource("3_15x0c")
+sheet = ExtResource("4_0cy4p")
+frames = PackedInt32Array(65, 66, 65, 67)
+ani_index = 1
+
+[node name="NavdiBodyMover" type="Node2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("5_mlyke")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="NavdiBodyMover"]
+modulate = Color(1, 1, 1, 0.203922)
+shape = SubResource("RectangleShape2D_e5jqa")
+target_position = Vector2(0, 0)
