@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://81mhtfmoll8i"]
+[gd_scene load_steps=8 format=3 uid="uid://81mhtfmoll8i"]
 
 [ext_resource type="Script" path="res://dreamlands/26jokes/player.gd" id="1_v8ebc"]
 [ext_resource type="Texture2D" uid="uid://but3n3o47vdxc" path="res://dreamlands/26jokes/joke.png" id="2_s0nil"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5jqa"]
 size = Vector2(7.5, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2p0be"]
+size = Vector2(4, 4)
 
 [node name="player" type="Node2D"]
 position = Vector2(55, 45)
@@ -31,3 +34,13 @@ script = ExtResource("5_mlyke")
 modulate = Color(1, 1, 1, 0.203922)
 shape = SubResource("RectangleShape2D_e5jqa")
 target_position = Vector2(0, 0)
+
+[node name="spike_detector" type="Area2D" parent="."]
+position = Vector2(0, -3)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike_detector"]
+shape = SubResource("RectangleShape2D_2p0be")
+
+[connection signal="body_entered" from="spike_detector" to="." method="_on_spike_detector_body_entered"]
