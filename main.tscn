@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
-[ext_resource type="Resource" uid="uid://cm3hdyrablrrs" path="res://dreamlands/26jokes/cart.tres" id="3_5da25"]
+[ext_resource type="Resource" uid="uid://hflke2dvawyc" path="res://dreamlands/29-where-hell/cart.tres" id="3_04vw3"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
-[node name="[[ joke-dev ]]" type="Node2D"]
+[node name="[[ the-place-where-hell-has-not-yet-reached ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_5da25")
+cart = ExtResource("3_04vw3")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -28,6 +28,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
-text = "[center][b][[ joke-dev ]][/b]
-just be funny!
-sunny and bright."
+text = "[center][b][[ the-place-where-hell-has-not-yet-reached ]][/b]
+i'll have to go
+to where hell has
+not yet reached"
