@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://b38b4xpq6shil" path="res://dreamlands/29-where-hell/where-hell_tiles.tres" id="3_tbwbg"]
 [ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_trluw"]
 [ext_resource type="FontFile" uid="uid://b23vrkinia56w" path="res://navdi4/fonts/quizardry.ttf" id="5_f6op7"]
-[ext_resource type="Script" path="res://navdi4/main/navdisoleplayer.gd" id="6_fnw5g"]
+[ext_resource type="Script" path="res://dreamlands/29-where-hell/player.gd" id="6_j7578"]
 [ext_resource type="Texture2D" uid="uid://chadin3a7irqu" path="res://dreamlands/29-where-hell/where-hell.png" id="6_ypb10"]
 [ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="7_kf38o"]
 [ext_resource type="Resource" uid="uid://by2l3yaijsxy7" path="res://dreamlands/29-where-hell/where-hell_sheet.tres" id="8_y35en"]
@@ -51,7 +51,7 @@ label_settings = SubResource("LabelSettings_8ub0q")
 
 [node name="player" type="Node2D" parent="rmA"]
 position = Vector2(32, 81)
-script = ExtResource("6_fnw5g")
+script = ExtResource("6_j7578")
 
 [node name="feet" type="Sprite2D" parent="rmA/player"]
 position = Vector2(0, 10)
@@ -61,7 +61,7 @@ vframes = 10
 frame = 22
 script = ExtResource("7_kf38o")
 sheet = ExtResource("8_y35en")
-frames = PackedInt32Array(22, 23, 24, 25, 22, 22, 26, 27, 28)
+frames = PackedInt32Array(22, 23, 24, 25, 22, 26, 27, 28)
 ani_period = 5
 ani_index = 4
 
