@@ -9,6 +9,7 @@ signal sole_player_replaced(prevplayer, newplayer)
 signal player_escaped(code)
 signal windfish_awakened
 signal windfish_lucidwake(memory)
+signal songlink_signal(songlink)
 
 @export var camera : Camera2D
 
@@ -18,6 +19,7 @@ var dreamroom : DreamRoom
 func _ready():
 	windfish_awakened.connect(func():prints(self,". . . WIND FISH AWAKENED . . ."))
 	windfish_lucidwake.connect(func(memory):prints(self,". . . WIND FISH AWAKENED LUCIDLY RECALLING . . .", memory, ". . ."))
+	songlink_signal.connect(func(songlink):prints(self,"songlink_signal - ",songlink.substr(0,30)," . . ."))
 	add_to_group(SOLE_LIVE_DREAM_NAME)
 	sole_player_replaced.connect(func(prevplayer, newplayer):
 		if prevplayer: prevplayer.escaped.disconnect(self.player_escaped.emit)

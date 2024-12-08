@@ -85,6 +85,9 @@ func _ready() -> void:
 			$LiveDream.windfish_lucidwake.connect(
 				func(memory): Cat.on_windfish_lucidwake(memory)
 			)
+			$LiveDream.songlink_signal.connect(
+				func(songlink): Cat.on_songlink_signal(songlink)
+			)
 		else:
 			print("Cat not found - You do not have access to JS")
 		
@@ -98,6 +101,7 @@ func _ready() -> void:
 			$LiveDream.add_child(play)
 			play.owner = owner if owner else self
 			if play.has_method('play'):
+				if cart.songlink: $LiveDream.songlink_signal.emit(cart.songlink)
 				play.play.call_deferred($LiveDream)
 		$diary.hide()
 
