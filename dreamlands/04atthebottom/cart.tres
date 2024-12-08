@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="NavdiCart" load_steps=3 format=3 uid="uid://cdmpm8tkvu3pi"]
+
+[ext_resource type="Script" path="res://navdi4/main/navdicart.gd" id="1_2r0ra"]
+[ext_resource type="Script" path="res://dreamlands/04atthebottom/^play-bottom.gd" id="1_l06nv"]
+
+[resource]
+script = ExtResource("1_2r0ra")
+diary_written = true
+diary_keywords = Array[String](["under", "under", "under", "under"])
+name = "valley-under-valley"
+play_script = ExtResource("1_l06nv")
+game_size = Vector2i(120, 250)
+view_scale = Vector2i(2, 2)
+bg_transparent = false
+bg_colour = Color(0.14902, 0.2, 0.117647, 1)
+pixelated = true
+prepend_date = true
+birth_year = 2024
+birth_month = "December"
+birth_day = 8
+tile_size = Vector2i(10, 10)
+icon_idx = 9
+exits = Array[String]([""])
+songlink = "https://jummb.us/#j6N0lunderwater-strangers2n310s0k0l00e04t1Qa7g0fj07r1O_U00000000i0o331T5v0pua6f154q8540Oa1d230HYr901i8ah00000h0E0c0T5v0pua6f154q8540Oa0d230HYr901i8ah00000h0E0c0T1v0pub3f020sa2oa00q0B010n7000Oaad230A1F0B5Q00acPd557R0000E3c0b963974T2v09u15f180q040Oad030w0E0c0b4xd5000000010i0000000000000000004x8M0000000p22FIcZ7N4AQ4m6COq0apjxgI8b92O0Jcmk5w1q8JczOyAhQGypvGpiEhRaCkFsEG4taFBcBB3zM05cF5xiCaaBehEk2D8Bd0mwbg5FCK9C6nw2WoE0akOYjVyaMPwNetBCmawp9B80IIIL4FQSkF9yzh7g8W0Jonl5d0FE5d0XA0"
