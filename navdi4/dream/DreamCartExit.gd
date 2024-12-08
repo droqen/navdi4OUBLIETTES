@@ -58,13 +58,16 @@ func _physics_process(_delta: float) -> void:
 				queue_free() # invalid exit disappear
 	else:
 		if cart == null:
-			label.text = "( !!! )\nmissing cart"
+			change_label_text("( !!! )\nmissing cart")
 		elif not cart.exits:
-			label.text = "( !!! )\ncart.exits empty"
+			change_label_text("( !!! )\ncart.exits empty")
 		elif not exitname:
-			label.text = "( !!! )\nno exitname"
+			change_label_text("( !!! )\nno exitname")
 		elif not (exitname in cart.exits):
-			label.text = "( !!! )\nbad exit"
+			change_label_text("( !!! )\nbad exit")
 		else:
-			name = exitname
-			label.text = exitname
+			if name != exitname: name = exitname
+			change_label_text(exitname)
+
+func change_label_text(new_text) -> void:
+	if label.text != new_text: label.text = new_text

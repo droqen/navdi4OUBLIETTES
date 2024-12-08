@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://de5rw1iylq5ye"]
+[gd_scene load_steps=18 format=4 uid="uid://de5rw1iylq5ye"]
 
 [ext_resource type="Script" path="res://navdi4/dream/DreamLand.gd" id="1_j00bd"]
 [ext_resource type="Script" path="res://navdi4/dream/DreamRoom.gd" id="2_ygkoo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_7lo7b"]
 [ext_resource type="FontFile" uid="uid://cgd27m3vqxk8m" path="res://navdi4/fonts/oubliettescrawl.ttf" id="5_fgo2r"]
 [ext_resource type="PackedScene" uid="uid://bjvluy58rg0p" path="res://dreamlands/03reduceme/player.tscn" id="6_i3k4p"]
+[ext_resource type="Script" path="res://dreamlands/03reduceme/labelcycler.gd" id="7_0hyl2"]
 [ext_resource type="Script" path="res://navdi4/dream/DreamCartExit.gd" id="7_mkx0c"]
 [ext_resource type="Resource" uid="uid://cw7jpnch2uu51" path="res://dreamlands/03reduceme/cart.tres" id="8_xvqd7"]
 [ext_resource type="LabelSettings" uid="uid://pst6aucjnimt" path="res://navdi4/dream/DreamCartExitLabelSettings.tres" id="9_fk4xn"]
@@ -38,7 +39,7 @@ font = SubResource("FontVariation_sjdqx")
 font_color = Color(0.266667, 0.47451, 0.294118, 1)
 
 [node name="ReduceLand" type="Node2D"]
-self_modulate = Color(1, 0.0386138, -0.211011, 1)
+self_modulate = Color(1, 0.0386185, -0.206127, 1)
 script = ExtResource("1_j00bd")
 autolinking = true
 autosnapping = true
@@ -75,14 +76,6 @@ offset_bottom = 67.0
 text = "down,
  down,
   down."
-label_settings = SubResource("LabelSettings_28iyx")
-
-[node name="Label3" type="Label" parent="rmA"]
-offset_left = 228.0
-offset_top = 14.0
-offset_right = 368.0
-offset_bottom = 44.0
-text = "(v2)"
 label_settings = SubResource("LabelSettings_28iyx")
 
 [node name="player" parent="rmA" instance=ExtResource("6_i3k4p")]
@@ -130,19 +123,13 @@ navigation_enabled = false
 script = ExtResource("4_7lo7b")
 
 [node name="Label" type="Label" parent="rmA3"]
-visible = false
-offset_left = 137.0
-offset_top = 59.0
-offset_right = 250.0
-offset_bottom = 144.0
-text = "fools
- fools become
-crawling, rising, climbing
-
-  attending to the ascent
-intended without "
-label_settings = SubResource("LabelSettings_ofpww")
-autowrap_mode = 3
+offset_left = 16.0
+offset_top = 159.0
+offset_right = 256.0
+offset_bottom = 244.0
+text = "and whatever
+lays beneath."
+label_settings = SubResource("LabelSettings_28iyx")
 
 [node name="rmSky" type="Node2D" parent="."]
 texture_filter = 1
@@ -269,13 +256,47 @@ tile_set = ExtResource("3_4qxis")
 navigation_enabled = false
 script = ExtResource("4_7lo7b")
 
-[node name="Label" type="Label" parent="rmB2"]
-offset_left = 17.0
-offset_top = 230.0
-offset_right = 173.0
-offset_bottom = 315.0
+[node name="labelcycler" type="Node2D" parent="rmB2"]
+script = ExtResource("7_0hyl2")
+
+[node name="Label" type="Label" parent="rmB2/labelcycler"]
+offset_left = 1.0
+offset_top = 227.0
+offset_right = 157.0
+offset_bottom = 312.0
 text = "intended without intending"
 label_settings = SubResource("LabelSettings_rlk7y")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="rmB2/labelcycler"]
+offset_left = 1.0
+offset_top = 230.0
+offset_right = 157.0
+offset_bottom = 315.0
+text = "seen without seeing"
+label_settings = SubResource("LabelSettings_rlk7y")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="rmB2/labelcycler"]
+offset_left = 1.0
+offset_top = 234.0
+offset_right = 157.0
+offset_bottom = 319.0
+text = "attended without addentants"
+label_settings = SubResource("LabelSettings_rlk7y")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="rmB2/labelcycler"]
+offset_left = 1.0
+offset_top = 237.0
+offset_right = 157.0
+offset_bottom = 322.0
+text = "being without being"
+label_settings = SubResource("LabelSettings_rlk7y")
+horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="rmB3" type="Node2D" parent="."]
