@@ -39,7 +39,7 @@ font = SubResource("FontVariation_sjdqx")
 font_color = Color(0.266667, 0.47451, 0.294118, 1)
 
 [node name="ReduceLand" type="Node2D"]
-self_modulate = Color(1, 0.340308, -0.217919, 1)
+self_modulate = Color(1, 0.220071, 0.141736, 1)
 script = ExtResource("1_j00bd")
 autolinking = true
 autosnapping = true
@@ -370,3 +370,6 @@ text = "heavy_weight"
 label_settings = ExtResource("9_fk4xn")
 horizontal_alignment = 1
 autowrap_mode = 1
+
+[node name="player" parent="rmB4" instance=ExtResource("6_i3k4p")]
+position = Vector2(185, 25)
