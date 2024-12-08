@@ -1,8 +1,8 @@
 extends NavdiSolePlayer
 
-enum {TURNBUF=1, }
+enum {TURNBUF=1,BUBBLEBUF=2, }
 var bufs:Bufs = Bufs.Make(self).setup_bufons([
-	TURNBUF,7,
+	TURNBUF,7, BUBBLEBUF,20,
 ])
 var faceleft:bool
 
@@ -26,10 +26,12 @@ func _physics_process(_delta: float) -> void:
 			vy = min(vy, -1.0 + 0.005 * (250-position.y))
 		else:
 			vy = -1.0
-	if randf() < 0.01: $bubblecontainer/bubble.position = Vector2(
-		round((position.x+randf()*5)/5)*5,
-		round(position.y/5)*5
-	)
+	if not bufs.has(BUBBLEBUF) and randf() < 0.01:
+		bufs.on(BUBBLEBUF)
+		$bubblecontainer/bubble.position = Vector2(
+			round((position.x+randf()*5)/5)*5,
+			round(position.y/5)*5
+		)
 	$bubblecontainer/bubble.position.x += (randf()-randf())*0.2
 	$bubblecontainer/bubble.position.y -= randf()*0.2
 	if dpad.x and (dpad.x<0!=faceleft):
