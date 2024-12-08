@@ -38,7 +38,7 @@ font = SubResource("FontVariation_sjdqx")
 font_color = Color(0.266667, 0.47451, 0.294118, 1)
 
 [node name="ReduceLand" type="Node2D"]
-self_modulate = Color(1, 0.0120336, -0.155569, 1)
+self_modulate = Color(1, 0.0386138, -0.211011, 1)
 script = ExtResource("1_j00bd")
 autolinking = true
 autosnapping = true
@@ -75,6 +75,14 @@ offset_bottom = 67.0
 text = "down,
  down,
   down."
+label_settings = SubResource("LabelSettings_28iyx")
+
+[node name="Label3" type="Label" parent="rmA"]
+offset_left = 228.0
+offset_top = 14.0
+offset_right = 368.0
+offset_bottom = 44.0
+text = "(v2)"
 label_settings = SubResource("LabelSettings_28iyx")
 
 [node name="player" parent="rmA" instance=ExtResource("6_i3k4p")]
