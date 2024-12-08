@@ -5,5 +5,3 @@ func play(d:LiveDream)->void:
 		).instantiate(),
 		"rmA"
 	)
-	await d.player_escaped
-	d.windfish_awakened.emit()
