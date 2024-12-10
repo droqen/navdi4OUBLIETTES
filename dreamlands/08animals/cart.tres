@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="NavdiCart" load_steps=4 format=3 uid="uid://b3lhsb0dboc24"]
+
+[ext_resource type="Script" path="res://dreamlands/08animals/^play_animals.gd" id="1_28x7c"]
+[ext_resource type="Script" path="res://navdi4/main/navdicart.gd" id="1_paldc"]
+[ext_resource type="Texture2D" uid="uid://d37wuc4645vv8" path="res://dreamlands/08animals/animals_and_fruits_game.png" id="3_ce6w6"]
+
+[resource]
+script = ExtResource("1_paldc")
+diary_written = true
+diary_keywords = Array[String](["lizards love limes.", "the human soul..", "sylvie, sylvie struggles.", "how do i make it?"])
+name = "animals and fruits game for sylvie"
+play_script = ExtResource("1_28x7c")
+game_size = Vector2i(260, 180)
+view_scale = Vector2i(2, 2)
+bg_transparent = false
+bg_colour = Color(0.611134, 0.47449, 0.525903, 1)
+pixelated = true
+prepend_date = true
+birth_year = 2024
+birth_month = "December"
+birth_day = 10
+sheet_src = ExtResource("3_ce6w6")
+tile_size = Vector2i(10, 10)
+icon_idx = 9
+exits = Array[String]([""])
+songlink = ""

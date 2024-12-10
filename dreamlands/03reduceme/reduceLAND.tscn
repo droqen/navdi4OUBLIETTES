@@ -39,7 +39,7 @@ font = SubResource("FontVariation_sjdqx")
 font_color = Color(0.266667, 0.47451, 0.294118, 1)
 
 [node name="ReduceLand" type="Node2D"]
-self_modulate = Color(1, 0.118606, 0.0218969, 1)
+self_modulate = Color(1, 0.00666376, -0.217919, 1)
 script = ExtResource("1_j00bd")
 autolinking = true
 autosnapping = true
