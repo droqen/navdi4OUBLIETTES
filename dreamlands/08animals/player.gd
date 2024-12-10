@@ -31,13 +31,14 @@ func _physics_process(_delta: float) -> void:
 	var onfloor : bool = (vy >= 0 and
 	mover.cast_fraction(self, solidcast, VERTICAL, 1) < 1
 	)
-	var isduck : bool = onfloor and (Pin.get_plant_held() or ducking)
+	var isduck : bool = onfloor and Pin.get_plant_held()
 	if isduck: ducking = true
 	elif ducking:
 		ducking = false
 		onfloor = false
-		vy = -min(0.5,abs(vx)+0.1)
-		bufs.setmin(FLORBUF,20)
+		if spr.frame == 20:
+			vy = -min(0.5,abs(vx)+0.1)
+			bufs.setmin(FLORBUF,20)
 	if ajflippyfloppin:
 		vx = move_toward(vx, dpad.x * 1.0, 0.005) # sliiight control
 	else:
