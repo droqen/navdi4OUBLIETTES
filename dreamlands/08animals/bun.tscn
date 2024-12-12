@@ -31,7 +31,7 @@ shape = SubResource("RectangleShape2D_pgtij")
 target_position = Vector2(0, 0)
 
 [node name="left" type="RayCast2D" parent="."]
-target_position = Vector2(-6, 0)
+target_position = Vector2(-8.5, 0)
 
 [node name="right" type="RayCast2D" parent="."]
-target_position = Vector2(6, 0)
+target_position = Vector2(8.5, 0)

@@ -21,6 +21,6 @@ birth_month = "December"
 birth_day = 10
 sheet_src = ExtResource("3_ce6w6")
 tile_size = Vector2i(10, 10)
-icon_idx = 9
+icon_idx = 22
 exits = Array[String]([""])
 songlink = ""

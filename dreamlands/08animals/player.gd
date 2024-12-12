@@ -21,6 +21,10 @@ var inchimny : bool = false
 
 func _physics_process(_delta: float) -> void:
 	var dpad = Pin.get_dpad()
+	dpad.y = (
+		-1 if Pin.get_jump_held() else 0 +
+		1 if Pin.get_plant_held() else 0
+	)
 	if Pin.get_jump_hit(): bufs.on(JUMPHITBUF)
 	if bufs.try_eat([JUMPHITBUF,FLORBUF]):
 		vy = -1.0
@@ -31,7 +35,15 @@ func _physics_process(_delta: float) -> void:
 	var onfloor : bool = (vy >= 0 and
 	mover.cast_fraction(self, solidcast, VERTICAL, 1) < 1
 	)
-	var isduck : bool = onfloor and Pin.get_plant_held()
+	var inchimny_now = $left.is_colliding() and $right.is_colliding() and vy >= -0.4
+	if inchimny != inchimny_now:
+		inchimny = inchimny_now
+		if !inchimny_now and dpad.y < 0:
+			bufs.setmin(FLORBUF,20)
+			vy = -0.5
+			ajs = 1
+			ajflippyfloppin = false
+	var isduck : bool = onfloor and Pin.get_plant_held() and not inchimny
 	if isduck: ducking = true
 	elif ducking:
 		ducking = false
@@ -39,7 +51,16 @@ func _physics_process(_delta: float) -> void:
 		if spr.frame == 20:
 			vy = -min(0.5,abs(vx)+0.1)
 			bufs.setmin(FLORBUF,20)
-	if ajflippyfloppin:
+	
+	if inchimny:
+		ajflippyfloppin = false # nop
+		var chimnyoffset : float = (
+			abs($left.get_collision_point().x - $left.global_position.x) -
+			abs($right.get_collision_point().x - $right.global_position.x)
+		)
+		vx = move_toward(vx * 0.98, dpad.x * 0.5 - 0.2 * chimnyoffset, 0.2)
+		vy = move_toward(vy * 0.98, dpad.y * 0.4, 0.2)
+	elif ajflippyfloppin:
 		vx = move_toward(vx, dpad.x * 1.0, 0.005) # sliiight control
 	else:
 		if isduck:
@@ -87,7 +108,10 @@ func _physics_process(_delta: float) -> void:
 		else:
 			vy=0;
 	
-	if onfloor:
+	if inchimny:
+		spr.setup([41,42],20)
+		spr.playing = dpad.x or dpad.y
+	elif onfloor:
 		ajs = 1
 		ajflippyfloppin = false
 		if isduck:
