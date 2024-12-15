@@ -35,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 	var onfloor : bool = (vy >= 0 and
 	mover.cast_fraction(self, solidcast, VERTICAL, 1) < 1
 	)
-	var inchimny_now = $left.is_colliding() and $right.is_colliding() and vy >= -0.4
+	var inchimny_now = $left.is_colliding() and $right.is_colliding() and vy >= -0.6
 	if inchimny != inchimny_now:
 		inchimny = inchimny_now
 		if !inchimny_now and dpad.y < 0:
