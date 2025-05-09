@@ -19,7 +19,7 @@ size = Vector2(20, 50)
 size = Vector2(2, 400)
 
 [node name="TeoredkeyLand" type="Node2D"]
-self_modulate = Color(1, 1, -0.211011, 1)
+self_modulate = Color(1, 1, -0.190012, 1)
 script = ExtResource("1_mollk")
 autolinking = true
 labelsettings = SubResource("LabelSettings_8hcb4")
