@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://breq5jrxx42h1"]
+
+[ext_resource type="Script" path="res://dreamlands/01a-skeleton/lover_not_nsp.gd" id="1_llp8o"]
+[ext_resource type="Texture2D" uid="uid://dnqtqs3u2an7h" path="res://dreamlands/01a-skeleton/skeletonspr.png" id="2_s7fu8"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_nbwlv"]
+[ext_resource type="Resource" uid="uid://da45av7awwtsq" path="res://dreamlands/01a-skeleton/skeletonspr_sheet.tres" id="4_kme0q"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_xpayr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5gs5"]
+size = Vector2(3.9, 5.9)
+
+[node name="lover" type="Node2D"]
+position = Vector2(55, 125)
+script = ExtResource("1_llp8o")
+
+[node name="spr" type="Sprite2D" parent="."]
+texture = ExtResource("2_s7fu8")
+hframes = 10
+vframes = 10
+frame = 11
+script = ExtResource("3_nbwlv")
+sheet = ExtResource("4_kme0q")
+frames = PackedInt32Array(11)
+
+[node name="mover" type="Node2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("5_xpayr")
+
+[node name="cast" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_i5gs5")
+target_position = Vector2(0, 0)

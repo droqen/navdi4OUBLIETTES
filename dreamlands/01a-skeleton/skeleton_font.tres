@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cl6ht0jujo44h"]
+
+[ext_resource type="FontVariation" uid="uid://dxacsefvd7ebq" path="res://navdi4/fonts/44_shortvariation.tres" id="1_eqbud"]
+
+[resource]
+font = ExtResource("1_eqbud")
