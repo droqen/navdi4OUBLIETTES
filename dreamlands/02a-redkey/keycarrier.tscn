@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://bjo7qvdvcfyq3"]
+
+[ext_resource type="Script" path="res://dreamlands/02a-redkey/keycarrier.gd" id="1_hyp3i"]
+[ext_resource type="Texture2D" uid="uid://dbu4v1ej2jobu" path="res://dreamlands/02a-redkey/keyspr.png" id="2_irw04"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_1ryxt"]
+[ext_resource type="Resource" uid="uid://cp0lou4s4sd0b" path="res://dreamlands/02a-redkey/keyspr_sheet.tres" id="4_bq0cw"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_phn13"]
+[ext_resource type="AudioStream" uid="uid://yn0tr4jgf3jp" path="res://dreamlands/02a-redkey/keypick.wav" id="6_vc4s2"]
+[ext_resource type="AudioStream" uid="uid://767vpkae5ws0" path="res://dreamlands/02a-redkey/keyput.wav" id="7_sk5lp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36mpy"]
+size = Vector2(7.9, 7.9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c1d6"]
+size = Vector2(7.9, 13.9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5rm1"]
+size = Vector2(7, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wqnp"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw0oh"]
+size = Vector2(2, 2)
+
+[node name="keycarrier" type="Node2D"]
+position = Vector2(55, 125)
+script = ExtResource("1_hyp3i")
+
+[node name="spr" type="Sprite2D" parent="."]
+texture = ExtResource("2_irw04")
+hframes = 10
+vframes = 10
+frame = 23
+script = ExtResource("3_1ryxt")
+sheet = ExtResource("4_bq0cw")
+frames = PackedInt32Array(22, 23, 22, 23, 23)
+ani_period = 26
+ani_index = 1
+
+[node name="carried_key" type="Node2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="SheetSprite" type="Sprite2D" parent="carried_key"]
+texture = ExtResource("2_irw04")
+hframes = 10
+vframes = 10
+script = ExtResource("3_1ryxt")
+sheet = ExtResource("4_bq0cw")
+frames = PackedInt32Array(0)
+
+[node name="mover" type="Node2D" parent="."]
+script = ExtResource("5_phn13")
+
+[node name="cast" type="ShapeCast2D" parent="mover"]
+visible = false
+enabled = false
+shape = SubResource("RectangleShape2D_36mpy")
+target_position = Vector2(0, 0)
+
+[node name="mover_heavy" type="Node2D" parent="."]
+position = Vector2(0, -3)
+script = ExtResource("5_phn13")
+
+[node name="cast" type="ShapeCast2D" parent="mover_heavy"]
+visible = false
+enabled = false
+shape = SubResource("RectangleShape2D_4c1d6")
+target_position = Vector2(0, 0)
+
+[node name="keycast" type="ShapeCast2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_k5rm1")
+exclude_parent = false
+target_position = Vector2(0, 4)
+collision_mask = 4
+
+[node name="keytriggerman" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 5
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="keytriggerman"]
+visible = false
+shape = SubResource("RectangleShape2D_2wqnp")
+disabled = true
+
+[node name="exit_detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit_detector"]
+shape = SubResource("RectangleShape2D_aw0oh")
+
+[node name="keyput" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_sk5lp")
+volume_db = -22.0
+
+[node name="keypick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vc4s2")
+volume_db = -20.0
+pitch_scale = 2.0
+
+[connection signal="area_entered" from="exit_detector" to="." method="_on_exit_detector_area_entered"]

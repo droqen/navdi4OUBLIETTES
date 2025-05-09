@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1k1cx7fd3mty"]
+
+[ext_resource type="Script" path="res://dreamlands/02a-redkey/keypickup.gd" id="1_0dwvm"]
+[ext_resource type="Texture2D" uid="uid://dbu4v1ej2jobu" path="res://dreamlands/02a-redkey/keyspr.png" id="1_idx3t"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="2_4umgh"]
+[ext_resource type="Resource" uid="uid://cp0lou4s4sd0b" path="res://dreamlands/02a-redkey/keyspr_sheet.tres" id="3_nqpxu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5k66"]
+size = Vector2(10, 10)
+
+[node name="loose_key" type="RigidBody2D"]
+position = Vector2(85, 125)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_0dwvm")
+
+[node name="SheetSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_idx3t")
+hframes = 10
+vframes = 10
+script = ExtResource("2_4umgh")
+sheet = ExtResource("3_nqpxu")
+frames = PackedInt32Array(0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b5k66")

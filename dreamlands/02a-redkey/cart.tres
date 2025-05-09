@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="NavdiCart" load_steps=4 format=3 uid="uid://c4jmlr7pj77av"]
+
+[ext_resource type="Script" path="res://dreamlands/02a-redkey/^redkey-play.gd" id="1_ftihg"]
+[ext_resource type="Script" path="res://navdi4/main/navdicart.gd" id="1_rb27d"]
+[ext_resource type="Texture2D" uid="uid://dbu4v1ej2jobu" path="res://dreamlands/02a-redkey/keyspr.png" id="3_2b1hl"]
+
+[resource]
+script = ExtResource("1_rb27d")
+diary_written = true
+diary_keywords = Array[String](["THE END", "OF RED KEY", "carrying a heavy burden", "uncertainty, fearlessness,", "freedom, power", "letting go of the red key."])
+name = "THE END OF RED KEY"
+play_script = ExtResource("1_ftihg")
+game_size = Vector2i(560, 260)
+view_scale = Vector2i(2, 2)
+bg_transparent = false
+bg_colour = Color(1, 1, 1, 1)
+pixelated = true
+prepend_date = true
+birth_year = 2025
+birth_month = "May"
+birth_day = 9
+sheet_src = ExtResource("3_2b1hl")
+tile_size = Vector2i(10, 10)
+icon_idx = 0
+exits = Array[String]([""])
+songlink = "https://www.beepbox.co/#9n31sbk0l00e00t2ma7g0fj07r1i0o232T7v1u21f30j61552n8q011d07H_SJ5JJFAAAkAAAh8IcE0T1v1u66f0q0x10p51d08A5F4B5Q1753Pca88E4b762863877T0v1u98f10i7q83231d4aw5h2E0T2v4u02f10w4qE024d93w4E0b4h400000000h4g000000014h000000004h400000000p1gFLhY60002NuzL1M0"

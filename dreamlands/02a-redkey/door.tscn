@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgogj62qgabkm"]
+
+[ext_resource type="Script" path="res://dreamlands/02a-redkey/door.gd" id="1_gxysy"]
+[ext_resource type="Texture2D" uid="uid://dbu4v1ej2jobu" path="res://dreamlands/02a-redkey/keyspr.png" id="2_7fesm"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_yhj3t"]
+[ext_resource type="Resource" uid="uid://cp0lou4s4sd0b" path="res://dreamlands/02a-redkey/keyspr_sheet.tres" id="4_nd2h1"]
+[ext_resource type="AudioStream" uid="uid://cbhbcs1aeahxd" path="res://dreamlands/02a-redkey/doorblip.wav" id="5_2lx5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evotg"]
+size = Vector2(10, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aim2d"]
+size = Vector2(30, 40)
+
+[node name="door" type="StaticBody2D"]
+z_index = -1
+position = Vector2(135, 125)
+script = ExtResource("1_gxysy")
+
+[node name="bottom" type="Sprite2D" parent="."]
+texture = ExtResource("2_7fesm")
+hframes = 10
+vframes = 10
+frame = 16
+script = ExtResource("3_yhj3t")
+sheet = ExtResource("4_nd2h1")
+frames = PackedInt32Array(16)
+
+[node name="top" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("2_7fesm")
+hframes = 10
+vframes = 10
+frame = 6
+script = ExtResource("3_yhj3t")
+sheet = ExtResource("4_nd2h1")
+frames = PackedInt32Array(6)
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_evotg")
+
+[node name="keyseeker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="keyseeker"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_aim2d")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_2lx5l")
+volume_db = -20.0
+pitch_scale = 2.0

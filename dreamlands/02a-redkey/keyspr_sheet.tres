@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Sheet" load_steps=3 format=3 uid="uid://cp0lou4s4sd0b"]
+
+[ext_resource type="Script" path="res://navdi4/main/navdisheet.gd" id="1_1tk7i"]
+[ext_resource type="Texture2D" uid="uid://dbu4v1ej2jobu" path="res://dreamlands/02a-redkey/keyspr.png" id="2_gkx4e"]
+
+[resource]
+script = ExtResource("1_1tk7i")
+texture = ExtResource("2_gkx4e")
+hframes = 10
+vframes = 10
+defaultframe = 0

@@ -1,0 +1,12 @@
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://djuw4dpfh4ii4"]
+
+[ext_resource type="FontVariation" uid="uid://dxacsefvd7ebq" path="res://navdi4/fonts/44_shortvariation.tres" id="1_1jraq"]
+
+[sub_resource type="FontVariation" id="FontVariation_x7cgd"]
+base_font = ExtResource("1_1jraq")
+spacing_top = -7
+
+[resource]
+line_spacing = 0.0
+font = SubResource("FontVariation_x7cgd")
+font_color = Color(0.192157, 0.670588, 0.768627, 1)
