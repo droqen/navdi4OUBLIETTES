@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
-[ext_resource type="Resource" uid="uid://c4jmlr7pj77av" path="res://dreamlands/02a-redkey/cart.tres" id="3_6s0rp"]
+[ext_resource type="Resource" uid="uid://xq64wggkx08w" path="res://dreamlands/02b-redkey/cart.tres" id="3_coh16"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
 [node name="[[ THE END OF RED KEY ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_6s0rp")
+cart = ExtResource("3_coh16")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -29,9 +29,7 @@ theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
 text = "[center][b][[ THE END OF RED KEY ]][/b]
-THE END
-OF RED KEY
-carrying a heavy burden
-uncertainty, fearlessness,
-freedom, power
-letting go of the red key."
+you dont need
+a red key
+to open the door
+it's for you"

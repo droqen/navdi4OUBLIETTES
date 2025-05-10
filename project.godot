@@ -13,7 +13,7 @@ config_version=5
 config/name="2025, May 9th ~ THE END OF RED KEY"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/bg_color=Color(0.803922, 0.945098, 0.662745, 1)
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
@@ -25,10 +25,10 @@ Sav="*res://navdi4/main/navdisav.gd"
 
 [display]
 
-window/size/viewport_width=560
-window/size/viewport_height=260
-window/size/window_width_override=1120
-window/size/window_height_override=520
+window/size/viewport_width=140
+window/size/viewport_height=120
+window/size/window_width_override=280
+window/size/window_height_override=240
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 
@@ -82,6 +82,6 @@ plant={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(1, 1, 1, 1)
+environment/defaults/default_clear_color=Color(0.803922, 0.945098, 0.662745, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

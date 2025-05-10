@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="NavdiCart" load_steps=4 format=3 uid="uid://xq64wggkx08w"]
+
+[ext_resource type="Script" path="res://navdi4/main/navdicart.gd" id="1_lg8j6"]
+[ext_resource type="Script" path="res://dreamlands/02b-redkey/^play-redkey-2.gd" id="1_u1srd"]
+[ext_resource type="Texture2D" uid="uid://cgurs6deadd70" path="res://dreamlands/02b-redkey/imissyou.png" id="3_nhvly"]
+
+[resource]
+script = ExtResource("1_lg8j6")
+diary_written = true
+diary_keywords = Array[String](["you dont need", "a red key", "to open the door", "it's for you"])
+name = "THE END OF RED KEY"
+play_script = ExtResource("1_u1srd")
+game_size = Vector2i(140, 120)
+view_scale = Vector2i(4, 4)
+bg_transparent = false
+bg_colour = Color(0.803922, 0.945098, 0.662745, 1)
+pixelated = true
+prepend_date = true
+birth_year = 2025
+birth_month = "May"
+birth_day = 9
+sheet_src = ExtResource("3_nhvly")
+tile_size = Vector2i(10, 10)
+icon_idx = 9
+exits = Array[String]([""])
+songlink = "https://www.beepbox.co/#9n31sbk0l00e05t2ma7g0fj07r1i0o432T0v1u11f0qg01d04w1h0E0T0v1ua7f10o9q83131d19w0h0E0T1v1uc4f0q8111d23A0F4B4Q5000Pff00E0T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b4h53000000004zg0000000000000000000000000000p21YFHY4Cn1asD9eVU0OiD8OyBdBW4yCLQdjsasD9akTjUldvOTyD9OiDs2DZ7Op9eDjbyyO0JqqDJcLoJoJunM4bib8oDByRyQpqrF-FQ_6OdRtJIBv8Ocx99HY0000"

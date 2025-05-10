@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://dp3bt0y075ev"]
+
+[ext_resource type="FontVariation" uid="uid://dxacsefvd7ebq" path="res://navdi4/fonts/44_shortvariation.tres" id="1_xmqlb"]
+
+[sub_resource type="FontVariation" id="FontVariation_x7cgd"]
+base_font = ExtResource("1_xmqlb")
+spacing_top = -7
+
+[resource]
+line_spacing = 0.0
+font = SubResource("FontVariation_x7cgd")

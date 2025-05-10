@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://3leafr1npt6f"]
+
+[ext_resource type="Script" path="res://dreamlands/02b-redkey/small_stick_man.gd" id="1_34rlu"]
+[ext_resource type="Texture2D" uid="uid://cgurs6deadd70" path="res://dreamlands/02b-redkey/imissyou.png" id="2_hdl3j"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_mrx65"]
+[ext_resource type="Resource" uid="uid://q2en36xjuibr" path="res://dreamlands/02b-redkey/imissyou_sheet.tres" id="4_nt3bo"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_xva8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn68d"]
+size = Vector2(7.9, 7.9)
+
+[node name="small_stick_man" type="Node2D"]
+position = Vector2(23, 85)
+script = ExtResource("1_34rlu")
+
+[node name="spr" type="Sprite2D" parent="."]
+texture = ExtResource("2_hdl3j")
+hframes = 10
+vframes = 10
+frame = 22
+script = ExtResource("3_mrx65")
+sheet = ExtResource("4_nt3bo")
+frames = PackedInt32Array(22)
+
+[node name="mover" type="Node2D" parent="."]
+script = ExtResource("5_xva8p")
+
+[node name="cast" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_nn68d")
+target_position = Vector2(0, 0)

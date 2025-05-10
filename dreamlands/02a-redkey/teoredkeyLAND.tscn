@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://dreamlands/02a-redkey/^replace_doors.gd" id="4_a3vqo"]
 [ext_resource type="Script" path="res://navdi4/maze/maze.gd" id="4_ln1xb"]
 [ext_resource type="PackedScene" uid="uid://bjo7qvdvcfyq3" path="res://dreamlands/02a-redkey/keycarrier.tscn" id="6_871vj"]
-[ext_resource type="LabelSettings" uid="uid://djuw4dpfh4ii4" path="res://dreamlands/02a-redkey/redkey_font.tres" id="7_1eysf"]
+[ext_resource type="LabelSettings" uid="uid://dp3bt0y075ev" path="res://dreamlands/02b-redkey/redkey2_font.tres" id="7_e212w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8hcb4"]
 font_size = 8
@@ -19,7 +19,7 @@ size = Vector2(20, 50)
 size = Vector2(2, 400)
 
 [node name="TeoredkeyLand" type="Node2D"]
-self_modulate = Color(1, 1, -0.190012, 1)
+self_modulate = Color(1, 1, -0.185514, 1)
 script = ExtResource("1_mollk")
 autolinking = true
 labelsettings = SubResource("LabelSettings_8hcb4")
@@ -47,7 +47,7 @@ offset_left = -40.0
 offset_right = 138.0
 offset_bottom = 61.0
 text = "the end of red key "
-label_settings = ExtResource("7_1eysf")
+label_settings = ExtResource("7_e212w")
 
 [node name="rm2" type="Node2D" parent="."]
 texture_filter = 1
@@ -74,7 +74,7 @@ offset_top = 50.0
 offset_right = 300.0
 offset_bottom = 111.0
 text = "the sound of tumbling head over heels into the river drowned"
-label_settings = ExtResource("7_1eysf")
+label_settings = ExtResource("7_e212w")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="rm2"]
 position = Vector2(-10, 86)
@@ -117,7 +117,7 @@ line.
 that
 was
 me."
-label_settings = ExtResource("7_1eysf")
+label_settings = ExtResource("7_e212w")
 
 [node name="rm4" type="Node2D" parent="."]
 texture_filter = 1
@@ -144,7 +144,7 @@ canpick = false
 offset_right = 195.0
 offset_bottom = 61.0
 text = "in the end what is a key without a hole?"
-label_settings = ExtResource("7_1eysf")
+label_settings = ExtResource("7_e212w")
 
 [node name="rm5" type="Node2D" parent="."]
 texture_filter = 1
@@ -191,7 +191,7 @@ either way.
 
 the red key
 is no more."
-label_settings = ExtResource("7_1eysf")
+label_settings = ExtResource("7_e212w")
 
 [node name="exit_area" type="Area2D" parent="rm5"]
 position = Vector2(679, -18)
@@ -229,7 +229,7 @@ text = "THE
 END
 OF
 RED KEY"
-label_settings = ExtResource("7_1eysf")
+label_settings = ExtResource("7_e212w")
 
 [node name="label_above" type="Node2D" parent="rmA"]
 z_index = 4096
@@ -243,7 +243,7 @@ text = "THE
 END
 OF
 RED KEY"
-label_settings = ExtResource("7_1eysf")
+label_settings = ExtResource("7_e212w")
 
 [node name="rmB" type="Node2D" parent="."]
 texture_filter = 1
@@ -335,7 +335,7 @@ offset_left = 2.0
 offset_top = 68.0
 offset_right = 135.0
 offset_bottom = 129.0
-label_settings = ExtResource("7_1eysf")
+label_settings = ExtResource("7_e212w")
 
 [node name="rmC2" type="Node2D" parent="."]
 texture_filter = 1
