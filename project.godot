@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="2025, May 9th ~ THE END OF RED KEY"
+config/name="2025, May 10th ~ THE END OF SCORE THING"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(0.803922, 0.945098, 0.662745, 1)
+boot_splash/bg_color=Color(0.75465, 0.78, 0.6786, 1)
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
@@ -25,12 +25,14 @@ Sav="*res://navdi4/main/navdisav.gd"
 
 [display]
 
-window/size/viewport_width=140
-window/size/viewport_height=120
-window/size/window_width_override=280
-window/size/window_height_override=240
+window/size/viewport_width=300
+window/size/viewport_height=300
+window/size/transparent=true
+window/size/window_width_override=600
+window/size/window_height_override=600
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
+window/per_pixel_transparency/allowed=true
 
 [global_group]
 
@@ -82,6 +84,7 @@ plant={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.803922, 0.945098, 0.662745, 1)
+environment/defaults/default_clear_color=Color(0.75465, 0.78, 0.6786, 1)
+viewport/transparent_background=true
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

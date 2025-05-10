@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
-[ext_resource type="Resource" uid="uid://xq64wggkx08w" path="res://dreamlands/02b-redkey/cart.tres" id="3_coh16"]
+[ext_resource type="Resource" uid="uid://bsmah3rrp5o8w" path="res://dreamlands/03-scorething/cart.tres" id="3_ulp5d"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
-[node name="[[ THE END OF RED KEY ]]" type="Node2D"]
+[node name="[[ THE END OF SCORE THING ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_coh16")
+cart = ExtResource("3_ulp5d")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -28,8 +28,9 @@ offset_bottom = 100.0
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
-text = "[center][b][[ THE END OF RED KEY ]][/b]
-you dont need
-a red key
-to open the door
-it's for you"
+text = "[center][b][[ THE END OF SCORE THING ]][/b]
+without red key
+all i see are red doors
+i'm missing a compass
+how do i decide?
+can i do without score thing?"

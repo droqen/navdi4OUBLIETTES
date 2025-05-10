@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://wgrmw45g37g"]
+
+[ext_resource type="Script" path="res://dreamlands/03-scorething/st-player.gd" id="1_nf8df"]
+[ext_resource type="Texture2D" uid="uid://dhidcf43s8f6e" path="res://dreamlands/03-scorething/scorethingspr.png" id="2_b5d4f"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_b8ecv"]
+[ext_resource type="Resource" uid="uid://cbybn6jgdf8ng" path="res://dreamlands/03-scorething/scorethingspr_sheet.tres" id="4_ygd2s"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_oikc0"]
+[ext_resource type="LabelSettings" uid="uid://d4jcdiycu1a82" path="res://dreamlands/03-scorething/scorething-lblst.tres" id="6_tga64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1onvw"]
+size = Vector2(5.9, 5.9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7i3u"]
+size = Vector2(2, 2)
+
+[node name="player" type="Node2D"]
+position = Vector2(153, 67)
+script = ExtResource("1_nf8df")
+
+[node name="spr" type="Sprite2D" parent="."]
+texture = ExtResource("2_b5d4f")
+hframes = 10
+vframes = 10
+frame = 9
+script = ExtResource("3_b8ecv")
+sheet = ExtResource("4_ygd2s")
+frames = PackedInt32Array(9, 1, 2, 3)
+ani_period = 12
+
+[node name="mover" type="Node2D" parent="."]
+script = ExtResource("5_oikc0")
+
+[node name="cast" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_1onvw")
+target_position = Vector2(0, 0)
+
+[node name="score" type="Node2D" parent="."]
+position = Vector2(0, 5)
+
+[node name="Label" type="Label" parent="score"]
+offset_left = -40.0
+offset_top = 5.0
+offset_right = 40.0
+offset_bottom = 28.0
+text = "0"
+label_settings = ExtResource("6_tga64")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_j7i3u")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="NavdiCart" load_steps=4 format=3 uid="uid://bsmah3rrp5o8w"]
+
+[ext_resource type="Script" path="res://dreamlands/03-scorething/^play-scorething.gd" id="1_ikqeq"]
+[ext_resource type="Script" path="res://navdi4/main/navdicart.gd" id="1_y0ejc"]
+[ext_resource type="Texture2D" uid="uid://dhidcf43s8f6e" path="res://dreamlands/03-scorething/scorethingspr.png" id="3_i5mbj"]
+
+[resource]
+script = ExtResource("1_y0ejc")
+diary_written = true
+diary_keywords = Array[String](["without red key", "all i see are red doors", "i'm missing a compass", "how do i decide?", "can i do without score thing?"])
+name = "THE END OF SCORE THING"
+play_script = ExtResource("1_ikqeq")
+game_size = Vector2i(300, 300)
+view_scale = Vector2i(2, 2)
+bg_transparent = true
+bg_colour = Color(0.75465, 0.78, 0.6786, 1)
+pixelated = true
+prepend_date = true
+birth_year = 2025
+birth_month = "May"
+birth_day = 10
+sheet_src = ExtResource("3_i5mbj")
+tile_size = Vector2i(10, 10)
+icon_idx = 5
+exits = Array[String]([""])
+songlink = ""
