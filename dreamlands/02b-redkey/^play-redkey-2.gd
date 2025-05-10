@@ -4,7 +4,8 @@ func play(d:LiveDream) -> void:
 		"res://dreamlands/02b-redkey/missredkeyLAND.tscn"
 	).instantiate(),"rmA")
 	await d.player_escaped
-	d.windfish_awakened.emit(0)
+	d.windfish_awakened.emit()
 	d.goto_new_land(load(
 		"res://dreamlands/02b-redkey/missredkeyLAND.tscn"
 	).instantiate(),"rmEnding")
+	
