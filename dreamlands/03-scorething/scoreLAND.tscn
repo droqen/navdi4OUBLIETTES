@@ -13,7 +13,7 @@ font_color = Color(1, 1, 1, 0.258824)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf5t2"]
 
 [node name="ScoreLand" type="Node2D"]
-self_modulate = Color(1, 0.135376, -0.0791397, 1)
+self_modulate = Color(1, 0.340259, -0.040208, 1)
 script = ExtResource("1_snfyl")
 autolinking = true
 autosnapping = true
