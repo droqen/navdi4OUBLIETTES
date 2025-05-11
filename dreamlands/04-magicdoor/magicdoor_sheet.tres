@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Sheet" load_steps=3 format=3 uid="uid://blmsucf5ik4ss"]
+
+[ext_resource type="Script" path="res://navdi4/main/navdisheet.gd" id="1_m058i"]
+[ext_resource type="Texture2D" uid="uid://cwp20mpycncfp" path="res://dreamlands/04-magicdoor/magicdoor.png" id="2_j4li2"]
+
+[resource]
+script = ExtResource("1_m058i")
+texture = ExtResource("2_j4li2")
+hframes = 10
+vframes = 10
+defaultframe = 0

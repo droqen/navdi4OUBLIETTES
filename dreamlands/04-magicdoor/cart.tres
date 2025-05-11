@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="NavdiCart" load_steps=4 format=3 uid="uid://ccsalelehxrca"]
+
+[ext_resource type="Script" path="res://navdi4/main/navdicart.gd" id="1_jjpof"]
+[ext_resource type="Script" path="res://dreamlands/04-magicdoor/^play-magicdoor.gd" id="1_n2mof"]
+[ext_resource type="Texture2D" uid="uid://cwp20mpycncfp" path="res://dreamlands/04-magicdoor/magicdoor.png" id="2_uhtid"]
+
+[resource]
+script = ExtResource("1_jjpof")
+diary_written = true
+diary_keywords = Array[String](["love", "is", "not", "a magic door."])
+name = "THE END OF MAGIC DOOR"
+play_script = ExtResource("1_n2mof")
+game_size = Vector2i(180, 200)
+view_scale = Vector2i(2, 2)
+bg_transparent = true
+bg_colour = Color(0.831373, 0.329412, 0.333333, 1)
+pixelated = true
+prepend_date = true
+birth_year = 2025
+birth_month = "May"
+birth_day = 10
+sheet_src = ExtResource("2_uhtid")
+tile_size = Vector2i(10, 10)
+icon_idx = 30
+exits = Array[String]([""])
+songlink = ""

@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://byewi3vb3mesj"]
+
+[ext_resource type="Script" path="res://dreamlands/04b-door/chicken.gd" id="1_2jsub"]
+[ext_resource type="Texture2D" uid="uid://p034t08dn7tr" path="res://dreamlands/04b-door/door.png" id="2_eicn7"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_1d83c"]
+[ext_resource type="Resource" uid="uid://cfi7n8d7fc7ef" path="res://dreamlands/04b-door/door_sheet.tres" id="4_uyy2b"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_kmwoj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmyaa"]
+size = Vector2(5.9, 3.9)
+
+[node name="chicken" type="Node2D"]
+position = Vector2(8, 46)
+script = ExtResource("1_2jsub")
+
+[node name="spr" type="Sprite2D" parent="."]
+texture = ExtResource("2_eicn7")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_1d83c")
+sheet = ExtResource("4_uyy2b")
+frames = PackedInt32Array(10)
+
+[node name="mover" type="Node2D" parent="."]
+position = Vector2(0, 2)
+script = ExtResource("5_kmwoj")
+
+[node name="cast" type="ShapeCast2D" parent="mover"]
+shape = SubResource("RectangleShape2D_hmyaa")
+target_position = Vector2(0, 0)

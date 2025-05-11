@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://bascpwq4xitv6"]
+
+[ext_resource type="Script" path="res://dreamlands/04-magicdoor/player.gd" id="1_3sh45"]
+[ext_resource type="Texture2D" uid="uid://cwp20mpycncfp" path="res://dreamlands/04-magicdoor/magicdoor.png" id="2_fwki4"]
+[ext_resource type="Script" path="res://navdi4/main/navdisheetsprite.gd" id="3_sln6h"]
+[ext_resource type="Resource" uid="uid://blmsucf5ik4ss" path="res://dreamlands/04-magicdoor/magicdoor_sheet.tres" id="4_8jtrf"]
+[ext_resource type="Script" path="res://navdi4/main/navdibodymover.gd" id="5_p8oqi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfgux"]
+size = Vector2(5.9, 7.9)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yg3np"]
+radius = 3.0
+
+[node name="player" type="Node2D"]
+position = Vector2(50, 66)
+script = ExtResource("1_3sh45")
+
+[node name="spr" type="Sprite2D" parent="."]
+texture = ExtResource("2_fwki4")
+hframes = 10
+vframes = 10
+frame = 34
+script = ExtResource("3_sln6h")
+sheet = ExtResource("4_8jtrf")
+frames = PackedInt32Array(34, 35)
+
+[node name="mover" type="Node2D" parent="."]
+script = ExtResource("5_p8oqi")
+
+[node name="cast" type="ShapeCast2D" parent="mover"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_sfgux")
+target_position = Vector2(0, 0)
+
+[node name="spike_toucher" type="Area2D" parent="."]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike_toucher"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_yg3np")

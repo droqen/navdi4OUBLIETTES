@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
-[ext_resource type="Resource" uid="uid://bsmah3rrp5o8w" path="res://dreamlands/03-scorething/cart.tres" id="3_ulp5d"]
+[ext_resource type="Resource" uid="uid://46y1s7kc87ql" path="res://dreamlands/04b-door/cart.tres" id="3_7duny"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
-[node name="[[ THE END OF SCORE THING ]]" type="Node2D"]
+[node name="[[ THE END OF MAGIC DOOR ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_ulp5d")
+cart = ExtResource("3_7duny")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -28,9 +28,8 @@ offset_bottom = 100.0
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
-text = "[center][b][[ THE END OF SCORE THING ]][/b]
-without red key
-all i see are red doors
-i'm missing a compass
-how do i decide?
-can i do without score thing?"
+text = "[center][b][[ THE END OF MAGIC DOOR ]][/b]
+the magic door is pain
+ouch, it hurts, i'm hurting
+i want to open the door;
+i want to open the door."

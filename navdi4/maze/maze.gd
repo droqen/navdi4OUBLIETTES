@@ -54,9 +54,9 @@ func coord2tid(atlas_coord:Vector2i)->int:
 	if atlas_coord.x < 0: return -1
 	return atlas_coord.x+atlas_coord.y*tile_src_w
 
-func set_cell_tid(maze_coords:Vector2i, tid:int):
+func set_cell_tid(maze_coords:Vector2i, tid:int, alt:int = 0):
 	_require_tidkey()
-	set_cell(maze_coords, SOLE_SOURCE_ID, tid2coord(tid))
+	set_cell(maze_coords, SOLE_SOURCE_ID, tid2coord(tid), alt)
 	changed.emit()
 
 func get_cell_tid(maze_coords:Vector2i) -> int:

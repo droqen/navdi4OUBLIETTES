@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://b81s40obeoxye"]
+
+[ext_resource type="FontVariation" uid="uid://dxacsefvd7ebq" path="res://navdi4/fonts/44_shortvariation.tres" id="1_78ito"]
+
+[resource]
+font = ExtResource("1_78ito")
