@@ -13,7 +13,7 @@ font_size = 9
 font_color = Color(1, 1, 1, 0.482353)
 
 [node name="MagicdoorLand" type="Node2D"]
-self_modulate = Color(1, 0.00740417, -0.219909, 1)
+self_modulate = Color(1, -0.0188887, -0.155569, 1)
 script = ExtResource("1_8ycvb")
 autolinking = true
 autosnapping = true
