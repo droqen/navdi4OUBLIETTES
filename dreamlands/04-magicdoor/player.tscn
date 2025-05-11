@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bascpwq4xitv6"]
+[gd_scene load_steps=9 format=3 uid="uid://bascpwq4xitv6"]
 
 [ext_resource type="Script" path="res://dreamlands/04-magicdoor/player.gd" id="1_3sh45"]
 [ext_resource type="Texture2D" uid="uid://cwp20mpycncfp" path="res://dreamlands/04-magicdoor/magicdoor.png" id="2_fwki4"]
@@ -10,7 +10,10 @@
 size = Vector2(5.9, 7.9)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yg3np"]
-radius = 3.0
+radius = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klwrw"]
+size = Vector2(8, 8)
 
 [node name="player" type="Node2D"]
 position = Vector2(50, 66)
@@ -37,5 +40,12 @@ target_position = Vector2(0, 0)
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spike_toucher"]
-position = Vector2(0, -3)
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_yg3np")
+
+[node name="door_toucher" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door_toucher"]
+shape = SubResource("RectangleShape2D_klwrw")

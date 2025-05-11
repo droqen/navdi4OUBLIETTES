@@ -19,9 +19,9 @@ func _physics_process(_delta: float) -> void:
 	last_jheld = jheld
 	if jreleased:
 		bufs.on(FLAPBUF)
+		vy *= 0.5
 	if bufs.has(FLAPBUF):
-		vy *= 0.84
-		vy -= 0.10 * bufs.read(FLAPBUF)
+		vy -= 0.30
 	vx = move_toward(vx, dpad.x, 0.1)
 	vy = move_toward(vy, 1.2, 0.025)
 	if jheld:
@@ -35,6 +35,8 @@ func _physics_process(_delta: float) -> void:
 		vy=0
 	var onfloor:bool = (vy>=0 and mover.cast_fraction(
 		self,cast,VERTICAL,1)<1)
+	if abs(vx)>=1.0 and onfloor:
+		vx = move_toward(vx, dpad.x * 2.0, 0.11)
 	if dpad.x and ((dpad.x < 0) != spr.flip_h):
 		spr.flip_h = dpad.x < 0
 		bufs.on(TURNBUF)

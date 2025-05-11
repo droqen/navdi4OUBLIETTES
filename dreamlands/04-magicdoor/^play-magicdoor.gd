@@ -4,7 +4,7 @@ func play(d:LiveDream)->void:
 		load(
 			"res://dreamlands/04-magicdoor/magicdoorLAND.tscn"
 		).instantiate(),
-		"rmF"
+		"rmc"
 	)
 	await d.player_escaped
 	d.windfish_awakened.emit()

@@ -24,20 +24,63 @@ var openness_index : int :
 					tids.append(DOOR_TILES[ti]+DOOR_OFFSETS[oi])
 				for cell in maze.get_used_cells_by_tids(tids):
 					change_tid_keeping_flipdata(cell, DOOR_TILES[openness_index] + DOOR_OFFSETS[oi])
-const DOOR_TILES = [70, 72, 74, 76, 78]
+const DOOR_TILES = [78,76,74,72,70]
 const DOOR_OFFSETS = [0, 1, 10, 11, 20, 21]
 
 var ani : int = 0
 var anidir : int = 1
+var firsttime : bool = true
 
 func _ready() -> void:
 	openness_index = starting_openness
 	if openness_index == 4: anidir = -1
+	elif has_node("Label"): $Label.hide()
+	starting_openness = 0
+
+func _enter_tree() -> void:
+	if firsttime:
+		firsttime = false
+	else:
+		openness_index = 0
+		ani = -20
+		anidir = 1
 
 func _physics_process(_delta: float) -> void:
 	ani += 1
+	var playerr = NavdiSolePlayer.GetPlayer(self)
+	var player_in_area : bool = (
+		playerr.position.x > 10 and
+		playerr.position.x < 90)
+	
 	if ani >= 10:
 		ani = 0
-		openness_index += anidir
-		if openness_index == 4: anidir = -1; ani = -20
-		if openness_index == 0: anidir = 1; ani = -20
+		if not player_in_area: anidir = -1
+		openness_index = clampi(openness_index + anidir, 0, 4)
+	var player_inside_door : bool = false
+	var player_arears = $player_area.get_overlapping_areas()
+	if player_arears:
+		var player = player_arears[0].get_parent()
+		if player is NavdiSolePlayer:
+			if player.bufs.has(player.FLORBUF) and player.vx == 0 and player.vy == 0:
+				player_inside_door = true
+	if player_inside_door:
+		if anidir > 0:
+			ani = 0
+			anidir = -1
+		if openness_index <= 1:
+			$Blackout.show()
+			playerr.position.x = 50
+		else:
+			$Blackout.hide()
+	elif player_in_area:
+		if $Blackout.visible and openness_index < 2:
+			openness_index = 2
+		anidir = 1
+		$Blackout.hide()
+	else:
+		anidir = -1
+		$Blackout.hide()
+	
+	if has_node("Label"):
+		$Label.visible = $Blackout.visible
+	playerr.visible = !$Blackout.visible

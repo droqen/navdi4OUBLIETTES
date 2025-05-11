@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
 [ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
-[ext_resource type="Resource" uid="uid://46y1s7kc87ql" path="res://dreamlands/04b-door/cart.tres" id="3_7duny"]
+[ext_resource type="Resource" uid="uid://ccsalelehxrca" path="res://dreamlands/04-magicdoor/cart.tres" id="3_k02hq"]
 [ext_resource type="Script" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
 [node name="[[ THE END OF MAGIC DOOR ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
 icon_preview = ExtResource("2_wdlrg")
-cart = ExtResource("3_7duny")
+cart = ExtResource("3_k02hq")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -29,7 +29,7 @@ theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
 text = "[center][b][[ THE END OF MAGIC DOOR ]][/b]
-the magic door is pain
-ouch, it hurts, i'm hurting
-i want to open the door;
-i want to open the door."
+love
+is
+not
+a magic door."
