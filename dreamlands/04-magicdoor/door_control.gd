@@ -9,6 +9,7 @@ cell:Vector2i,tid:int)->void:
 	TileSetAtlasSource.TRANSFORM_FLIP_H
 		if flip_h else 0)
 
+@export var kills_th_player : bool = false
 @export_range(0,4) var starting_openness = 0
 
 var _openness_index : int = -1
@@ -70,6 +71,8 @@ func _physics_process(_delta: float) -> void:
 		if openness_index <= 1:
 			$Blackout.show()
 			playerr.position.x = 50
+			if kills_th_player:
+				playerr.escape(0)
 		else:
 			$Blackout.hide()
 	elif player_in_area:
