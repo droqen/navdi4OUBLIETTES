@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0272d3h7kl6r"]
+
+[ext_resource type="Script" path="res://dreamlands/04-magicdoor/door_control.gd" id="1_0sfab"]
+[ext_resource type="PackedScene" uid="uid://8ercsf03458l" path="res://dreamlands/04-magicdoor/blackout.tscn" id="2_n1agg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bn4lf"]
+size = Vector2(4, 4)
+
+[node name="door_control" type="Node2D"]
+script = ExtResource("1_0sfab")
+
+[node name="Blackout" parent="." instance=ExtResource("2_n1agg")]
+visible = false
+
+[node name="player_area" type="Area2D" parent="."]
+position = Vector2(50, 70)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_area"]
+shape = SubResource("RectangleShape2D_bn4lf")
