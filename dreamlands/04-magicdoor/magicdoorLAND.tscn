@@ -13,7 +13,7 @@ font_size = 9
 font_color = Color(1, 1, 1, 0.482353)
 
 [node name="MagicdoorLand" type="Node2D"]
-self_modulate = Color(1, -0.0188887, -0.155569, 1)
+self_modulate = Color(1, -0.0155609, 0.141736, 1)
 script = ExtResource("1_8ycvb")
 autolinking = true
 autosnapping = true
@@ -290,14 +290,18 @@ script = ExtResource("3_8wu64")
 [node name="player" parent="rmI" instance=ExtResource("6_cajgf")]
 position = Vector2(6, 65)
 
-[node name="Label" type="Label" parent="rmI"]
-visible = false
-offset_top = 75.0
-offset_right = 40.0
-offset_bottom = 98.0
-text = "
+[node name="door_control" parent="rmI" instance=ExtResource("7_p3k7t")]
 
-   ...let me in."
+[node name="Label" type="Label" parent="rmI/door_control"]
+offset_top = 74.0
+offset_right = 100.0
+offset_bottom = 101.0
+text = "the magic door can't
+change anything, but
+
+
+
+what if i like it? x"
 label_settings = ExtResource("11_spm32")
 
 [node name="rmJ" type="Node2D" parent="."]

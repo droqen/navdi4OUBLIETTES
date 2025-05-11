@@ -23,4 +23,4 @@ sheet_src = ExtResource("2_uhtid")
 tile_size = Vector2i(10, 10)
 icon_idx = 30
 exits = Array[String]([""])
-songlink = ""
+songlink = "https://www.beepbox.co/#9n31sbk0l00e06t1Da7g0fj07r1i0o332T5v1u24f0q0w10n5d03HTZIzrih9004000h0E1b7T7v1u23f10q4q011d08H_RRtrAyAAAsArrh3IaE0T1v1uc1f10k8q011d23A1F0B4Q0050Pd66cE262972T2v1u02f0q010d04w3E0b4z55o000000h4g000000014h000000004z90k000000p244IQumxAQu2VEZ9d2GGjby2FE-cwncpE-cPK9TqFFCLS5qBrLefiUklgteKnA0mSqf7gX75jnX2CzQFaCCjAWqv71c1sQvWq5llO8bIp0Kp1U0bAV8L7TC2IR_lmrnSpw9EYaGhFpH-lAT1Wyqf1FIL0pbdBYFUyPtfI5SrQvCo005dumjqVhvBmi5eMCOT4Qq4CkUFjnD9EPtEnyqYEFYqVTy-bauejnQsrnNpjkRYUcQhEJsMRWph0qd1EQ5d1jgkQ58"
