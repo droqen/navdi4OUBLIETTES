@@ -1,0 +1,97 @@
+[gd_scene load_steps=17 format=4 uid="uid://bs1614blhv83d"]
+
+[ext_resource type="Script" uid="uid://56wbuyycyvyv" path="res://navdi4/dream/DreamLand.gd" id="1_k7tkc"]
+[ext_resource type="Script" uid="uid://bi521f2ae36lu" path="res://navdi4/dream/DreamRoom.gd" id="2_e5ees"]
+[ext_resource type="TileSet" uid="uid://fhugmsspl36c" path="res://dreamlands/1206-thinker/thinker_tiles.tres" id="3_snt6v"]
+[ext_resource type="Script" uid="uid://vyn05n4h221k" path="res://navdi4/maze/maze.gd" id="4_47qsu"]
+[ext_resource type="Script" uid="uid://dyyh0rwur43xd" path="res://dreamlands/1206-thinker/thinker_player.gd" id="5_uk07m"]
+[ext_resource type="Texture2D" uid="uid://l43mgv4v6p36" path="res://dreamlands/1206-thinker/thinker.png" id="6_47qsu"]
+[ext_resource type="Script" uid="uid://cdj8bgfi8cywg" path="res://navdi4/main/navdisheetsprite.gd" id="6_mxtnr"]
+[ext_resource type="Script" uid="uid://rpmgwxaj587n" path="res://navdi4/main/navdibodymover.gd" id="7_xn0w1"]
+[ext_resource type="Resource" uid="uid://bi578evsrswph" path="res://dreamlands/1206-thinker/thinker_sheet.tres" id="8_uk07m"]
+[ext_resource type="FontVariation" uid="uid://dxacsefvd7ebq" path="res://navdi4/fonts/44_shortvariation.tres" id="10_uk07m"]
+[ext_resource type="FontFile" uid="uid://b5de7g0om36aa" path="res://navdi4/fonts/fivermono.ttf" id="11_xn0w1"]
+[ext_resource type="Script" uid="uid://c85jtofcrog7e" path="res://navdi4/pome/ChatterLabel.gd" id="12_knjo2"]
+[ext_resource type="Script" uid="uid://dca1tb7tgftfe" path="res://dreamlands/1206-thinker/printer.gd" id="13_knjo2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_47qsu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knjo2"]
+size = Vector2(4.5, 7.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mxtnr"]
+font = ExtResource("10_uk07m")
+
+[node name="ThinkerDream" type="Node2D"]
+self_modulate = Color(1, 0.16926251, -0.15696259, 0.99999976)
+script = ExtResource("1_k7tkc")
+autolinking = true
+autosnapping = true
+labelsettings = SubResource("LabelSettings_47qsu")
+background_colour = Color(0.48902625, 0.62766623, 0.5625667, 1)
+metadata/_custom_type_script = "uid://56wbuyycyvyv"
+
+[node name="rmA" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(12, 11)
+script = ExtResource("2_e5ees")
+metadata/_custom_type_script = "uid://bi521f2ae36lu"
+
+[node name="Maze" type="TileMapLayer" parent="rmA"]
+tile_map_data = PackedByteArray("AAAAAAYAAAAAAAIAAAABAAcAAAAAAAIAAAACAAcAAAAAAAIAAAADAAYAAAAAAAIAAAAEAAYAAAAAAAIAAAAEAAcAAAAAAAIAAAAFAAcAAAAAAAIAAAAFAAgAAAAAAAIAAAABAAYAAAAAAAIAAAACAAYAAAAAAAIAAAAFAAYAAAAAAAIAAAAGAAYAAAAAAAIAAAAHAAYAAAAAAAIAAAAIAAYAAAAAAAIAAAAJAAYAAAAAAAIAAAA=")
+tile_set = ExtResource("3_snt6v")
+navigation_enabled = false
+script = ExtResource("4_47qsu")
+metadata/_custom_type_script = "uid://vyn05n4h221k"
+
+[node name="thinker" type="Node2D" parent="rmA"]
+position = Vector2(20, 55)
+script = ExtResource("5_uk07m")
+metadata/_custom_type_script = "uid://bsloniwq5h8en"
+
+[node name="spr" type="Sprite2D" parent="rmA/thinker"]
+texture = ExtResource("6_47qsu")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("6_mxtnr")
+sheet = ExtResource("8_uk07m")
+frames = PackedInt32Array(10)
+metadata/_custom_type_script = "uid://cdj8bgfi8cywg"
+
+[node name="solidcast" type="ShapeCast2D" parent="rmA/thinker"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_knjo2")
+target_position = Vector2(0, 0)
+
+[node name="mover" type="Node2D" parent="rmA/thinker/solidcast"]
+script = ExtResource("7_xn0w1")
+metadata/_custom_type_script = "uid://rpmgwxaj587n"
+
+[node name="Label" type="Label" parent="rmA"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "
+thinker, and compatible"
+label_settings = SubResource("LabelSettings_mxtnr")
+
+[node name="ChatterLabel" type="RichTextLabel" parent="rmA"]
+offset_right = 162.0
+offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("11_xn0w1")
+theme_override_font_sizes/normal_font_size = 5
+text = "thinker, and compatible."
+script = ExtResource("12_knjo2")
+zero_on_ready = false
+printing_pace = 10
+backspace_pace = 10
+midi_delay = 100
+long_delay = 60
+space_delay = 0
+metadata/_custom_type_script = "uid://c85jtofcrog7e"
+
+[node name="printer" type="Node" parent="rmA" node_paths=PackedStringArray("player", "chatterlabel")]
+script = ExtResource("13_knjo2")
+player = NodePath("../thinker")
+chatterlabel = NodePath("../ChatterLabel")

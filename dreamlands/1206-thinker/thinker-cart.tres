@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="NavdiCart" load_steps=4 format=3 uid="uid://cahopgx3v3wsl"]
+
+[ext_resource type="Script" uid="uid://dxouwagqrsncc" path="res://dreamlands/1206-thinker/^play-thinker.gd" id="1_eucqy"]
+[ext_resource type="Script" uid="uid://cdoaqp8wywey6" path="res://navdi4/main/navdicart.gd" id="1_pgs0a"]
+[ext_resource type="Texture2D" uid="uid://l43mgv4v6p36" path="res://dreamlands/1206-thinker/thinker.png" id="2_vl1vx"]
+
+[resource]
+script = ExtResource("1_pgs0a")
+diary_written = true
+diary_keywords = Array[String](["thinker,", "and", "compatible."])
+name = "thinker"
+play_script = ExtResource("1_eucqy")
+bg_colour = Color(0.49019608, 0.627451, 0.56078434, 1)
+birth_year = 2025
+birth_month = "December"
+birth_day = 6
+sheet_src = ExtResource("2_vl1vx")
+metadata/_custom_type_script = "uid://cdoaqp8wywey6"

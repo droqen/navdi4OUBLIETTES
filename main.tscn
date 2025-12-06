@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddcpe6s55fgss"]
+[gd_scene load_steps=5 format=3 uid="uid://ddcpe6s55fgss"]
 
 [ext_resource type="Script" uid="uid://ci3f4jofwsmak" path="res://navdi4/main/navdimain.gd" id="1_bg03g"]
-[ext_resource type="Texture2D" uid="uid://6nshf8524yyx" path="res://icon.png" id="2_wdlrg"]
+[ext_resource type="Texture2D" uid="uid://dj0g7tks7fx8s" path="res://navdi4/editortools/icon_loading.png" id="2_1bvp3"]
+[ext_resource type="Resource" uid="uid://cahopgx3v3wsl" path="res://dreamlands/1206-thinker/thinker-cart.tres" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://c7b8xslc08d6" path="res://navdi4/dream/LiveDream.gd" id="3_vd67c"]
 
-[node name="-- no cart inserted --" type="Node2D"]
+[node name="[[ thinker ]]" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_bg03g")
-icon_preview = ExtResource("2_wdlrg")
+icon_preview = ExtResource("2_1bvp3")
+cart = ExtResource("3_lquwl")
 gcap_max_dur = 999
 
 [node name="LiveDream" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
@@ -26,8 +28,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
-text = "[center][b][[ THE END OF MAGIC DOOR ]][/b]
-love
-is
-not
-a magic door."
+text = "[center][b][[ thinker ]][/b]
+thinker,
+and
+compatible."
