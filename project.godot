@@ -12,10 +12,10 @@ config_version=5
 
 config/name="2025, May 10th ~ THE END OF MAGIC DOOR"
 run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0.831373, 0.329412, 0.333333, 1)
-boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
+boot_splash/image="res://icon.png"
 config/icon="res://icon.png"
 
 [autoload]
